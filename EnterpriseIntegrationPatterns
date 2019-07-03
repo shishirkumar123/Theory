@@ -1,0 +1,11 @@
+3 popular choice
+1. Spring integration framework - A framework, recommended if you already have spring based application
+2. Mule - A licensed software.
+3. Apache camel - A framework, more adapters than Spring integration.
+
+---------------
+
+1.A2A, P2P
+2.Spoke and Hub - Comes with default adapters to manage different standard communication format like txt/csv file formats, different databases, xml, API(SOAP/REST) etc.
+				May need adapter for a proprietary application say SAP application. 
+		
