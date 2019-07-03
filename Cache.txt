@@ -1,0 +1,14 @@
+Distributed Cache
+-----------------
+Cache - To avoid network calls, do avoid repeated computation
+	Cache size should be optimum. If filled, then remove some entry based on your eviction policy(LRU, LFU)
+	Thrashing - very frequent updates in cache(input/evict)
+	Consistency - Have a mechanism to updates cache in case of updates.
+		Achieve through 2 approaches
+		1.Write through - 
+		2.Write back - 
+		3.Hybrid - 
+		Writeback cache refers to writing to cache first and then the update gets propagated to db asynchronously from cache. Wrong  - What you're describing as writeback is actually write-through, since in write through, order of writing (to db or cache first) doesn't matter.
+	
+	Where should the cache be - If put in servers of your application cluster, then all server cache needs to be in sync. You may use a common cache separate from
+		your server. Example Redis.
