@@ -1,0 +1,41 @@
+S3 (object store)
+An object store (not a file system).
+You can store files and "folders" but can't have locks, permissions etc like you would with a traditional file system
+
+[Other option - EFS(Elastic file system), EBS(Device like C:, D: only accessible through its EC2), Glacier - long term]
+
+Create Bucket, then put objects in it. Object can be image, pdf anything.
+Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is infrequently used by using storage like S3 infrequent, glacier, zone IA. else use standard frequent, standard reduced redundancy - like pdf books in library  
+
+ 
+Features
+Lyfecycle management
+	Transition action - choose to move object to another storage class
+	Expiration action - delete after certain amount of time
+
+Bucket policy - IAM policy for ARN(Amazon resource name) access control
+Data encryption at rest and transmission
+	Client side for rest
+	Server side for in motion
+
+Versioning - Unintetional edits can be rolled back
+
+Cross-Region Replication
+	Pre-requisite
+	 - version enabled in both source and destination
+	 - Proper role assignment
+
+Transfer Acceleration
+	e.g, 5 terrabyte to be moved from mumbai to oregon use cloud front
+
+Pricing
+--------
+1 GB to store in US-East-1: (Updated at 2016.dec.20)
+
+Glacier: $0.004/Month (Note: Major price cut in 2016)
+S3: $0.023/Month
+S3-IA (announced in 2015.09): $0.0125/Month (+$0.01/gig retrieval charge)
+EBS: $0.045-0.1/Month (depends on speed - SSD or not) + IOPS costs
+EFS: $0.3/Month
+
+===========================
