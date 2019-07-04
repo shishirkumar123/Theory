@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=s9vt6UJiHg4&t=938s
+----------------
+
+Typical scenario - controller-service-repository layer.
+When we do unit test for controller we dont start the actual server. When we do integration testing, we do start.
+
+So for unit testing we use - 
+But for integration testing we use - 
+
+
+Question
+1. What is the difference between @Autowire and @MockBean when both can create object
+An argument to astub expect a mock. like the argument to a when() method - 
+	when(mockedObj.method()).thenReturn()
