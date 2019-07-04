@@ -1,0 +1,53 @@
+Hashing
+	Types linear probe, hasing, double hashing. [https://www.youtube.com/watch?v=4YiQITXu_iM]
+	Linear probing  - in case of collision, move one down untilo you find empty.
+		e.x draw result of hashing 3, 56,43,12 into a table if the h(x) = x mod 5 
+		solution - if mode is 5, then create and array from 0 to 4 then put the values.	
+
+	Open chaining - in case of collition add a node next at the same level(linked list)
+		At the end sort all the linked lists.
+		Collision is less than linear probe.
+
+	Quadretic probing - in case of collision move in the series of squares(1,4,8,16...)
+	Double hasing - If collision happed, use 2nd hashing formula given
+-------------------
+
+Iterable - Interface with a method iterator() that returns iterator.
+Topmost collection - Collection interface extends this interface, so every collection is iterable providing iterator method.
+This makes them useful to pass as an argument of 'for each' construct. What will happen if you pass something not iterable to 
+'for each' construct?
+
+---------------------
+Collection
+	Queue(1.5) - poll, peek, offer
+		ConcurrentLinkedQueue(extends AbstractQueue)
+			 An unbounded thread-safe {@linkplain Queue queue} based on linked nodes.
+ 			 This queue orders elements FIFO (first-in-first-out).
+		BlockingQueue - methods take timeout(long) additionally
+					A {@link Queue} that additionally supports operations that wait for
+ 				 	the queue to become non-empty when retrieving an element, and wait
+ 				 	for space to become available in the queue when storing an element.
+			BlockingDeque
+		Deque - suffix first/last to all methods
+			BlockingDeque
+			ConcurrentLinkedDeque(AbstractCollection)
+				An unbounded concurrent {@linkplain Deque deque} based on linked nodes.
+				Concurrent insertion, removal, and access operations execute safely
+				across multiple threads.
+		
+		LinkedList
+			
+
+		Transferer - Shared internal API for dual stacks and queues.
+			TransferQueue
+			TransferStack
+	
+	List
+		Vector
+			Stack
+------------------------------------
+
+
+
+
+	 

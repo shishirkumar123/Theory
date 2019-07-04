@@ -1,0 +1,22 @@
+Executors and ExecutionService
+Callable and Future
+CompletableFuture[supplyAsync... thenApply]
+
+If I have five futures generated after collable finished its task. How can I ensure futures sequence?
+
+CyclicBarrier vs CountdownLatch 
+
+CountdownLatch 
+ A synchronization aid that allows one or more threads to wait until
+ * a set of operations being performed in other threads completes.
+
+CyclicBarrier 
+ A synchronization aid that allows a set of threads to all wait for
+ * each other to reach a common barrier point.  CyclicBarriers are
+ * useful in programs involving a fixed sized party of threads that
+ * must occasionally wait for each other. The barrier is called
+ * <em>cyclic</em> because it can be re-used after the waiting threads
+ * are released.
+
+CyclicBarrier takes an (optional) Runnable task which is run once the common barrier condition is met.
+For simple use cases - services starting etc... a CountdownLatch is fine.

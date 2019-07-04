@@ -1,0 +1,5 @@
+in the typical three layer - controller, service, repository, exception be cought at service or controller?
+
+option 1 - throw business/system exception at service. controller convert the exception to applicable HTTP code.
+
+https://www.youtube.com/watch?v=s9vt6UJiHg4&t=938s - 16.50

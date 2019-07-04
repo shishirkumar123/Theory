@@ -1,0 +1,21 @@
+create stream using-
+	Stream.of
+	IntStream.range(1,2)
+	Arrays.streamOf?
+
+stream start - map(accepts a mapper)
+stream middle - filter(optioanlly accepts a predicate)
+	      - sort(optioanlly accepts a comparator)
+
+terminal    -forEach(accepts a consumer)
+		consumer interface is functional yet 2 methods how
+		1 is main function -accept
+		2nd is 'andThen' which is default function, with implementation within the interface so this will not count
+
+		collect -  collector: a supplier, an accumulator, a combiner and a finisher.
+		collect(Collectors.toList());
+
+		streamSupplier.get().anyMatch(s -> true);   // ok
+streamSupplier.get().noneMatch(s -> true);  // ok
+
+12.30
