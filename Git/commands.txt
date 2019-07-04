@@ -1,0 +1,32 @@
+install git 2.20.1
+>> Right click on folder and click 'Git Bash here'
+
+>>ls
+>>git config --global user.name "shishirkumar123"
+>>git config --global user.email shishirkumar123@gmail.com
+>>git clone https://github.com/shishirkumar123/Firstttt.git
+>>cd <foldername>
+>>ls
+>>create a file in this folder
+>>ls
+>>git add <filename>
+>>git status
+>>git commit -m "comment" <filename>
+>>git push -u origin master [i tried git push. it worked too without -u option]
+>>modify file locally
+>>git status
+>>git commit -m "comment2" <filename>
+
+more just for learning..
+>> git init
+>>git checkout
+>>git push --set-upstream <repository-name> master
+>>git remote add origin https://github.com/shishirkumar123/user-auth.git
+>>git remote remove origin - no url needed.
+
+
+try branching merging rebasing
+
+Notes
+1. I guess it is better to do git pull before git push. If file 1 got modified directly in the repo, file 2 was 
+modified locally, when you try git push, you get error. So first pull and then push.
