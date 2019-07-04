@@ -1,0 +1,5 @@
+confirm this
+If i just need commonly used crud operations, I just create an interface e.g-
+	public interface PrivilegeRepository extends JpaRepository<Privilege, Long>
+
+----------------------

@@ -1,0 +1,90 @@
+ConfigServer
+
+
+At Server
+1.Choose - ConfigServer
+2.@EnableConfigServer
+3.spring.cloud.config.server.git.uri=https://github.com/shishirkumar123/spring-cloud-configuration-files.git
+4.server.port=8888
+
+5.Access a git file from browser-
+e.g 
+http://localhost:8888/reservation-service.properties
+http://localhost:8888/reservation-service.properties/master -> anything works in place of /master. What is the purpose?(fallback?)
+
+
+6.Notice console-
+
+NativeEnvironmentRepository  : Adding property source: file:/C:/Users/shish/AppData/Local/Temp/config-repo-12952748685696729466/reservation-service.properties
+NativeEnvironmentRepository  : Adding property source: file:/C:/Users/shish/AppData/Local/Temp/config-repo-12952748685696729466/application.properties
+
+So it seems everytime a property value is needed by a config client, it will not hit the git.uri, but it will pick from local cache. Any change in the
+property at git.uri location will not be reflected in config clients. May be that is where actuator comes into picture.
+
+Can use consul/zookeeper as well.
+-----------------
+At github
+1.Put organization-unit.properties - Follow naming convension else it wont work. I guess it has to be same as spring.application.name
+server.port: 8001
+debug: true
+message: hello2
+-----------------
+At Client(organization-unit) - 
+1.pom.xml
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+2.application.properties
+	spring.application.name=organization-unit
+	spring.cloud.config.uri=http://localhost:8888
+	[Better to use environment variable like spring.cloud.config.uri=${CONFIG_SERVER}]
+	[Many internet post suggest that the two property should go in bootstrap.yml file. But it works fine with application.yml as well(verify)
+	From stackoverflow - "Bootstrap.yml or Bootstrap.properties is used to fetch the config from Spring Cloud Server."]
+4.Controller
+	@Value("${message}")
+	public String message;
+
+	@RequestMapping("/message")
+	public String message() {
+		return this.message;
+	}
+
+actuater info health
+
+
+Access-
+1.http://localhost:8001/api/v1/organizations
+2.http://localhost:8001/api/v1/organizations/message
+3.http://localhost:8888/organization-unit/master
+	Notice the hierarchy.
+		It shows content both from organization-unit.properties and application.properties(which is a fallback for organization-unit.properties)
+
+
+=====================================================================================================================================
+
+
+Actuator
+At organization-unit
+1. pom.xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+2. info health env
+	http://localhost:8001/actuator
+	http://localhost:8001/actuator/info
+	http://localhost:8001/actuator/health
+	 
+3. refresh scope
+	@RefreshScope
+	@RequestMapping("/message")
+	public String message() {
+		return this.message;
+	}
+4. Access http://localhost:8001/api/v1/organizations/message
+	Change value in organization-unit.properties
+		message: hello2
+	curl -d{} http://localhost:8001/refresh		--This url not working. check endpoint url. [-d{} for POST. without that GET]
+Access URL again. It should show changed value.
