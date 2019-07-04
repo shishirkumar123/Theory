@@ -1,0 +1,18 @@
+Notes
+1. Oauth tokens can be opeque or JWT based. If all microservices has to inspect the token to validate whether caller have authorization for this microservice,
+opeque token will not work. It has to be JWT based open token.
+2.OAuth and SSL\TLS are two separate layers of the OSI model. OAuth is for authorizatio and is at the top in Layer 7 
+while SSL\TLS is for transport security in layer 4. It's easy to confuse SSL with client certificates because they both
+use PKI.
+
+
+========
+Questions - 
+1.Messaging scenario. If I have message broker like Kafka, SNS/SQS will the message contain access tokens also in the header?
+Are these message supposed to have just the payload or can have headers also.
+2. all microservice authenticating so if there are 3 microservice in chain, 
+so complete the use case does the caller needs to have authorization to all 
+the microservices in the chain or just the first one.
+3. Client credential flow doesnt need Open id connect and can serve as authentication provider as well. Correct?
+4.Openid connect can be used irrespective of OAuth2. Alternatively SAML.
+

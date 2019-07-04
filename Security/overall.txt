@@ -1,0 +1,29 @@
+Responsibilities:
+ 
+•    Drives the overall application security strategy for Retail Digital
+•    Acts as security SME utilizing current security disciplines and industry standards (OAuth, OIDC, SAML etc.)
+•    Analyze existing application architectures and creates next-gen security architecture
+•    Design application security modules and assist developers in understanding implementation
+•    Develop security frameworks and libraries that can be utilized by multiple teams
+•    Perform IT system and product evaluations to facilitate secure solution delivery
+•    Champion a security centric development practice across the Digital development teams & work with various internal security teams to automate threat scanning capabilities of both UI and API
+ 
+Technical Skills [Mandatory]:
+ 
+•    In depth knowledge on web application security
+•    In depth knowledge on API Security
+•    Hands on one of the backend languages like Java/.net/python [Java preferred]
+•    Experience with Spring Security framework or equivalent
+•    Expertise in OAuth, OIDC, SAML and other authentication/authorization/delegation technologies
+•    Expertise in SSL and Knowledge about certificates
+•    Expertise in PKI, Encryption algorithms and best practices
+•    Expertise in JWT, JWE, JWK
+•    Experience in developing application Authentication and Authorization frameworks/components
+•    OWASP [Open Web Application Security Project]
+ 
+Technical Skills [Good to have]:
+ 
+•    Cloud and Cloud Security
+•    Security testing, penetration testing, ethical hacking testing
+•    Containers, docker and Kubernetes
+•    Network security
