@@ -1,6 +1,6 @@
 Hashing
 	Types linear probe, hasing, double hashing. [https://www.youtube.com/watch?v=4YiQITXu_iM]
-	Linear probing  - in case of collision, move one down untilo you find empty.
+	Linear probing  - in case of collision, move one down until you find empty.
 		e.x draw result of hashing 3, 56,43,12 into a table if the h(x) = x mod 5 
 		solution - if mode is 5, then create and array from 0 to 4 then put the values.	
 
