@@ -9,7 +9,7 @@ Decide what type of S3 you need based on how frequently you need data, how quick
 
  
 Features
-Lyfecycle management
+Lifecycle management
 	Transition action - choose to move object to another storage class
 	Expiration action - delete after certain amount of time
 
