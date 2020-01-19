@@ -1,0 +1,46 @@
+https://www.youtube.com/watch?v=IDmRiqiDf6k
+
+
+var Zone = {
+    
+	run: function(){
+		console.log("Hi")
+	}
+}
+
+------------------
+
+What will be the output for Zone.run? Zone.run()?
+
+
+===============================================================
+
+var Zone = {
+	
+	run: function(callback){
+		console.log("BEFORE");
+		callback();
+		console.log("AFTER");
+	}
+}
+
+Zone.run(()=>{console.log("Hi");})
+
+
+=================================================================
+
+Zone.js library - It is an execution context for running JS code that persists across async operations.
+
+Async Operation
+	Browser events/handler
+	AJAX Request
+	Timer function(setTimeout, setInterval)
+	
+=================================================================
+
+Polyfills - to support older browse
+========================================================================
+Webpack - package all ui stuff like js, css images in convenient files and folder structure
+Gulp Grunt - task runners (copy file from one folder to other etc)
+SASS, LESS - precompiler for CSS
+main vs Vendor.js - Main is our code. Vendor separate our code from vendor code like bootstrap, jquery

@@ -1,0 +1,12 @@
+https://www.youtube.com/watch?v=W6NZfCO5SIk
+<javascript> should be put at the end of the <body> section. why?
+So that the content of the page is loaded quickly and later javascript is parsed.
+Exception - third party code should go to head section.
+---
+javascript file can be run using node -
+>node index.js
+-------
+declare variable
+before ES 6 it was - var <variableName>
+after ES 6 it is -   let <variableName>
+
