@@ -1,0 +1,36 @@
+Docker architecture
+	- client - server architecture
+	- Daemon(server) receives the commands from Docker client through CLI or rest API'server
+	- Daemon and client can be on same or different host.
+	
+Play with docker-
+	- https://labs.play-with-docker.com/
+	
+Install docker on ubuntu 16.04
+>sudo apt-get install docker.io
+>docker version
+Warning : docker group grants privileges equivalent to the root - https://docs.docker.com/install/linux/linux-postinstall/. So do the below-
+>sudo groupadd docker ... check rest of the solution on website
+>docker run busybox echo hello
+>docker run -it ubuntu bash(it for interactive)
+this will take time, once done we will be inside ubuntu container. run below commands to make this ubuntu container more useful-
+>apt-get update
+>apt-get install curl
+>exit - exits the container
+>docker ps
+>docker images
+Run docker container normal-
+>docker run jpetazzo/clock [person'sid/imagename]
+now in background-
+>docker run -d jpetazzo/clock [-d for daemon]
+check logs
+>docker logs <container id> [docker logs 1 worked for me]
+>docker logs tail -5 <container id>
+history of docker container we ran-
+>docker ps -a
+>docker ps -a -q
+kill docker instance
+>docker kill - immediate
+>docker stop - graceful
+multiple ways to create new image
+>docker commit, docker build, docker import
