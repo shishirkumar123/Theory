@@ -1,0 +1,2 @@
+When a user visits your website, navigates away, and returns via the back button (or reopens a tab from history), Chrome will actually still serve up the cached page (despite the no-cache cache directive!). 
+How to fix this?

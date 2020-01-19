@@ -5,11 +5,20 @@ install git 2.20.1
 >>git config --global user.name "shishirkumar123"
 >>git config --global user.email shishirkumar123@gmail.com
 >>git clone https://github.com/shishirkumar123/Firstttt.git
+
+-------------
+//While using code editor this the following -
+1. At Window desired folder, right click open bash and do git clone <git-repo>.
+    - entire folder is downloaded.
+2. At code editor, in the source control tab - stage, commit, push.
+    - This prompts for user id/password for github. Hope that if it was supplied before git config, the prompt might not have come.
+--------------
+
 >>cd <foldername>
 >>ls
 >>create a file in this folder
 >>ls
->>git add <filename>
+>>git add <filename> --for staging?
 >>git status
 >>git commit -m "comment" <filename>
 >>git push -u origin master [i tried git push. it worked too without -u option]
@@ -23,7 +32,14 @@ more just for learning..
 >>git push --set-upstream <repository-name> master
 >>git remote add origin https://github.com/shishirkumar123/user-auth.git
 >>git remote remove origin - no url needed.
-
+>> git fetch
+>> git merge
+>> git checkout
+>> git branch
+>> git rebase
+>> git branch -d branch_name
+>> git branch -D branch_name (force)
+>> git push <remote_name> --delete <branch_name>
 
 try branching merging rebasing
 

@@ -1,0 +1,57 @@
+0. Download pcf dev - huge file
+1. Open Powershell as admin
+2. Enable hypervisor by running below command - 
+	Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+3. Install the cfdev plugin by running below command - 
+	cf install-plugin cfdev
+	
+	Failed - I get below - 
+		cf : The handle is invalid.
+		At line:1 char:1
+		+ cf install-plugin cfdev
+		+ ~~~~~~~~~~~~~~~~~~~~~~~
+			+ CategoryInfo          : NotSpecified: (The handle is invalid.:String) [], RemoteException
+			+ FullyQualifiedErrorId : NativeCommandError
+			
+	Actually no command is running - error message shows connection issue because of firewall or something...
+4. Start Pivotal Platform Dev with the .tgz artifact downloaded from Pivotal Network - 
+	cf dev start -f C:\Users\KON6416\Downloads\pcfdev-v1.2.0-windows.tgz
+	
+	You should see below -
+		Creating the VM...
+		Starting VPNKit...
+		Starting the VM...
+		Waiting for the VM...
+		Deploying the BOSH Director...
+		Deploying PAS...		
+		  Done (12m21s)
+		Deploying Apps-Manager...
+		  Done (1m11s)
+
+				 ██████╗  ██████╗███████╗██████╗ ███████╗██╗   ██╗
+				 ██╔══██╗██╔════╝██╔════╝██╔══██╗██╔════╝██║   ██║
+				 ██████╔╝██║     █████╗  ██║  ██║█████╗  ██║   ██║
+				 ██╔═══╝ ██║     ██╔══╝  ██║  ██║██╔══╝  ╚██╗ ██╔╝
+				 ██║     ╚██████╗██║     ██████╔╝███████╗ ╚████╔╝
+				 ╚═╝      ╚═════╝╚═╝     ╚═════╝ ╚══════╝  ╚═══╝
+							 is now running!
+
+				To begin using PCF Dev, please run:
+					cf login -a https://api.dev.cfdev.sh --skip-ssl-validation
+
+				Admin user => Email: admin / Password: admin
+				Regular user => Email: user / Password: pass
+
+				To access Apps Manager, navigate here: https://apps.dev.cfdev.sh
+
+				To deploy a particular service, please run:
+					cf dev deploy-service <service-name> [Available services: mysql,redis,rabbitmq,scs]
+5. Create a REST application. Package it as jar -
+	mvn clean package
+6. Log in to Pivotal Platform Dev:
+	cf login -a https://api.run.pcfdev.io --skip-ssl-validation
+	Email: user / Password: pass
+	[Note:	
+		If behind the firewall, set environment variable http_proxy -
+		https_proxy=http://username:password@proxy.example.com
+	]

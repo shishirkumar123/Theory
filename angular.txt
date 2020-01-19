@@ -1,0 +1,12 @@
+
+https://indepth.dev/component-features-with-angular-ivy/
+Ref : https://yarnpkg.com/lang/en/docs/dependency-types/
+
+package.json will contain
+
+dependencies
+needed to run the code
+devDependencies 
+needed during development, not needed during run
+
+session mgt in angular
