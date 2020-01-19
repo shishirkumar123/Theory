@@ -1,0 +1,264 @@
+Kubernates
+=======================
+Deployment environment
+
+3 runtime environments - 
+Physical server virtual m/c, containers. Comparison:
+Physical server - high CAPEx, OPEx
+Virtual m/c - Faster server provisioning. But various OS occupy huge space. Still high on CAPEx, OPEx, needs OS licence.
+Containers - virtualize at OS level. Contrast this with VMs that virtualizes at hardware level.
+	(Q - what about different types of VM, some sitting between OS and hardware other at the top of OS?)
+
+	Containers are very light weight compared to VM. good for microservices, not for monolithic
+	advantage of containers - portability, isolation, resource efficiency, speed, scaling
+	Famous container - Docker, Rocket(Rkt)
+Virtual m/c's are more mature in terms of security
+
+Conclusion - create container at the top of virtual m/c - this could be ideal match.
+-----------------------------------------------
+Docker 
+Docker Inc products - Docker swarm, docker hub, docker data centre.
+Docker = Dockyard + worker, written in Go(Google). It builds(docker image), ships(docker hub/store) and runs(docker container) s/w.
+docker hub - community(no verification.) vs docker store
+Terms - images, repositories(public/private) and dockerhub. As of Dec 2018 - 5 million download /day 2 billion/year
+Docker Ink sell container technology, Docker Project - community
+--------------------------------
+Container orchestration 
+	is required for managing, deploying and scaling. e.g. kebernates, docker swarm(docker inc.), marathon(apache mesos)
+	2 most important feature - clustering and scheduling, scaling, load balance, fault tolerance, deployment(recreate, rolling-update/canary)
+	All three major cloud provider has their own container engine. GCP - Kubernates, Amazon EC2 container service, Azure container service. But Kubernates can be used in all platform.
+	large team- kubernates, small team docker swarm/rancher/nomad
+---------------------------------
+Kubernates architecture
+Master node, Worker Node.
+Master Node
+	API gateway and API Server - Receive and coordinate(validate/execute etc) all request for CRUD operations on kubernates objects
+	Scheduler - Associate pods to the appropriate nodes based on pods resource requirement.
+	etcd - key value database for keeping information about current cluster states (master, workers, status etc)
+	controller manager - 4 controllers - node controller, replication controller, endpoint controller, service accountant token controller. 
+			Ensures overall health. Ensures correct numbers of pods are up and running as per the requirement specs.
+	Usually master node doesn't contain pods
+Worker node >> Pods >> container. Multiple master/worker nodes form clusters. Also-
+	kubelet - manage containers - detect failure, restart, shift to a different pod/node.
+	kube-proxy - maintain network configuration
+	pods/containers
+
+===========================================
+installation
+-------------
+https://labs.play-with-k8s.com/
+Minikube - master-worker single pkg
+kubeadm - or multi node kubernates cluster
+cloud based - google kebernates engine(GKE), Amazon ECS(Elastic container services), Azure kubernates service(AKS) - just specify no. of nodes, and CPU/RAM requirement.
+physical - install kubeadm, kubelet, kubectl, docker
+-------------------------------------------------------
+Installation Steps
+-------------------
+how to create and manage K8s.
+
+
+1. Create 4 VMs - master(1) and worker(3) nodes
+2. PRE-Reqs: Disable - Firewall | Swap | SELinux. Disable swap for better performance
+3. Download & Install - Docker | Kubelet | Kubeadm | Kubectl
+4. Configure the Kubernetes "master" node
+5. Join "worker" nodes to the cluster[currently K8s support up to 5000 worker nodes/cluster]
+6. Testing use case
+===================================
+Play with kds -
+----------------
+Bootstrap a cluster
+----------------------
+You can bootstrap a cluster as follows:
+On master :
+ 1. Initializes cluster master node:
+ kubeadm init --apiserver-advertise-address $(hostname -i)
+ At this moment kubectl get node will show node status as "NotReady"
+
+ 2. Initialize cluster networking:
+ kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
+ At this moment kubectl get node will show node status as "Ready"
+ 3. (Optional) Create an nginx deployment:
+ kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
+ 
+
+-------------
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  
+----------------------------------
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+>>
+>>kubeadm join 192.168.0.28:6443 --token 9mm7z2.s5q5nek0ez40xicy --discovery-token-ca-cert-hash sha256:c7b9f819a794e1796018630ce3ee1f3b7e5244f47e4c063fb817aafca3580969
+[Node : kubectl create is imparative, kubectl apply is declarative]
+
+Test:
+>kubectl get no
+>kubectl run kubernates-bootcamp --image=gcr.io/google-samples/kubernates-bootcamp:v1 --port=8080
+>kubectl get po
+-----------------
+================================================= 
+
+Use - init master, setup pod network, join worker to master
+>kubeadm init --pod-network-cidr=10.240.0.0/16
+>kubectl apply -f \ <url for network plugin, e.g flannel> ->needs to be done on master node
+>kubeadm join --token <token> --discovery-token-ca-cert-hash <value>. Token expires in 24 hrs so use below to recreate-
+>kubeadm token create --print-join-command
+check status-
+>kubectl get no
+run deployment
+>kubectl run kubernates-bootcamp --image <value> --port <value>
+>kubectl get po
+
+Question - Can I create pod, rs, deployment, svc etc in master node itself? Why I need worker node? What happens to master node when worker node fails?
+-----------------------------------
+Pods
+------
+Pod is the atomic unit of scheduling in k8s. It is the run time environment.[Atomic unit for scheduling in virtualization if VM, in containerization it is container]
+Pod Deployment - generate manifest file(container images). API server deploy it on appropriate worker node. labels comes handy when searching pods.
+How we scale? add more container to pod or add more pod? Answer is add more pod, dont know why? If current node has no sufficient capacity, then add new VM
+Usually there is one container per pod. In some cases there are more than one, but those container are related. One is main other(s) are helper.
+
+===============================================
+Replication controller - Maintains the no of Pod instances based on replication factor. RF can be 1 too.
+Advantage - high availability, load balancing. Load needs to be balanced both across pods and nodes.
+RC and pods are associated using label. 
+Create and display RC
+>kubectl create -f nginx-rc.yaml
+>kubectl get pods
+>kubectl get pod -l app=nginx-app
+>kubectl describe rc nginx-rc
+exercise - 
+	1. kill a node and then check status of that pod(ans - unknown)
+	2. scaleup - kubectl scale rc nginx-rc --replicas=5 - check the effect, find more pods added. some on Node 1 other on node 2.
+	3. scale down. Delete the extra pods. - kubectl delete -f nginx-rc.yaml
+selectors and labels - controllers are serices needs these to know more about pods that they need to manage.
+	Related pods have same label.
+	Selectors - Old - equality based(=, ==(same as=), !=), New set based(in, notin, exists)
+-----------------
+Replica set - advance version of replication controller. This has set based selectors as opposed the RC which has equality based selectors
+	do same exercises as replication controller
+	
+	
+=========================================================
+Deployment
+Replica set doesn't provide features such as Upgrades and rollbacks. For these we need deployments.
+We can also do scale up, scale down, pause and resume deployment. 
+Deployment type - 
+	recreate - shut down V1 completely, then upgrade to V2. needs downtime. 
+	RollingUpdate(default) - updates instances one by one.(Ramped or Incremental). Total upgrade takes time. 
+	Canary - Gradual shift of prod traffic from v1 to v2 across multiple instances. Upgrade few instance, test and upgrade more. Ideal for testing before shifting 100%
+	blue/green - switch at load balancer - advantage instant rollout/rollback. But wont it consume double the resource?
+Create and display deployment-
+>kubectl create -f nginx-deploy.yaml
+>kubectl get deploy -l app=nginx-app
+>kubectl get rs -l app=nginx-app
+>kubectl get pod -l app=nginx-app
+>kubectl describe deploy nginx-deployment
+Update using two options set and edit
+>kubectl set image deploy nginx-deployment nginx-container=nginx:1.9.1
+>kubectl edit deploy nginx-deployment
+Verify
+>kubectl rollout status deployment/nginx-deployment
+>kubectl get deploy
+Update and rollback
+>kubectl set image deploy nginx-deployment nginx-container=nginx:1.91(missed "." between 9 and 1)
+>kubectl rollout status deployment/nginx-deployment
+>kubectl rollout history deployment/nginx-deployment
+>kubectl rollout undo deployment/nginx-deployment
+>kubectl rollout status deployment/nginx-deployment
+Scale up and down
+>kubectl scale deployment nginx-deployment ==replicas=5
+>kubectl get deploy
+>kubectl get po
+>kubectl scale deployment nginx-deployment ==replicas=1
+>kubectl delete -f nginx-deploy.yaml
+
+=====================================================================
+Services -
+	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken.
+	Services group the related pods using labels and selectors.
+Types 
+	NodePort - Web-app exposed to outside world
+	LoadBalancer - Balancing load across all nodes hosting Web-app or something exposed to outside
+	Cluster IP - front-end pod connecting to back-end pod
+
+pods hosting front end server can be given same label say - front-end. similarly  back-end. only front-end needs to be exposed outside.
+
+NodePort
+------------
+Has below ports
+	Node port - 30000 to 32767
+	Service port - on service. service routs request to various target ip:port
+	Target port - on pod
+>kubectl create -f nginx-deploy.yaml
+>kubectl create -f nginx-svc-np.yaml
+>kubectl get service -l app=nginx-app
+Confirm which node pod is running -
+>kubectl get po -o wide
+>kubectl describe svc <seevice-name>
+We need to verify external ip/port of pod/service/node through display and describe command.
+Access them all using curl-
+curl http://<node/pod/service ip>:<port>
+At the end cleanup everything
+>kubectl delete svc <service-name> - this deletes svc and related pods. confirm.
+
+LoadBalancer
+---------------------
+Node that using NodePort we exposed multiple nodes outside by providing public ip. Things are different when we use load balancer.
+Load balancer ensures load is evenly balanced across all nodes.
+Load balancer needs investment money-wise, so use wisely.
+>kubectl create -f nginx-deploy.yaml
+>kubectl create -f nginx-svc-lb.yaml
+>kubectl get service -l app=nginx-app
+>kubectl get po -o wide
+>kubectl describe svc <service-name>
+cleanup using delete - Deleting the service will delete the pods too. how? service and pods are linked through labels.
+
+Cluster IP
+---------------------
+Database should be exposed to calling service only not anyone else. Ensure this using cluster IP.
+Cluster IP is default service type in K8s.
+
+Storage Volumes
+--------------------
+Pods are ephemeral and stateless. statelessness gives better scalability. 
+But apps running in pod may need statefullness.
+Something needed to keep application data which will persists beyond pods's life-cycle. So we have storage volumes. Few examples-
+	empltyDir
+	hostPath
+	gcePersistentDisk
+Once volumes is attached to the pod, all containers in the pod will have access to that pod.
+Volume types
+	Ephemeral - same lifetime as pods
+	Durable - Beyond pods lifetime
+emptyDir
+	K8s create empltyDir volume on a worker node where a pod is scheduled.
+	While pod is running, all containers inside it access this volume.
+	once pod is removed from node, empltyDir is deleted forever.
+	most common use of empltyDir is temporary space creation. Also share data between containers of same pod.
+	>kubectl create -f test-ed.yaml
+	>kubectl get po
+	>kubectl exec test-ed df /cache
+	>kubectl describe test-ed
+	>kubectl delete po test-ed
+hostPath
+	mounts a file or directory from host node's file system into the pod.
+	remains even after pod is terminated
+	similar to docker volume
+	only use when really required.
+gcePersistentDisk(gce=google compute engine)
+	volume mounts a gce persistent disk into the pod.
+	data is persisted after pod termination
+	can be mounted as read-only by multiple pods, but as read-write by single pod
+	Same as AWS block store, Azure disk
+	question - can this be shared across nodes?
+
