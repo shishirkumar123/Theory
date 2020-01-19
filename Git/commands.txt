@@ -41,8 +41,18 @@ more just for learning..
 >> git branch -D branch_name (force)
 >> git push <remote_name> --delete <branch_name>
 
+-----------------------
 try branching merging rebasing
 
 Notes
 1. I guess it is better to do git pull before git push. If file 1 got modified directly in the repo, file 2 was 
 modified locally, when you try git push, you get error. So first pull and then push.
+-----------------------
+
+Gitflow
+- Create feature branch for all features
+- Once feature code done, review and merge to develop branch.
+- Create release branch for release.
+- develop and feature branch will continue as usual.
+- QA and Bug fix will be done in release and moved to develop as well.
+- Once QA approved, move release to main. delete release.
