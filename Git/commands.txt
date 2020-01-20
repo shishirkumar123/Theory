@@ -6,6 +6,17 @@ install git 2.20.1
 >>git config --global user.email shishirkumar123@gmail.com
 >>git clone https://github.com/shishirkumar123/Firstttt.git
 
+If you are behind company's firewall then what extra do you need to do?
+
+Usually I have created repository in github.com and then cloned it on my machine. 
+Alternatively I can do below steps -
+>>git init
+>>git add README.md
+>>git commit -m "first commit"
+>>git remote add origin https://github.com/shishirkumar123/exp.git
+>>git push -u origin master
+
+Can I create repository in my machine and push it to github? Something like below -
 -------------
 //While using code editor this the following -
 1. At Window desired folder, right click open bash and do git clone <git-repo>.
