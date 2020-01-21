@@ -1,0 +1,1 @@
+cloud - aws, amazon, gcp, ibm cloud, terremark
