@@ -1,4 +1,4 @@
-Azure
+Azure Overview
 ------------------
 Compute domain
 	Virtual machine - specify RAM and HD requirement and get your computer.
@@ -15,13 +15,24 @@ Scaling - 2 types horizontal - increase the number of server, vertical add more 
 Autoscaling - Scale up/ down number of servers as per need. In azure, need to set rules for auto increase/decrease. 
              [Use operator less than/greater than]
 Loadbalancer - balance load across servers. While using auto-scaling, azure automatically attach a load balancer.
+-------------
 
+See images to know how to configure mysql, access using command line from desktop, create database, tables.
+Configure storage.
+Navigate to webpage. Use github/filezilla to upload code for website.
+
+Use case - Keep product name, description in db, keep its image in storage, show in the website. upload more image, check storage.
+
+Azure pricing
+--------------
+1. Pay as you go,  2. 6 month, 3. 12 months. 
+Check this to see what is free - https://azure.microsoft.com/en-us/free
 
 TODO
 ----------
 
 Before azure account
-1. Install mysql, create database, table.
+1. Install mysql command line client.
 2. Install Filezilla
 
 As of Jan 21st, 2020, you can get azure account free for one year. Remember all services are not free. So free account doesnt
@@ -31,6 +42,7 @@ Once you get a azure account try to do the following -
 1. Kepp a web-app(e.g php) ready for deployment. Create an app server on azure and deploy the web app.
 2. Try autoscaling. Increase/Decrease and see matrics change.
 
+========================================
 	
 
 	
