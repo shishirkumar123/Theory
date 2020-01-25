@@ -4,7 +4,7 @@ Compute domain
 	Virtual machine - specify RAM and HD requirement and get your computer.
 	App Service - automated version, used to deploy an application. This is with limited abilities. 
 				Doesn't give user interface. simple and quick to setup. don't need to configure firewall etc.
-	Function - SErverless. Just upload the code and execute.
+	Function - Serverless. Just upload the code and execute.
 	
 Blob storage
 	Blob storage - store any type of file
@@ -36,10 +36,10 @@ Before azure account
 2. Install Filezilla
 
 As of Jan 21st, 2020, you can get azure account free for one year. Remember all services are not free. So free account doesnt
-give you access to every ervice. You get $200 credit to be used but that will expire within a month.
+give you access to every service. You get $200 credit to be used but that will expire within a month.
 
 Once you get a azure account try to do the following -
-1. Kepp a web-app(e.g php) ready for deployment. Create an app server on azure and deploy the web app.
+1. Keep a web-app(e.g php) ready for deployment. Create an app server on azure and deploy the web app.
 2. Try autoscaling. Increase/Decrease and see matrics change.
 
 ========================================

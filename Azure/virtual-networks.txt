@@ -1,0 +1,43 @@
+Azure Virtual machine is a emulation of computer system. Equivalent of AWS EC2.
+Virtual network - communication channel between resources in the cloud. Azure VNet represents your own network isolated with rest.
+Virtual network components
+    Subnet - public(internet accessible), private
+    Network security group - like a firewall for your network. 
+        All the traffic coming to a subnet shoud first pass its respective NSG.
+
+Excersize
+    1. Create NSG - 1 for web, 1 for database.
+    2. Create Virtual Network 
+    3. Create subnet inside this Virtual Network 2 subnets. 1 subnet accociate with web NSG, another attach to database NSG.
+    3. Create Web Server VM and Database VM.
+        Q. Are we buying VMs on hourly or 1 time purchase. What are the rates for each option?
+    4. Configure NSG for respective VMs. For each VM, set rule for HTTP and HTTPS.
+        If your VM is ubuntu based try connectting through putty. Wont connect. Need to enable SSH by ading rule to NSG.
+    5.Install sotwares
+        on web server -
+            $sudo apt-get update
+            $sudo apt-get install apache2
+            If php -
+            $sudo apt-get install php5
+            For php-mysql connection -
+            $sudo apt-get install php5-mysql
+        On database server -
+            $sudo apt-get update
+            $sudo apt-get install mysql-server
+            $mysql -u root -p
+            -------
+            Create database -
+            mysql>create user 'shishir'@'localhost' identified by 'something'
+            mysql>grant all privileges on *.* to 'shishir'@'localhost' with grant option;
+            mysql>grant all privileges on *.* to 'shishir'@'%' with grant option;
+            ------------
+            Connect to database -
+            $mysql -u shishir -p
+            $cd /etc/mysql
+            $sudo nano my.cnf
+                comment out the property bind-address
+
+        From local computer, using mysql client connect to database server -
+            >mysql -h <ip address> -u <user> -P <port> -p [wont connect, restart service - $sudo service mysql restart]. Now  connect.
+            mysql> create database <dbname>
+            mysql>create table ...

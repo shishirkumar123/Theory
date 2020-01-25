@@ -1,6 +1,6 @@
 Storage
 -----------
-Can you used to store tasks to be executed later or store images, videos etc. 
+Can be used to store tasks to be executed later or store images, videos etc. 
 Properties of those items like name, description can be put in database.
 
 Azure Storage
@@ -27,5 +27,8 @@ File Systems - Create file system in azure and mount it on your computer/ VM on 
 
 Tables - Azure table storage service stores large amount of unstructured data. (Mini NoSQL)
         Ideal for storing structured non relational data. Non relational solution makes it easy to add additional attributes.
+        Partition Key-
+        Row key-
+        Excersise - Create a table. Insert different rows with sifferent attributes and see the result by viewng the table.
 
 
