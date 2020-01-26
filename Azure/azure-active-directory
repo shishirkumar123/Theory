@@ -1,0 +1,31 @@
+Azure AD - 
+    Microsoft's multi-tenant, cloud based directory and identity management service.
+    Combines core directory services, application access management and identity protection into single solution.
+    Offers a rich, standard based platform that enables developers to deliver access control to their applications,
+        based on centralized policy and rules.
+
+Windows AD vs Azure AD. - Azure AD has simplified layers in the architecture.
+    Windows AD uses LDAP, Azure AD uses Rest APIs
+
+Service Audience -
+    IT Administrators - Azure single signon is simplified.
+    Application Developers - Development becomes easier, no need to worry about SSO implementation details
+    Online customers - Office 365 etc.
+
+Azure AD tenants - 
+    Tenant means organization. Each tenant migh have access to one or more active directory.
+    It is dedicated instance of Azure AD service.
+    Microsoft ensures each tenant is isolated.
+
+Edition
+    Basic - SSO, password reset, proxies, SLA 99.9% uptime
+    Premium P1 - scale up, IAM, 
+    Premium P2 - more advance security.
+
+Create New User - Need to provide name, user name, profile etc. User name should be preregistered.
+
+Custom domain
+    You may create a custom domain which helps in simplifying user name.  
+    As a pre requisite, you need to have a domain registered.
+
+Excersize - Create new active directory, play around and delete.
