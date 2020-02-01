@@ -7,6 +7,12 @@ install git 2.20.1
 >>git clone https://github.com/shishirkumar123/Firstttt.git
 
 If you are behind company's firewall then what extra do you need to do?
+If id/password dont need to be supplied - git config --global http.proxy http://<server>:<port>
+If id/password dont need to be supplied - git config --global http.proxy http://<userId>:<password>@<server>:<port>
+
+To undo -
+git config --global --unset https.proxy
+git config --global --unset http.proxy
 
 Usually I have created repository in github.com and then cloned it on my machine. 
 Alternatively I can do below steps -

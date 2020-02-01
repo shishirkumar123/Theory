@@ -1,14 +1,24 @@
-ConfigServer
 
+==================================================================================================================
+ConfigServer
+	Advantage
+		- Makes it easier to change configuration because we just need to update config server. Else update all services.
+		- Update immediately even without retart
+		- keep the passords encrypted and decryp inflight and provide to dependent microservices.
 
 At Server
-1.Choose - ConfigServer
+1.At start.sprint.io, choose - ConfigServer
 2.@EnableConfigServer
 3.spring.cloud.config.server.git.uri=https://github.com/shishirkumar123/spring-cloud-configuration-files.git
 4.server.port=8888
 
 5.Access a git file from browser-
-e.g 
+e.g
+http://localhost:8888/organization-unit
+http://localhost:8888/organization-unit/master (Note that organization-unit is the service id 
+													which you specified in property file for spring.application.name)
+
+Try below also -
 http://localhost:8888/reservation-service.properties
 http://localhost:8888/reservation-service.properties/master -> anything works in place of /master. What is the purpose?(fallback?)
 
@@ -22,6 +32,24 @@ So it seems everytime a property value is needed by a config client, it will not
 property at git.uri location will not be reflected in config clients. May be that is where actuator comes into picture.
 
 Can use consul/zookeeper as well.
+
+7.Extra
+	Try this -
+	http://localhost:8888/actuator
+	http://localhost:8888/actuator/info
+	http://localhost:8888/actuator/health
+
+	When i put below property in application.properies -
+	spring.profiles=dev
+	I restart ther server i get below error message -
+		Description:
+
+		Invalid config server configuration.
+
+		Action:
+
+		If you are using the git profile, you need to set a Git URI in your configuration.  If you are using a native profile and have spring.cloud.config.server.bootstrap=true, you need to use a composite configuration.
+
 -----------------
 At github
 1.Put organization-unit.properties - Follow naming convension else it wont work. I guess it has to be same as spring.application.name
@@ -30,12 +58,13 @@ debug: true
 message: hello2
 -----------------
 At Client(organization-unit) - 
-1.pom.xml
+1. From start.spring.io choose Web, Rest Repository, JPA, H2, Config Client, Stream Redis, Zipkin
+2.pom.xml
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
-2.application.properties
+3.application.properties
 	spring.application.name=organization-unit
 	spring.cloud.config.uri=http://localhost:8888
 	[Better to use environment variable like spring.cloud.config.uri=${CONFIG_SERVER}]
@@ -78,13 +107,222 @@ At organization-unit
 	http://localhost:8001/actuator/health
 	 
 3. refresh scope
-	@RefreshScope
+	@RefreshScope - At the top of the class. Will it work at the top of method also?
 	@RequestMapping("/message")
 	public String message() {
 		return this.message;
 	}
-4. Access http://localhost:8001/api/v1/organizations/message
+4. Access http://localhost:8080/api/v1/organizations/message
 	Change value in organization-unit.properties
 		message: hello2
-	curl -d{} http://localhost:8001/refresh		--This url not working. check endpoint url. [-d{} for POST. without that GET]
+	curl -d{} http://localhost:8080/actuator/refresh		--This url not working. check endpoint url. [-d{} for POST. without that GET]
+	Add below entries in bootstrap.properties to make it work -
+		management.security.enabled=false
+		endpoints.actuator.enabled=true
+		management.endpoints.web.exposure.include=refresh
 Access URL again. It should show changed value.
+
+
+====================
+Eureka
+[For comprehensive coverage, see https://cloud.spring.io/spring-cloud-netflix/reference/html/]
+Better alternative to DNS - DNS is dumb, doesnt know whether the service exist, if exists then is it up? 
+							Have to put time out at client side. Load balancer is just round-robin, cant do availabilityzoneAware,
+							can have state for things like streaming video, cant do client side load balancing.
+Client side load balancing component is zipkin.
+At server
+1.start.spring.io - Eureka Server
+2. On Application class - @EnableEurekaServer
+3.application.properties  - 
+	spring.application.name=eureka-service
+	spring.cloud.config.uri=http://localhost:8888
+4. At browser - localhost:8761
+
+At microservice - 
+1.@EnableDiscoveryClient
+	Don't we need to tell the microservice, the url of eureka server?
+	Yes in application.properties - eureka.client.serviceUrl.defaultZone=http://localhost:8761/eureka
+
+
+Different ways to discover a microservice from other microservice -
+1. Using DiscoveryClient -
+	//Autowire discoveryClient and then-
+	List<ServiceInstance> instances = discoveryClient.getInstances("organization-unit");
+	ServiceInstance serviceInstance = instances.get(0); //manually choosing
+	String baseURL = serviceInstance.getUri().toString();
+	...
+	response = restTemplate.exchange(baseURL, ...);
+
+2. Using Load Balancer client - 
+	//Autowire loadBalancerClient and then-
+	ServiceInstance serviceInstance = loadbalancer.choose("organization-unit");
+
+Q. How multiple instances of organization-unit is created which are collectively identified by same name say organization-unit?
+When we put spring.application.name is property file, isn't the same name used for for registration with eureka?
+A. 1.Add below entries in application.properties - 
+	spring.application.name=organization-unit
+	eureka.instnace.instanceId=${spring.application.name}:${random.value}
+   2. Start the producer twice. First with server.port=8081, then with server.port=8082.
+
+Q. At an organization level, how many eureka server implementation we need? For my own project I might create my
+own eureka server(with multiple instances obviously) but when services from my project need to call services from
+other project, will they obtain the reference through their eureka server?
+
+Client side load balancing vs server side load balancing
+
+
+====================
+Edge service
+2 type - microproxy - blindly fwds inside datacenter to the services behind the loadbalancer, 
+		API gateway - transforms and then forwards.
+
+All the clients like mobile phone, smart watches etc. will call the edge service discovering it through DNS. Edge service
+will then forward it to the actual microservice. There can be multiple edge service transforming a request in different 
+way, or handling security in different wayHTTPBasic, OAuth, SSL), or handle certain protocols differently, then calling 
+actual microservice.
+
+Another example, client like HTML file need to avoid CORS restrictions, so they need to stay on same host and port, so the service
+need to allow them by addtion some code. If I have 600 service, I wont go and add that code in all service, rather I will do
+at edge service which is acting as microproxy here just rounting the request without doing any else like transformation.
+
+At Edge microservice -
+1. At start.spring.io -Eureca Discovery, Config Client, Hystrix(circuit breaker), Zuul(micro proxy), Stream Redis, 
+	Zipkin(distributed tracing)
+2.At application java file
+	@EnableDiscoveryClient
+	@EnableZuulProxy
+3. At property file(bootstrap) -
+	spring.application.name=organization-unit-client
+	spring.cloud.config.uri=http://localhost:8888
+4. Call actual microservice through edge service in the browser -
+	localhost:9999/organization-unit/organization - where edge service is running on 9999 and actual microservice identifier is 
+	organization-unit and /organization is the end point implemented in actual microservice. 
+
+Extra steps if you need to do transformation too -
+1. pom.xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+2. call restTemplate.exchange to actual service.
+	Note - If you have multiple service calls to make, better to user reactive programming call all APIs
+	asynchronously and zip the results upon completion. Even if it is single API but expecting huge number of records,
+	rx java could be a good fit.
+=====================================
+Hystrix 
+Hystrix is a latency and fault tolerance library. Two important feature is -
+ Circuit breaker - isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure 
+ Fallback method - enable resilience in complex distributed systems where failure is inevitable.
+
+
+At Edge Service
+1. Ensure Hystrix dependency is proper in pom.xml
+2. At Application java - @EnableCircuitBreaker
+3. implement fallBack method with different name but exactly same singnature as original method. put fallback caode there.
+4. Annotate the original method(endpoint) - @HystrixCommand(fallbackMethod="<fallBackMethodName>")
+
+
+Ribbon load balancer(client side load balancer) - can be customized programmed. By default it does round robin.
+	You can make it availabilityzoneAware, StikiSessionAware etc.
+
+Fallbacks works straight with read operations. But for write operations, situation is more complex where you need statefulness.
+It is adviced not to use distributed transaction(slow and not full proof), better use eventual consistency(messaging).
+
+Circuit breaker ensures that call is not made to the main method at all but goes directly to fallback avoiding network traffic.
+Visualize this by putting log statements in both main method (with exception thrown) and fallback method. 
+No extra setting is required. Just start calling main method repeatedly and see the log. Multiple calls can be made from
+postman or a client microservice with for loop. 
+
+=====================================
+Messaging
+Spring cloud stream - is the way to describe messaging based services and then composing them outside the code. It uses 
+	an abstraction called channel(name conduit) where the producer put the message, and spring cloud stream will ensure that
+	their is a broker at receiving end which will forward the message to some other component. What that component is, where
+	it is etc are described in configuration file outside the code.
+
+At Edge service(Edge Service is a producer in this case)
+1.	Ensure the pom.xml is stream-redis
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-cloud-starter-redis</artifactId>
+		</dependency>
+
+2. At Java Application
+	@EnableBinding(Source.class) 
+	Note that Source.class is provided by spring out of the box. It can be replaced by any interface which has 
+	message channel defination.
+
+3. At Java Controller
+	@Autowire 
+	private Source source
+
+	@PostMapping
+	public void myMethod(@RequestBody SomeMessageEntity m){
+		Message<String> msg = build the message
+		this.source.output().send(msg);
+	}
+
+	When you browse the config server for edge server properies in browser(localhost:8888/edge-service/master), you will see below-
+	spring.cloud.stream.bindings.input=<name> --this is the named conduit using which producer and consumer will communicate.
+	The actual broker is abstracted, which can be RabbitMQ, kafka
+
+ At actual microservice -
+ 1. At Java Application
+	@EnableBinding(Sink.class) at Main class.
+	Create anothe class in the same file-
+
+	@MessageEndpoint
+	class SomeProcessor{
+
+		@ServiceActivator(inputChannel = Sink.INPUT)
+		public void acceptMessage(String msg){
+			//receive the message and save to database.
+		}
+	}
+
+Test
+	Use postman or something to invoke the Source controller which will send message, which should be received by Sink.
+
+=============================
+Hystrix dashboard
+New microservice
+1. At start.spring.io - Hystrix Dashboard, Config Client
+2. At Java Application - @EnableHystrixDashboard
+3.bootstrap.properties
+	spring.application.name=hystrix-dashboard
+	spring.cloud.config.uri=http://localhost:8888
+
+At browser - 
+1. Type the URL localhost: 8010/hystrix.html
+2. In the webpage, put localhost:<port>/hystrix.stream where port is where edge server is running.
+	[You can verify the stream url by directly putting it in the browser and see the output in the browser]
+
+
+Distributed tracing
+==============================
+Distributed tracing using sleuth.
+Sleuth instruments RabbitMQ, Spring MVC, Feign(Declarative Rest client) by adding headers
+Sleuth will write that output to Zipkin.(Zipkin is one implementation of sleuth abstraction)
+
+At organization-unit
+1. At Java Application -
+Add new method
+
+@Bean
+Sampler<?> sampler(){
+	return new Sampler<Object>(){
+		@Override
+		public boolean next(Object info){
+			return true; //means always sample(trace every request)
+		}
+	};
+}
+
+Better code with lambda- (Use replace with lambda option from IntelliJ)
+Sampler<?> sampler(){
+	return info -> true;
+}
+
+-------------------
+Need to have zipkin installed - directly or through doker and see the zipking dashboard. 
+It will show end to end journey of a request.
