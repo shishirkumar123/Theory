@@ -129,7 +129,7 @@ Eureka
 Better alternative to DNS - DNS is dumb, doesnt know whether the service exist, if exists then is it up? 
 							Have to put time out at client side. Load balancer is just round-robin, cant do availabilityzoneAware,
 							can have state for things like streaming video, cant do client side load balancing.
-Client side load balancing component is zipkin.
+Client side load balancing component is Ribbon.
 At server
 1.start.spring.io - Eureka Server
 2. On Application class - @EnableEurekaServer
@@ -158,18 +158,28 @@ Different ways to discover a microservice from other microservice -
 	ServiceInstance serviceInstance = loadbalancer.choose("organization-unit");
 
 Q. How multiple instances of organization-unit is created which are collectively identified by same name say organization-unit?
-When we put spring.application.name is property file, isn't the same name used for for registration with eureka?
+When we put spring.application.name is property file, isn't the same name used for registration with eureka?
 A. 1.Add below entries in application.properties - 
 	spring.application.name=organization-unit
 	eureka.instnace.instanceId=${spring.application.name}:${random.value}
    2. Start the producer twice. First with server.port=8081, then with server.port=8082.
+   [intelligJ - Based on IntelligJ version, by default you may not be allowed to un the server twice. Enable it -
+   	Run>>Edit Configuration>>Allow run in parallel]
 
 Q. At an organization level, how many eureka server implementation we need? For my own project I might create my
 own eureka server(with multiple instances obviously) but when services from my project need to call services from
 other project, will they obtain the reference through their eureka server?
 
+Note the following message in console of organization-unit microservice(using spring-cloud.version - Hoxton)
+As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead.
+
 Client side load balancing vs server side load balancing
 
+Q. I have noticed that once microservices are registered with eureka, you you shutdown one of them, 
+eureka takes certain time to unregister it. How much time it takes? Is the below message on web console related -
+"EMERGENCY! EUREKA MAY BE INCORRECTLY CLAIMING INSTANCES ARE UP WHEN THEY'RE NOT. RENEWALS ARE LESSER THAN THRESHOLD 
+AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE."
+Is the load balancer intelligent enough not to forward request to the stopped server?
 
 ====================
 Edge service
