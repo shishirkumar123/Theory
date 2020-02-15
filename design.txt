@@ -1,0 +1,8 @@
+Consider an entity with varying attribute -
+{"id":123, "category": "drink" , 	"price": 10,  "rewards_scheme": "blue" ,  "name": "latte", 			"size": "large"}
+{"id":124, "category": "sandwich", 	"price": 15,  "rewards_scheme": "green" , "name": "turkey sub", 	addons: ["onions", "lettuce"]}
+{"id":125, "category": "retail" , 	"price": 8.5, "rewards_scheme": "yellow", "name": "snickers bar"					}
+{"id":128, "category": "drink" , 	"price": 1.2, "rewards_scheme": "green" , "name": "coke", 			"size": "medium"} 
+
+Which database will you use to store it?
+How will yor dto in java look like?

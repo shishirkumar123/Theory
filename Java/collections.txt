@@ -19,7 +19,17 @@ This makes them useful to pass as an argument of 'for each' construct. What will
 
 ---------------------
 Collection
-	Queue(1.5) - poll, peek, offer
+	Operations
+		stream();
+	Queue(1.5) - 
+		Operations
+			add - Inserts the specified element into this queue if possible, else throw exception.
+			offer - Inserts the specified element into this queue if possible. Dosen't throw exception.
+			remove - Retrieves and removes the head of this queue if possible, else throw exception..
+			poll - Retrieves and removes the head of this queue if possible. Dosen't throw exception. 
+			peek - Retrieves, but does not remove, the head of this queue., 
+			
+			 
 		ConcurrentLinkedQueue(extends AbstractQueue)
 			 An unbounded thread-safe {@linkplain Queue queue} based on linked nodes.
  			 This queue orders elements FIFO (first-in-first-out).
@@ -42,9 +52,31 @@ Collection
 			TransferQueue
 			TransferStack
 	
-	List
-		Vector
-			Stack
+
+	
+	AbstractCollection(class)
+		AbstractList
+			ArrayList(List, RandomAccess, Cloneable, Serializable)
+			Vector(List, RandomAccess, Cloneable, Serializable)
+				Stack
+			AbstractSequentialList
+				LinkedList(implements List, Deque, Cloneable, Serializable)
+
+	Implementation -
+	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
+	Retrival in faster in array based data structure, Addition is faster in linked data strctures.
+
+	When I implemented, I realized -
+	Stack need one index, queue might need two. 
+	Stacks are important for DFS(Depth first Search)
+	Link list, Tree need to have a head node to start.
+	Tree traversal - When to terminate? May be count the number of time you visited the head node. 
+		For binary tree it is 2.
+	Both Arrays and HashMaps are key value but HashMap keys are hashed. E
+		ffectiveness on hashing relates to how often collision happens.
+	Graphs - have edges. Tree is specialized graph with one direction.
+	Binary search tree - efficient for search. Left is less than right.
+		Disadvantage - can be unbalanced. Go for red-black tree.
 ------------------------------------
 
 

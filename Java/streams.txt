@@ -2,6 +2,7 @@ create stream using-
 	Stream.of
 	IntStream.range(1,2)
 	Arrays.streamOf?
+	Collection.stream();
 
 stream start - map(accepts a mapper)
 stream middle - filter(optioanlly accepts a predicate)
@@ -16,6 +17,6 @@ terminal    -forEach(accepts a consumer)
 		collect(Collectors.toList());
 
 		streamSupplier.get().anyMatch(s -> true);   // ok
-streamSupplier.get().noneMatch(s -> true);  // ok
+		streamSupplier.get().noneMatch(s -> true);  // ok
 
 12.30

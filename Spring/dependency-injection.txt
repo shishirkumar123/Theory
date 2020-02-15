@@ -6,9 +6,7 @@ if<class-name> is not annotated with @component(or@controller/@service/@reposito
 By default singleton scope. Can be prototype. If singleton, object is created during spring container initialization.
 If prototype, object is created when it is needed.
 
-@Bean old style(compare with @Component). @Bean is a method annotation, in the method we create object specifing new. @component is class annotation.
+@Bean old style(compare with @Component). @Bean is a method annotation, in the method we create object specifing new. 
+@component is class annotation.
 
-In restful service we have @RestController, @Service, @Repository. Service is injected in controller, repository is injected in service, so these objects are
-created by spring container and injected. Who creates object of rest controller? Are they created by servlet container and translated into a servlet?
-Where is the Dispatcher/Router? How many object of rest controller is created. If single instance(like traditional servlet), then what happens if so many request comes?
-Each request becomes a thread. How many threads can be supported?
+How to create your own boot?

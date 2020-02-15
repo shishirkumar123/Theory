@@ -1,0 +1,18 @@
+Pre-requisite - Eclipse, TFS, git selenium etc.
+Components
+	Azure board - project management.. epics, stories, tasks, test cases, bugs. Follow agile/scrum/kanban
+		-Work items
+		-Boards
+		-Backlogs
+		-Sprints
+		-Dashboards
+	Azure repos - repositories. options - team foundation services, git.
+	Azure pipeline - ci/cd
+	Azure Artefacts - keep the dependencies which are needed by multiple projects here.. dll, jar etc.
+	Azure test plans - Manual/Automated/Exploratory
+	
+	
+	
+	===============================
+	
+	11111 Carmel Commons Blvd, Charlotte, NC 28226

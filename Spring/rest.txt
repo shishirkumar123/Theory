@@ -1,0 +1,14 @@
+In restful service we have @RestController, @Service, @Repository. Service is injected in controller, 
+repository is injected in service, so these objects are created by spring container and injected. 
+Who creates object of rest controller? Are they created by servlet container and translated into a servlet?
+Where is the Dispatcher/Router? How many object of rest controller is created. If single instance(like traditional servlet), 
+then what happens if so many request comes?
+Each request becomes a thread. How many threads can be supported?
+
+With typical Controller, Service, Repository I noticed below -
+Till I didnot annotate controller with @RestController, I could @Autowire Service.
+But when I added @RestController, I had to put @Component at Service class. Why?
+
+@PathVariable(org.springframework.web.bind.annotation.PathVariable) 
+vs
+@javax.websocket.server.PathParam 
