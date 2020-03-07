@@ -5,4 +5,11 @@ Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide 
            Provides resiliency by scaling as per the need.
            Failover is transparent to the user.
 
-CloudFrom - CDN service. Speeds up content delivery If you have we content in S3 bucket
+           Routing types
+                      Simple
+                      Failover
+                      Geolocation - Will using this eliminate the need of cloudfront?
+                      
+CloudFront - CDN service. Speeds up content delivery If you have we content in S3 bucket
+
+           
