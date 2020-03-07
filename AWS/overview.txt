@@ -1,1 +1,8 @@
 training - https://www.aws.training/LearningLibrary
+
+
+Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide DNS service for it.
+           Provides resiliency by scaling as per the need.
+           Failover is transparent to the user.
+
+CloudFrom - CDN service. Speeds up content delivery If you have we content in S3 bucket
