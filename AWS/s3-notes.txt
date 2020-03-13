@@ -16,6 +16,8 @@ Lifecycle management
 	Expiration action - delete after certain amount of time
 
 Bucket policy - IAM policy for ARN(Amazon resource name) access control
+AWS recommends that you turn on Block all public access, but before applying any of these settings, ensure that your applications will work correctly without public access.
+
 Data encryption at rest and transmission
 	Client side for rest
 	Server side for in motion
