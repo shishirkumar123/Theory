@@ -2,7 +2,9 @@ S3 (object store)
 An object store (not a file system).
 You can store files and "folders" but can't have locks, permissions etc like you would with a traditional file system
 
-[Other option - EFS(Elastic file system), EBS(Elastic block store - Device like C:, D: only accessible through its EC2), Glacier - long term]
+[Other option - EFS(Elastic file system), EBS(Elastic block store - Device like C:, D: only accessible through its EC2), Glacier - long term
+Note - If you provision a 100-GB EBS volume for a month, but only store 1 GB of data on that volume, you are still billed for 100 GB/m of EBS storage.
+]
 
 Create Bucket, then put objects in it. Object can be image, pdf anything.
 Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is infrequently used by using storage like S3 infrequent, glacier, zone IA. else use standard frequent, standard reduced redundancy - like pdf books in library  
