@@ -18,6 +18,6 @@ Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, memory optimized, general purpose.
 Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is inteermittent. Like batch processing. It significantly reduces tco.
 AMI vs docker - AMI's are VM images basically. Docker containers are packaged mini-images that run on some VM in an isolated environment.
-
+AssociatinG storage - what to pick S3/EBS?
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
