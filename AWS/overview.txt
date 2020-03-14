@@ -13,3 +13,5 @@ Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide 
 CloudFront - CDN service. Speeds up content delivery If you have content in S3 bucket
 
            
+
+Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is inteermittent. Like batch processing. It significantly reduces tco.
