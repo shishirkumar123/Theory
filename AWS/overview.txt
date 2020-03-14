@@ -12,6 +12,7 @@ Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide 
                       
 CloudFront - CDN service. Speeds up content delivery If you have content in S3 bucket
 
+
 -----------           
 EC2
 Select EC2 based on need. Below are options -
@@ -26,3 +27,4 @@ AMI vs docker - AMI's are VM images basically. Docker containers are packaged mi
 AssociatinG storage - what to pick S3/EBS?
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
+How S3 connects to EC2?
