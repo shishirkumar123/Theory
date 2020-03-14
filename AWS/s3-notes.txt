@@ -31,6 +31,8 @@ Cross-Region Replication
 
 Transfer Acceleration
 	e.g, 5 terrabyte to be moved from mumbai to oregon use cloud front
+	
+How is S3 associated in VPC? Doesn't it need compute like EC2 to sit on?
 
 Pricing
 --------
