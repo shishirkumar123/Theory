@@ -12,3 +12,6 @@ AssociatinG storage - what to pick S3/EBS?
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
 How S3 connects to EC2?
+
+
+EBS has no existance without EC2. So in AWS menu, we dont see EBS incompute section. We do see EFS which has an independent existance.
