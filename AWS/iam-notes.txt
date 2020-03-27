@@ -3,6 +3,19 @@ Once AWS account is created, the account id has root access. By default mutilple
 	Its better to create a user with limited access and use this new user most of the time.
 	Enabling a region is free, but your users might create or use resources that result in AWS fees.
 
+What else is created by default-
+	Multiple regions
+	One vpc per region
+	Multiple subnets per region
+	One route table per region
+	One internet gateway per region
+	One DHCP option set per region
+	One NACL per region
+	
+What is not created by default-
+	NAT Gateways
+	Virtual private Gateways
+	Customer Gateways
 
 Group have policies.
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
