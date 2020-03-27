@@ -6,6 +6,8 @@ Interesting - While creating an EC2 there is an option to request spot instances
 
 While creating an EC2 specifying a VPC, submet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
 
+While adding storage, by default a storage of 'root' volume type is already added. You can add more storage. Only volume type available is EBS. Within that, general purpose SSD is free, IOPS is not.
+
 Before spinning up the instance creates the keys-
 A key pair consists of a public key that AWS stores, and a private key file that you store. Together, they allow you to connect to your instance securely. For Windows AMIs, the private key file is required to obtain the password used to log into your instance. For Linux AMIs, the private key file allows you to securely SSH into your instance.
 
