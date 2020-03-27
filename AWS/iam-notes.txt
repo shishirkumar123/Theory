@@ -6,3 +6,6 @@ Once AWS account is created, the account id has root access. By default mutilple
 
 Group have policies.
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
+
+
+Billing is at global level. There is no region wise billing.
