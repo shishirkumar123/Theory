@@ -1,6 +1,7 @@
 Once AWS account is created, the account id has root access. By default mutilple regions are assigned to the account. All active by default. 
 	Its Better to deactivate the regions that you wont be using. 
 	Its better to create a user with limited access and use this new user most of the time.
+	Enabling a region is free, but your users might create or use resources that result in AWS fees.
 
 
 Group have policies.
