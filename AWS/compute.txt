@@ -4,6 +4,8 @@ Select EC2 based on need. Below are options -
 
 Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco.
 
+While creating an EC2 specifying a VPC, submet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
+
 Before spinning up the instance creates the keys-
 A key pair consists of a public key that AWS stores, and a private key file that you store. Together, they allow you to connect to your instance securely. For Windows AMIs, the private key file is required to obtain the password used to log into your instance. For Linux AMIs, the private key file allows you to securely SSH into your instance.
 
