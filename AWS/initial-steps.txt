@@ -6,7 +6,7 @@ Once AWS account is created, the account id has root access. By default mutilple
 What else is created by default-
 	Multiple regions
 	One vpc per region
-	Multiple subnets per region
+	Multiple availability zone. One subnets per availability zone?
 	One route table per region
 	One internet gateway per region
 	One DHCP option set per region
