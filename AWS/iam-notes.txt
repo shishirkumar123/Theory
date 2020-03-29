@@ -18,6 +18,8 @@ What is not created by default-
 	NAT Gateways
 	Virtual private Gateways
 	Customer Gateways
+	
+When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with policies.
 
 Group have policies.
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
