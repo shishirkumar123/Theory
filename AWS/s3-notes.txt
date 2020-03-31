@@ -17,6 +17,7 @@ Lifecycle management
 
 Bucket policy - IAM policy for ARN(Amazon resource name) access control
 AWS recommends that you turn on Block all public access, but before applying any of these settings, ensure that your applications will work correctly without public access.
+When we create a bucket, it needs to be associated with a region. Bucket name needs to be universally unique? Once deleted, it takes time to have that same name reused. While you are waiting, it becomes available, someone else(different account) can use the name. 
 
 Data encryption at rest and transmission
 	Client side for rest
