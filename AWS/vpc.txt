@@ -12,8 +12,14 @@ What is not created by default-
 	NAT Gateways
 	Virtual private Gateways
 	Customer Gateways
+
+VPC endpoint - Helps connect other service like S3 to VPC.
+VPC Endpoint Service - Helps connect to other account.
   
  
  Question
  1. While creating VPC, we specify IPv4 CIDR block. If we put 10.0.0.1/24, it will generate 256 IP addresses. What if I just want 50 IP address.
  2. How do I decide between regional replication and zonal replication for various resources like s3, dynamodb?
+ A. S3 is at regioanl level.
+ 
+ 3.EC2/Farget instance can crash, ECS can rebuild a new instance. What if a subnet/AZ crash, or a VPC crash? Who will recreate it?
