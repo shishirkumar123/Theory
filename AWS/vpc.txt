@@ -4,7 +4,7 @@ Below items are created by default-
 	One vpc per region
 	Multiple availability zone per VPC. One subnets per availability zone?
 	One route table per region - confirm. Route table may be associated to subnet.
-	One internet gateway per region or per VPC?
+	One internet gateway per region or per VPC? Internet gateway is needed by those VPCs only which has at least one public subnet.
 	One DHCP option set per region
 	One NACL per region
 	
@@ -25,3 +25,5 @@ VPC Endpoint Service - Helps connect to other account.
  3.EC2/Farget instance can crash, ECS can rebuild a new instance. What if a subnet/AZ crash, or a VPC crash? Who will recreate it?
  
  4. In the same AWS account can I create 2 VPCs with same CIDR - 10.100.0.0/16 and again 10.100.0.0/16? Consider VPC in same region, different region.
+ 
+ 5. After configuring the network, can I export it.
