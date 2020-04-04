@@ -21,6 +21,7 @@ If you delete the default VPC, you can't get it back without getting help from V
 Dedicated VPCs are fast but costly.
 
 VPC Peering - Can be done only between VPCs of same region. Peering is not transitive.
+Elastic IP addresses - Static, charge associated.
   
  
  Question
