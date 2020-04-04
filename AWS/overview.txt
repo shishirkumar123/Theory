@@ -34,4 +34,8 @@ Outpost
 LightSail
 - Easy way for developers to get started with a simple virtual private server (VPS) solution
 - Provides compute, storage, networking capacity and capabilities to deploy and manage website and web application in the cloud.
-- Includes everything you need to quickly launch your project - A VM, SSD based storage, data transfer, DNS management and an static IP. 
+- Includes everything you need to quickly launch your project - A VM, SSD based storage, data transfer, DNS management and an static IP.
+
+-------
+AWS Batch
+- AWS Batch enables you to easily and efficiently run batch computing workloads of any scale on AWS using Amazon EC2 and Amazon EC2 Spot.
