@@ -12,8 +12,10 @@ Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide 
                       
 CloudFront - CDN service. Speeds up content delivery If you have content in S3 bucket
 
-
------------           
+============================================
+Compute
+============================================
+-------
 EC2
 Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, general purpose.
@@ -29,3 +31,7 @@ Outpost
            11 c5.24xlarge, 11+TB EBS  ---> $28,633.71/month (memory optimized)
            4 m5.24xlarge, 2 g4dn.12xlarge, 11+ TB EBS --->$18,735.61/month (Graphic optimized)
 -------
+LightSail
+- Easy way for developers to get started with a simple virtual private server (VPS) solution
+- Provides compute, storage, networking capacity and capabilities to deploy and manage website and webapplication in the cloud.
+- Includes everything you need to quickly launch your project - A VM, SSD based storage, data transfer, DNS management and an static IP. 
