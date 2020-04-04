@@ -16,7 +16,7 @@ CloudFront - CDN service. Speeds up content delivery If you have content in S3 b
 -----------           
 EC2
 Select EC2 based on need. Below are options -
--compute optimized, memory optimized, GPU enabled, memory optimized, general purpose.
+-compute optimized, memory optimized, GPU enabled, general purpose.
 
 Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco.
 
@@ -28,3 +28,5 @@ AssociatinG storage - what to pick S3/EBS?
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
 How S3 connects to EC2?
+
+Outpost - AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility. When you have applications that needs to be run on-prem and you need to communicate from your new application running on AWS cloud, this is very useful feature making your overall solution a hybrid approach.
