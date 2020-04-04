@@ -15,6 +15,8 @@ What is not created by default-
 
 VPC endpoint - Helps connect other service like S3 to VPC.
 VPC Endpoint Service - Helps connect to other account.
+
+Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
   
  
  Question
