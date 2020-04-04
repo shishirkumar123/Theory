@@ -21,8 +21,27 @@ If you delete the default VPC, you can't get it back without getting help from V
 Dedicated VPCs are fast but costly.
 
 VPC Peering - Can be done only between VPCs of same region. Peering is not transitive.
-Elastic IP addresses - Static, charge associated.
-  
+Elastic IP addresses - Static, charge associated. Usually create and associate with NAT gateway.
+
+Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
+
+For making a subnet public -
+	- Create an internet gateway and associate with subnet
+	- All instances(EC2 etc) should have public or elastic IP.
+	- Configura all NACL and SG rules.
+	
+Route table - Set of rulescalled routes to determine network traffic direction. (Internet traffic allowed or just local etc.)
+
+NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
+	2 types - NAT Gateway(recommended, managed) and NAT instance.
+	
+Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Exxamples -
+	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
+	SG for database server may allow only port 1433(MS SQL), 3389(RDP).
+	Default inbound rule - none (Nothing allowed)
+	Default ourbound rule -all (Everything allowed)
+	
+ACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. 
  
  Question
  1. While creating VPC, we specify IPv4 CIDR block. If we put 10.0.0.1/24, it will generate 256 IP addresses. What if I just want 50 IP address.
@@ -38,3 +57,7 @@ Elastic IP addresses - Static, charge associated.
  
  7. There was a default VPC in Oregon region with IPv4/CIDR 171.31.0.0/16. Can I create a new VPC in same region with same IPv4/CIDR?
  A. Yes. But I think it can create problem during peering between them. Verify.
+
+ 8. Can you crea more than one internet gateway withing one VPC?
+ 9. Route table per region, per vpc or per AZ/subnet?
+ 10. If AZ and subnet is 1 to 1 mapped why there was a need for these two construct? Cant they be clubbed as one?
