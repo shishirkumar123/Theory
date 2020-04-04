@@ -17,5 +17,15 @@ CloudFront - CDN service. Speeds up content delivery If you have content in S3 b
 EC2
 Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, general purpose.
+------
+Outpost 
+- AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility. When you have applications that needs to be run on-prem and you need to communicate from your new application running on AWS cloud, this is very useful feature making your overall solution a hybrid approach.
 
-Outpost - AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility. When you have applications that needs to be run on-prem and you need to communicate from your new application running on AWS cloud, this is very useful feature making your overall solution a hybrid approach.
+-Unlike other hybrid solutions that require use of different APIs, manual software updates, and purchase of third-party hardware and support, Outposts provide a truly consistent developer and IT operations experience across on premises and cloud environments.
+
+-Payment term is 3 years. cost $700 to $30000 per month depending on requirement - As of April 2020.
+           1 m5.24xlarge, 11+ TB EBS ---> $7,196.96/month (General purpose)
+           5 c5.24xlarge, 11+ TB EBS  ---> $13,733.38/month (Compute optimized)
+           11 c5.24xlarge, 11+TB EBS  ---> $28,633.71/month (memory optimized)
+           4 m5.24xlarge, 2 g4dn.12xlarge, 11+ TB EBS --->$18,735.61/month (Graphic optimized)
+-------
