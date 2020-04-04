@@ -33,5 +33,5 @@ Outpost
 -------
 LightSail
 - Easy way for developers to get started with a simple virtual private server (VPS) solution
-- Provides compute, storage, networking capacity and capabilities to deploy and manage website and webapplication in the cloud.
+- Provides compute, storage, networking capacity and capabilities to deploy and manage website and web application in the cloud.
 - Includes everything you need to quickly launch your project - A VM, SSD based storage, data transfer, DNS management and an static IP. 
