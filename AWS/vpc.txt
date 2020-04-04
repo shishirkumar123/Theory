@@ -27,3 +27,4 @@ VPC Endpoint Service - Helps connect to other account.
  4. In the same AWS account can I create 2 VPCs with same CIDR - 10.100.0.0/16 and again 10.100.0.0/16? Consider VPC in same region, different region.
  
  5. After configuring the network, can I export it.
+ 6. How VPC flowlog is different from cloudwatch?
