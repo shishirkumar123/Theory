@@ -1,10 +1,10 @@
 EC2
 Select EC2 based on need. Below are options -
--compute optimized, memory optimized, GPU enabled, memory optimized, general purpose.
+-compute optimized, memory optimized, GPU enabled, general purpose.
 
 Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco.
 
-While creating an EC2 specifying a VPC, submet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
+While creating an EC2 specifying a VPC, subnet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
 
 While adding storage, by default a storage of 'root' volume type is already added. You can add more storage. Only volume type available is EBS. Within that, general purpose SSD is free, IOPS is not.
 
