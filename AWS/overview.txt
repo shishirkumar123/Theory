@@ -39,3 +39,7 @@ LightSail
 -------
 AWS Batch
 - AWS Batch enables you to easily and efficiently run batch computing workloads of any scale on AWS using Amazon EC2 and Amazon EC2 Spot.
+
+-------
+Elastic Beanstalk
+- With Elastic Beanstalk, you can deploy, monitor, and scale an application quickly and easily.
