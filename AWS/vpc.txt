@@ -34,4 +34,4 @@ VPC Peering - Can be done only between VPCs of same region. Peering is not trans
  6. How VPC flowlog is different from cloudwatch?
  
  7. There was a default VPC in Oregon region with IPv4/CIDR 171.31.0.0/16. Can I create a new VPC in same region with same IPv4/CIDR?
- A. Yes.
+ A. Yes. But I think it can create problem during peering between them. Verify.
