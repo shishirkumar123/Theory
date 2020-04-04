@@ -28,3 +28,6 @@ VPC Endpoint Service - Helps connect to other account.
  
  5. After configuring the network, can I export it.
  6. How VPC flowlog is different from cloudwatch?
+ 
+ 7. There was a default VPC in Oregon region with IPv4/CIDR 171.31.0.0/16. Can I create a new VPC in same region with same IPv4/CIDR?
+ A. Yes.
