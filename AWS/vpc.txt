@@ -12,36 +12,46 @@ What is not created by default-
 	NAT Gateways
 	Virtual private Gateways
 	Customer Gateways
-
+----
 VPC endpoint - Helps connect other service like S3 to VPC.
 VPC Endpoint Service - Helps connect to other account.
-
+----
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
 Dedicated VPCs are fast but costly.
-
+----
 VPC Peering - Can be done only between VPCs of same region. Peering is not transitive.
 Elastic IP addresses - Static, charge associated. Usually create and associate with NAT gateway.
 
+----
 Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
-
+----
 For making a subnet public -
 	- Create an internet gateway and associate with subnet
 	- All instances(EC2 etc) should have public or elastic IP.
 	- Configura all NACL and SG rules.
-	
+----	
 Route table - Set of rulescalled routes to determine network traffic direction. (Internet traffic allowed or just local etc.)
-
+----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
-	2 types - NAT Gateway(recommended, managed) and NAT instance.
-	
-Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Exxamples -
+	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
+----	
+Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
 	SG for database server may allow only port 1433(MS SQL), 3389(RDP).
-	Default inbound rule - none (Nothing allowed)
-	Default ourbound rule -all (Everything allowed)
-	
-ACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. 
+It is recommended to create different SGs for different layers.
+Default inbound rule - none (Nothing allowed)
+Default ourbound rule -all (Everything allowed)
+----	
+ACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default ACL is created, when a subnet is created. ACL to subnet relation is one to many. Unlike SG, ACL is stateless.
+----
+Amazon recommends SG for whitelisting and ACL for blacklisting. Additionally use WAF for vulnarabilities.
+----
+Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
+VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - per VPC.
+5 VPC per region.
+
+
  
  Question
  1. While creating VPC, we specify IPv4 CIDR block. If we put 10.0.0.1/24, it will generate 256 IP addresses. What if I just want 50 IP address.
@@ -61,3 +71,4 @@ ACLs - You might setup network ACLs with rules similar to your security groups i
  8. Can you crea more than one internet gateway withing one VPC?
  9. Route table per region, per vpc or per AZ/subnet?
  10. If AZ and subnet is 1 to 1 mapped why there was a need for these two construct? Cant they be clubbed as one?
+ 11. Can a subnet be associated with more than 1 route table? Vice versa?
