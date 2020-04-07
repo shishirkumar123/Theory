@@ -6,7 +6,9 @@ Below items are created by default-
 	One route table per region - confirm. Route table may be associated to subnet.
 	One internet gateway per region or per VPC? Internet gateway is needed by those VPCs only which has at least one public subnet.
 	One DHCP option set per region
-	One NACL per region
+	One NACL per region.
+	
+	Note that number of regions and AZs are fixed and decided by AWS. We dont create region/AZ.
 	
 What is not created by default-
 	NAT Gateways
@@ -17,6 +19,11 @@ Internet Gateway
 	Type of NAT(network address translation) device that uses bidirectional communication.
 	Translate from a private IP address to a single Public IP address.
 	Provide access into the VPC and back out to the internet, attached to VPC.
+----
+Egress Only Gateway
+	Same as IGW but for IPv6
+	Doesn't allow traffic back-in
+	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
 ----
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
@@ -39,9 +46,13 @@ For making a subnet public -
 Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many.
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
+	Only have one IP address.
 	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
 	Once NAT gateway is created, one network interface is also created. This can be viewed from EC2 >> Network and Security >> Network Interface. 
-	Seems like Elastic IP address is automatically created when a NAT gateway is created. Verify.
+	Seems like Elastic IP address is automatically created and associated with NAT gateway when a NAT gateway is created. Verify.
+	NAT gateway itself recide in public subnet.
+	Can't be associated by NACL, only with SG.
+	Aren't highy available, should have a NAT gateway in each AZ.
 
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
