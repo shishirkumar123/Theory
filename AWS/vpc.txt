@@ -2,7 +2,7 @@ With Amazon account -
 Below items are created by default-
 	Multiple regions
 	One vpc per region
-	Multiple availability zone per VPC. One subnets per availability zone?
+	Multiple availability zone per Region. Subnet of same/different VPC can be inside same availability zone?
 	One route table per region - confirm. Route table may be associated to subnet.
 	One internet gateway per region or per VPC? Internet gateway is needed by those VPCs only which has at least one public subnet.
 	One DHCP option set per region
@@ -13,17 +13,21 @@ What is not created by default-
 	Virtual private Gateways
 	Customer Gateways
 ----
-VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
-VPC Endpoint Service - Helps connect to other account.
+Internet Gateway
+	Type of NAT(network address translation) device that uses bidirectional communication.
+	Translate from a private IP address to a single Public IP address.
+	Provide access into the VPC and back out to the internet, attached to VPC.
 ----
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
 Dedicated VPCs are fast but costly.
-VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
+VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. 
+Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
 ----
-VPC Peering - Can be done only between VPCs of same region. Peering is not transitive.
-Elastic IP addresses - Static, charge associated. Usually create and associate with NAT gateway.
-
+VPC Peering - To connect 2 VPCs in same region. Peering is not transitive.
+Elastic IP addresses - Static, charge associated. 
+VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
+VPC Endpoint Service - Helps connect to other account.
 ----
 Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
 ----
@@ -36,7 +40,9 @@ Route table - Set of rules called routes to determine network traffic direction.
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
-	Once NAT gateway is created, one network interface is also created. This can be viewed from EC2 >> Network and Security >> Network Interface.
+	Once NAT gateway is created, one network interface is also created. This can be viewed from EC2 >> Network and Security >> Network Interface. 
+	Seems like Elastic IP address is automatically created when a NAT gateway is created. Verify.
+
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
