@@ -13,7 +13,7 @@ What is not created by default-
 	Virtual private Gateways
 	Customer Gateways
 ----
-VPC endpoint - Helps connect other service like S3 to VPC.
+VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
 VPC Endpoint Service - Helps connect to other account.
 ----
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
