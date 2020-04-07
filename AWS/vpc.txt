@@ -49,6 +49,8 @@ ACLs - You might setup network ACLs with rules similar to your security groups i
 Amazon recommends SG for whitelisting and ACL for blacklisting. Additionally use WAF for vulnarabilities.
 ----
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
+----
+
 VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - per VPC.
 5 VPC per region.
 
