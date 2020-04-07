@@ -30,9 +30,9 @@ Verify two EC2 instances in 2 different subnet of same VPC are able to communica
 For making a subnet public -
 	- Create an internet gateway and associate with subnet
 	- All instances(EC2 etc) should have public or elastic IP.
-	- Configura all NACL and SG rules.
+	- Configure all NACL and SG rules.
 ----	
-Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'.
+Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many.
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
