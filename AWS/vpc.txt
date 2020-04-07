@@ -36,6 +36,7 @@ Route table - Set of rules called routes to determine network traffic direction.
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
+	Once NAT gateway is created, one network interface is also created. This can be viewed from EC2 >> Network and Security >> Network Interface.
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
