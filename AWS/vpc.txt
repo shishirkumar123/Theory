@@ -3,8 +3,9 @@ With Amazon account -
 Below items are created by default-
 	Multiple regions
 	One vpc per region
-	Multiple availability zone per Region. Subnet of same/different VPC can be inside same availability zone?
+	Multiple availability zone per Region. Subnet of same/different VPC can be inside same availability zone.
 	One route table per vpc(main).
+	One Security Group of type EC2-VPC.
 	One internet gateway per region or per VPC? Internet gateway is needed by those VPCs only which has at least one public subnet.
 	One DHCP option set per region
 	One NACL per region.
@@ -66,7 +67,9 @@ It is recommended to create different SGs for different layers.
 Default inbound rule - none (Nothing allowed)
 Default ourbound rule -all (Everything allowed)
 ----	
-ACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default ACL is created, when a subnet is created. ACL to subnet relation is one to many. Unlike SG, ACL is stateless.
+NACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default NACL is created, when a subnet is created. NACL to subnet relation is one to many. Unlike SG, ACL is stateless.
+	NACL applies at subnet level, SG applies at instance level.
+	When traffic enters your network, it is filtered by NACLs before it is filtered by security groups.
 ----
 Amazon recommends SG for whitelisting and ACL for blacklisting. Additionally use WAF for vulnarabilities.
 ----
