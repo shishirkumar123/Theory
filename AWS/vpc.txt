@@ -4,7 +4,7 @@ Below items are created by default-
 	Multiple regions
 	One vpc per region
 	Multiple availability zone per Region. Subnet of same/different VPC can be inside same availability zone?
-	One route table per vpc.
+	One route table per vpc(main).
 	One internet gateway per region or per VPC? Internet gateway is needed by those VPCs only which has at least one public subnet.
 	One DHCP option set per region
 	One NACL per region.
