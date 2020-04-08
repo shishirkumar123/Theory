@@ -47,7 +47,11 @@ For making a subnet public -
 	- All instances(EC2 etc) should have public or elastic IP.
 	- Configure all NACL and SG rules.
 ----	
-Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many.
+Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
+Route table can be linked to internet gateway by 2 way-
+	1. Select Route table>> Edit Route >> Add Route - Destination- 0.0.0.0/0, Target igw-xxxxxx.
+	2. Select Route table>> Edge Association >>Link the IGW.
+What is the difference?
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	Only have one IP address.
