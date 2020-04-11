@@ -62,6 +62,10 @@ NAT device - Used by instances of private subnet to access internet. Outside wor
 	Can't be associated by NACL, only with SG.
 	Aren't highly available, should have a NAT gateway in each AZ.
 	Automatically scale with loads.
+	
+	Charges - April 2020
+	$0.045 per GB Data Processed by NAT Gateways
+	$0.045 per NAT Gateway Hour(Roughly $1 a day)
 
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
@@ -104,3 +108,5 @@ VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - p
  9. Route table per region, per vpc or per AZ/subnet?
  10. If AZ and subnet is 1 to 1 mapped why there was a need for these two construct? Cant they be clubbed as one?
  11. Can a subnet be associated with more than 1 route table? Vice versa?
+ 12. For VPC, when to enable/disable DNS resolution?
+ 13. A VPN's IPv4 CIDR is 10.0.0.0/24. Its subnet 1 is 10.0.0.0/28, subnet 2 is 10.0.0.32/28. How many available IPv4 in both subnets?
