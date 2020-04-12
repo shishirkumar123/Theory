@@ -113,3 +113,4 @@ VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - p
  12. For VPC, when to enable/disable DNS resolution?
  13. A VPN's IPv4 CIDR is 10.0.0.0/24. Its subnet 1 is 10.0.0.0/28, subnet 2 is 10.0.0.32/28. How many available IPv4 in both subnets?
  14. Why NACL sources are 0.0.0.0/0 but SG sources are security group id?
+ 15. There is no provision of creating more than one IPv4 CIDR for a user created VPC. Buth there are two CIDR for the default VPC. Why?
