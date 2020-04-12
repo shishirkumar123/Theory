@@ -74,6 +74,8 @@ Security group - Associated with a VPC. Act as a firewall that controlls the tra
 It is recommended to create different SGs for different layers.
 Default inbound rule - none (Nothing allowed)
 Default ourbound rule -all (Everything allowed)
+
+When a VPC is created, a default SG is created which is associated with VPC. Till this time there is no subnet. That means there is no compute. So SG rules are not applied to anything. But when subnets are added and then EC2, Fargate etc are added on the subnet, and no other SG is added, does the VPC level rules apply to all the instances of all the subnets?
 ----	
 NACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default NACL is created, when a subnet is created. NACL to subnet relation is one to many. Unlike SG, ACL is stateless.
 	NACL applies at subnet level, SG applies at instance level.
