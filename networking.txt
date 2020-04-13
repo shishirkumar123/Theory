@@ -1,0 +1,20 @@
+General network concepts
+=============================
+switch - connects devices in LAN.
+router - connects two networks. e.g Your home network will connect to internet through router.
+	router has 2 ip address. one on LAN, anothr on WAN.
+Subnet mask - not an ip address. Indicates LAN range.
+	Example. If IP address of device A is 192.168.10.11, subnet mask is 255.255.255.0, LAN range starts from 192.168.10.0 to 192.168.10.255. 
+	This is how device A knows that if it needs to communicate to perticular IP address, will it find in LAN, or need to talk to router.
+	
+	
+IP address
+		Private
+			Class A - 10.0.0.0 - 10.255.255.255 - 16,777,216 IP addresses
+			Class B - 172.16.0.0 - 172.31.255.255 -  1,048,576 IP addresses
+			Class C - 192.168.0.0 - 192.168.255.255 - 65,536 IP addresses
+			
+			classless with subnetting(CIDR)
+		Public
+
+
