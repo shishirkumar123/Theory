@@ -43,3 +43,5 @@ AWS Batch
 -------
 Elastic Beanstalk
 - With Elastic Beanstalk, you can deploy, monitor, and scale an application quickly and easily.
+-------
+Cloud formation - AWS infrastructure provisioning. You can use non AWSsolution like Terraform wgi works with other cloud providers too.
