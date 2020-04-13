@@ -17,6 +17,8 @@ What is not created by default-
 	Virtual private Gateways
 	Customer Gateways
 ----
+Virtual network - By default instances within the VPCs are connected through Virtual network. We dont explicitly do anything. Try this - connection 2 instances within same subnet, across two subnet of same VPCs.
+----
 Internet Gateway
 	Type of NAT(network address translation) device that uses bidirectional communication.
 	Translate from a private IP address to a single Public IP address.
