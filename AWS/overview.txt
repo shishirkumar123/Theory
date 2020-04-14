@@ -6,9 +6,18 @@ Route 53 - DNS service. If you have content in S3 bucket, Route 53 will provide 
            Failover is transparent to the user.
 
            Routing types
-                      Simple
-                      Failover
-                      Geolocation - Will using this eliminate the need of cloudfront?
+                      Simple - e.g Route a a simple website.
+                      Failover - e.g If connection fails to s3 bicket as a website then route to a complex tree of records.
+                      Geolocation - e.g Based on country(I18n). In US it can be done based on states also. 
+                                           Will using this eliminate the need of cloudfront?
+                      Geoproximity - Based on location of resource.
+                      Latency Based - Serves from Region which provides lowest latency.
+                      Multivalue Answer .
+                      Waited.
+Price (April 13th 2020) $0.50 per Hosted Zone for the first 25 Hosted Zones.                      
+                    
+Can be integrated with IAM.
+==============
                       
 CloudFront - CDN service. Speeds up content delivery If you have content in S3 bucket
 
@@ -44,4 +53,9 @@ AWS Batch
 Elastic Beanstalk
 - With Elastic Beanstalk, you can deploy, monitor, and scale an application quickly and easily.
 -------
-Cloud formation - AWS infrastructure provisioning. You can use non AWSsolution like Terraform wgi works with other cloud providers too.
+Cloud formation - AWS infrastructure provisioning. You can use non AW Ssolution like Terraform which works with other cloud providers too.
+
+
+=================
+Questions
+1. Can route 53 be used as Load balancer?
