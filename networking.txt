@@ -3,6 +3,9 @@ General network concepts
 switch - connects devices in LAN.
 router - connects two networks. e.g Your home network will connect to internet through router.
 	router has 2 ip address. one on LAN, anothr on WAN.
+hub - A hub works on the physical layer (Layer 1) of OSI model while Switch works on the data link layer (Layer 2). 
+	Switch is more efficient than the hub. A switch can join multiple computers within one LAN.
+	Hub just connects multiple Ethernet devices together as a single segment.
 Subnet mask - not an ip address. Indicates LAN range.
 	Example. If IP address of device A is 192.168.10.11, subnet mask is 255.255.255.0, LAN range starts from 192.168.10.0 to 192.168.10.255. 
 	This is how device A knows that if it needs to communicate to perticular IP address, will it find in LAN, or need to talk to router.
