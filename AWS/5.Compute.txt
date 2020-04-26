@@ -11,7 +11,7 @@ While adding storage, by default a storage of 'root' volume type is already adde
 Before spinning up the instance creates the keys-
 A key pair consists of a public key that AWS stores, and a private key file that you store. Together, they allow you to connect to your instance securely. For Windows AMIs, the private key file is required to obtain the password used to log into your instance. For Linux AMIs, the private key file allows you to securely SSH into your instance.
 
-AMI vs docker - AMI's are VM images basically. Docker containers are packaged mini-images that run on some VM in an isolated environment.
+AMI vs docker - AMI is VM, Doker is container. AMI's are VM images basically. Docker containers are packaged mini-images that run on some VM in an isolated environment.
 AssociatinG storage - what to pick S3/EBS?
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
