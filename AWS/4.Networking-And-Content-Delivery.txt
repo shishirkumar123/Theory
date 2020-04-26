@@ -89,7 +89,7 @@ Note that allow/deny option against rules is available is NACL only. Not availab
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
 ----
 
-VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - per VPC.
+VCP limits - 200 subnets, 200 route tables, 500 SG, 50 inbound+outbound rules - per VPC.
 5 VPC per region.
 
 
@@ -99,7 +99,7 @@ VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - p
  2. How do I decide between regional replication and zonal replication for various resources like s3, dynamodb?
  A. S3 is at regioanl level.
  
- 3.EC2/Farget instance can crash, ECS can rebuild a new instance. What if a subnet/AZ crash, or a VPC crash? Who will recreate it?
+ 3.EC2/Fargate instance can crash, ECS can rebuild a new instance. What if a subnet/AZ crash, or a VPC crash? Who will recreate it?
  
  4. In the same AWS account can I create 2 VPCs with same CIDR - 10.100.0.0/16 and again 10.100.0.0/16? Consider VPC in same region, different region.
  
@@ -109,7 +109,7 @@ VCP limits - 200 subnets, 200 roue tables, 500 SG, 50 inbound+outbound rules - p
  7. There was a default VPC in Oregon region with IPv4/CIDR 171.31.0.0/16. Can I create a new VPC in same region with same IPv4/CIDR?
  A. Yes. But I think it can create problem during peering between them. Verify.
 
- 8. Can you crea more than one internet gateway withing one VPC?
+ 8. Can you create more than one internet gateway withing one VPC?
  9. Route table per region, per vpc or per AZ/subnet?
  10. If AZ and subnet is 1 to 1 mapped why there was a need for these two construct? Cant they be clubbed as one?
  11. Can a subnet be associated with more than 1 route table? Vice versa?
