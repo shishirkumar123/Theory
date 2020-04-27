@@ -23,12 +23,13 @@ Data encryption at rest and transmission
 	Client side for rest
 	Server side for in motion
 
-Versioning - Unintetional edits can be rolled back
+Versioning - Unintentional edits can be rolled back
 
 Cross-Region Replication
 	Pre-requisite
 	 - version enabled in both source and destination
 	 - Proper role assignment
+	 Note : Data replication from one region to another will increase your expenses. Storing 1TB of data in a bucket, will cost you approximately $23 per month in the US-East region. - 4/27/2020
 
 Transfer Acceleration
 	e.g, 5 terrabyte to be moved from mumbai to oregon use cloud front
