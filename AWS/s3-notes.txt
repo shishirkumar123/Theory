@@ -47,3 +47,5 @@ EBS: $0.045-0.1/Month (depends on speed - SSD or not) + IOPS costs
 EFS: $0.3/Month
 
 ===========================
+Question
+1. Why is zonal replication of S3 bucketnot made possible.
