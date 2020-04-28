@@ -1,0 +1,78 @@
+AWS governance and compliance
+=================================
+AWS Organizations
+==================
+CloudWatch
+============
+Alarms, logs, Metrics, Events.
+ServiceLens - Monitor and troubleshoot issues with microservice-based applications.
+Synthetics - Monitor web applications using modular, light-weight canary tests
+Contributor Insights - Amazon CloudWatch Contributor Insights allows you to easily view the top contributors 
+	impacting the performance of your systems and applications in real-time.
+
+
+
+
+CloudTrail
+================
+With a trail, you can retain a record of your CloudTrail events, create event metrics, trigger alerts, run advanced queries in Amazon Athena, create event workflows, and more. 
+You can also create a trail for an organization by logging in with the master account for AWS Organizations
+
+Event History
+---------------
+Your event history contains the activities taken by people, groups, or AWS services in supported services in your AWS account. 
+By default, the view filters out read-only events. 
+
+Insights
+----------
+Insights events are records that capture an unusual call volume of write management APIs in your AWS account.
+
+Trails
+-------
+Deliver logs to an Amazon S3 bucket. CloudTrail events can be processed by one trail for free. There is a charge for processing events with additional trails.
+
+Autoscaling
+============
+enables you to quickly discover all of the scalable resources underlying your application and set up application 
+scaling in minutes using built-in scaling recommendations. Automatically remove unneeded resources to avoid overspending.
+
+AWS Systems Manager
+====================
+Gain Operational Insight and Take Action on AWS Resources like EC2 instances.
+Operations Management
+----------------------
+OpsCenter: Consolidate your operations items (OpsItems) into a single location that provides contextual information, historical guidance, 
+	and quick solution steps.
+
+Application Management
+----------------------
+Resource Groups: Find and group your AWS resources by using queries.
+AppConfig: Dynamic Application Configuration Management.
+Parameter Store: Centralized storage and management of your secrets and configuration data such as passwords, database strings, and license codes.
+
+Actions & Change
+----------------
+Automation: Fleet-wide automation for common administration tasks.
+Change Calendar: Control changes to your AWS resources with a change calendar
+Maintenance Windows: Schedule and implement maintenance tasks across your fleet
+
+Instances & Nodes
+------------------
+Compliance: View patching and State Manager configuration compliance data for your Amazon EC2 and on-premises servers or virtual machines. 
+	Create custom compliance types. 
+	Automatically port data to Amazon S3. Quickly remediate issues.
+Inventory: Collect metadata from your managed instances. Query the metadata to quickly understand which instances are running the software 
+	and configurations required by your software policy, and which instances need to be updated.
+Managed Instances: Configure Amazon EC2 instances and on-premises servers or virtual machines with AWS Systems Manager prerequisites 
+	so that they function as managed instances. Once configured, centrally manage instances using all Systems Manager capabilities.
+State Manager: Centrally manage the configurations of your Amazon EC2 Windows and Linux instances and your on-premises servers or 
+	virtual machines (VMs).
+Patch Manager: Centralized management for patching your fleet of Amazon EC2 Windows and Linux instances or your on-premises servers 
+	and virtual machines (VMs).
+
+Service Catalog
+==================
+
+
+Pricing
+With AWS Service Catalog, you pay a fixed fee of $5 per month for each portfolio with an assigned user, group, or role.
