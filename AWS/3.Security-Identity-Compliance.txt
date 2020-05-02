@@ -18,3 +18,5 @@ Billing is at global level. There is no region wise billing.
 Questions.
 1. How to change policies associated with group. Didn't find this option.
 A. In the list of group, click on the group name
+2. Can an account owner delete an EC2 instance which is created by one of the user? 
+A. Yes.
