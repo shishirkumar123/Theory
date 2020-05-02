@@ -7,8 +7,12 @@ What is the default user? What roles are associated with it?
 
 When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with predefined policies. Are these roles getting associated with my default root users too?
 
-Group have policies.
+Group have policies. 
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
 
 
 Billing is at global level. There is no region wise billing.
+
+
+Questions.
+1. How to change policies associated with group. Didn't find this option.
