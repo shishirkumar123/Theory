@@ -4,6 +4,7 @@ Once AWS account is created, the account id has root access. By default mutilple
 	Enabling a region is free, but your users might create or use resources that result in AWS fees.
 	
 What is the default user? What roles are associated with it?
+The default user is account owner. He/She can create more users and send invitations to those users. Account owner signs in using email/password. Other users(IAM users) need to provide account number of account owner, username provided by account owner and password.
 
 When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with predefined policies. Are these roles getting associated with my default root users too?
 
@@ -16,3 +17,4 @@ Billing is at global level. There is no region wise billing.
 
 Questions.
 1. How to change policies associated with group. Didn't find this option.
+A. In the list of group, click on the group name
