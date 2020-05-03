@@ -2,14 +2,22 @@ Once AWS account is created, the account id has root access. By default mutilple
 	Its Better to deactivate the regions that you wont be using. 
 	Its better to create a user with limited access and use this new user most of the time.
 	Enabling a region is free, but your users might create or use resources that result in AWS fees.
-	
+
+Users
+---------
 What is the default user? What roles are associated with it?
 The default user is account owner. He/She can create more users and send invitations to those users. Account owner signs in using email/password. Other users(IAM users) need to provide account number of account owner, username provided by account owner and password.
 
 User with programmatic access gets keys. User with console access only doesnt get keys.
 
+Roles
+---------
 When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with predefined policies. Are these roles getting associated with my default root users too?
 
+Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which need access to S3 bucket.
+
+Groups
+--------
 Group have policies. 
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
 
