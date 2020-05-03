@@ -20,7 +20,7 @@ Groups
 --------
 Group have policies. 
 User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
-
+Groups created by different aws users. All users can see each others groups.
 
 Billing is at global level. There is no region wise billing.
 
