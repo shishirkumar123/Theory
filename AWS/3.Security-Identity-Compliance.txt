@@ -5,6 +5,7 @@ Once AWS account is created, the account id has root access. By default mutilple
 
 Users
 ---------
+e.g user created arn:aws:iam::062286665809:user/shishir1/@petAL123
 What is the default user? What roles are associated with it?
 The default user is account owner. He/She can create more users and send invitations to those users. Account owner signs in using email/password. Other users(IAM users) need to provide account number of account owner, username provided by account owner and password.
 
