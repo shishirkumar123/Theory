@@ -72,7 +72,9 @@ NAT device - Used by instances of private subnet to access internet. Outside wor
 	Charges - April 2020
 	$0.045 per GB Data Processed by NAT Gateways
 	$0.045 per NAT Gateway Hour(Roughly $1 a day)
-
+----
+Peering connections - VPC connecting to another VPC.
+	Can be done withing the same account and different account. 
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
