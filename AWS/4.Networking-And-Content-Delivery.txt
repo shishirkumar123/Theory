@@ -31,6 +31,7 @@ Egress Only Gateway
 	Same as IGW but for IPv6
 	Doesn't allow traffic back-in
 	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
+	Note: Terms - Egress-Outbound, Ingress-Inbound.
 ----
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
