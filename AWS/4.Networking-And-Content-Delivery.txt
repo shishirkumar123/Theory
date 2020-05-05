@@ -33,15 +33,13 @@ Egress Only Gateway
 	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
 	Note: Terms - Egress-Outbound, Ingress-Inbound.
 ----
+VPCs
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
 Dedicated VPCs are fast but costly.
 VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. 
 Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
 ----
-VPC Peering (Point to Point)- To connect 2 VPCs in same region. Peering is not transitive.
-AWS Transit Gateway (hub-and-spoke )- Added later, better alternative to VPC Peering. It connects all VPCs.
-	You can attach up to 5000 VPCs to each gateway and each attachment can handle up to 50 Gbits/second of bursty traffic-2018
 Elastic IP addresses - Static, charge associated. 
 VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
 VPC Endpoint Service - Helps connect to other account.
@@ -75,6 +73,11 @@ NAT device - Used by instances of private subnet to access internet. Outside wor
 ----
 Peering connections - VPC connecting to another VPC.
 	Can be done withing the same account and different account. 
+	Can be done in same region or different region.
+	
+	VPC Peering (Point to Point) is not transitive.
+	AWS Transit Gateway (hub-and-spoke )- Added later, better alternative to VPC Peering. It connects all VPCs.
+	You can attach up to 5000 VPCs to each gateway and each attachment can handle up to 50 Gbits/second of bursty traffic-2018
 ----	
 Security group - Associated with a VPC. Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
