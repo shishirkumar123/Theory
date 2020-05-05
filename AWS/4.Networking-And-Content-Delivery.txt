@@ -144,6 +144,8 @@ CloudFront
  A. Yes. But I think it can create problem during peering between them. Verify.
 
  8. Can you create more than one internet gateway withing one VPC?
+ A. No. When attaching an igw to a vpc, only those vpc appears in the drop down which doesnt have an igw attached. 
+ 
  9. Route table per region, per vpc or per AZ/subnet?
  10. If AZ and subnet is 1 to 1 mapped why there was a need for these two construct? Cant they be clubbed as one?
  11. Can a subnet be associated with more than 1 route table? Vice versa?
@@ -152,3 +154,4 @@ CloudFront
  14. Why NACL sources are 0.0.0.0/0 but SG sources are security group id?
  15. There is no provision of creating more than one IPv4 CIDR for a user created VPC. Buth there are two CIDR for the default VPC. Why?
  16. If I associated an IGW to a subnet making it public, but in the associated NACL, I denied all inbound traffic, will this subnet be a public subnet?
+ 17. When does it makes sense to create our own DHCP? 
