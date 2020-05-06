@@ -25,6 +25,23 @@ Groups created by different aws users. All users can see each others groups.
 
 Billing is at global level. There is no region wise billing.
 
+Policies
+-----------
+There are good number of pre-existing policies. I created a new one and given it a random name. Below is JSON -
+		{
+		    "Version": "2012-10-17",
+		    "Statement": [
+			{
+			    "Sid": "VisualEditor0",
+			    "Effect": "Allow",
+			    "Action": "apigateway:GET",
+			    "Resource": "*"
+			}
+		    ]
+		}
+Policies can be attached to group, role or directly to the user.
+
+--------------
 
 Questions.
 1. How to change policies associated with group. Didn't find this option.
