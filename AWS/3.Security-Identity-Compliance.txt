@@ -42,6 +42,12 @@ There are good number of pre-existing policies. I created a new one and given it
 Policies can be attached to group, role or directly to the user.
 
 --------------
+Identity Provider configuration.
+Can configure two type
+	SAML
+	OpenId
+--------------
+	
 
 Questions.
 1. How to change policies associated with group. Didn't find this option.
