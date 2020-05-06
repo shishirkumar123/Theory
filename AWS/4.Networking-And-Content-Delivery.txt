@@ -63,10 +63,13 @@ DHCP Option sets
 	
 ----
 Elastic IP addresses - Static, charge associated. 
-VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
-VPC Endpoint Service - Helps connect to other account.
-----
-Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
+-----
+VPC endpoint - Allows you to securely connect your VPC to another service like S3, DynamoDB.
+------------
+VPC Endpoint Service 
+	You can use PrivateLink technology to make services in your VPC available to other AWS accounts and services.
+	PrivateLink is a highly available, scalable technology that enables private access to services.
+	Other accounts and services can create an interface endpoint to access your endpoint service
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	Only have one IP address.
@@ -172,3 +175,4 @@ CloudFront
  16. If I associated an IGW to a subnet making it public, but in the associated NACL, I denied all inbound traffic, will this subnet be a public subnet?
  17. When does it makes sense to create our own DHCP? 
  18. If I create more DHCP option set, how to change DHCP option set of a VPC?
+ 19. Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
