@@ -21,6 +21,30 @@ VPC
 ======================
 ----
 Virtual network - By default instances within the VPCs are connected through Virtual network. We dont explicitly do anything. Try this - connection 2 instances within same subnet, across two subnet of same VPCs. The default route table(main) of a vpc shows a rule for local with the same CIDR which was specified during VPC creation. Is this referring to this virtual network?
+
+----
+VPCs
+Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
+If you delete the default VPC, you can't get it back without getting help from VPC support.
+Dedicated VPCs are fast but costly.
+VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. 
+Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
+
+----
+Subnet
+
+For making a subnet public -
+	- Create an internet gateway and associate with subnet
+	- All instances(EC2 etc) should have public or elastic IP.
+	- Configure all NACL and SG rules.
+----	
+Route table 
+	- Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
+Route table can be linked to internet gateway by 2 way-
+	1. Select Route table>> Edit Route >> Add Route - Destination- 0.0.0.0/0, Target igw-xxxxxx.
+	2. Select Route table>> Edge Association >>Link the IGW.
+What is the difference?
+
 ----
 Internet Gateway
 	Type of NAT(network address translation) device that uses bidirectional communication.
@@ -33,29 +57,16 @@ Egress Only Gateway
 	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
 	Note: Terms - Egress-Outbound, Ingress-Inbound.
 ----
-VPCs
-Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
-If you delete the default VPC, you can't get it back without getting help from VPC support.
-Dedicated VPCs are fast but costly.
-VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. 
-Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
+DHCP Option sets
+	One DHCP option set already exist in the region.
+	All the VPC in the region use same DHCP. While creating VPC, the choice was not even asked. 
+	
 ----
 Elastic IP addresses - Static, charge associated. 
 VPC endpoint - Helps connect other service like S3, DynamoDB to VPC.
 VPC Endpoint Service - Helps connect to other account.
 ----
 Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
-----
-For making a subnet public -
-	- Create an internet gateway and associate with subnet
-	- All instances(EC2 etc) should have public or elastic IP.
-	- Configure all NACL and SG rules.
-----	
-Route table - Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
-Route table can be linked to internet gateway by 2 way-
-	1. Select Route table>> Edit Route >> Add Route - Destination- 0.0.0.0/0, Target igw-xxxxxx.
-	2. Select Route table>> Edge Association >>Link the IGW.
-What is the difference?
 ----
 NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	Only have one IP address.
@@ -160,3 +171,4 @@ CloudFront
  15. There is no provision of creating more than one IPv4 CIDR for a user created VPC. Buth there are two CIDR for the default VPC. Why?
  16. If I associated an IGW to a subnet making it public, but in the associated NACL, I denied all inbound traffic, will this subnet be a public subnet?
  17. When does it makes sense to create our own DHCP? 
+ 18. If I create more DHCP option set, how to change DHCP option set of a VPC?
