@@ -2,7 +2,7 @@ EC2
 Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, general purpose.
 
-Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco.
+Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco. 
 
 While creating an EC2 specifying a VPC, subnet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
 
@@ -13,6 +13,10 @@ A key pair consists of a public key that AWS stores, and a private key file that
 
 AMI vs docker - AMI is VM, Doker is container. AMI's are VM images basically. Docker containers are packaged mini-images that run on some VM in an isolated environment.
 AssociatinG storage - what to pick S3/EBS?
+
+Resource Instance
+	RIs are a commitment in exchange for discount. Specify needs like OS, Tenacity, Instance type, duration, payment option etc and get deals from Amazon and third party.
+  
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
 How S3 connects to EC2?
