@@ -27,7 +27,7 @@ VPCs
 Once VPC created, one IPv4 is created what you specified during VPC creation. That becomes primary IPv4. You can't delete it.
 If you delete the default VPC, you can't get it back without getting help from VPC support.
 Dedicated VPCs are fast but costly.
-VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway. 
+VPC cant be deleted till it has associated instance, associated NAT Gateway, Internet gateway, transit gateway, VPC peering. 
 Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
 
 ----
