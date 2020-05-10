@@ -1,0 +1,29 @@
+AWS cost optimization
+---------------------
+Cost visibility
+	Tagging is important
+	Pick the visibility tool - 
+		AWS Cost management section
+		3rd party tools
+	
+Technical pillars
+	Right size 
+		- use cheapest that match your need
+		- removed unused resources
+			Unattached elastic IPs
+			Unattached EBS
+			Idle/Unattached Load Balancers
+			Incomplete s3 trnsferes
+			Idle EC2, RDS, Redshift instances
+			clearing old snapshots
+			Use Cloudwatch, Trusted advisor, 3rd party(Stax, cloudability
+	Increase elasticity 
+		- use AWS autoscaling
+		- schedule workloads if possible - Dev/Test environment doesnt need to be running 24/7.
+		- tools: gorillastack, parkmycloud
+	Use reserved instances
+	Match storage to needs
+	Design for cost - serverless using lambda
+
+Resource Instance
+	RIs are a commitment in exchange for discount.
