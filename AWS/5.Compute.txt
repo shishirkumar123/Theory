@@ -3,7 +3,9 @@ EC2
 Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, general purpose.
 
-Interesting - While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco. 
+Spot Instance
+------------------
+While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco. 
 
 While creating an EC2 specifying a VPC, subnet is mandatory(there are convinient default setting though), but selecting an IAM role is not mandatory.
 
@@ -15,13 +17,50 @@ A key pair consists of a public key that AWS stores, and a private key file that
 AMI vs docker - AMI is VM, Doker is container. AMI's are VM images basically. Docker containers are packaged mini-images that run on some VM in an isolated environment.
 AssociatinG storage - what to pick S3/EBS?
 
+EBS
+-------
+has no existance without EC2. So in AWS menu, we dont see EBS in compute section. We do see EFS which has an independent existance.
+
 Resource Instance
-===================
+------------------
 	RIs are a commitment in exchange for discount. Specify needs like OS, Tenacity, Instance type, duration, payment option etc and get deals from Amazon and third party.
   
+  
+-------
+LightSail
+================================
+- Easy way for developers to get started with a simple virtual private server (VPS) solution
+- Provides compute, storage, networking capacity and capabilities to deploy and manage website and web application in the cloud.
+- Includes everything you need to quickly launch your project - A VM, SSD based storage, data transfer, DNS management and an static IP.
+
+-------
+AWS Batch
+================================
+- AWS Batch enables you to easily and efficiently run batch computing workloads of any scale on AWS using Amazon EC2 and Amazon EC2 Spot.
+
+Elastic Beanstalk
+===============================
+- With Elastic Beanstalk, you can deploy, monitor, and scale an application quickly and easily.
+
+Cloud formation
+===============================
+- AWS infrastructure provisioning. You can use non AW Ssolution like Terraform which works with other cloud providers too.
+contrast this with terraform which can be used with any cliud provider.
+-------------------------------------------------------
+AWS Outpost 
+===================
+- AWS Outposts brings native AWS services, infrastructure, and operating models to virtually any data center, co-location space, or on-premises facility. When you have applications that needs to be run on-prem and you need to communicate from your new application running on AWS cloud, this is very useful feature making your overall solution a hybrid approach.
+
+-Unlike other hybrid solutions that require use of different APIs, manual software updates, and purchase of third-party hardware and support, Outposts provide a truly consistent developer and IT operations experience across on premises and cloud environments.
+
+-Payment term is 3 years. cost $700 to $30000 per month depending on requirement - As of April 2020.
+           1 m5.24xlarge, 11+ TB EBS ---> $7,196.96/month (General purpose)
+           5 c5.24xlarge, 11+ TB EBS  ---> $13,733.38/month (Compute optimized)
+           11 c5.24xlarge, 11+TB EBS  ---> $28,633.71/month (memory optimized)
+           4 m5.24xlarge, 2 g4dn.12xlarge, 11+ TB EBS --->$18,735.61/month (Graphic optimized)
+
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
 How S3 connects to EC2?
 
 
-EBS has no existance without EC2. So in AWS menu, we dont see EBS in compute section. We do see EFS which has an independent existance.
