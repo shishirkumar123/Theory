@@ -6,5 +6,16 @@ Why amazon came up with Fargate when it already had container service like ECS(e
 Initially - (App Package + AMI) were deployed on EC2.
 Then - Container on EC2.
 Then - ECSs - Made it easy to manage containers and clusters. 
-			But user still had to manage EC2 instances on which these clusteres/containers were running.	
+			But user still had to manage EC2 instances on which these clusters/containers were running.	
 Then Fargate - No need of EC2 instances. Fargate is a compute engine.
+			- Hosts and manages container
+			- Offers seemless scaling
+			- Integrated with ECS/EKS
+			
+-------------------------
+
+Amazon Container Service
+
+ECS
+	Can ECS cluster go beyond a region/vpc?
+	Cluster, Services, Tasks
