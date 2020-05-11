@@ -1,5 +1,5 @@
 AWS Fargate
----------------
+-----------------
 
 Why amazon came up with Fargate when it already had container service like ECS(elastic container service) and Amazon ECS for Kubernates.
 
