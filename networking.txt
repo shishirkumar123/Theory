@@ -21,3 +21,34 @@ IP address
 		Public
 
 
+===================================================
+
+hub
+	- has many port like switch
+	- not intelligent. doesnt have h/w mac table
+	- like beater
+	- 1 collision domain. - 2 device communicating. 3rd try to coomunicate with 1 of them, corrupts communication between 1 and 2
+	- 1 broadcast domain. - sending to all device
+	
+bridge - more intelligent that hub, less than switch.
+
+switch
+	- knows mac address of all devie connected.
+	- helpts P2P communication rather that broadcast.
+	- no of collition domain = no of device ports.
+	- has CAM table
+
+Router
+	- intelligent.  many collition and broadcast domain.
+	
+2 address - IP layer 3, mac address layer 2.
+Local communication
+Data transmission using ethernet happens only using mac address.
+ARP =Address reoltion protocol(broadcast). Device 1 sends ARP (with MAC )to switch. Received by everyone, Device 2 responds. 
+Now device 1 knows IP address of Devie 2 and starts communication through switch.
+
+External communication
+Needs gateway(Router). Works at layer 3.(IP). Has routing table. packet goes through multiple router before reaching to destination.
+
+Cisco switch doesn't have a power input, router has. 
+
