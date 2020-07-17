@@ -1,0 +1,44 @@
+Java Security
+------------------
+Cryptogrphy
+	JCA - Java Cryptogrphy Architecture
+	JCE - Java Cryptogrphy Extension
+	Have become one - JCA/JCE
+	JCA/JCE defines API interface.
+	Cryptographic service provider(CSP) implements it. e.g SunJCE(Comes with Sun JDK), BouncyCastle.
+	
+	
+Steps
+1. Plug in a security provider
+	Option1 : In code
+		Security.addProvider(new ProviderXYZ)
+			where ProviderXYZ extends java.security.Provider
+	Option2: In java.security file ( Different way in Java 8 vs Java 9)
+		security.provider.n=provider-class-name
+		e.g
+			security.provider.1=sun.security.provider.Sun(Make sure this has highest preference, with a value of 1.)
+			security.provider.2=org.bouncycastle.jce.provider.BouncyCastleProvider
+		
+		Java 8 and below -
+			- Update jre/lib/security/java.security
+			- place the provider jar in lib/ext
+		Java 9 and above -
+			- Update conf/security/java.security
+			- place the provider jar in classpath
+	
+2. Choose mechanism/algo - SHA 256 recommended.
+	Hashing - One way - cant be reversed
+			  deterministic - every time same
+			  fixed size - every time same
+			  pseudo random - a very minute change in an string will generate entirely different hash. So cant find pattern.
+				(a propery used in bit coin)
+	Symmetric key enchryption-
+		
+
+		Symmetric enchryption algo-
+		MD5 - Hacked
+		DES - Data Encryption Standard from IBM. Hacked.[Block size - 64 bits. key size 56 bits.]
+		SHA 1
+		SHA 2
+		AES - Advanced Encryption Standard- 2 guys from Belgium. Recommended now.
+			[Block size - 128 bits. key size 128/192/256 bits.]
