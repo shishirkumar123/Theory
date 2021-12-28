@@ -9,6 +9,8 @@ With typical Controller, Service, Repository I noticed below -
 Till I didnot annotate controller with @RestController, I could @Autowire Service.
 But when I added @RestController, I had to put @Component at Service class. Why?
 
+12/28/2021 - When I am using  @RestController, @Service, @Repository, dont need anything else like @Bean/@component/@Autowire
+
 @PathVariable(org.springframework.web.bind.annotation.PathVariable) 
 vs
 @javax.websocket.server.PathParam 
