@@ -10,8 +10,17 @@ Till I didnot annotate controller with @RestController, I could @Autowire Servic
 But when I added @RestController, I had to put @Component at Service class. Why?
 
 12/28/2021 - When I am using  @RestController, @Service, @Repository, dont need anything else like @Bean/@component/@Autowire
-------
+====================
+Repository
 
 For a typical CRUD implementation, in the pojo, the id has been annoteted with @Id and @Generated.
 So while sending POST request, dont need to send the value for id. Even if it is sent, it is redundant. 
 Actual id is generated inside jpa which is independent of redundant value sent in the request.
+-----
+If no generator is specified, then jpa default global generator is used. 
+You may notice the uniqueness of id generated not just with a table but across the tables. 
+For specifying private sequence for each table need to use following - 
+
+@Entity
+@SequenceGenerator(name="PRIVATE_SEQ", sequenceName="private_sequence")
+public class SomeEntity {...}
