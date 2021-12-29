@@ -35,3 +35,11 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="product_sequence")
     private Long id;
+
+
+=============
+Exception Handling
+    Caught in controller layer.
+    
+Logging
+Validations
