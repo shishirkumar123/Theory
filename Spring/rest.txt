@@ -17,7 +17,12 @@ For a typical CRUD implementation, in the pojo, the id has been annoteted with @
 So while sending POST request, dont need to send the value for id. Even if it is sent, it is redundant. 
 Actual id is generated inside jpa which is independent of redundant value sent in the request.
 -----
-If no generator is specified, then jpa default global generator is used. 
+If no generator is specified, then jpa default global generator is used. -
+
+@Entity
+public class Product {
+    private @Id @GeneratedValue Long id;
+    
 You may notice the uniqueness of id generated not just with a table but across the tables. 
 For specifying private sequence for each table need to use following - 
 
