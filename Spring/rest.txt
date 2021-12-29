@@ -22,5 +22,9 @@ You may notice the uniqueness of id generated not just with a table but across t
 For specifying private sequence for each table need to use following - 
 
 @Entity
-@SequenceGenerator(name="PRIVATE_SEQ", sequenceName="private_sequence")
-public class SomeEntity {...}
+@SequenceGenerator(name="PRODUCT_SEQ", sequenceName="product_sequence")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="product_sequence")
+    private Long id;
