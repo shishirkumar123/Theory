@@ -43,5 +43,10 @@ Exception Handling
     
 Logging
 Validations
+
+JSR-303 bean validation is an specification whose objective is to standardize the validation of Java beans through annotations. 
+The objective of the JSR-303 standard is to use annotations directly in a Java bean class.
+
+=================
 Transaction
 Security
