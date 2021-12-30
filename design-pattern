@@ -1,0 +1,9 @@
+Creational
+  Singleton 
+      Using static method - The singleton class itself provides method for creating its single object.
+      Using instant method - Other class creates the single object. The creator may/maynot be singleton.
+      using enum
+      
+  Proxy
+      How is it different from Java's clone method?
+      Spring proxy implementation.
