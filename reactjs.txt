@@ -1,0 +1,16 @@
+Setup
+
+1.Download NodeJS and VS Code editor.
+
+2. Build app (Reference: https://github.com/facebook/create-react-app)
+	Option 1: using npx
+>npx create-react-app my-app (npx is npm package runner. bundled with node.)
+Need to install the following packages:
+  create-react-app
+Ok to proceed? (y)
+>cd my-app
+>npm start
+
+	Option 2: using npm
+>npm install create-react-app -g
+>create-react-app <projectname>	
