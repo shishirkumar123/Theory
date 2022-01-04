@@ -18,4 +18,5 @@ Ok to proceed? (y)
 Code snippet
 1. rfce <tab> for skeleton with function
 2. rce <tab> for skeleton with class
+3. rconst <tab> for constructor
 ----------
