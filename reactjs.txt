@@ -20,3 +20,7 @@ Code snippet
 2. rce <tab> for skeleton with class
 3. rconst <tab> for constructor
 ----------
+Four approaches for event binding
+1. Binding in render -                   this.<handler>.bind(this)
+2. Binding in render using '=>' -        {() => this.<handler>}
+3. Binding in class constructor -        this.<handler> = this.<handler>.bind(this)
