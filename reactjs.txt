@@ -21,7 +21,7 @@ Code snippet
 3. rconst <tab> for constructor
 ----------
 Four approaches for event binding
-1. Binding in render -                   this.<handler>.bind(this)
+1. Binding in render -                   this.<handler>.bind(this)                          - Performace issue
 2. Binding in render using '=>' -        {() => this.<handler>}
-3. Binding in class constructor -        this.<handler> = this.<handler>.bind(this)
-4. class property as '=>' function	<handler> = () => {...}
+3. Binding in class constructor -        this.<handler> = this.<handler>.bind(this)	    - recommended
+4. class property as '=>' function	<handler> = () => {...}                             - this is also okay
