@@ -16,5 +16,6 @@ Ok to proceed? (y)
 >create-react-app <projectname>	
 ----------
 Code snippet
-1. rfce <tab> for skeleton
+1. rfce <tab> for skeleton with function
+2. rce <tab> for skeleton with class
 ----------
