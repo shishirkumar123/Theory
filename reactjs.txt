@@ -25,3 +25,13 @@ Four approaches for event binding
 2. Binding in render using '=>' -        {() => this.<handler>}
 3. Binding in class constructor -        this.<handler> = this.<handler>.bind(this)	    - recommended
 4. class property as '=>' function	<handler> = () => {...}                             - this is also okay
+
+----------------
+Styling react component
+1. CSS stylesheet
+2. Inline styling
+3. CSS Module
+4. CSS in JS Library
+
+--------------
+
