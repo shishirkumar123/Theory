@@ -16,9 +16,10 @@ Ok to proceed? (y)
 >create-react-app <projectname>	
 ----------
 Code snippet
-1. rfce <tab> for skeleton with function
-2. rce <tab> for skeleton with class
-3. rconst <tab> for constructor
+1. rfce for skeleton with function
+2. rce for skeleton with class
+3. rconst for constructor
+4. rpce for pure component 
 ----------
 Four approaches for event binding
 1. Binding in render -                   this.<handler>.bind(this)                          - Performace issue
