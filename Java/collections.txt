@@ -20,7 +20,8 @@ This makes them useful to pass as an argument of 'for each' construct. What will
 ---------------------
 Collection
 	Operations
-		stream();
+		stream(); - returns sequential stream
+		parallelStream(); - returns parallel stream
 	Queue(1.5) - 
 		Operations
 			add - Inserts the specified element into this queue if possible, else throw exception.
