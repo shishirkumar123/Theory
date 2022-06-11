@@ -1,0 +1,11 @@
+
+# default keyword : 
+ Default methods enable new functionality to be added to the interfaces of libraries and ensure 
+ binary compatibility with code written for older versions of those interfaces.
+ e.g
+ interface Operator {
+    int operate(int n);
+    default int inverse(int n) {
+        return -operate(n);
+    }
+}
