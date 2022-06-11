@@ -19,4 +19,7 @@ terminal    -forEach(accepts a consumer)
 		streamSupplier.get().anyMatch(s -> true);   // ok
 		streamSupplier.get().noneMatch(s -> true);  // ok
 
-12.30
+
+e.g
+        Stream<Integer> stream = collection.stream().sorted();
+        stream.map(e -> e).forEach(e -> System.out.println(e));
