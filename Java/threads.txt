@@ -1,5 +1,37 @@
 Executors and ExecutionService
-Callable and Future
+ Instead of directly calling start(), let the ExecutionService manage.
+ example:
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(new MyCallable());
+        executorService.shutdown();
+
+--------------
+Runnable vs Callable
+class MyRunnable implements Runnable{
+
+    @Override
+    public void run() {
+        System.out.println("run");
+    }
+}
+
+//call() has flexibility of throwing exception and returning value 
+class MyCallable implements Callable<Integer>{
+    @Override
+    public Integer call() throws Exception {  //example method: primeNumberGenerator, randomNumberGenerator
+        System.out.println("call");           //Any method that doesnt need an input but returns an output.
+        return 1;                             // Still have limitation of not able to take input.
+    }
+}
+
+
+
+-------------------------
+
+and Future
+
+
+
 CompletableFuture[supplyAsync... thenApply]
 
 If I have five futures generated after collable finished its task. How can I ensure futures sequence?
