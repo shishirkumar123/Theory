@@ -35,3 +35,81 @@ kill docker instance
 >docker start
 multiple ways to create new image
 >docker commit, docker build, docker import
+===========================================================
+# Create App
+# Docker image sample -
+---
+<mongo.yaml>
+version: '3'
+service:
+	my-app:
+		image:435354235.dkr.dsf.sdf.amozonaws.com/my-app:1.0   --> prefix needed if not from dockerhub 
+		ports:
+			- 3000:3000
+	mongodb:
+		image: mongo --> no prefix needed if from dockerhub
+		ports:
+			- 27017:27017
+		environment
+			- mongo-root-uname:dfsff
+			- mongo-root-pwd: sdf#123
+		volumes:
+			- mongo-data:/data/db  -->path inside the container
+
+---
+# Create Dockerfile
+Folder structure
+	app
+		-images <folder>
+		-index.html 
+		-nodes_modules
+		-package.json
+		-package_lock.json
+		-server.js
+	Dockerfile
+-------------
+Dockerfile content -
+
+FROM node:13-alpine
+
+ENV dbuser=admin
+	db password=dfnlkl@1
+
+RUN mkdir -p /home/app 		----> any unix command can be run like this
+
+COPY .app /home/app
+
+CMD ["node", "/home/app/server.js"]
+-----------------
+
+# Commited the App including Dockerfile to git
+
+# Build image
+Option 1: Build image yourself
+	> docker build -t my-app:1.0
+Option 2: Have a jenkins set up so that when you commit app+docker file, jenkins build the image based on the Dockerfile.
+
+Note: Whenever update Dockerfile, rebuild the image
+
+# See List of images
+[~]docker images
+# Delete an image
+[~]docker rmi <image-name>
+But first make sure containers of that image is deleted
+[~]docker ps -a | grep my-app -> find the container
+[~]docker rm <container-name> 
+
+#Go inside container
+>/ # docker exec -it <contianer-id> /bin/sh  or /bin/bash          - it for interactive
+>/ # ls
+>/ # exit
+[~]
+
+# Run container
+docker run my-app1.0
+
+# docker pull <image-name>
+# docker push <image-name>
+# docker tag <image-name>
+=========================================================================
+ECR - Docker Registry at AWS
