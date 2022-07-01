@@ -32,5 +32,6 @@ history of docker container we ran-
 kill docker instance
 >docker kill - immediate
 >docker stop - graceful
+>docker start
 multiple ways to create new image
 >docker commit, docker build, docker import
