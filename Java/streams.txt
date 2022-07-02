@@ -61,4 +61,7 @@ e.g
 	Stream<Integer>  myStream = Stream.of(1,2,3,4,5,6,7,8);
         List<Integer> mySqrList = myStream.map(new MyFunction()).toList();
         System.out.println(mySqrList);
-	//////////////////
+	////////////////// apply filter
+	List<Integer> myEvenSqrList = myStream.map(new MyFunction())
+                .filter(even -> even%2 == 0)
+                .toList();
