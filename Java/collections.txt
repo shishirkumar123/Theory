@@ -62,6 +62,11 @@ Collection
 				Stack
 			AbstractSequentialList
 				LinkedList(implements List, Deque, Cloneable, Serializable)
+	
+Map - doesn't extend Collection
+	HashMap
+	TreeMap
+	SortedMap
 
 	Implementation -
 	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
