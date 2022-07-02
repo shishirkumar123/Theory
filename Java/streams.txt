@@ -6,7 +6,7 @@ create stream using-
 
 stream start - map(accepts a mapper), returns a stream
 stream middle - filter(optioanlly accepts a predicate), returns a stream
-	      - sort(optioanlly accepts a comparator)
+	      - sort(optioanlly accepts a comparator), returns a stream
 
 terminal    -forEach(accepts a consumer)
 		consumer interface is functional yet 2 methods how
