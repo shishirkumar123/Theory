@@ -50,6 +50,7 @@ e.g
                 .forEach(System.out::println);
 		
         ///////////////////// Create your own function
+	
 	class MyFunction implements Function<Integer, Integer>{
 	    @Override
 	    public Integer apply(Integer integer) {
@@ -61,7 +62,28 @@ e.g
 	Stream<Integer>  myStream = Stream.of(1,2,3,4,5,6,7,8);
         List<Integer> mySqrList = myStream.map(new MyFunction()).toList();
         System.out.println(mySqrList);
-	////////////////// apply filter
+	
+	/////////////////////////// apply filter using lambda
+	
 	List<Integer> myEvenSqrList = myStream.map(new MyFunction())
                 .filter(even -> even%2 == 0)
                 .toList();
+		
+	/////////////////////// apply filer using predicate implementation
+	
+	class MyPredicate implements Predicate<Integer>{
+
+	    @Override
+	    public boolean test(Integer integer) {
+		return integer%2 == 0 ? true: false;
+	    }
+	}
+	//use in main()
+	
+	List<Integer> myEvenSqrList = myStream
+                .map(new MyFunction())
+                .filter(new MyPredicate())
+                .toList();
+        System.out.println(myEvenSqrList);
+	
+	////////////////
