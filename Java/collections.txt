@@ -80,6 +80,10 @@ Collection
 		Disadvantage - can be unbalanced. Go for red-black tree.
 ------------------------------------
 
+Collections
+       static methods to operate on collection
+       sort, reverse, min, max, binarySearch, indexedBinarySearch, iteratorBinarySearch, shuffle,swap
+
 
 
 
