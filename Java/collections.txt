@@ -1,16 +1,4 @@
-Hashing
-	Types linear probe, hasing, double hashing. [https://www.youtube.com/watch?v=4YiQITXu_iM]
-	Linear probing  - in case of collision, move one down until you find empty.
-		e.x draw result of hashing 3, 56,43,12 into a table if the h(x) = x mod 5 
-		solution - if mode is 5, then create and array from 0 to 4 then put the values.	
 
-	Open chaining - in case of collition add a node next at the same level(linked list)
-		At the end sort all the linked lists.
-		Collision is less than linear probe.
-
-	Quadretic probing - in case of collision move in the series of squares(1,4,8,16...)
-	Double hasing - If collision happed, use 2nd hashing formula given
--------------------
 
 Iterable - Interface with a method iterator() that returns iterator.
 Topmost collection - Collection interface extends this interface, so every collection is iterable providing iterator method.
@@ -89,6 +77,21 @@ Map - doesn't extend Collection
 Collections
        static methods to operate on collection
        sort, reverse, min, max, binarySearch, indexedBinarySearch, iteratorBinarySearch, shuffle,swap
+       
+---------------------------------
+
+Hashing
+	Types linear probe, hasing, double hashing. [https://www.youtube.com/watch?v=4YiQITXu_iM]
+	Linear probing  - in case of collision, move one down until you find empty.
+		e.x draw result of hashing 3, 56,43,12 into a table if the h(x) = x mod 5 
+		solution - if mode is 5, then create and array from 0 to 4 then put the values.	
+
+	Open chaining - in case of collition add a node next at the same level(linked list)
+		At the end sort all the linked lists.
+		Collision is less than linear probe.
+
+	Quadretic probing - in case of collision move in the series of squares(1,4,8,16...)
+	Double hasing - If collision happed, use 2nd hashing formula given
 
 
 
