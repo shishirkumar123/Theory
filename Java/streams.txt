@@ -4,8 +4,8 @@ create stream using-
 	Arrays.streamOf?
 	Collection.stream();
 
-stream start - map(accepts a mapper)
-stream middle - filter(optioanlly accepts a predicate)
+stream start - map(accepts a mapper), returns a stream
+stream middle - filter(optioanlly accepts a predicate), returns a stream
 	      - sort(optioanlly accepts a comparator)
 
 terminal    -forEach(accepts a consumer)
