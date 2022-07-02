@@ -65,7 +65,8 @@ Collection
 	
 Map - doesn't extend Collection
 	HashMap
-	TreeMap
+	TreeMap - A Red-Black tree based NavigableMap implementation. The map is sorted according to the natural ordering of its keys, or by a Comparator 
+	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
 	SortedMap
 
 	Implementation -
