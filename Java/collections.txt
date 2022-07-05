@@ -57,7 +57,7 @@ Map - doesn't extend Collection
 	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
 	SortedMap
 
-	Implementation -
+Implementation -
 	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
 	Retrival in faster in array based data structure, Addition is faster in linked data strctures.
 
