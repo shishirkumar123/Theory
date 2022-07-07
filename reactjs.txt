@@ -35,4 +35,26 @@ Styling react component
 4. CSS in JS Library
 
 --------------
+export default explanation -
+
+
+
+Simplest Understanding for default export is
+
+Export is ES6's feature which is used to Export a module(file) and use it in some other module(file).
+
+Default Export:
+
+default export is the convention if you want to export only one object(variable, function, class) from the file(module).
+There could be only one default export per file, but not restricted to only one export(Named export).
+When importing default exported object we can rename it as well.
+Export or Named Export:
+
+It is used to export the object(variable, function, class) with the same name.
+
+It is used to export multiple objects from one file.
+
+It cannot be renamed when importing in another file, it must have the same name that was used to export it, but we can create its alias by using as operator.
+
+In React, Vue and many other frameworks the Export is mostly used to export reusable components to make modular based applications.
 
