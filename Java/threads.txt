@@ -46,6 +46,14 @@ Once a computation has completed, the computation cannot be cancelled.
 
 If you would like to use a Future for the sake of cancellability but not provide a usable result,
 you can declare types of the form Future<?> and return null as a result of the underlying task.
+
+Future<Integer> future = executor.submit(c);
+      try {
+         Integer result = future.get(); //wait for a thread to complete
+         System.out.println(result);
+      } catch(ExecutionException e) {
+         e.printStackTrace();
+      }
 ---------------------------
 
 CompletableFuture[supplyAsync... thenApply] - since Java 1.8
@@ -112,8 +120,7 @@ For simple use cases - services starting etc... a CountdownLatch is fine.
 
 
 //Runnable as lambda
-
-Thread t = new Thread(() -> {
+         Thread t = new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 try {
                     Thread.sleep(1000);
@@ -124,3 +131,8 @@ Thread t = new Thread(() -> {
             }
         });
         t.start();
+        
+//Callable as lambda
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        executorService.submit(() -> {return 1;});//wont compile without {} around return statement
+        executorService.shutdown();
