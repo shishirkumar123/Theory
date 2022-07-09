@@ -44,11 +44,17 @@ e.g
                 .filter(employee -> employee.startsWith("A"))
                 .forEach(System.out::println);
 		
-	//Show employee age who age is more than 25
+	//Show employee age whose age is more than 25
 	employeeList.stream().map(employee -> employee.getAge())
                 .filter(employee -> employee > 25)
                 .forEach(System.out::println);
 		
+	//Show employee name whose age is more than 25
+	employeeList.stream()
+              .filter(employee -> employee.getAge() > 25) // note that filter can be called before map.
+              .map(employee -> employee.getfName())       //but sorted() can be called before. Throws ClassCastException. Why?
+              .forEach(System.out::println);
+	
         ///////////////////// Create your own function
 	
 	class MyFunction implements Function<Integer, Integer>{
