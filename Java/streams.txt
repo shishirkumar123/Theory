@@ -54,6 +54,12 @@ e.g
               .filter(employee -> employee.getAge() > 25) // note that filter can be called before map.
               .map(employee -> employee.getfName())       //but sorted() can be called before. Throws ClassCastException. Why?
               .forEach(System.out::println);
+	      
+	// Return the values to a list rather than just print
+	List<String> employeeName =  employeeList.stream()
+              .filter(employee -> employee.getAge() > 25)
+              .map(employee -> employee.getfName())
+              .collect(Collectors.toList());
 	
         ///////////////////// Create your own function
 	
