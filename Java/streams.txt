@@ -100,7 +100,8 @@ e.g
 	
 	////////////////
 	
-Collector: A Collector is specified by four functions that work together to accumulate entries into a mutable result container, and optionally perform a final transform on the result. They are:
+Collector: A Collector is specified by four functions that work together to accumulate entries 
+into a mutable result container, and optionally perform a final transform on the result. They are:
 	creation of a new result container (supplier())
 	incorporating a new data element into a result container (accumulator())
 	combining two result containers into one (combiner())
