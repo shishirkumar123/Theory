@@ -59,7 +59,7 @@ e.g
 	List<String> employeeName =  employeeList.stream()
               .filter(employee -> employee.getAge() > 25)
               .map(employee -> employee.getfName())
-              .collect(Collectors.toList());
+              .collect(Collectors.toList());              // collect method takes Collector as an argument
 	
         ///////////////////// Create your own function
 	
@@ -99,3 +99,9 @@ e.g
         System.out.println(myEvenSqrList);
 	
 	////////////////
+	
+Collector: A Collector is specified by four functions that work together to accumulate entries into a mutable result container, and optionally perform a final transform on the result. They are:
+	creation of a new result container (supplier())
+	incorporating a new data element into a result container (accumulator())
+	combining two result containers into one (combiner())
+	performing an optional final transform on the container (finisher())
