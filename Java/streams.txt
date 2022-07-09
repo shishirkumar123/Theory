@@ -53,13 +53,13 @@ e.g
 	employeeList.stream()
               .filter(employee -> employee.getAge() > 25) // note that filter can be called before map.
               .map(employee -> employee.getfName())       //but sorted() can be called before. Throws ClassCastException. Why?
-              .forEach(System.out::println);
+              .forEach(System.out::println);              //forEach takes consumer as an argument
 	      
 	// Return the values to a list rather than just print
 	List<String> employeeName =  employeeList.stream()
               .filter(employee -> employee.getAge() > 25)
               .map(employee -> employee.getfName())
-              .collect(Collectors.toList());              // collect method takes Collector as an argument
+              .collect(Collectors.toList());              // collect method takes Collector as an argument. Contrast this to forEach
 	
         ///////////////////// Create your own function
 	
