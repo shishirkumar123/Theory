@@ -6,11 +6,11 @@ This makes them useful to pass as an argument of 'for each' construct. What will
 'for each' construct?
 
 ---------------------
-Collection
+Collection Interface
 	Operations
 		stream(); - returns sequential stream
 		parallelStream(); - returns parallel stream
-	Queue(1.5) - 
+	Queue Interface(1.5) - 
 		Operations
 			add - Inserts the specified element into this queue if possible, else throw exception.
 			offer - Inserts the specified element into this queue if possible. Dosen't throw exception.
@@ -22,14 +22,16 @@ Collection
 		ConcurrentLinkedQueue(extends AbstractQueue)
 			 An unbounded thread-safe {@linkplain Queue queue} based on linked nodes.
  			 This queue orders elements FIFO (first-in-first-out).
-		BlockingQueue - methods take timeout(long) additionally
+		BlockingQueue Interface - methods take timeout(long) additionally
 					A {@link Queue} that additionally supports operations that wait for
  				 	the queue to become non-empty when retrieving an element, and wait
  				 	for space to become available in the queue when storing an element.
 			BlockingDeque
-		Deque - suffix first/last to all methods
-			BlockingDeque
-			ConcurrentLinkedDeque(AbstractCollection)
+		Deque Interface - suffix first/last to all methods
+			BlockingDeque Interface
+				LinkedBlockingDeque class. 
+					I noticed that when LinkedBlockingDeque was empty, the thread didn't wait. It didn't throw exception either.
+			ConcurrentLinkedDeque class extends AbstractCollection implements Deque
 				An unbounded concurrent {@linkplain Deque deque} based on linked nodes.
 				Concurrent insertion, removal, and access operations execute safely
 				across multiple threads.
@@ -46,6 +48,7 @@ Collection
 	AbstractCollection(class)
 		AbstractList
 			ArrayList(List, RandomAccess, Cloneable, Serializable)
+				when called remove(), it seems all element shifts left. But not in case of LinkedBlockingDeque etc.
 			Vector(List, RandomAccess, Cloneable, Serializable)
 				Stack
 			AbstractSequentialList
@@ -93,6 +96,8 @@ Hashing
 	Quadretic probing - in case of collision move in the series of squares(1,4,8,16...)
 	Double hasing - If collision happed, use 2nd hashing formula given
 
+--------------------------------
+You can't remove from list if you're browsing it with "for each" loop. You should use Iterator. Else it will throw - ConcurrentModificationException
 
 
 
