@@ -98,7 +98,8 @@ RxJava
 
 Much powerful, but hard to understand and debug.
 
-Similarly to Futures, RxJava can be used to string together a bunch of synchronous or asynchronous actions to create a processing pipeline. Unlike Futures, which are single-use, RxJava works on streams of zero or more items. Including never-ending streams with an infinite number of items. 
+Similarly to Futures, RxJava can be used to string together a bunch of synchronous or asynchronous actions to create a processing pipeline. 
+Unlike Futures, which are single-use, RxJava works on streams of zero or more items. Including never-ending streams with an infinite number of items. 
 
 ------------
 CyclicBarrier vs CountdownLatch 
@@ -117,6 +118,8 @@ CyclicBarrier
 
 CyclicBarrier takes an (optional) Runnable task which is run once the common barrier condition is met.
 For simple use cases - services starting etc... a CountdownLatch is fine.
+
+CountDownlatch is a new mechanism while wait/notify is a old way of co coordinating between threads.
 
 
 //Runnable as lambda
