@@ -24,3 +24,12 @@ Images are available in docker hub - hub.docker.com
       The restriction of using differnt port is for the host port, not the container port.
 
 >docker run -p6000:6379	-- 1st port is host port, 2nd port is container port
+>docker logs <container id> or docker logs <name>
+>docker run -d -p6000:6379 --name my-custom-name redis
+>docker exec -it <container id> /bin/bash    -- it stands for interactive. 
+          After running this command(even in windows) curser changes where you can do stuff inside container
+          e.g
+          #ls
+          #pwd
+          #env
+          #exit
