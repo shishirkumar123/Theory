@@ -1,6 +1,6 @@
 Playing with existing images.
 ------------------------------
-Install docker.
+Install docker or use https://labs.play-with-docker.com/
 Images are available in docker hub - hub.docker.com
 
 
