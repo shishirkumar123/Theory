@@ -1,0 +1,29 @@
+create a jar file with simple helloWorld java class
+
+--------
+Create Dockerfile with below content
+
+	FROM openjdk
+	MAINTAINER shishir 
+	COPY HelloWorld.jar /home/HelloWorld.jar
+	CMD ["java","-jar","/home/HelloWorld.jar"]
+-----------
+
+Folder structure:
+
+|--myfolder
+	|-HelloWorld.jar
+	|-Dockerfile
+----------
+Run commands:
+
+myfolder>docker build -t hello .
+myfolder>docker image ls
+	REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+	hello        latest    6e044a137bb4   5 minutes ago   126MB
+Note: 1. Image id shows truncated value. Actual id is quite big
+	  2. Jar file contains only java class, no dependencies.
+	  3. jar size is less than a kb. image size is 126MB
+myfolder>docker run hello
+Note: container runs [status - RUNNING] then stops [status - EXITED]
+----------
