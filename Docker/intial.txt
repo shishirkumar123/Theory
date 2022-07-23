@@ -1,0 +1,24 @@
+Playing with existing images.
+------------------------------
+Install docker.
+Images are available in docker hub - hub.docker.com
+
+
+>docker pull redis   --pulls the latest version from docker hub if version is not specified
+>docker pull redis:latest - explicit
+>docker image ls	-- check the latest redis image
+          the id is truncated
+>docker run redis   -- starts a container [run = pull image + start container]
+>docker ps			-- check the latest container
+>docker stop <container-id>
+>docker ps
+>docker run -d redis
+>docker stop <container id>
+>docker start <container id>
+>docker ps -a --If you dont have container id, check it using this command
+>docker run redis:4.0
+      Run the two instances of same image. Check ports. they may be same.
+      Note that this is container port, not the host port. 
+      The two container port are bound to two different host port.
+      The restriction of using differnt port is for the host port, not the container port.
+      >docker run -p6000:6379	-- 1st port is host port, 2nd port is container port
