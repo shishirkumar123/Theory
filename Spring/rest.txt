@@ -71,3 +71,33 @@ Without sprintboot -
 =================
 Transaction
 Security
+
+================
+12/22
+Notes Springboot Implementing restful service with controller/Service/Repository
+
+Q. Difference between findById and getById in Repository?
+	findById returns optional. so need to call get() -> object.findById(id).get()
+
+Q. What happens if you miss anotating your service impl class with @service?
+	
+Q. What if you annotate controller with @Controller and dont put @ResponseBody in your inf front of your get method?
+	javax.servlet.ServletException: Circular view path
+	
+	Either use @RestController or use @Controller with @ResponseBody.
+	
+Q. Where did the HTTPServlet of javax, Dispatcher of Spring MVC go?
+	Here - Showing just few stacks - 
+	javax.servlet.http.HttpServlet.service ->
+		org.springframework.web.servlet.FrameworkServlet.service ->
+			org.springframework.web.servlet.FrameworkServlet.processRequest->
+				org.springframework.web.servlet.DispatcherServlet.render ->
+					org.springframework.web.servlet.view.InternalResourceView.prepareForRendering
+
+Q. Posting data from postman. What should be content type.
+	When sending params in body-
+		using form-data 				throws 415 (Content type 'multipart/form-data')
+		using raw 						throws 415 (Content type 'text/plain;charset=UTF-8')
+		using x-www-form-urlencoded		throws 415 (application/x-www-form-urlencoded)
+					
+	Need to use raw. Also need to set request type json. (Its available at the end of all radio options)
