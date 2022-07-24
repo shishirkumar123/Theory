@@ -11,7 +11,8 @@ But when I added @RestController, I had to put @Component at Service class. Why?
 
 12/28/2021 - When I am using  @RestController, @Service, @Repository, dont need anything else like @Bean/@component/@Autowire
 ==============
-During Edit, if there are 5 fields and only 1 field is modified, general implementation requires that caller send all values modified and unmodified. If only modified values are sent, rest are taken as null and those values are lost. How to fix?
+During Edit, if there are 5 fields and only 1 field is modified, general implementation requires that caller send all values modified and unmodified.
+If only modified values are sent, rest are taken as null and those values are lost. How to fix?
 ====================
 Repository
 
