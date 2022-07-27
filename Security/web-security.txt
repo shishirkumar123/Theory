@@ -1,2 +1,6 @@
 https
 when a server sends a public key to the browser, cant this be tempered with during transmission?
+
+
+
+FYI - July 2018 -But now Google is going all in. Starting this month, any site with a Hypertext Transfer Protocol (HTTP) address rather than a Hypertext Transfer Protocol Secure (HTTPS) address will be marked as “not secure” in the Chrome browser.
