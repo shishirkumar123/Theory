@@ -191,6 +191,8 @@ eureka takes certain time to unregister it. How much time it takes? Is the below
 AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE."
 Is the load balancer intelligent enough not to forward request to the stopped server?
 
+Q. In case of client side load balancing, every client has got a load balancer. Are they aware of each other? How each load balancer is aware about the load at each instances of server instance?
+
 ====================
 Edge service
 2 type - microproxy - blindly fwds inside datacenter to the services behind the loadbalancer, 
