@@ -173,7 +173,17 @@ other project, will they obtain the reference through their eureka server?
 Note the following message in console of organization-unit microservice(using spring-cloud.version - Hoxton)
 As Spring Cloud Ribbon is in maintenance mode. We recommend switching to BlockingLoadBalancerClient instead.
 
-Client side load balancing vs server side load balancing
+Client side load balancing vs server side load balancing - https://www.linkedin.com/pulse/server-vs-client-side-load-balancing-ramit-sharma/
+
+Advantages of server-side load balancing:
+    -Simple client configuration: only need to know the load-balancer address.
+    -Clients can be untrusted: all traffic goes through the load-balancer where it can be looked at.
+    -Clients are not aware of the backend servers.
+
+Advantages of client-side load balancing:
+    -No more single point of failure as in the case of the traditional load balancer approach.
+    -Reduced cost as the need for server-side load balancer goes away.
+    -Less network latency as the client can directly invoke the backend servers removing an extra hop for the load balancer.
 
 Q. I have noticed that once microservices are registered with eureka, you you shutdown one of them, 
 eureka takes certain time to unregister it. How much time it takes? Is the below message on web console related -
