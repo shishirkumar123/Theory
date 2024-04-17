@@ -1,0 +1,75 @@
+Neo4J
+
+
+Installation:
+	- Install at : C:\dev\installations\Neo4j Desktop
+	- Path for application data: C:\Users\shish\.Neo4jDesktop
+		
+Queries on default database Movie
+	MATCH (n) RETURN (n)
+	MATCH (n:Person) RETURN (n)
+	MATCH (n:Movie) RETURN (n)
+	MATCH (a:Person {name:'Tom Hanks'}) RETURN a
+	MATCH (a:Person) WHERE a.name STARTS WITH 'Tom' RETURN a	
+	MATCH (a:Movie) WHERE a.released > 1990 AND a.released < 2000 RETURN a
+	MATCH (p:Person)-[]-> (m:Movie) RETURN p,m
+	MATCH (p:Person)-[]-> (m:Movie) WHERE p.name STARTS WITH 'Tom' RETURN p,m
+	MATCH (p:Person)-[w:WROTE]->(m:Movie) RETURN p,m
+	----
+	Insert:
+		CREATE (a:Person {name:'Brie Larson', born:1989}) RETURN a
+	----
+	Delete:
+		MATCH (a:Person {name:'Brie Larson'}) DETACH DELETE a 
+	----
+	???:
+		MERGE (a:Person {name:'Brie Larson'}) 
+			ON CREATE SET a.born = 1989 
+			ON MATCH SET a.stars = COALESCE(a.stars, 0) + 1
+		RETURN a
+	----
+	Update:
+		MATCH (a:Person {name:'Brie Larson'}), (b:Movie {title:'Captain Marvel'})
+			MERGE (a)-[r:ACTED_IN]->(b) 
+			SET r.roles = [x in r.roles WHERE x <> 'Captain Marvel'] + ['Captain Marvel']
+		RETURN a,r,b
+	----
+	List movies with actor Tom Hanks
+		MATCH (a:Person {name:'Tom Hanks'})-[:ACTED_IN]->(m:Movie) RETURN a,m
+	----
+	Who directed the movie Cloud Atlas
+		MATCH (m:Movie {title:'Cloud Atlas'})<-[:DIRECTED]-(d:Person) RETURN d
+	----
+	List on ACTED_ON relationship not others like DIRECTED
+		MATCH (p:Person)-[a:ACTED_IN]->(m:Movie)
+		WHERE p.name='Tom Hanks'
+		RETURN p, a, m
+	----
+	Movies and actors up to 4 "hops" away from Kevin Bacon
+		MATCH (bacon:Person {name:"Kevin Bacon"})-[*1..4]-(hollywood)
+		RETURN DISTINCT hollywood
+	The shortest path following any relationship from Kevin Bacon to Al Pacino
+	----
+	MATCH p=shortestPath(
+              (bacon:Person {name:"Kevin Bacon"})-[*]-(a:Person {name:'Al Pacino'})
+            )
+	RETURN p
+	----
+	Extend co-actors, to find co-co-actors who haven't worked with Tom Hanks
+	MATCH (a:Person {name:'Tom Hanks'})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(coActors),
+		  (coActors)-[:ACTED_IN]->(m2)<-[:ACTED_IN]-(cocoActors)
+	WHERE NOT (a)-[:ACTED_IN]->()<-[:ACTED_IN]-(cocoActors) AND a <> cocoActors
+	RETURN cocoActors.name AS Recommended, count(*) AS Strength ORDER BY Strength DESC
+	----
+	Find someone to introduce Tom Hanks to Tom Cruise
+	MATCH (a:Person {name:'Tom Hanks'})-[:ACTED_IN]->(m)<-[:ACTED_IN]-(coActors),
+	(coActors)-[:ACTED_IN]->(m2)<-[:ACTED_IN]-(other:Person {name:'Tom Cruise'})
+	RETURN a, m, coActors, m2, other
+	----
+	// Count all relationships
+	MATCH ()->() RETURN count(*);
+	----
+	// Count all nodes
+	MATCH (n) RETURN count(n)
+	----
+	MATCH (n1)-[r]->(n2) RETURN r, n1, n2 LIMIT 2
