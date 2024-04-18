@@ -73,3 +73,8 @@ Queries on default database Movie
 	MATCH (n) RETURN count(n)
 	----
 	MATCH (n1)-[r]->(n2) RETURN r, n1, n2 LIMIT 2
+=================================================================================
+
+CREATE INDEX [IndexName] 
+FOR (n:LabelName)
+ON (n.propertyName)
