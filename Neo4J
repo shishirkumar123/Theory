@@ -66,12 +66,21 @@ Queries on default database Movie
 	(coActors)-[:ACTED_IN]->(m2)<-[:ACTED_IN]-(other:Person {name:'Tom Cruise'})
 	RETURN a, m, coActors, m2, other
 	----
-	// Count all relationships
-	MATCH ()->() RETURN count(*);
-	----
+	// Count Person nodes
+	MATCH (p:Person) RETURN count(*)
+	
 	// Count all nodes
 	MATCH (n) RETURN count(n)
 	----
+
+	//Count relations between Person and Movie
+	MATCH (p:Person) -[]-> (m:Movie) RETURN count(*)
+	----
+
+	// Count all relationships
+	MATCH ()->() RETURN count(*);
+	----
+
 	MATCH (n1)-[r]->(n2) RETURN r, n1, n2 LIMIT 2
 =================================================================================
 
