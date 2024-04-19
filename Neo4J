@@ -15,9 +15,12 @@ Queries on default database Movie
 	MATCH (p:Person)-[]-> (m:Movie) RETURN p,m
 	MATCH (p:Person)-[]-> (m:Movie) WHERE p.name STARTS WITH 'Tom' RETURN p,m
 	MATCH (p:Person)-[w:WROTE]->(m:Movie) RETURN p,m
+	Show the persons which are not actor
 	----
 	Insert:
-		CREATE (a:Person {name:'Brie Larson', born:1989}) RETURN a
+	CREATE (p:Person) RETURN p -> Why allow a node without an attribute?
+	CREATE (a:Person {name:'Brie Larson', born:1989}) RETURN a
+	Create a new actor, acted in one of the existing Movie
 	----
 	Delete:
 		MATCH (a:Person {name:'Brie Larson'}) DETACH DELETE a 
