@@ -20,13 +20,17 @@ Advance query
 	Show the persons which are not actor
 
 	----
-	Show movie with their number of actor
+	Show movie with their number of actor:
 	MATCH (p:Person)-[:ACTED_IN]->(m:Movie) 
 	WITH m, count(p) AS numAct 
 	RETURN m, numAct
 
 	----
-	Find the movie with at least 3 actor
+	Find the movie with at least 3 actor:
+	MATCH (p:Person)-[:ACTED_IN]->(m:Movie) 
+	WITH m, count(p) AS numAct 
+	WHERE numAct > 2
+	RETURN m, numAct
 	
 	----
 	Retrieve the movies and their actors where one of the actors also directed the movie, 
