@@ -15,9 +15,20 @@ Queries on default database Movie
 	MATCH (p:Person)-[]-> (m:Movie) RETURN p,m
 	MATCH (p:Person)-[]-> (m:Movie) WHERE p.name STARTS WITH 'Tom' RETURN p,m
 	MATCH (p:Person)-[w:WROTE]->(m:Movie) RETURN p,m
+	
+Advance query
 	Show the persons which are not actor
 	----
-	Insert:
+	Find the movie with at least 3 actor
+	----
+	Retrieve the movies and their actors where one of the actors also directed the movie, 
+	returning the actors names, the director’s name, and the movie title:
+	MATCH (p1:Person)-[:ACTED_IN]->(m:Movie)<-[:ACTED_IN]-(p2:Person)
+	WHERE exists( (p2)-[:DIRECTED]->(m) )
+	RETURN  p1.name as Actor, p2.name as `Actor/Director`, m.title as Movie
+	----
+	----
+Insert:
 	CREATE (p:Person) RETURN p -> Why allow a node without an attribute?
 	CREATE (a:Person {name:'Brie Larson', born:1989}) RETURN a
 	Create a new actor, acted in one of the existing Movie
