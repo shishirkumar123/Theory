@@ -8,7 +8,7 @@ install git 2.20.1
 
 If you are behind company's firewall then what extra do you need to do?
 If id/password dont need to be supplied - git config --global http.proxy http://<server>:<port>
-If id/password dont need to be supplied - git config --global http.proxy http://<userId>:<password>@<server>:<port>
+If id/password need to be supplied - git config --global http.proxy http://<userId>:<password>@<server>:<port>
 
 To undo -
 git config --global --unset https.proxy
