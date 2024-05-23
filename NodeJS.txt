@@ -1,0 +1,8 @@
+https://www.youtube.com/watch?v=5eaBOxXABkU&list=PL1BztTYDF-QPdTvgsjf8HOwO4ZVl_LhxS
+NodeJS
+===========
+#01:
+	# Single threaded, event driven, non-blocking
+	# Good for building fast and scalable data intensive application
+	# Not good for heavy processing like image processing, file compression, video compression. (PHP, Python better alternative)
+	
