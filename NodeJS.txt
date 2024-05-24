@@ -5,8 +5,10 @@ NodeJS
 	# Single threaded, event driven, non-blocking
 	# Good for building fast and scalable data intensive application
 	# Not good for heavy processing like image processing, file compression, video compression. (PHP, Python better alternative)
+----------
 #02:
 	# Use even version number of node for prod use
+--------
 #03
 	On windows, Use cmd or use [VSCode and go to terminal] 
 	>node
@@ -14,4 +16,10 @@ NodeJS
 	>_ 
 	>_ -1 
 	# Underscore is special veriable which store value of previous expression
+-------
+#06
+callback hell (triangle shape code) is confusing code because of callback inside callback. To avoid it we use Promise
+
+
+
 
