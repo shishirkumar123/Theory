@@ -8,6 +8,7 @@ NodeJS
 #02:
 	# Use even version number of node for prod use
 #3
+	On windows, Use cmd or use [VSCode and go to terminal] 
 	>node
         >2+5
 	>_ 
