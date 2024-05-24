@@ -7,7 +7,7 @@ NodeJS
 	# Not good for heavy processing like image processing, file compression, video compression. (PHP, Python better alternative)
 #02:
 	# Use even version number of node for prod use
-#3
+#03
 	On windows, Use cmd or use [VSCode and go to terminal] 
 	>node
         >2+5
