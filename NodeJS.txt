@@ -17,6 +17,8 @@ NodeJS
 	>_ -1 
 	# Underscore is special veriable which store value of previous expression
 	REPL - Read(user input) Evaluate(user input) Print (or output the result) Loop (Return and wait for new input)
+        >let person = {name: "Shishir", age: 16}
+	>person.name
 -------
 #06
 callback hell (triangle shape code) is confusing code because of callback inside callback. To avoid it we use Promise
