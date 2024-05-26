@@ -19,9 +19,14 @@ NodeJS
 	REPL - Read(user input) Evaluate(user input) Print (or output the result) Loop (Return and wait for new input)
         >let person = {name: "Shishir", age: 16}
 	>person.name
+#04
+	Program for console input output
+#05
+	Program for file input output
 -------
 #06
-callback hell (triangle shape code) is confusing code because of callback inside callback. To avoid it we use Promise
+	single threaded yet non blocking. Why this is important.
+	callback hell (triangle shape code)- confusing code because of callback inside callback. To avoid it we use Promise
 
 
 
