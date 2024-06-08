@@ -13,7 +13,7 @@ Service Audience -
     Online customers - Office 365 etc.
 
 Azure AD tenants - 
-    Tenant means organization. Each tenant migh have access to one or more active directory.
+    Tenant means organization. Each tenant might have access to one or more active directory.
     It is dedicated instance of Azure AD service.
     Microsoft ensures each tenant is isolated.
 
