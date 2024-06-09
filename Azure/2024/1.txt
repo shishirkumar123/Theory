@@ -1,1 +1,8 @@
-introduction
+Init steps.
+Creates and account with shishirkumar123@gmail.com.
+Read the theory about the hieararchy:
+
+Management Groups
+  - Subscriptions
+    -Resource Groups
+      -Resources
