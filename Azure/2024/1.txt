@@ -2,7 +2,8 @@ Init steps.
 Creates and account with shishirkumar123@gmail.com.
 Read the theory about the hieararchy:
 
-Management Groups
-  - Subscriptions
+Management Groups - By default, 1 MG was there Tenant Root Group. It wasnt visible from anywhere. When I searched for MG, the MG page opened up, showing message start creating MG. I created 1st MG. Then I saw the hierarchy. This new MG was created the MG called Tenant Root Group. Max 10,000 MG in a single directory
+
+  - Subscriptions - By default, 1 Scubcription was created inside MG - Azure subscription 1.
     -Resource Groups
       -Resources
