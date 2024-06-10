@@ -109,6 +109,27 @@ Insert:
 
 	MATCH (n1)-[r]->(n2) RETURN r, n1, n2 LIMIT 2
 =================================================================================
+MATCH (p1:Person) -[a1:REVIEWED]-> (m:Movie) RETURN p1,m
+
+
+MATCH (p1:Person) -[a1:ACTED_IN]-> (m:Movie)  RETURN p1,m    								----Returns 102 Person
+Seems like the above return Movies with Actors. It will exclude movies that doesn't have director
+
+MATCH (p1:Person) -[a1:ACTED_IN]-> (m:Movie) <-[a2:DIRECTED]- (p2:Person)  RETURN p1,m, p2  ----Returns 125 Person
+Seems like the above return Movies with Actors and/or Directors. 
+
+How to query movies with no attached director?
+How to query movies with actors and/or directors and/or reviewers. 
+I can put forward arrow (->) for one relation, I can put (<-) for another relation, what if there are more relation to be considered?
+
+
+----An id is automatically created as an attribute for each node.
+CREATE (a:Person {name:'A', born:1900}) RETURN a -- I can repeat the same statement. It will create node with different id.
+CREATE (a:Movie {name:'Silsila', year:1982}) RETURN a
+How to create relationship between 2 existing nodes?
+CREATE (a:Person {name:'A', born:1900}) -[r:ACTED_IN]-> (m:Movie {name:'Silsila', year:1982}) RETURN a -- This is working when nodes and relations all are new. 
+
+=====================================================================
 
 CREATE INDEX [IndexName] 
 FOR (n:LabelName)
