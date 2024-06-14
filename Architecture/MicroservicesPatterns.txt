@@ -1,5 +1,5 @@
 Message Driven Architecture:
-Publisher sends a message
+One microservice sends a message, other consumes it.
 
 Event Driven Architecture
 Service sends an event, after event has happened.
