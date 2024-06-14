@@ -1,0 +1,5 @@
+Message Driven Architecture:
+Publisher sends a message
+
+Event Driven Architecture
+Service sends an event, after event has happened.
