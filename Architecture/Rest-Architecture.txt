@@ -1,0 +1,8 @@
+Versioning
+=================
+Semantic versioning XXX
+e.g V1.2.8 means 1 is major version, 2 is minor version, 8 is patch.
+Major version have breaking changes
+Minor version is non breacking changes
+patch is bug fixes.
+==================
