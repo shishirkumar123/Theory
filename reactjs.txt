@@ -16,6 +16,13 @@ Ok to proceed? (y)
 	Option 2: using npm
 >npm install create-react-app -g
 >create-react-app <projectname>	
+
+
+[npm vs npx - NPM (Node Package Manager) and NPX (Node Package Execute) are both tools for working with JavaScript packages:
+    NPM installs packages in a project's directory in a subdirectory called node_modules
+    NPX - Executes packages directly without installing them. NPX searches node_modules for a package and runs it. If the 
+          package isn't found, it's downloaded and then run.
+]
 ----------
 Code snippet
 1. rfce for skeleton with function
