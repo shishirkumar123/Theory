@@ -23,6 +23,15 @@ Ok to proceed? (y)
     NPX - Executes packages directly without installing them. NPX searches node_modules for a package and runs it. If the 
           package isn't found, it's downloaded and then run.
 ]
+
+[
+  npm start  -> Starts the development server.
+  npm stop
+  npm run build  ->  Bundles the app into static files for production.
+  npm test  -> Starts the test runner.
+  npm run eject  ->  Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+]
 ----------
 Code snippet
 1. rfce for skeleton with function
