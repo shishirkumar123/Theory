@@ -130,6 +130,23 @@ CREATE (a:Movie {name:'Silsila', year:1982}) RETURN a
 How to create relationship between 2 existing nodes?
 CREATE (a:Person {name:'A', born:1900}) -[r:ACTED_IN]-> (m:Movie {name:'Silsila', year:1982}) RETURN a -- This is working when nodes and relations all are new. 
 
+----------------------
+Create nodes first and then relations:
+create(e:Employee{name:"Sumedh", age:42})
+create(e:Employee{name:"Vishu", age:44}) return e
+create(e:Employee{name:"Pikloo", age:46})
+create(e:Employee{name:"Saket", age:46})
+
+create(d:Department{name:"Sales", code:"30"})
+create(d:Department{name:"HR", code:"20"})
+create(d:Department{name:"Accounts", code:"10"})
+
+create (Saket) -[:WORKS_IN]->(HR)  - This has actually created 2 new nodes with 1 new relation
+
+
+
+
+
 =====================================================================
 
 CREATE INDEX [IndexName] 
