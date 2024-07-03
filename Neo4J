@@ -4,6 +4,9 @@ Neo4J
 Installation:
 	- Install at : C:\dev\installations\Neo4j Desktop
 	- Path for application data: C:\Users\shish\.Neo4jDesktop
+
+Neo4J Server runs here - bolt://localhost:7687
+Neo4J browser runs here - http://localhost:7474/browser/
 		
 Queries on default database Movie
 	MATCH (n) RETURN (n)
