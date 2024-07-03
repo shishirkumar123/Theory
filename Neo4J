@@ -13,6 +13,7 @@ Queries on default database Movie
 	MATCH (n:Person) RETURN (n)
 	MATCH (n:Movie) RETURN (n)
 	MATCH (a:Person {name:'Tom Hanks'}) RETURN a
+	MATCH (a:Person) WHERE a.name = 'Tom' RETURN a
 	MATCH (a:Person) WHERE a.name STARTS WITH 'Tom' RETURN a	
 	MATCH (a:Movie) WHERE a.released > 1990 AND a.released < 2000 RETURN a
 	MATCH (p:Person)-[]-> (m:Movie) RETURN p,m
