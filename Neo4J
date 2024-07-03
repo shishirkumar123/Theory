@@ -145,9 +145,25 @@ create(d:Department{name:"HR", code:"20"})
 create(d:Department{name:"Accounts", code:"10"})
 
 create (Saket) -[:WORKS_IN]->(HR)  - This has actually created 2 new nodes with 1 new relation
+---
+The above block is wrong. Below is how to do it -
 
+---
+create(E1001:Employee{name:"Vishu", age:44})
+create(E2001:Employee{name:"Sumedh", age:42})
+create(E3001:Employee{name:"Pikloo", age:46})
+create(E3002:Employee{name:"Saket", age:46})
 
+create(D10:Department{name:"Sales", code:"30"})
+create(D20:Department{name:"HR", code:"20"})
+create(D30:Department{name:"Accounts", code:"10"})
 
+create (E1001) -[:WORKS_IN]->(D10)
+create (E2001) -[:WORKS_IN]->(D20)
+create (E3001) -[:WORKS_IN]->(D30)
+create (E3002) -[:WORKS_IN]->(D30)
+---
+create(1001:Employee{name:"Vishu", age:44}) -- This gives syntax error. Why numbers are nhot allowed? In this case 1001.
 
 
 =====================================================================
