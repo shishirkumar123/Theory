@@ -14,10 +14,16 @@ Microsoft Entra ID is a cloud-based identity and access management service that 
 Relationship of Entra ID with subscription -  
 All Azure subscriptions have a trust relationship with a Microsoft Entra tenant. Subscriptions rely on this tenant (directory) to authenticate and authorize security principals and devices. When a subscription expires, the trusted instance remains, but the security principals lose access to Azure resources. Subscriptions can only trust a single directory while one Microsoft Entra tenant may be trusted by multiple subscriptions.
 
-On portal.azure.com, in my profile, I see :
+On portal.azure.com, in my profile, I see:
   - a default directory is created with the name 'Default Directory'
   - a domain with the name 'shishirkumar123gmail.onmicrosoft.com'
   - a directory with id 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+On entra.microsoft.com I see:
+  - I see tenant id 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+  - A domain with the name 'shishirkumar123gmail.onmicrosoft.com'
+  - Provision to create groups, users.  User name will have a pattern - XXXX@@shishirkumar123gmail.onmicrosoft.com
+  
+
 
 Tenant: A tenant is a dedicated and isolated instance of the Azure Active Directory
 Directory: A directory is a container for objects such as users, groups, and applications, and is used to manage access to resources in Azure.
