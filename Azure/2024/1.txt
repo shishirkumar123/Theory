@@ -27,3 +27,5 @@ Tenant and Directory has many to many relationship.
 In Azure, a domain is used to verify ownership of a custom domain name and to create user names and email addresses for users in a tenant. 
 
 Tenant and Directory has many to many relationship.
+
+All subscriptions within a single management group must trust the same Entra ID tenant.
