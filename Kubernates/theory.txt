@@ -64,14 +64,14 @@ how to create and manage K8s.
 5. Join "worker" nodes to the cluster[currently K8s support up to 5000 worker nodes/cluster]
 6. Testing use case
 ===================================
-Play with kds -
+Play with k8s -
 ----------------
 Bootstrap a cluster
 ----------------------
 You can bootstrap a cluster as follows:
 On master :
  1. Initializes cluster master node:
- kubeadm init --apiserver-advertise-address $(hostname -i)
+ kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
  At this moment kubectl get node will show node status as "NotReady"
 
  2. Initialize cluster networking:
