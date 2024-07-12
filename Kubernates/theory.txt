@@ -47,7 +47,7 @@ Worker node >> Pods >> container. Multiple master/worker nodes form clusters. Al
 installation
 -------------
 https://labs.play-with-k8s.com/
-Minikube - master-worker single pkg
+Minikube - master-worker single pkg with preinstalled docker
 kubeadm - or multi node kubernates cluster
 cloud based - google kebernates engine(GKE), Amazon ECS(Elastic container services), Azure kubernates service(AKS) - just specify no. of nodes, and CPU/RAM requirement.
 physical - install kubeadm, kubelet, kubectl, docker
