@@ -75,7 +75,9 @@ On master :
  At this moment kubectl get node will show node status as "NotReady"
 
  2. Initialize cluster networking:
- kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
+ kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/
+
+old - kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 |tr -d '\n')"
  At this moment kubectl get node will show node status as "Ready"
  3. (Optional) Create an nginx deployment:
  kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
