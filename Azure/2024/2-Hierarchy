@@ -1,0 +1,35 @@
+Read the theory about the hieararchy:
+
+Management Groups - By default, 1 MG was there Tenant Root Group. It wasnt visible from anywhere. When I searched for MG, the MG page opened up, showing message start creating MG. I created 1st MG. Then I saw the hierarchy. This new MG was created the MG called Tenant Root Group. Max 10,000 MG in a single directory
+
+  - Subscriptions - By default, 1 Scubcription was created inside MG - Azure subscription 1.
+    -Resource Groups
+      -Resources
+
+Microsoft Entra ID [Azure AD is now Microsoft Entra ID]- 
+Microsoft Entra ID is a cloud-based identity and access management service that your employees can use to access external resources. Example resources include Microsoft 365, the Azure portal, and thousands of other SaaS applications.
+
+Relationship of Entra ID with subscription -  
+All Azure subscriptions have a trust relationship with a Microsoft Entra tenant. Subscriptions rely on this tenant (directory) to authenticate and authorize security principals and devices. When a subscription expires, the trusted instance remains, but the security principals lose access to Azure resources. Subscriptions can only trust a single directory while one Microsoft Entra tenant may be trusted by multiple subscriptions.
+
+On portal.azure.com, in my profile, I see:
+  - a default directory is created with the name 'Default Directory'
+  - a domain with the name 'shishirkumar123gmail.onmicrosoft.com'
+  - a directory with id 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+On entra.microsoft.com I see:
+  - I see tenant id 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+  - A domain with the name 'shishirkumar123gmail.onmicrosoft.com'
+  - Provision to create groups, users.  User name will have a pattern - XXXX@@shishirkumar123gmail.onmicrosoft.com
+  
+
+
+Tenant: A tenant is a dedicated and isolated instance of the Azure Active Directory
+Directory: A directory is a container for objects such as users, groups, and applications, and is used to manage access to resources in Azure.
+
+Tenant and Directory has many to many relationship.
+
+In Azure, a domain is used to verify ownership of a custom domain name and to create user names and email addresses for users in a tenant. 
+
+Tenant and Directory has many to many relationship.
+
+All subscriptions within a single management group must trust the same Entra ID tenant.
