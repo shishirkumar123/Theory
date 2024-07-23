@@ -1,1 +1,73 @@
-
+Authentication architecture
+1. Custom security architecture - Monolith web apps - eOffice, eCourts
+	Diagram 1
+	Identity
+	Authentication
+	Authorization
+	Identity Provisioning - Create roles, user, password rotation etc.
+	
+	Login starts session, logout destroys session/cockie
+	
+	Problems
+	- Enterprise has 100 apps. 1 employee uses many of them.
+	 Diagram 2
+	- Use identity is duplicated
+	- user has to remember many usedid/pwd
+	- Provisioning/deprovisioning user complicated
+	- SSO cant be implemented
+	- MFA difficult to implement. Application is responsible for it.
+	- credential are sent to application(security issue)
+	
+2. Common identity - LDAP - Microsoft AD, Novell DS
+	Diagram 3
+	It will store:
+	First Name
+	Last Name
+	Email
+	Phone
+	Picture
+	Manager
+	Department Identity
+	Groups associated with user
+	
+	Manage User
+	Reset Password
+	
+	Directory service
+	Diagram 4: 
+		dc - domain component, 
+		ou - org unit. one ou can be inside another ou. 
+		cn - common name
+	- User, groups stored in tree structure
+	- Fast retrival and serach
+	
+	LDAP v3
+	- Protocol to access Directory Service
+	- Vendor neutral
+	- All major language have an implementation
+	
+	Provisioning of a user is now responsibility of IDP
+	Change in responsibility:
+	Diagram 7
+	Provisioning/deprovisioning became simpler
+	
+	Problems:
+	User still sending id/pwd through the application to IDP
+		transmission is SSL/TLS enabled but	id/pwd is accessed by we apps. 
+		developers can log this for debug and forget. security violation. 
+	It is still not SSO. Multiple times enter id/pwd.
+	Appn and LDAP server must be in the same security domain. Not possible in cloud scenario:
+		Diagram 8, 9
+	Appn responsible for MFA.
+	
+3. Delegated authentication
+	Diagram 10
+	
+	Now Web app, IDM need not be in same security domain.
+	Need to built trust between IDM and Webapp. Each have set of public private key.
+	
+	
+	
+	
+	
+	
