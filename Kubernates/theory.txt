@@ -263,4 +263,37 @@ gcePersistentDisk(gce=google compute engine)
 	can be mounted as read-only by multiple pods, but as read-write by single pod
 	Same as AWS block store, Azure disk
 	question - can this be shared across nodes?
+===============
+namespaces
+It can be think of as virtual cluster inside K8s cluster
+	organize resource in namespaces
+	useful to separate environments - dev, stg, prod etc
+	useful if multiple team sharing same cluster. e.g. with namespaces, different team can have same deployment name. Without it, team will override each other.
+	Dont use for small number of resources and may be less than 10 users(Kbs recomends)
+	Put access control on namespace so that authorize person uses certain namespaces. also, each namespace can have their limit for accessing resources.
+	Each namespace should use their own configmap/secret even if going to use same resources
+	4 namespaces are created by default
+		default - where we create by default when no namespace specified.
+		kube-node-lease - info about heartbeat of nodes. each node as associated lease object in this namespace
+		kube-public - publically accessible data like configmap. other e.g -
+			>kubectl cluster-info returns ip where master/dns is running
+		kube-system - for system processes. dont touch it.
+		kubernates-dashboard - only with minikube
+	>kubectl get namespaces
+	>kubectl create namespace my-namespace
+		Better use conf file for creating a namespace to have a history
+	how to use service of different namespace
+	Components that can't live inside a namespace - PV, Nodes
+	Get configmap if in default namespace:
+	>kubectl get configmap
+	Get configmap if in user defined namespace:
+	>kubectl get configmap -n <namespace-name>
+	Create config map in namespace
+	>kubectl apply -f a-configmap.yaml --namespace=my-namespace
+	Or,
+	apiVersion: V1
+	kind: ConfigMap
+	metadata:
+		name:
+		namespace:
 
