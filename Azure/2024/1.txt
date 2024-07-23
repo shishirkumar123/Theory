@@ -1,5 +1,35 @@
 Init steps.
-Creates and account with shishirkumar123@gmail.com.
+Created an account with shishirkumar123@gmail.com.
+
+1. I directly started with Cosmos DB.
+2. During creation it asks to create resource group and Cosmos DB account.
+3. I left
+4. I started with Azure Devops. It prompted to create new organization.
+	Name of Org - Shishir-Org1
+	Project hosted in - USA
+	Project name - Shishir-Proj1
+	
+5. Creating and running a pipeline.
+	Error: no hosted parallelism has been purchased or granted
+	Went to https://aka.ms/azpipelines-parallelism-request to fill the form
+	Filled up Azure DevOps Parallelism Request email, org name etc.
+	It takes 2-3 business days to get the approval.
+	Now I am able to create pipeline.
+6. If I try to create anything, like Resource Group, VM, Storage Account,
+	it asks for subscription and resource group. Subscription is prepopulated
+	with value 'Azure subscription 1'. Seems like it is created by default.
+7. Here is the heirarchy - Management Group -> Subscription -> Resource Group
+	-> Resources. (MG can have more child MG)
+8. Installing NodeJS App
+	-Searched for App Service, created app services. In the process created a new
+	Resource Group. Selected Free pricing plan( Redundancy wont be available).
+	So another resource of type App Service plan got created.
+	[Note: Continuous deployment is not enabled by default. Can be enabled later on]
+9. In the reource groupsection,I notice two resource group already present - EUS, WUS
+10. When trying to deploy, it asks for source code location in some version
+	control system. It also create an identity in the steps. It uses default subscription.
+	SCM_DO_BUILD_DURING_DEPLOYMENT = true
+
 Read the theory about the hieararchy:
 
 Management Groups - By default, 1 MG was there Tenant Root Group. It wasnt visible from anywhere. When I searched for MG, the MG page opened up, showing message start creating MG. I created 1st MG. Then I saw the hierarchy. This new MG was created the MG called Tenant Root Group. Max 10,000 MG in a single directory
