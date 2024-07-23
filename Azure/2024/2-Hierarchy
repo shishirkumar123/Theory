@@ -22,7 +22,7 @@ On entra.microsoft.com I see:
   - Provision to create groups, users.  User name will have a pattern - XXXX@@shishirkumar123gmail.onmicrosoft.com
 
 ======================================================================
-azurepipeline.yml
+azurepipeline.yml - Put in different file
 
 pool:
 	image: 'ubuntu'
@@ -42,3 +42,11 @@ In Azure, a domain is used to verify ownership of a custom domain name and to cr
 Tenant and Directory has many to many relationship.
 
 All subscriptions within a single management group must trust the same Entra ID tenant.
+
+==================================================
+Put in different file
+
+PS>Install-Module AzureRM
+PS>Connect-AzureRMAccount
+>Get-AzureRMResourceProvider
+>Get-AzureRMResourceProvider -ListAvailable
