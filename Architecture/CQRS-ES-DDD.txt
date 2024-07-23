@@ -3,5 +3,28 @@ ES - Event Sourcing
 DDD - Domain Driven Design
 ------------------------------
 
+Command refers to write operation. Query refers to read operation.
+In many applications read operations are much more than write operations - amazon, flipcart etc.
+Disadvantage with traditional CRUD kind of service which combines read write at the same place -
+ - performance issue with so many reads
+ - if another microservice wants to read from this microservice, 
+	e.g purchase-order microservice,
+	and wants to fetch all orders of a user, performance wont be good. 
+		(looping through each order id and multiple times calling the microservice order	
+		 write complex query in product microservice.
+ - Can't apply security/transaction if needs to be applied only during writing. It will get applied to	
+	both again leading to performance issue.
+	
+Solution
+	Separate Read write microservice. 
+	So instead of Product microservice, create 
+		- Product-Read(GET) with its own database 
+		- Product-Write(POST, PUT, DELETE) microservice with its own database. Why database needed here?
+	Have messageging system like Kafka between two microservice
+	How to ensure whether write database and kafka topic in sync?
+	
+	
+	-----------------------
+
 Implementation 1: Using Axon Framework: https://www.baeldung.com/axon-cqrs-event-sourcing
 Implementation 2: Using Kafka
