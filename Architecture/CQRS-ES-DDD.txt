@@ -1,0 +1,7 @@
+CQRS - Comman and Query Responsibility Segregation
+ES - Event Sourcing
+DDD - Domain Driven Design
+------------------------------
+
+Implementation 1: Using Axon Framework: https://www.baeldung.com/axon-cqrs-event-sourcing
+Implementation 2: Using Kafka
