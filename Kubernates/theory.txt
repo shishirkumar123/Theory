@@ -296,4 +296,11 @@ It can be think of as virtual cluster inside K8s cluster
 	metadata:
 		name:
 		namespace:
+=========================================
+External service vs ingress
+------------------------------
+Expose the UI app through browser using
+1. External service
+		use ip like https://12.23.12.12:3000
+		in prod: https://my-app.com
 
