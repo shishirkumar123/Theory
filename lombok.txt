@@ -1,0 +1,11 @@
+lombok
+@Getter - for getters
+@Setter - for setters
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
+@Data All together now: A shortcut for @ToString, @EqualsAndHashCode, @Getter on all fields, and @Setter on all non-final fields, and @RequiredArgsConstructor!
+@Value is the immutable variant of @Data; all fields are made private and final
+@Slf4j class annotation - get implicit log object for logging.
+
+
+@Tag class annotation in controller classes for swagger - Need swagger dependency
