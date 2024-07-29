@@ -4,3 +4,30 @@ when a server sends a public key to the browser, cant this be tempered with duri
 
 
 FYI - July 2018 -But now Google is going all in. Starting this month, any site with a Hypertext Transfer Protocol (HTTP) address rather than a Hypertext Transfer Protocol Secure (HTTPS) address will be marked as “not secure” in the Chrome browser.
+
+JWT
+
+Reference: https://www.youtube.com/watch?v=5Er3vD7eEb4&t=196s
+
+
+
+===========
+JWT - Json Web Token. 
+---------------------
+JWT vs session
+
+JWT are maintained at client, sessions are maintained at server.
+JWT tokens allow the communication between client and server stateless hence perform better.
+--------------------
+
+
+JWT are of 2 types
+---------------------
+1. JWS - Json Web Signature - Header + Body + Signature
+	- most commonly used
+	- only base 64 encoded
+	- not recommended to put sensitive info like credit cart number
+	- anyone who steal the token can decode it, misuse it.
+
+2. JWE - Json Web Encryption
+	JWT + Encryption
