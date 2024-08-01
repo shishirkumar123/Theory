@@ -57,6 +57,7 @@ more just for learning..
 >> git branch -d branch_name
 >> git branch -D branch_name (force)
 >> git push <remote_name> --delete <branch_name>
+>> git switch -c <new-branch-name>
 
 -----------------------
 try branching merging rebasing
