@@ -25,3 +25,21 @@ human prompts. It can foster innovation and revolutionize fields like design and
 Generative AI is trained on different sets of data to learn patterns that can be used to create content 
 with predictive patterns.
 ------------------------
+LLM
+
+LLM stands for Large Language Model, it takes a prompt and identify, analyze language pattern and generate required new content. Because of large size of training dataset and large number of parameters they are called as “Large” Language Models.
+
+Generative AI applications are built on top of large language models (LLMs) and foundation models. LLMs are deep learning models that consume and train on massive datasets to excel in language processing tasks. 
+
+These applications are consumed by end users using crafted prompts to guide and generate new content from LLMs.
+
+Based on the availability to end users LLMs are divided into two types:  
+
+      Open Source
+      Closed Source.
+Open-source models are freely available for anyone to use, modify and distribute.
+
+Example: - Llama2 from Meta.
+Closed source models need to access through licenses and subscriptions.
+
+Example: - Open AI GPT-3/GPT-4.
