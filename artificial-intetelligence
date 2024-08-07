@@ -5,3 +5,7 @@ Natural Language Processing -  used to analyze data and make predictions
 Generative AI  - used to  create new content like its training data
                  e.g Grammer Checking, Sentiment Analysis
                  can produce various types of content, including text, images, audio and synthetic data.
+                  Use Case:
+                  Gen AI helps bank employees effectively to find and understand information in contracts (e.g., policies, credit
+                  memos, underwriting, trading, lending, claims, and regulatory) and other unstructured PDF documents 
+                  (e.g., summarize the regulatory filings of bank X).
