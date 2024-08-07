@@ -12,3 +12,16 @@ Generative AI  - used to  create new content.
                   (e.g., summarize the regulatory filings of bank X).
 
 What among these falls in Predictive AI
+-----------------
+Conversational vs generative
+Conversational AI
+Creates human-like interactions through text and speech, such as chatbots or voice bots, by understanding 
+and processing human language. It can improve customer interactions and service efficiency in real-time communication.
+Conversational AI is trained on large data sets that include human input, conversations, user queries, and responses. 
+However, chatbots that lack training can get stuck in loops when faced with nuanced queries, which can frustrate users.
+Generative AI
+Creates original content, such as text, images, or music, by learning patterns from existing data and responding to 
+human prompts. It can foster innovation and revolutionize fields like design and marketing with autonomous creativity. 
+Generative AI is trained on different sets of data to learn patterns that can be used to create content 
+with predictive patterns.
+------------------------
