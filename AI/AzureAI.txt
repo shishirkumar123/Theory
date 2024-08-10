@@ -1,0 +1,10 @@
+Azure
+
+Azure Open AI account - Is it different from regular azure account?
+In the portal search AI service and browse.
+
+Once you have azure account, you have to separately request
+for Azure OpenAI service. Approval takes 24 hours.
+
+Azure OpenAI API vs OpenAI API(Google search OpenAI API)
+Azure Open AI studio vs Azure API studio
