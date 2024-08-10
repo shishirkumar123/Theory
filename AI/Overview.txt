@@ -1,0 +1,87 @@
+Overview
+==============
+AI - build applications that can perform its own task without human intervention
+	(How this defination doesn't apply to automation???)
+	e.g Netfilex reco engine, Self driving car
+	
+ML - Subset of AI. Apply statistical tools on data to perform statistical analysis, 
+	visualization, prediction, forcasting
+	
+Deep Learning - Sunset of ML. Mimics human brain. Multilayered Nueral n/w
+	ANN - 
+	CNN - computer vision
+	RNN - text related, time series use case
+	
+	Transformers and berts.
+	
+	DL models two types
+		Descreminative models - classification, prediction. Trained on lebeled dataset.
+		Generative models - generates new data trained on huge dataset.
+		
+Natural Language Processing -  used to analyze data and make predictions
+	
+Generative AI - Subset of DL.
+	 Used to  create new content. 
+        e.g Grammer Checking, Sentiment Analysis, training data
+        can produce various types of content, including text, images, audio and synthetic data.
+        music composition, video synthesis
+        Gen AI helps bank employees effectively to find and understand information in contracts (e.g., policies, credit
+        memos, underwriting, trading, lending, claims, and regulatory) and other unstructured PDF documents 
+        e.g., summarize the regulatory filings of bank X).
+
+	LLM - Large language model
+		Foundation(pre trained) Model
+			- Trained on huge data . entire internet
+			- Finetuning is done to do domain specific
+		e.g. 
+			Google - Gema(Open source)Gemini
+			Meta - Llama
+			
+		LLM stands for Large Language Model, it takes a prompt and identify, 
+		analyze language pattern and generate required new content. Because of large 
+		size of training dataset and large number of parameters they are called as 
+		“Large” Language Models.
+
+		Generative AI applications are built on top of large language models (LLMs) 
+		and foundation models. LLMs are deep learning models that consume and train 
+		on massive datasets to excel in language processing tasks. 
+
+		These applications are consumed by end users using crafted prompts to guide 
+		and generate new content from LLMs. Based on the availability to end users 
+		LLMs are divided into two types:  
+
+        Open Source :Llama2 from Meta.
+        Closed Source. Open AI GPT-3/GPT-4. (GPT - Generative Pre-trained Transformer)
+				
+		LIM - Large image model
+		Langchain - Framework to work with specific models.
+-------------------------------
+Conversational vs Generative AI
+Conversational AI
+Creates human-like interactions through text and speech, such as chatbots or voice bots, by understanding 
+and processing human language. It can improve customer interactions and service efficiency in real-time communication.
+Conversational AI is trained on large data sets that include human input, conversations, user queries, and responses. 
+However, chatbots that lack training can get stuck in loops when faced with nuanced queries, which can frustrate users.
+Generative AI
+Creates original content, such as text, images, or music, by learning patterns from existing data and responding to 
+human prompts. It can foster innovation and revolutionize fields like design and marketing with autonomous creativity. 
+Generative AI is trained on different sets of data to learn patterns that can be used to create content 
+with predictive patterns.
+------------------------------
+Azure
+
+Azure Open AI account - Is it different from regular azure account?
+In the portal search AI service and browse.
+
+Once you have azure account, you have to separately request
+for Azure OpenAI service. Approval takes 24 hours.
+
+Azure OpenAI API vs OpenAI API(Google search OpenAI API)
+Azure Open AI studio vs Azure API studio
+
+	
+	
+	
+	
+	
+	
