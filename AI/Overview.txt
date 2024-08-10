@@ -17,6 +17,20 @@ Deep Learning - Sunset of ML. Mimics human brain. Multilayered Nueral n/w
 	DL models two types
 		Descreminative models - classification, prediction. Trained on lebeled dataset.
 		Generative models - generates new data trained on huge dataset.
+        Artificial neural network
+		input layer -->HiddentLayer --> output layer
+	Convolution neural network
+		grid data e.g image data
+	Recurrent neural network
+		For sequence data
+	Reinforcement Learning
+		input layer -->HiddentLayer(Feedback loop) --> output layer
+		LLM is related to this.
+		Agent, state, environment
+	GAN - Generative advertial network
+		neural network to generate data.
+
+-------------------------------------
 		
 Natural Language Processing -  used to analyze data and make predictions
 	
