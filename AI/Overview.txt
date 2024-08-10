@@ -30,9 +30,21 @@ Deep Learning - Sunset of ML. Mimics human brain. Multilayered Nueral n/w
 	GAN - Generative advertial network
 		neural network to generate data.
 
+GAI two types
+	GIM
+		image to image generation
+		
+	GLM
+		e.g LLM
+		text to image generation
+		text to text generation
+		image to text
+
 -------------------------------------
 		
 Natural Language Processing -  used to analyze data and make predictions
+
+-------------------------------------
 	
 Generative AI - Subset of DL.
 	 Used to  create new content. 
@@ -82,16 +94,6 @@ human prompts. It can foster innovation and revolutionize fields like design and
 Generative AI is trained on different sets of data to learn patterns that can be used to create content 
 with predictive patterns.
 ------------------------------
-Azure
-
-Azure Open AI account - Is it different from regular azure account?
-In the portal search AI service and browse.
-
-Once you have azure account, you have to separately request
-for Azure OpenAI service. Approval takes 24 hours.
-
-Azure OpenAI API vs OpenAI API(Google search OpenAI API)
-Azure Open AI studio vs Azure API studio
 
 	
 	
