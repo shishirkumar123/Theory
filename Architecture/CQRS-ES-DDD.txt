@@ -1,8 +1,40 @@
+DDD - Domain Driven Design
 CQRS - Comman and Query Responsibility Segregation
 ES - Event Sourcing
-DDD - Domain Driven Design
-------------------------------
 
+============================
+Domain Driven Design
+Aggregate
+        Structure
+             Aggregate Id
+	     Collection of multiple entities and value objects
+        Group of related Commands
+              Makes changes to aggregates
+        Commands generate events
+
+Entities
+        An object that is not fundamentally defined by its attributes, but rather by a thread of continuity and identity
+        Has their own identity
+
+Value Object
+	Doesnt have identity
+
+Commands
+         place where business rules are applied?
+         Do they have an id?
+
+Events
+	generated due to commands
+	They have an id
+        Events hydrate the aggregates.
+	Events are 
+
+When serires of events create/changes aggregate state, the first event usually creates aggregate and set aggregate id from event id.
+
+
+
+=============================
+CQRS
 Command refers to write operation. Query refers to read operation.
 In many applications read operations are much more than write operations - amazon, flipcart etc.
 Disadvantage with traditional CRUD kind of service which combines read write at the same place -
