@@ -1,0 +1,39 @@
+Deep learning and neural network
+==========================
+Playlist: https://www.youtube.com/watch?v=JzYQ21u5doo&list=PLsmRQcJN_xK573eDHhFFkYO8LQw8nA36L
+Lecture 1: https://www.youtube.com/watch?v=JzYQ21u5doo&t=641s
+
+Deep learning is a field of artificial intelligence (AI) that uses 
+neural networks to teach computers to process data in a way that 
+mimics the human brain. Neural networks are the fundamental technology 
+in deep learning, and are made up of interconnected nodes, or neurons, 
+in a layered structure
+
+Neurons in layers. 
+Each layer neurons connected with other layer neurons, but not with each other.
+Each neuron decides whether to send singnal to the layer further. (is signal strong enough)
+Input layer - Entry layer 
+Output layer - Last layer. 
+			Output layer may have multiple neurons showing probability of each output.
+Hidden Layer - All intermediate layers
+Info pass starting from input eventually to output layer by process called forward propagation.
+
+No of layers, and no of nuerons in that layers are decided by data scientists.
+Weight - Associated with each signal passed. 
+		This affects the neuron's decision whether to pass this signal to next layer. 
+
+Step 1: Data enters the network through input layer
+Step 2: Pass through hidden layers
+Step 3: Data is passed to output layer in the form of prediction.		
+Step 4: The loss is calculated (mismatch between predictions and actual)
+Step 5: Back propagetion - Weights are adjusted in an iterative way untill actual value 
+		are close to prediction value. (reduce the loss)
+How to update weight. Two approach-
+		Stochastic Gradient Descent
+		Batch Gradient Descent -  Avg the outputs and adjust the weights.
+
+	
+Lecture 2: https://www.youtube.com/watch?v=SJ-hWwBF3zU&t=11s
+Weights and Biases
+		
+
