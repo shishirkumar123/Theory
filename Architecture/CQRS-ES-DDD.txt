@@ -61,8 +61,10 @@ Solution
 Implementation 1: Using Axon Framework: https://www.baeldung.com/axon-cqrs-event-sourcing
 Implementation 2: Using Kafka
 
--------------------
-
+==========================
+Event Sourcing
+Event sourcing is an approach for tracking changes to application state, stored as a sequence of events. Each change is associated with an event, which contains the timestamp and nature of the specific change.
+=================
 Implementing DDD, CQRS, Event sourcing using Axon
 ==================================================
 
