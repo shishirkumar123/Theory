@@ -1,0 +1,23 @@
+Large language models (LLMs) are advanced AI systems designed
+to understand the intricacies of human language and to generate
+intelligent, creative responses when queried. It is trained on enormous 
+data sets typically measured in petabytes
+
+LLMs can be utilized alongside generative AI models to improve content 
+translation and localization. A large language model can decipher the 
+nuances of language, while generative AI can create accurate translations 
+and localized versions of the content.
+
+A key breakthrough came in 2017 when the Google Brain
+team introduced the transformer architecture, a deep learning model
+that replaced traditional recurrent and convolutional structures
+with a new type of architecture that’s particularly effective at
+understanding and contextualizing language, as well as generating
+text, images, audio, and computer code. 
+LLMs based on the transformer architecture have enabled new
+realms of AI capabilities. - eg. ChatGPT - Chatbot Generative Pretrained 
+Transformer. Transformers use GPUs for faster training of AI models.
+
+Thousands of opensource models are available on public sites such as 
+GitHub and Hugging Face. Developers can use the pretrained AI models as a
+foundation for creating custom AI apps.
