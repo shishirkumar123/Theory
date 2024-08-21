@@ -41,6 +41,38 @@ GAI two types
 		image to text
 
 -------------------------------------
+Traditional AI, often referred to as machine learning (ML),
+has primarily focused on analytic tasks like classification
+and prediction. Generative AI (gen AI) goes a step further
+with its ability to create new, original content -
+text, images, audio, video, and other forms of output.
+
+Traditional AI uses predictive models to classify data, recognize
+patterns, and predict outcomes within a specific context or domain,
+such as analyzing medical images to detect irregularities. Gen AI
+models generate entirely new outputs rather than simply making
+predictions based on prior experience.
+
+Gen AI is a type of artificial intelligence that uses neural networks
+and deep learning algorithms to identify patterns within existing
+data as a basis for generating original content.
+---------
+Deep learning  - multiple layers of interconnected
+neurons, allowing for more sophisticated learning and representation
+of data. This led to the advancement of
+	cnn - convolutional neural network  - used in computer vision task
+	RNN - Recurrent neural network - used in sequential data processing, 
+	     such as language modeling
+	speech recogonition 
+	nlp - natural language processing
+These technologies laid the foundation for gen AI.
+
+GAN - Generative Adversarial Network
+VAE - Variational Autoencoders
+
+Generative AI applications are built on top of large language models (LLMs) and foundation models.
+
+------------------------
 		
 Natural Language Processing -  used to analyze data and make predictions
 
