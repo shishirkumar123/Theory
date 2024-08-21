@@ -64,6 +64,10 @@ Implementation 2: Using Kafka
 ==========================
 Event Sourcing
 Event sourcing is an approach for tracking changes to application state, stored as a sequence of events. Each change is associated with an event, which contains the timestamp and nature of the specific change.
+
+Event Sourcing is a design pattern in which results of business operations are stored as a series of events.
+
+It is an alternative way to persist data. In contrast with state-oriented persistence that only keeps the latest version of the entity state, Event Sourcing stores each state change as a separate event.
 =================
 Implementing DDD, CQRS, Event sourcing using Axon
 ==================================================
