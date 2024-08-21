@@ -60,3 +60,21 @@ Solution
 
 Implementation 1: Using Axon Framework: https://www.baeldung.com/axon-cqrs-event-sourcing
 Implementation 2: Using Kafka
+
+-------------------
+
+Implementing DDD, CQRS, Event sourcing using Axon
+==================================================
+
+EventHandlers are mutating data in postgres
+CommandHandlers are creating Events, which is directly going into mongodb
+EventSourcingHandlers are only to update the in-memory state of the Aggregate in Axon Server
+
+If computation needs to be done before storing the events in the event store, 
+then EventSourcingHandler is the candidate 
+For ex: do validations and ignore bad events completely if needed . 
+EventHandler aggregates all events and creates the projection and store it in db. 
+So, if a computation is required before creating projection , choose the EventHandler.
+
+If it is some business logic or validation, you do that prior to creating Event in the Aggregate
+if it is related to access checks, controller
