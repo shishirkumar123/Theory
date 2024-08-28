@@ -1,0 +1,68 @@
+Deep Learning
+===============
+Lecture 1: introduction to deep learning
+https://www.youtube.com/watch?v=ErnWZxJovaM&list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI
+Neural network - simulation of human brain
+Percepron - Equivalend of neuron.
+	= inputs -> weights -> sum (+ bias) -> non linearity -> output
+	Non linearity is achieved using non linear function.
+	Non linear function - e.g. - sigmoid, hyperbolic tangent, rlt rectified linear
+	Percepron can have single or multiple output.
+	
+Trained neural network -> neural network with weights
+Loss functions -
+	Loss - 	cost incurred from incorrect prediction. e.g what are my chances of passing the test
+	Empirical loss - total loss over intire dataset. e.g what are the chances of all our batchmates passing the test
+	Cross entropy loss - used for models that predicts values between 0..1
+	Binary cross entropy loss - used for models that predicts values like Yes/No
+	Mean squared error loss - used with regression model that outputs continuous real numbers
+	
+	
+	Based on the type of model, we may use different tf function
+
+Loss optimization - finding weights to minimize loss.
+	Loss functions are functions of network weights.
+
+Gradient - actual/predicted
+Gradient Descent algorithm
+	Initialize weights randomly, 
+	calculate gradient, 
+	keep moving till gradientin minimum
+	get weights
+Stochastic Gradient Descent algorithm -
+	 Stochastic Gradient Descent converges quickly but has high noise(stochastic), 
+		(because it was computed using just one example
+	 whereas Gradient Descent converges slowly but has low noise
+	 So choose number of examples optimally. Common practice is 32.
+	 We can do parallelizm on this 32 set and put on different GPUs to make it run faster.
+Back propagation
+	How does a small change in one weight affects the final loss
+GD and BP both help in improving the prediction accuracy of neural network
+	but how are they different? - We compute the gradient using back propagation.
+	
+Learning Rate -  is a hyperparameter in neural networks that controls 
+	how quickly an algorithm learns or updates the values of a parameter estimate.
+	Keep the LR very small - LR converges slowly and get stuck in local minima
+	Keep the LR very large - overshoots and diverge
+	Keep the LR optimum
+	LR is multiplied to the formula of actual/predicted
+	How to find out LR
+		-Random - keep applieng and see what gives better result
+		-Design an adaptive learning rate.
+	Algorithms
+		SGD
+		Adam
+		Adadelta
+		Adagrad
+		RMSProp
+
+Overfitting in neural network 
+	- simptom - model performed well on training dataset, but very badly on test data
+	- dont underfit or overfit. Do ideal fit.
+
+Regularization - Technique that constrians optimization problem to discourage complex models.
+			Drop outs - set some activation to '0'. (kill some neurons)
+			Early stopping - Calculate loss of both test and train data. Stop at a point
+				where overfitting starts on test data.
+
+Codes: Lecture 1 - 31.20, 49, 58.19 
