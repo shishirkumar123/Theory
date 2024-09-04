@@ -192,6 +192,9 @@ Scale up and down
 >kubectl delete -f nginx-deploy.yaml
 
 =====================================================================
+configmap and secret
+-provide details
+==================================================================
 Services -
 	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken.
 	Services group the related pods using labels and selectors.
