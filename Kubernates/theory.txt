@@ -232,6 +232,11 @@ Load balancer needs investment money-wise, so use wisely.
 >kubectl describe svc <service-name>
 cleanup using delete - Deleting the service will delete the pods too. how? service and pods are linked through labels.
 
+NodePort vs LoadBalancer
+------------------------------
+NodePort is simpler and works without a cloud provider, making it suitable for development or small-scale environments.
+LoadBalancer provides more robust traffic management, ideal for production environments, but depends on cloud infrastructure.
+
 Cluster IP
 ---------------------
 Database should be exposed to calling service only not anyone else. Ensure this using cluster IP.
