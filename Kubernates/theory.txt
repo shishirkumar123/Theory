@@ -28,6 +28,13 @@ Container orchestration
 	2 most important feature - clustering and scheduling, scaling, load balance, fault tolerance, deployment(recreate, rolling-update/canary)
 	All three major cloud provider has their own container engine. GCP - Kubernates, Amazon EC2 container service, Azure container service. But Kubernates can be used in all platform.
 	large team- kubernates, small team docker swarm/rancher/nomad
+
+
+=========Side note=========
+Blue-green deployment - switch from blue to green or vice versa in one go. Good for less downtime.
+canary - route request to new deployment for small set of user, then increase gradually. Good for introducing new feature.
+
+==========End==============
 ---------------------------------
 Kubernates architecture
 Master node, Worker Node.
