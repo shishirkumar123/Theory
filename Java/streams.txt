@@ -5,8 +5,8 @@ create stream using-
 	Collection.stream();
 
 stream start - map(accepts a mapper), returns a stream
-stream middle - filter(optioanlly accepts a predicate), returns a stream
-	      - sort(optioanlly accepts a comparator), returns a stream
+stream middle - filter(optionally accepts a predicate), returns a stream
+	      - sort(optionally accepts a comparator), returns a stream
 
 terminal    -forEach(accepts a consumer)
 		consumer interface is functional yet 2 methods how
