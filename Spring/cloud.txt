@@ -346,5 +346,5 @@ Sampler<?> sampler(){
 }
 
 -------------------
-Need to have zipkin installed - directly or through doker and see the zipking dashboard. 
+Need to have zipkin installed - directly or through docker and see the zipking dashboard. 
 It will show end to end journey of a request.
