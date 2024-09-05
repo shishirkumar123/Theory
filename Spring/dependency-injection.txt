@@ -10,3 +10,9 @@ If prototype, object is created when it is needed.
 @component is class annotation.
 
 How to create your own boot?
+
+---------------
+@Autowire vs @Component
+@Autowired is used for injecting dependencies, while @Component is used to define a bean.
+@Component tells Spring to manage the lifecycle of a class, whereas @Autowired tells Spring to resolve and inject a dependency automatically.
+In short, @Component is about bean creation, and @Autowired is about bean injection.
