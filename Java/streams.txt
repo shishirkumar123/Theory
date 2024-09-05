@@ -54,7 +54,7 @@ e.g
               .filter(employee -> employee.getAge() > 25) // note that filter can be called before map.
               .map(employee -> employee.getfName())       //but sorted() can be called before. Throws ClassCastException. Why?
               .forEach(System.out::println);              //forEach takes consumer as an argument
-	      
+	//If employee object has 5 fields, you want to display 3 fields only. HOw will you do that?      
 	// Return the values to a list rather than just print
 	List<String> employeeName =  employeeList.stream()
               .filter(employee -> employee.getAge() > 25)
