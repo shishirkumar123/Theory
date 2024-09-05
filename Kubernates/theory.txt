@@ -171,6 +171,7 @@ Create and display deployment-
 >kubectl get deploy -l app=nginx-app
 >kubectl get rs -l app=nginx-app
 >kubectl get pod -l app=nginx-app
+>kubectl get pod -n lcapsbx
 >kubectl describe deploy nginx-deployment
 Update using two options set and edit
 >kubectl set image deploy nginx-deployment nginx-container=nginx:1.9.1
