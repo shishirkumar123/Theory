@@ -30,6 +30,80 @@ NodeJS
 	single threaded yet non blocking. Why this is important.
 	callback hell (triangle shape code)- confusing code because of callback inside callback. To avoid it we use Promise
 
+===================================================================================================
+Build a NodeJS app once, run in multiple environment
+
+References:
+https://medium.com/@bhairabpatra.iitd/env-file-in-react-js-09d11dc77924#:~:text=3-,In%20a%20React.,between%20development%20and%20production%20environments.
+https://stackoverflow.com/questions/42458434/how-to-set-build-env-variables-when-running-create-react-app-build-script
+https://github.com/facebook/create-react-app/issues/3903#issuecomment-365096630
+https://www.linkedin.com/pulse/how-use-environment-files-env-react-app-muhammad-sameem/
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4
+
+
+Step1: create .env files at the same level as .gitignore(Note: .gitignore is created by npm already)
+--------------------
+.env.sandbox
+.env.development
+.env.production
+
+sample content of .env files:
+
+REACT_APP_URL=https://dev.api.example.com
+
+Note: environment variables you have set must start with "REACT_APP_", 
+
+
+Step 2: Access the value of env variable in .js file:
+--------------------
+	const appUrl = process.env.REACT_APP_URL;
+	console.log(`API URL: ${appUrl}`);
+
+Step 3:Install a simple node program for executing commands using an environment from an env file. (like .env.sandbox)
+--------------------
+>npm install env-cmd	
+
+Step 4: Update in package.json
+--------------------
+"scripts": {
+    "start": "react-scripts start",
+    "build:sandbox": "env-cmd -f .env.sandbox react-scripts build",
+    "build:production": "env-cmd -f .env.production react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  } 
+	
+Step 5: Run the app by passing the env value specifying the environment. In below example it is 'sandbox'
+--------------------
+>npm run build:sandbox
+>npm install -g serve
+>serve -s build
+
+--------------------
+Step 6(Optional - If you run into security violation issue in Windows)
+When I run the serve command(serve -s build) in windows machine, I got error.
+The error looks like this- 
+
+serve : File C:\Users\shishir\AppData\Roaming\npm\serve.ps1 cannot be loaded because running scripts is disabled 
+on this system. For more information, see about_Execution_Policies at
+https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ serve -s build
++ ~~~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+	
+	
+-------------
+To fix this issue, run this-
+>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+Try again
+>serve -s build
+
+Server should start properly now. Verify from browser.
+
+===================================================================================================
+
 
 
 
