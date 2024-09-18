@@ -1,0 +1,24 @@
+Python
+============
+Initial steps
+1. Install python 3.12.3
+2. Install VSCode
+3. Install python extensions recommended by vscode (like python, python debugger, pylance)
+4. Create new folder to keep python files and select that folder to create a project in vs code.
+5. First file - hello.py
+6. First program
+	print("Hello")
+7. a.Run it through menu option Run>>Run without debugging
+   b. Run it through terminal >> py hello.py or python hello.py
+8. Check version
+	>> python version
+	
+==================
+
+1. Create a virtual environment for on VS Code
+> python -m venv <env-name>
+e.g
+>python -m venv myenv
+	This will
+		-create a new folder in project having same name as env-name.
+		-show notice from VS Code to have it as a workspace folder- click Yes
