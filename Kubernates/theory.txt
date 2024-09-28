@@ -45,9 +45,11 @@ Master Node
 	controller manager - 4 controllers - node controller, replication controller, endpoint controller, service accountant token controller. 
 			Ensures overall health. Ensures correct numbers of pods are up and running as per the requirement specs.
 	Usually master node doesn't contain pods
+--------------
 Worker node >> Pods >> container. Multiple master/worker nodes form clusters. Also-
-	kubelet - manage containers - detect failure, restart, shift to a different pod/node.
-	kube-proxy - maintain network configuration
+	kubelet - manage containers. - start, detect failure, restart, shift to a different pod/node.
+                 - interacts with containeers as well as nodes
+	kube-proxy - maintain network configuration, forwards the requests
 	pods/containers
 
 ===========================================
@@ -107,7 +109,13 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 Then you can join any number of worker nodes by running the following on each as root:
 >>
 >>kubeadm join 192.168.0.28:6443 --token 9mm7z2.s5q5nek0ez40xicy --discovery-token-ca-cert-hash sha256:c7b9f819a794e1796018630ce3ee1f3b7e5244f47e4c063fb817aafca3580969
-[Node : kubectl create is imparative, kubectl apply is declarative]
+[-----------------------------------------------------------------
+| Note : 
+|    create vs apply
+|    kubectl create is imparative, kubectl apply is declarative
+|    create - will create from scratch, throw error if already exists
+|    apply  - can create if doesn't exists, update if exists. 
+-------------------------------------------------------------------]
 
 Test:
 >kubectl get no
@@ -172,7 +180,10 @@ Create and display deployment-
 >kubectl create -f nginx-deploy.yaml
 >kubectl get deploy -l app=nginx-app
 >kubectl get rs -l app=nginx-app
->kubectl get pod -l app=nginx-app
+>kubectl get pod -l app=nginx-app -- NOTE: We dont explicitly create pod.
+                                    When deployement is created, number of pods are created.
+                                    The number depends on what was specified in deployment yaml file (e.g replicas: 2)
+                                    When you do 'get po', the name of the pod follows the prefix of deployment name.
 >kubectl get pod -n lcapsbx
 >kubectl describe deploy nginx-deployment
 Update using two options set and edit
@@ -197,7 +208,11 @@ Scale up and down
 =====================================================================
 StatefulSet
 
-Used as a blueprint for components which has state, typically database
+Used as a blueprint for components which has state, typically database, 
+syncronize between multiple instances of database
+Maintaining statefulset in K8s is not easy, so db can be kept outside k8s cluster.
+
+
 =====================================================================
 
 ConfigMap and secret
