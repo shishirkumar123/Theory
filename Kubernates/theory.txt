@@ -231,6 +231,9 @@ ConfigMap and secret
 
 ConfigMap - keep things like db url. dont put passwords here
 Secret - keep credential, certificates etc in base64 encoded form.
+
+If I need to configure db details, i will out db url in ConfigMap. 
+I will put db id and password in secret.
 ==================================================================
 Services 
 
