@@ -159,7 +159,7 @@ Replica set - advance version of replication controller. This has set based sele
 	
 	
 =========================================================
-Deployment
+Deployment - blueprint of pod
 Replica set doesn't provide features such as Upgrades and rollbacks. For these we need deployments.
 We can also do scale up, scale down, pause and resume deployment. 
 Deployment type - 
@@ -194,8 +194,10 @@ Scale up and down
 >kubectl delete -f nginx-deploy.yaml
 
 =====================================================================
-configmap and secret
--provide details
+ConfigMap and secret
+
+ConfigMap - keep things like db url. dont put passwords here
+Secret - keep credential, certificates etc in base64 encoded form.
 ==================================================================
 Services -
 	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken. Service has permanent ip. service can be public(UI app) or private(like database)
@@ -251,7 +253,7 @@ Storage Volumes
 --------------------
 Pods are ephemeral and stateless. statelessness gives better scalability. 
 But apps running in pod may need statefullness.
-Something needed to keep application data which will persists beyond pods's life-cycle. So we have storage volumes. Few examples-
+Something needed to keep application data which will persists beyond pods's life-cycle. So we have storage volumes. Can be internal to K8s cluster or external to it. Few examples-
 	empltyDir
 	hostPath
 	gcePersistentDisk
@@ -320,4 +322,7 @@ Expose the UI app through browser using
 1. External service
 		use ip like https://12.23.12.12:3000
 		in prod: https://my-app.com
+
+
+So request first comes to ingress then forwarded to service.
 
