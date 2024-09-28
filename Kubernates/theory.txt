@@ -206,6 +206,18 @@ Scale up and down
 >kubectl delete -f nginx-deploy.yaml
 
 =====================================================================
+Labels and selectors
+Labels are set of name value pair. (user defined)
+Lets understand with example. A service wants to route request to 3 out of 8 pods.
+How will it refer to the three pods? It will refer using label. 
+'label' will be mentioned in pod specification. 
+         example
+               label:
+                   my-pod-types:my-favorite-pods
+'selector' will be mentioned in service specification
+               selector:
+                   my-pod-types:my-favorite-pods
+================================
 StatefulSet
 
 Used as a blueprint for components which has state, typically database, 
