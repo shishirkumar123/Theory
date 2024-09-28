@@ -89,7 +89,7 @@ old - kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-ver
  3. (Optional) Create an nginx deployment:
  kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
  
-
+[NGINX - Web server for load balancing, caching, and centralized security]
 -------------
 
 To start using your cluster, you need to run the following as a regular user:
@@ -160,6 +160,7 @@ Replica set - advance version of replication controller. This has set based sele
 	
 =========================================================
 Deployment - blueprint of pod
+
 Replica set doesn't provide features such as Upgrades and rollbacks. For these we need deployments.
 We can also do scale up, scale down, pause and resume deployment. 
 Deployment type - 
@@ -194,13 +195,19 @@ Scale up and down
 >kubectl delete -f nginx-deploy.yaml
 
 =====================================================================
+StatefulSet
+
+Used as a blueprint for components which has state, typically database
+=====================================================================
+
 ConfigMap and secret
 
 ConfigMap - keep things like db url. dont put passwords here
 Secret - keep credential, certificates etc in base64 encoded form.
 ==================================================================
-Services -
-	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken. Service has permanent ip. service can be public(UI app) or private(like database)
+Services 
+
+Pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken. Service has permanent ip. service can be public(UI app) or private(like database)
 	Services group the related pods using labels and selectors.
 Types 
 	NodePort - Web-app exposed to outside world
