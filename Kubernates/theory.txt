@@ -254,7 +254,7 @@ Has below ports
 >kubectl get service -l app=nginx-app
 Confirm which node pod is running -
 >kubectl get po -o wide
->kubectl describe svc <seevice-name>
+>kubectl describe svc <service-name>  //get service vs describe service: describe has much more details
 We need to verify external ip/port of pod/service/node through display and describe command.
 Access them all using curl-
 curl http://<node/pod/service ip>:<port>
