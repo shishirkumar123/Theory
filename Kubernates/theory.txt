@@ -207,6 +207,7 @@ Scale up and down
 
 =====================================================================
 Labels and selectors
+
 Labels are set of name value pair. (user defined)
 Lets understand with example. A service wants to route request to 3 out of 8 pods.
 How will it refer to the three pods? It will refer using label. 
@@ -217,6 +218,13 @@ How will it refer to the three pods? It will refer using label.
 'selector' will be mentioned in service specification
                selector:
                    my-pod-types:my-favorite-pods
+
+Question: Name value pair can be put in deployment yaml file as well inside the env tag.
+      		env:
+                    -name: dbuser-name
+                    -value: admin
+
+The why we need configmap and secret?
 ================================
 StatefulSet
 
