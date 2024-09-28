@@ -135,6 +135,7 @@ Pod is the atomic unit of scheduling in k8s. It is the run time environment.[Ato
 Pod Deployment - generate manifest file(container images). API server deploy it on appropriate worker node. labels comes handy when searching pods.
 How we scale? add more container to pod or add more pod? Answer is add more pod, dont know why? If current node has no sufficient capacity, then add new VM
 Usually there is one container per pod. In some cases there are more than one, but those container are related. One is main other(s) are helper.
+Pod has its own internal IP.
 
 ===============================================
 Replication controller - Maintains the no of Pod instances based on replication factor. RF can be 1 too.
@@ -197,7 +198,7 @@ configmap and secret
 -provide details
 ==================================================================
 Services -
-	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken.
+	pods are frequently created and destroyed, getting a new IP address. Service is the way to discover them so that communication is not broken. Service has permanent ip. service can be public(UI app) or private(like database)
 	Services group the related pods using labels and selectors.
 Types 
 	NodePort - Web-app exposed to outside world
