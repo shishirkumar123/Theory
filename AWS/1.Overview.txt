@@ -88,7 +88,12 @@ ECS setup options
             Compare this with EC2 where you have to pay for having an EC2 irrespective of using or not.
             BUT - you loose control.
 -------------------------------
-EKS
+EKS - Elastic K8s service - Alternative to ECS
+Why EKS
+     Because project was already using k8s and want to move to aws as is
+     k8s is open source 
+     K8s vendor neutral. ECS is Amazon specific
+     
 ---------------------
 Cloudwatch - For monitoring
 
