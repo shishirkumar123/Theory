@@ -219,13 +219,6 @@ How will it refer to the three pods? It will refer using label.
                selector:
                    my-pod-types:my-favorite-pods
 
-Question: Name value pair can be put in deployment yaml file as well inside the env tag.
-      		env:
-                    -name: dbuser-name
-                    -value: admin
-
-Answer - value is not put in env. above configuration is wrong. value is refered from configmap/secret.
-
 
 The why we need configmap and secret?
 ================================
@@ -243,8 +236,23 @@ ConfigMap and secret
 ConfigMap - keep things like db url. dont put passwords here
 Secret - keep credential, certificates etc in base64 encoded form.
 
-If I need to configure db details, i will out db url in ConfigMap. 
+If I need to configure db details, i will put db url in ConfigMap. 
 I will put db id and password in secret.
+
+Question: Name value pair can be put in deployment yaml file as well inside the env tag.
+      		env:
+                    -name: dbuser-name
+                    -value: admin
+                    -name: dbuser-password
+                    -value: admin123
+
+Answer - value is not put in env. above configuration is wrong. value is refered from configmap/secret.
+Something like -
+		env:
+                    -name: dbuser-name
+                    -valueFrom: 
+			secretKeyRef
+                        ...
 ==================================================================
 Services 
 
