@@ -64,6 +64,6 @@ Then Fargate - No need of EC2 instances. Fargate is a compute engine.
 
 Amazon Container Service
 
-ECS
+ECS - Elastic container Service - something like K8s
 	Can ECS cluster go beyond a region/vpc?
 	Cluster, Services, Tasks
