@@ -37,7 +37,7 @@ Elastic Beanstalk
 -------
 Cloud formation - AWS infrastructure provisioning. You can use non AW Ssolution like Terraform which works with other cloud providers too.
 
-
+ELB - Elastic Load Balancer - for load balancing
 =================
 Questions
 1. Can route 53 be used as Load balancer?
@@ -72,5 +72,24 @@ ECS has
 
 	Can ECS cluster go beyond a region/vpc?
 	Cluster, Services, Tasks
+
+ECS setup options
+     -ECS with EC2 - Create EC2 and join them to ECS cluster. 
+             In this setup, you have to manage infrastructure yourself. You have to-
+                - Manage operating system
+                - Docker runtime, ECS Agent
+                - check whether enough resources
+                Advantage - more control of infrastructure
+     -ECS with Fargate  - delegate infrastructure management also to AWS. AWS will do
+                - container orchestration
+                - Hosting infrastructure management
+            You provide containers to fargate. Farget will decide hou much RAM, CPU, other resources will be required.
+            So procisioning will be taken care of, on demand. So pay only what you use.
+            Compare this with EC2 where you have to pay for having an EC2 irrespective of using or not.
+            BUT - you loose control.
 -------------------------------
 EKS
+---------------------
+Cloudwatch - For monitoring
+
+
