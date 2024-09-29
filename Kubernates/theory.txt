@@ -224,6 +224,9 @@ Question: Name value pair can be put in deployment yaml file as well inside the 
                     -name: dbuser-name
                     -value: admin
 
+Answer - value is not put in env. above configuration is wrong. value is refered from configmap/secret.
+
+
 The why we need configmap and secret?
 ================================
 StatefulSet
