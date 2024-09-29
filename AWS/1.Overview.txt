@@ -62,8 +62,15 @@ Then Fargate - No need of EC2 instances. Fargate is a compute engine.
 			
 -------------------------
 
-Amazon Container Service
-
 ECS - Elastic container Service - something like K8s
+ECS has
+    - Control Plane - For scheduling and orchestration
+    - Managing Services - Managing the lifecycle of a container
+            - EC2 instances having docker(or any container) runtime 
+            -ECS Agent for communication with control plane
+
+
 	Can ECS cluster go beyond a region/vpc?
 	Cluster, Services, Tasks
+-------------------------------
+EKS
