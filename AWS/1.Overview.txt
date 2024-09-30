@@ -107,6 +107,9 @@ Setup
             So need to manage operating systems on EC2 the same way as ECS.
         Semi managed: EKS with Node Group
             Create the node group of related worker nodes. This makes it easier for new worker node to join.
+            EC2 instances are managed by nodegroup.
+            But Autoscaling needs to be done manually on AWS
+       Fully managed - EKS with Fargate
             
 ---------------------
 Cloudwatch - For monitoring
