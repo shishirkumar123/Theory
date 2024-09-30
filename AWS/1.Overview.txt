@@ -84,7 +84,7 @@ ECS setup options
                 - container orchestration
                 - Hosting infrastructure management
             You provide containers to fargate. Farget will decide hou much RAM, CPU, other resources will be required.
-            So procisioning will be taken care of, on demand. So pay only what you use.
+            So provisioning will be taken care of, on demand. So pay only what you use.
             Compare this with EC2 where you have to pay for having an EC2 irrespective of using or not.
             BUT - you loose control.
 -------------------------------
@@ -93,7 +93,21 @@ Why EKS
      Because project was already using k8s and want to move to aws as is
      k8s is open source 
      K8s vendor neutral. ECS is Amazon specific
-     
+     K8s has bigger community, plugins - e.g Helchart
+Setup
+    It is easier on AWS. 
+    Create EKS cluster/service. (Control Pane). 
+    Master node:
+            It will automatically provision master nodes and its related components.
+    	    Master nodes are replicated in different AZs.
+    	    Etcds are replicated in the same way.
+    Worker node:
+        Self managed:
+            EC2 instances joins cluster in the same way as ecs.
+            So need to manage operating systems on EC2 the same way as ECS.
+        Semi managed: EKS with Node Group
+            Create the node group of related worker nodes. This makes it easier for new worker node to join.
+            
 ---------------------
 Cloudwatch - For monitoring
 
