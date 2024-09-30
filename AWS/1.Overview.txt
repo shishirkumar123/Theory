@@ -112,6 +112,11 @@ Setup
        Fully managed - EKS with Fargate
             
 ---------------------
+ECR - Elastic container Registry
+     keeps container images
+     Advantage - integrate well with AWS services. When new version of image arrives, notify the K8s cluster.
+
+----------------------------
 Cloudwatch - For monitoring
 
 
