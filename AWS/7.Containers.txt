@@ -7,3 +7,5 @@ ECS
 	Cluster, Services, Tasks
 
 EKS
+
+Amazon Elastic Kubernetes Service (EKS) is a fully managed service that makes it easy to run and scale Kubernetes applications on AWS. EKS allows you to deploy, manage, and scale containerized applications using Kubernetes
