@@ -8,6 +8,15 @@ Fargate
 Fargate is a compute service that runs containers, abstracting the underlying infrastructure. 
 It's part of AWS's serverless offerings, enabling you to run containers without managing EC2 instances.
 
+Initially - (App Package + AMI) were deployed on EC2.
+Then - Container on EC2.
+Then - ECSs - Made it easy to manage containers and clusters. 
+			But user still had to manage EC2 instances on which these clusters/containers were running.	
+Then Fargate - No need of EC2 instances. Fargate is a compute engine.
+			- Hosts and manages container
+			- Offers seemless scaling
+			- Integrated with ECS/EKS
+
 Spot Instance
 ------------------
 While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco. 
