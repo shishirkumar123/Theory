@@ -3,6 +3,11 @@ EC2
 Select EC2 based on need. Below are options -
 -compute optimized, memory optimized, GPU enabled, general purpose.
 
+Fargate
+===========
+Fargate is a compute service that runs containers, abstracting the underlying infrastructure. 
+It's part of AWS's serverless offerings, enabling you to run containers without managing EC2 instances.
+
 Spot Instance
 ------------------
 While creating an EC2 there is an option to request spot instances. Good to select this option when use is intermittent. Like batch processing. It significantly reduces tco. 
