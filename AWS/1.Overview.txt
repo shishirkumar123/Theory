@@ -93,7 +93,7 @@ Why EKS
      Because project was already using k8s and want to move to aws as is
      k8s is open source 
      K8s vendor neutral. ECS is Amazon specific
-     K8s has bigger community, plugins - e.g Helchart
+     K8s has bigger community, plugins - e.g Helmchart
 Setup
     It is easier on AWS. 
     Create EKS cluster/service. (Control Pane). 
