@@ -13,7 +13,7 @@ What else is created by default-
 	Multiple regions
 	One vpc per region
 	Multiple availability zone. One subnets per availability zone?
-	One route table per region
+	One route table per region. Oct 4, 2024 - While creating route table, it asks for VPN id.
 	One internet gateway per region
 	One DHCP option set per region
 	One NACL per region
