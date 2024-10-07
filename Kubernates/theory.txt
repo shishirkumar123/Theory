@@ -124,7 +124,8 @@ Test:
 >kubectl get no
 >kubectl run kubernates-bootcamp --image=gcr.io/google-samples/kubernates-bootcamp:v1 --port=8080
 >kubectl get po
->kubectl config view
+>kubectl config view -  is used to inspect the current configuration of kubectl, 
+     including information about clusters, users, and contexts defined in the Kubeconfig file
 -----------------
 ================================================= 
 
@@ -224,7 +225,7 @@ How will it refer to the three pods? It will refer using label.
                    my-pod-types:my-favorite-pods
 
 
-The why we need configmap and secret?
+
 ================================
 StatefulSet
 
