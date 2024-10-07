@@ -33,6 +33,9 @@ Container orchestration
 =========Side note=========
 Blue-green deployment - switch from blue to green or vice versa in one go. Good for less downtime.
 canary - route request to new deployment for small set of user, then increase gradually. Good for introducing new feature.
+Rolling update - Rolling gradual update of software
+	e.g in K8s - A rolling update allows a Deployment update to take place with zero downtime. 
+				It does this by incrementally replacing the current Pods with new ones.
 
 ==========End==============
 ---------------------------------
