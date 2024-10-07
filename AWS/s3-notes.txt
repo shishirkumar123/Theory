@@ -11,6 +11,13 @@ Glacier - long term
 Create Bucket, then put objects in it. Object can be image, pdf anything.
 Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is infrequently used by using storage like S3 infrequent, glacier, zone IA. else use standard frequent, standard reduced redundancy - like pdf books in library  
 
+Accessing S3 data
+---------------
+1. Using URL:http:s3.amazonaws.com/<BUCKET_NAME>/<OBJECT_NAME> - This will work only when url is publically accessible.
+2. Programmatically - Can use boto library
+		s3Client = boto3.client('s3')
+		myobject = s3Client.get_object(Buket='BUCKET_NAME', Key='<OBJECT_NAME>')
+
  
 Features
 Lifecycle management
