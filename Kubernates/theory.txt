@@ -230,7 +230,10 @@ How will it refer to the three pods? It will refer using label.
 StatefulSet
 
 Used as a blueprint for components which has state, typically database, 
-syncronize between multiple instances of database
+synchronize between multiple instances of database
+  [ Note - Not sure if synchronization can be taken care by Stateful Set.
+           Generallay databases come with their own solution for replication]
+
 Maintaining statefulset in K8s is not easy, so db can be kept outside k8s cluster.
 
 
