@@ -121,6 +121,7 @@ Test:
 >kubectl get no
 >kubectl run kubernates-bootcamp --image=gcr.io/google-samples/kubernates-bootcamp:v1 --port=8080
 >kubectl get po
+>kubectl config view
 -----------------
 ================================================= 
 
