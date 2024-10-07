@@ -2,9 +2,11 @@ S3 (object store) stands for simple storage service
 An object store (not a file system).
 You can store files and "folders" but can't have locks, permissions etc like you would with a traditional file system
 
-[Other option - EFS(Elastic file system), EBS(Elastic block store - Device like C:, D: only accessible through its EC2), Glacier - long term
-Note - If you provision a 100-GB EBS volume for a month, but only store 1 GB of data on that volume, you are still billed for 100 GB/m of EBS storage.
-]
+[Other option - 
+EFS(Elastic file system), 
+EBS(Elastic block store - Device like C:, D: only accessible through its EC2), 
+Glacier - long term
+[Note - If you provision a 100-GB EBS volume for a month, but only store 1 GB of data on that volume, you are still billed for 100 GB/m of EBS storage.]
 
 Create Bucket, then put objects in it. Object can be image, pdf anything.
 Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is infrequently used by using storage like S3 infrequent, glacier, zone IA. else use standard frequent, standard reduced redundancy - like pdf books in library  
@@ -34,9 +36,9 @@ Cross-Region Replication
 Transfer Acceleration
 	e.g, 5 terrabyte to be moved from mumbai to oregon use cloud front
 	
-How is S3 associated in VPC? Doesn't it need compute like EC2 to sit on?
-
-Pricing
+Q. How is S3 associated in VPC? Doesn't it need compute like EC2 to sit on?
+A. S3 is a global service that is accessed over the internet, and it doesn't reside inside a VPC.
+S3 is a fully managed object storage service offered by AWS. It doesn't require compute resources like EC2 instances to operate. AWS manages the infrastructure that S3 runs on.
 --------
 1 GB to store in US-East-1: (Updated at 2016.dec.20)
 
