@@ -1,4 +1,4 @@
-S3 (object store)
+S3 (object store) stands for simple storage service
 An object store (not a file system).
 You can store files and "folders" but can't have locks, permissions etc like you would with a traditional file system
 
