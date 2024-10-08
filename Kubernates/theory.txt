@@ -288,8 +288,9 @@ Confirm which node pod is running -
 We need to verify external ip/port of pod/service/node through display and describe command.
 Access them all using curl-
 curl http://<node/pod/service ip>:<port>
-At the end cleanup everything
->kubectl delete svc <service-name> - this deletes svc and related pods. confirm.
+At the end cleanup service
+>kubectl delete svc <service-name> - this deletes svc. 
+    Deleting a service does not delete the related pods.
 
 LoadBalancer
 ---------------------
@@ -381,6 +382,22 @@ It can be think of as virtual cluster inside K8s cluster
 		namespace:
   NOTE: volume and node can't be created inside namespace. They live globally in cluster.
 =========================================
+Volumes
+=======================================
+Storage requirement
+   -Storage doesnt depend on pod lifecycle
+   -Storage must be available on all nodes
+   -storage needs to survive even if cluster crashes
+It can be database or file system or something like that
+
+Kubernates persistent volume types
+1. Persistent Volume - An abstraction, created through yaml file.
+	Actual storage may happen in one of the node in K8s cluster, outside nfs server or AWS block storage etc
+   You have to create and manage the storage yourself - like backup recovery. K8s has just provided an abstraction.
+
+2. Persisent Volume Claim
+3. Storage class
+----------------------------------------
 External service vs ingress
 ------------------------------
 Expose the UI app through browser using
