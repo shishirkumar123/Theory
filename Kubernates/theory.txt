@@ -394,9 +394,28 @@ Kubernates persistent volume types
 1. Persistent Volume - An abstraction, created through yaml file.
 	Actual storage may happen in one of the node in K8s cluster, outside nfs server or AWS block storage etc
    You have to create and manage the storage yourself - like backup recovery. K8s has just provided an abstraction.
+   PV belong to entire cluster, they are not inside namespace.
+   Attached volumes can be local or remote. Local can't survive crash.
 
 2. Persisent Volume Claim
+        Application has to claim PVs using Persistent Volume Claims.
+        PVC specify the need. K8s matches ith with various PVs provisioned.
+        PVS needs to be in the same namespace as the pod that needs it.
+
+	PV and PVC abstracts from me as an application developer where exactly data lives, local, remote, cloud.
+	
+	Use case - Elastic-app running in K8s cluster. Can use -
+		Config map
+		Secret - for keeping client certificates
+	        awsElasticBlockStorage
+	All three can be configured. Check figure 18.different-volume-types.png
+        PVC can claim PV as well as Storage class described next.
+
+	
 3. Storage class
+	Makes storage convinient
+	provisions PV dynamically when PVC claims it.
+        Storage class is an abstraction over PVs? (Confirm)
 ----------------------------------------
 External service vs ingress
 ------------------------------
