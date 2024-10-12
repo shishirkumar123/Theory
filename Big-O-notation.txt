@@ -3,7 +3,7 @@ Reference - https://www.youtube.com/watch?v=v4cd1O4zkGw
 O(1) = constant time
 O(n) = Increase linearly - for loop to iterate an array. Increase the size of array, increase the time linearly.
 O(n2) = for loop inside a for loop for same array
-Now a loan with side x and y and area a. This can be described both as O(x) or O(y) or O(a2)
+Now a lawn with side x and y and area a. This can be described both as O(x) or O(y) or O(a2)
 What is O(log n)
 ----------------------
 Rules
