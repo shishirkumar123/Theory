@@ -1,0 +1,3 @@
+Q. Why is list.stream().count() not a preferred way of finding a count? Instead, it is recommended to use  list.size()?
+A. list.size() - this is O(1) complexity because list internally maintains a count of its elements which just needs to be fetched.
+   list.stream().count() - this is O(n) complexity because count() requires iteration.
