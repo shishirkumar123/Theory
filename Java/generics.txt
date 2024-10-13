@@ -1,0 +1,6 @@
+Q. In the below declaration -
+   public static <T> Stream<T> concat(Stream<? extends T> a, Stream<? extends T> b)
+  what is the first <t> doing in the return type <T> Stream<T>?
+A. The first <T> before the return type (Stream<T>) in the method declaration is what 
+    we call the generic type parameter declaration. We need to declare generic 'T'
+    before using it. Without it the code won't compile.
