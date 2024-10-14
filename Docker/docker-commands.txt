@@ -20,6 +20,7 @@ docker images: List all Docker images on your system.
 docker pull [IMAGE_NAME]: Pull an image from a registry (e.g., Docker Hub).
 Example: docker pull nginx (Pulls the Nginx image from Docker Hub).
 docker build -t [IMAGE_NAME] .: Build a Docker image from a Dockerfile.
+       e,g docker build -t myapp:1.0. [-t for tagging, 'myapp' is image name, 1.0 is tag]
 docker rmi [IMAGE_ID]: Remove an image from your system.
 docker tag [IMAGE_ID] [NEW_IMAGE_NAME]: Tag an image with a new name.
 
