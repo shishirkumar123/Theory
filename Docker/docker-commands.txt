@@ -1,1 +1,46 @@
+1. Basic Docker Commands
+docker --version: Check the Docker version installed on your system.
+docker info: Display system-wide information, including the number of containers, images, etc.
+docker help: Get a list of all available Docker commands.
 
+2. Container Management
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]: Run a new container from an image.
+Example: docker run -d -p 8080:80 nginx (Runs Nginx container in detached mode).
+docker ps: List all running containers.
+docker ps -a: List all containers, including those that are stopped.
+docker stop [CONTAINER_ID]: Stop a running container.
+docker start [CONTAINER_ID]: Start a stopped container.
+docker restart [CONTAINER_ID]: Restart a container.
+docker rm [CONTAINER_ID]: Remove a stopped container.
+docker logs [CONTAINER_ID]: View logs of a container.
+docker exec -it [CONTAINER_ID] /bin/bash: Access a running container’s terminal interactively.
+
+3. Image Management
+docker images: List all Docker images on your system.
+docker pull [IMAGE_NAME]: Pull an image from a registry (e.g., Docker Hub).
+Example: docker pull nginx (Pulls the Nginx image from Docker Hub).
+docker build -t [IMAGE_NAME] .: Build a Docker image from a Dockerfile.
+docker rmi [IMAGE_ID]: Remove an image from your system.
+docker tag [IMAGE_ID] [NEW_IMAGE_NAME]: Tag an image with a new name.
+
+4. Networking
+docker network ls: List all Docker networks.
+docker network create [NETWORK_NAME]: Create a new network.
+docker network inspect [NETWORK_NAME]: Display details of a specific network.
+docker network connect [NETWORK_NAME] [CONTAINER_ID]: Connect a container to a network.
+
+5. Volumes and Data Management
+docker volume create [VOLUME_NAME]: Create a volume.
+docker volume ls: List all Docker volumes.
+docker volume rm [VOLUME_NAME]: Remove a Docker volume.
+docker run -v [VOLUME_NAME]:[CONTAINER_PATH] IMAGE: Mount a volume to a container.
+
+6. Docker Compose Commands
+docker-compose up: Start containers defined in docker-compose.yml.
+docker-compose down: Stop and remove containers, networks, volumes, and images created by docker-compose up.
+docker-compose logs: View logs of all services in a docker-compose application.
+
+7. Inspect and Debug
+docker inspect [CONTAINER_ID/IMAGE_NAME]: Display detailed information about a container or image (configuration, environment variables, etc.).
+docker top [CONTAINER_ID]: Show running processes inside a container.
+docker stats [CONTAINER_ID]: Display real-time resource usage statistics of a container.
