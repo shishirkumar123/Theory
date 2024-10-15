@@ -1,5 +1,10 @@
+For a simple Java 'Hello World" program
+===============================================
 create a jar file with simple helloWorld java class
-
+If using Intellij, run below command in terminal
+> mvn clean package
+It will create jar file in target folder. Run and test like below -
+>java -jar target/your-app-name.jar
 --------
 Create Dockerfile with below content
 
