@@ -1,0 +1,16 @@
+
+
+
+
+FROM openjdk:17-jdk-slim AS build                 # Use an official JDK as a parent image
+WORKDIR /app                                      # Set the working directory
+
+COPY pom.xml ./                                    # Copy the pom.xml and source code into the container
+COPY src ./src
+RUN apt-get update && apt-get install -y maven      # Build the application (use Maven)
+RUN mvn clean package -DskipTests
+
+FROM tomcat:9.0                                      # Use a Tomcat base image for the final container
+COPY --from=build /app/target/myapp.war /usr/local/tomcat/webapps/    # Copy the WAR file from the build stage to the Tomcat webapps directory
+EXPOSE 8080                                              # Expose the default port for Tomcat
+CMD ["catalina.sh", "run"]                              # Start Tomcat
