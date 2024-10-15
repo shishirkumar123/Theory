@@ -1,5 +1,7 @@
-
-
+confirm below - 
+Note: 1. Image id shows truncated value. Actual id is quite big
+	  2. Jar file contains only java class, no dependencies??
+	  3. jar size is 46 MB. image size is xYZ MB??
 
 
 FROM openjdk:17-jdk-slim AS build                 # Use an official JDK as a parent image
