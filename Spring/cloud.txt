@@ -240,7 +240,7 @@ Hystrix is a latency and fault tolerance library. Two important feature is -
 At Edge Service
 1. Ensure Hystrix dependency is proper in pom.xml
 2. At Application java - @EnableCircuitBreaker
-3. implement fallBack method with different name but exactly same singnature as original method. put fallback caode there.
+3. implement fallBack method with different name but exactly same singnature as original method. put fallback code there.
 4. Annotate the original method(endpoint) - @HystrixCommand(fallbackMethod="<fallBackMethodName>")
 
 
@@ -254,6 +254,8 @@ Circuit breaker ensures that call is not made to the main method at all but goes
 Visualize this by putting log statements in both main method (with exception thrown) and fallback method. 
 No extra setting is required. Just start calling main method repeatedly and see the log. Multiple calls can be made from
 postman or a client microservice with for loop. 
+
+@HystrixCommand vs @CircuitBreaker
 
 Alternative- Resilience4J #SpringBoot3 -https://www.youtube.com/watch?v=3-ChrD3Zosg
 
