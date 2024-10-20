@@ -255,6 +255,8 @@ Visualize this by putting log statements in both main method (with exception thr
 No extra setting is required. Just start calling main method repeatedly and see the log. Multiple calls can be made from
 postman or a client microservice with for loop. 
 
+Alternative- Resilience4J #SpringBoot3 -https://www.youtube.com/watch?v=3-ChrD3Zosg
+
 =====================================
 Messaging
 Spring cloud stream - is the way to describe messaging based services and then composing them outside the code. It uses 
@@ -318,6 +320,7 @@ At browser -
 1. Type the URL localhost: 8010/hystrix.html
 2. In the webpage, put localhost:<port>/hystrix.stream where port is where edge server is running.
 	[You can verify the stream url by directly putting it in the browser and see the output in the browser]
+
 
 
 Distributed tracing
