@@ -3,7 +3,9 @@ Executors and ExecutionService
  example:
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.submit(new MyCallable());
-        executorService.shutdown();
+        executorService.shutdown(); //shutdown is not killing or stopping a thread.
+                                    // It simply means executor service will not take any more request.
+//Calling executorService.submit after shutdown will result in RejectedExecutionException
 
 --------------
 Runnable vs Callable
