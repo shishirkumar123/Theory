@@ -34,9 +34,17 @@ Read the theory about the hieararchy:
 
 Management Groups - By default, 1 MG was there Tenant Root Group. It wasnt visible from anywhere. When I searched for MG, the MG page opened up, showing message start creating MG. I created 1st MG. Then I saw the hierarchy. This new MG was created the MG called Tenant Root Group. Max 10,000 MG in a single directory
 
-  - Subscriptions - By default, 1 Scubcription was created inside MG - Azure subscription 1.
-    -Resource Groups
-      -Resources
+1. Azure AD Tenant (Identity Management)
+    - Subscriptions - By default, 1 Scubcription was created inside MG - Azure subscription 1.
+                  - subscription type(offer) e.g FreeTrial, Pay-as-you-go, CSP (Cost service provider)
+      -Resource Groups
+                  - resource group type - vm, public ip addresses, n/w interface,  
+        -Resources
+2. Azure AD Tenant (Identity Management)
+    - Azure Devops Organisation
+ 	-Devops projects(Codes, Pipelines)
+           -Service connections -> azure Subscription Resources
+
 
 Microsoft Entra ID [Azure AD is now Microsoft Entra ID]- 
 Microsoft Entra ID is a cloud-based identity and access management service that your employees can use to access external resources. Example resources include Microsoft 365, the Azure portal, and thousands of other SaaS applications.
@@ -58,10 +66,11 @@ On entra.microsoft.com I see:
 Tenant: A tenant is a dedicated and isolated instance of the Azure Active Directory
 Directory: A directory is a container for objects such as users, groups, and applications, and is used to manage access to resources in Azure.
 
-Tenant and Directory has many to many relationship.
+Tenant and Directory are kind of same thing. Sometime also referred to as Account.
+Tenant id is unque globally.
 
 In Azure, a domain is used to verify ownership of a custom domain name and to create user names and email addresses for users in a tenant. 
 
-Tenant and Directory has many to many relationship.
+Tenant and Directory has many to many relationship????
 
 All subscriptions within a single management group must trust the same Entra ID tenant.
