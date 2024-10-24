@@ -20,6 +20,7 @@ docker exec -it [CONTAINER_ID] /bin/bash: Access a running container’s termina
 docker images: List all Docker images on your system.
 docker pull [IMAGE_NAME]: Pull an image from a registry (e.g., Docker Hub).
         Example: docker pull nginx (Pulls the Nginx image from Docker Hub).
+docker push [OPTIONS] NAME[:TAG]
 docker build -t [IMAGE_NAME] .: Build a Docker image from a Dockerfile.
         Example: docker build -t myapp:1.0. [-t for tagging, 'myapp' is image name, 1.0 is tag]
 docker rmi [IMAGE_ID]: Remove an image from your system.
