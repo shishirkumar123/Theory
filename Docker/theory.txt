@@ -71,14 +71,10 @@ Folder structure
 Dockerfile content -
 
 FROM node:13-alpine
-
 ENV dbuser=admin
 	db password=dfnlkl@1
-
 RUN mkdir -p /home/app 		----> any unix command can be run like this
-
 COPY .app /home/app
-
 CMD ["node", "/home/app/server.js"]
 -----------------
 
