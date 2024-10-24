@@ -19,3 +19,8 @@ STOPSIG           Specify the system call signal for exiting a container.
 USER	            Set user and group ID.
 VOLUME	          Create volume mounts.
 WORKDIR	          Change working directory.
+
+
+CMD vs ENTRYPOINT - Use either of them to specify start of the program.
+                  - When both are used, CMD provides arguments to the ENTRYPOINT command
+
