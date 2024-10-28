@@ -31,13 +31,18 @@ VPC cant be deleted till it has associated instance, associated NAT Gateway, Int
 Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
 
 ----
+Availability zone
+
+Interestig article:https://aws.plainenglish.io/you-have-misunderstood-aws-availability-zones-47cdea0a168a
+
+----
 Subnet
 
 For making a subnet public -
 	- Create an internet gateway and associate with subnet
 	- All instances(EC2 etc) should have public or elastic IP.
 	- Configure all NACL and SG rules.
-----	
+----
 Route table 
 	- Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
 Route table can be linked to internet gateway by 2 way-
