@@ -21,6 +21,24 @@ Security Group are firewall for EC2 instances.
 Ports
 	22 SSH, 21 FTP, 22 SFTP using SSH, 80 HTTP, 442 HTTPS, 3389 RDP 
 
+Public IP:
+	EC2 get a public IP assigned. But when you stop and start EC2, public IP changes.
+	If you create and elastic ip, attach to EC2, then stop/start wont change it.
+	
+
+Assignment
+1. Assign role to EC2 to acces S3, to read IAM users. 
+   Run aws iam list-users before and after attaching role and see the different.
+2. Setup Node to run react, tomcat to run springboot, database
+3. Run aws commands ( Note: cli already installed)
+	- aws iam list-users
+ 	- aws configure
+4. Create an elastic IP and attach to EC2.
+5. Create ENI and attach to EC2.
+6. Detaich ENI and attach to a different EC2.
+
+# Not a good idea to connect to other EC2 by keeping its keys in my current EC2. Rather access through role.
+
 Fargate
 ===========
 Fargate is a compute service that runs containers, abstracting the underlying infrastructure. 
