@@ -1,7 +1,25 @@
 EC2
 =============
 Select EC2 based on need. Below are options -
--compute optimized, memory optimized, GPU enabled, general purpose.
+	-compute optimized - good processor for batch process etc, 
+	- memory optimized - lots of RAM for Cache, RDBMS, Business Intelligence, 
+	- GPU enabled  
+	- general purpose e.g T2 micro - good for web server, code repository
+	- Storage - High frequency OLTP 
+	- Your own manually configured.
+While creating EC2
+	- Allow SSH to access, Allow HTTP is you are planning to run a web server
+	- Attach EBS if needed. Also select whether or not you want to delete EBS if EC2 is deleted.
+After creating EC2
+	- You can stop server when not using, to incure less bill.
+Security Group are firewall for EC2 instances.
+	I may allow my laptop to do SSH on my AWS a/c EC2, but no one else.
+	One SG can be a firewall to more than one EC2.
+	All incoming to EC2 blocked by default.
+	All outgoing from EC2 are authorized by defalt.
+	Does the EC2s of same SG allow each other by default?
+Ports
+	22 SSH, 21 FTP, 22 SFTP using SSH, 80 HTTP, 442 HTTPS, 3389 RDP 
 
 Fargate
 ===========
