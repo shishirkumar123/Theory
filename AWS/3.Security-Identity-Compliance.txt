@@ -66,7 +66,11 @@ Can configure two type
 	SAML
 	OpenId
 --------------
-	
+Guidelines:
+#. Using access keys attached to an IAM user instead of the root user improves security.
+#. Add MFA for root user - Enable multi-factor authentication (MFA) for the root user to improve security for this account.
+	(Infact now it is mandatory)
+# For EC2 - Port 22 (SSH) is currently open to all IPv4 addresses, indicated by 0.0.0.0/0 in the inbound rule in your security group. For increased security, consider restricting access to only the EC2 Instance Connect service IP addresses for your Region: 13.52.6.112/29
 
 Questions.
 1. How to change policies associated with group. Didn't find this option.
