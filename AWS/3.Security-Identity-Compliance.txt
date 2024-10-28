@@ -8,6 +8,10 @@ Users
 e.g user created arn:aws:iam::062286665809:user/shishir1/@petAL123
 What is the default user? What roles are associated with it?
 The default user is account owner. He/She can create more users and send invitations to those users. Account owner signs in using email/password. Other users(IAM users) need to provide account number of account owner, username provided by account owner and password.
+User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
+
+User may or may not belong to a group.
+User can belong to multiple groups.
 
 User type - 
 	Identity center user(access to console only). Identity center is at a region level.
@@ -17,6 +21,7 @@ Attributes for identity center user
 	User name
 	email - for password generation instruction
 	So many other optional attributes
+	You can create password policies and apply to user password.
     
     
 
@@ -24,27 +29,32 @@ Roles
 ---------
 When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with predefined policies. Are these roles getting associated with my default root users too?
 
-Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which need access to S3 bucket.
+Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which need access to S3 bucket. This way it is easier and right approach. Otherwise I may have to store access key for S3 in EC2 instance. Not a good practice.
 
 Groups
 --------
 Group have policies. 
-User Belong to Group. User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
+User may belong to Group.
 Groups created by different aws users. All users can see each others groups.
+Group only contains user. They can't contain other group.
 
 Billing is at global level. There is no region wise billing.
 
 Policies
 -----------
+Policies are set of permissions. 
+Certain policies are created by AWS which we cant edit. Other policies can be created by us with full control.
 There are good number of pre-existing policies. I created a new one and given it a random name. Below is JSON -
 		{
 		    "Version": "2012-10-17",
+		    "Id":"" 
 		    "Statement": [
 			{
 			    "Sid": "VisualEditor0",
 			    "Effect": "Allow",
 			    "Action": "apigateway:GET",
-			    "Resource": "*"
+			    "Resource": "*"   -- This can be more restrictive.
+					      -- e.g, in case of S3, Resource can be a certain bucket.
 			}
 		    ]
 		}
