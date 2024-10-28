@@ -1,0 +1,8 @@
+Load balancing.
+Running ReactJS on multi EC2. Put a load balancer in front.
+Advantage -
+  Spread load across multiple downstream
+  Expose a single point of access(DNS) to your application
+  Seemlessly handle the failure of downstream instances
+  Regular health checks.
+  High availability across zones,
