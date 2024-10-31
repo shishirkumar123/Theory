@@ -13,5 +13,5 @@ Architectures:
 
 Assignment
 1. Running ReactJS on multi EC2. Put a load balancer in front.
-2. Restrict HTTP request to EX2 only from load balancer.
+2. Restrict HTTP request to EC2 only from load balancer.
 3. Allow load balancer to accept HTTP request from anywhere.
