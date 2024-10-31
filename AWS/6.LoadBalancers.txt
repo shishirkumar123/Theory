@@ -1,8 +1,17 @@
 Load balancing.
-Running ReactJS on multi EC2. Put a load balancer in front.
 Advantage -
   Spread load across multiple downstream
   Expose a single point of access(DNS) to your application
   Seemlessly handle the failure of downstream instances
   Regular health checks.
-  High availability across zones,
+  High availability across zones.
+
+Architectures:
+1. Pblic ALB received all request. Public ALB sends request to private ALB. Private ALB distributes request to EC2. 
+  What is the advantage of having public/private ALB?
+
+
+Assignment
+1. Running ReactJS on multi EC2. Put a load balancer in front.
+2. Restrict HTTP request to EX2 only from load balancer.
+3. Allow load balancer to accept HTTP request from anywhere.
