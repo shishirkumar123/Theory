@@ -59,7 +59,7 @@ Future<Integer> future = executor.submit(c);
 ---------------------------
 
 CompletableFuture[supplyAsync... thenApply] - since Java 1.8
-If I have five futures generated after collable finished its task. How can I ensure futures sequence - use CompletableFuture
+If I have five futures generated after callable finished its task. How can I ensure futures sequence - use CompletableFuture
 
 
 public static class MySupplier implements Supplier<Integer> {
