@@ -89,6 +89,9 @@ public static class PlusOne implements Function<Integer, Integer> {
 public static void main(String[] args) throws Exception {
     ExecutorService exec = Executors.newSingleThreadExecutor();
     CompletableFuture<Integer> f = CompletableFuture.supplyAsync(new MySupplier(), exec);
+    //Note the executor as a param to supplyAsync in above line. So we can still use 
+    //different thread pool models (Single thread, cached thread etc.)
+
     System.out.println(f.isDone()); // False
     CompletableFuture<Integer> f2 = f.thenApply(new PlusOne());
     System.out.println(f2.get()); // Waits until the "calculation" is done, then prints 2
