@@ -99,12 +99,35 @@ public static void main(String[] args) throws Exception {
 
 
 ----------
-RxJava
+Reactive programming
 
-Much powerful, but hard to understand and debug.
+Much powerful, but hard to understand and debug. Not for simple, small projects. Benefit only shows 
+when size grows.
 
 Similarly to Futures, RxJava can be used to string together a bunch of synchronous or asynchronous actions to create a processing pipeline. 
 Unlike Futures, which are single-use, RxJava works on streams of zero or more items. Including never-ending streams with an infinite number of items. 
+
+Java 9 introduced class Flow. This class has Publisher, Subscriber, Subscription interfaces.
+(What kind of pattern is this with interfaces defined inside a class. Is it a way of
+grouping related interface? Though this feature exists wvwn before Java 2)
+It is kind of specification for reactive programming in Java. But nobody implemented; it is not that popular. Third party came up with their own set of libraries like ProjectReactor, RxJava. 
+
+Analogy: Iterator and observer patter.
+in iterator pattern, the consumer asks for the next element (Pulled by consumer)
+      myList.forEach(element -> System.out.println(element))
+but in observer pattern, when event occurs, is pushed to consumer.(Pushed to consumer)
+      clickChannel.addObserver(event ->System.out.println(event))
+
+The program almost looks same. That is the idea of reactive programming. Pull or Push(nn blocking i/o), your programming model should be the same.
+
+Reactive programming syntax:
+clickChannel
+    .filter(event -> event != null)
+    .subscribe(event ->System.out.println(event))
+
+
+If you're working within the Spring framework, Spring WebFlux (a module in Spring 5 and later) is built on top of Project Reactor, which means it uses Flux and Mono as its reactive types natively. However, outside of Spring, Project Reactor itself is standalone and can be used in any Java application for reactive programming.
+
 
 ------------
 CyclicBarrier vs CountdownLatch 
