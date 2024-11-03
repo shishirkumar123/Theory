@@ -144,3 +144,13 @@ into a mutable result container, and optionally perform a final transform on the
  // Partition students into passing and failing
  Map<Boolean, List<Student>> passingFailing = students.stream()
    .collect(Collectors.partitioningBy(s -> s.getGrade() >= PASS_THRESHOLD));
+
+-----------------
+Function - Takes input, does something , returns output
+Consumer - Takes input, does something, doesnt returns output
+Supplier - Doesn't take input, does something, returns output.
+
+My thoughts - I can draw analogy to CRUD operation -
+Create, Update, Delete are like consumers
+Find by id is like function
+Find All is like supplier
