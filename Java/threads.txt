@@ -136,8 +136,8 @@ Backpressure - If consumers/subscribers are slower then publisher, they can tell
 Mono and Flux:
 While a Flux can emit only one element, using Mono for single-value results provides clearer intent in code and offers performance advantages.
 
-Use Mono when you expect only one result or no result at all.
-Use Flux when you expect multiple items, even if sometimes it only produces one.
+Use Mono when you expect only one result or no result at all. e.g. findEmployeeById(3242)
+Use Flux when you expect multiple items, even if sometimes it only produces one. e.g getAllEmployee()
 
 ------------
 CyclicBarrier vs CountdownLatch 
