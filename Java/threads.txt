@@ -128,6 +128,11 @@ clickChannel
 
 If you're working within the Spring framework, Spring WebFlux (a module in Spring 5 and later) is built on top of Project Reactor, which means it uses Flux and Mono as its reactive types natively. However, outside of Spring, Project Reactor itself is standalone and can be used in any Java application for reactive programming.
 
+From flux to stream
+getFluxFromSomewhere.toStream().toList()
+
+Backpressure - If consumers/subscribers are slower then publisher, they can tell the publisher to slow down.
+
 
 ------------
 CyclicBarrier vs CountdownLatch 
