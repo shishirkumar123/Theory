@@ -353,3 +353,6 @@ Sampler<?> sampler(){
 -------------------
 Need to have zipkin installed - directly or through docker and see the zipking dashboard. 
 It will show end to end journey of a request.
+===========================
+Resilience4J: https://www.youtube.com/watch?v=3-ChrD3Zosg&t=781s
+For implementing rate limitors, retry logic, circuit brakers, bulk heads
