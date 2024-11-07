@@ -54,7 +54,34 @@ Styling react component
 3. CSS Module
 4. CSS in JS Library
 
+----------
+Why do we need portal(ReactDOM.createPortal)
+One of the use case: having to deal with Parent component css when the chikd component is a modal, a popup
+or a tool tip.
+https://www.youtube.com/watch?v=HpHLa-5Wdys&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=31
+
 --------------
+Progressive Web App(PWA)
+
+---------------
+public(folder)
+    index.html - main container
+    manifest.json - For a Progressive Web App (PWA), the manifest.json defines how your app should appear when installed on a user's device or added to the home screen. It provides properties like the app's name, icon, background color, theme color, and more.
+When the app is installed, it appears like a native app, with a proper icon, title, and behavior that matches what you’d expect from a regular mobile or desktop app.
+
+A Progressive Web App (PWA) is a type of web application that aims to deliver a native app-like experience using standard web technologies (HTML, CSS, JavaScript). PWAs combine the best features of both web and mobile applications, offering a fast, reliable, and engaging user experience, regardless of network conditions or device type.
+
+------------------------
+
+Error boundry - React components that catch JavaScript error in their child component tree, log those
+errors, and display a fallback UI.
+
+They implements either one or both of te lifecycle methods 
+1. getDerivedStateFromError - used to render a fallbackUI after error
+2. componentDidCatch - log the error info.
+becomes an error boundry
+
+
 export default explanation -
 
 
