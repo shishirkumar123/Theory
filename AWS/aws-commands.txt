@@ -1,0 +1,3 @@
+Try running commands on cloudshell. You can run unix commands also like pwd, ls, vi.
+List of commands:
+aws iam list-users -- returns array of users with their details. Returns empty array if no permission.
