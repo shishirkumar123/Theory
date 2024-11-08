@@ -1,3 +1,7 @@
 Try running commands on cloudshell. You can run unix commands also like pwd, ls, vi.
 List of commands:
-aws iam list-users -- returns array of users with their details. Returns empty array if no permission.
+
+aws configure list -- shows which profile and region are currently active, helping ensure you're pointing to the right account.
+aws iam list-users -- returns array of users with their details. Returns empty array if 
+                1. no permission to call this 
+                2. no iam users. (Note that root user is not iam user.
