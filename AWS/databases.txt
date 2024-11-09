@@ -33,9 +33,15 @@ Customization: Configure performance settings, enable custom extensions, or use 
   supported in managed services.
 Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
 
-# Amazon Quantum Ledger Database (QLDB)  - Blockchain
+==================================
+# Amazon Quantum Ledger Database (QLDB)  
 Immutable, Cryptographically Verifiable Ledger: QLDB keeps a history of all changes made to your data, ensuring a transparent audit trail. Data in QLDB is not editable, making it ideal for scenarios where data integrity and a permanent record are essential.
 
+QLDB vs Blockchain:
+Unlike decentralized blockchain solutions, QLDB is centrally managed and designed for applications where you trust a single entity to manage the ledger.
+
+QLDB vs RDBMS:
+While relational databases are mutable and suitable for typical transactional workloads, QLDB is optimized for scenarios requiring immutable data with historical tracking. It also handles some queries differently, focusing on the audit trail of data rather than transactional updates.
 
 Use cases
 ====================
