@@ -58,3 +58,6 @@ EFS: $0.3/Month
 ===========================
 Question
 1. Why is zonal replication of S3 bucketnot made possible.
+====================
+Assignment
+Create bucket and add objects(files). Restrict few objects access to a IAM user.
