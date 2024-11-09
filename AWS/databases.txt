@@ -24,11 +24,6 @@ Advantages: Ideal if you need specific customizations that RDS doesn’t allow o
 Alternative to Oracle or SQL Server: Aurora is a high-performance, cost-effective database offered 
   by AWS with full MySQL and PostgreSQL compatibility, designed as a managed, scalable alternative
   to commercial databases.
-Aurora is typically more expensive than RDS due to these advanced features. However, if you need high 
-availability and scalability, Aurora’s architecture may offset these costs by reducing downtime and 
-handling high-load scenarios more efficiently.
-Choose RDS for PostgreSQL if you need traditional, cost-effective PostgreSQL capabilities with minimal 
-custom requirements and moderate performance and scalability.
 
 
 4.  PostgreSQL or MySQL directly on an EC2 instance in AWS.
@@ -38,6 +33,16 @@ Complete Control: You have unrestricted root access to both the operating system
 Customization: Configure performance settings, enable custom extensions, or use tools that are not 
   supported in managed services.
 Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
+
+==================================
+RDS vs Aurora
+
+Aurora is typically more expensive than RDS due to these advanced features. However, if you need high 
+availability and scalability, Aurora’s architecture may offset these costs by reducing downtime and 
+handling high-load scenarios more efficiently.
+Choose RDS for PostgreSQL if you need traditional, cost-effective PostgreSQL capabilities with minimal 
+custom requirements and moderate performance and scalability.
+For a serverless architecture on AWS, Amazon Aurora is generally the better choice over RDS. 
 
 ==================================
 # Amazon Quantum Ledger Database (QLDB)  
