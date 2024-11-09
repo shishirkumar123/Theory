@@ -1,0 +1,32 @@
+Amazon RDS (Relational Database Service) for Oracle or SQL Server
+==================
+Managed Service: AWS RDS offers managed versions of both Oracle and SQL Server, 
+taking care of administrative tasks like backups, patching, and scaling.  
+
+Advantages: Automatic failover, automated backups, and maintenance provided by 
+AWS, with minimal management from your end.
+
+Limitations: Some customizations are restricted since AWS handles the infrastructure.
+
+2. Amazon EC2 with Oracle or SQL Server Installed
+==================================================
+Full Control: Running your database on an EC2 instance gives you complete control 
+  over the environment, configuration, and operating system.
+Licensing: You will need to use your own licenses (BYOL), though you have the 
+  freedom to customize the instance entirely.
+High Availability: You’ll need to set up and manage backups, replication, and high 
+  availability. Using services like EC2 Auto Recovery or Elastic Load Balancing can help manage uptime.
+Advantages: Ideal if you need specific customizations that RDS doesn’t allow or if 
+  you require full DBA access.
+
+3. Amazon Aurora with PostgreSQL or MySQL Compatibility (For Migration)
+Alternative to Oracle or SQL Server: Aurora is a high-performance, cost-effective database offered 
+  by AWS with full MySQL and PostgreSQL compatibility, designed as a managed, scalable alternative
+  to commercial databases.
+
+4.  PostgreSQL or MySQL directly on an EC2 instance in AWS.
+  Benefits of Using EC2 for PostgreSQL or MySQL
+Complete Control: You have unrestricted root access to both the operating system and the database.
+Customization: Configure performance settings, enable custom extensions, or use tools that are not 
+  supported in managed services.
+Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
