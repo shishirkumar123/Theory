@@ -20,13 +20,26 @@ Advantages: Ideal if you need specific customizations that RDS doesn’t allow o
   you require full DBA access.
 
 3. Amazon Aurora with PostgreSQL or MySQL Compatibility (For Migration)
+===================================================
 Alternative to Oracle or SQL Server: Aurora is a high-performance, cost-effective database offered 
   by AWS with full MySQL and PostgreSQL compatibility, designed as a managed, scalable alternative
   to commercial databases.
 
 4.  PostgreSQL or MySQL directly on an EC2 instance in AWS.
+===================================================
   Benefits of Using EC2 for PostgreSQL or MySQL
 Complete Control: You have unrestricted root access to both the operating system and the database.
 Customization: Configure performance settings, enable custom extensions, or use tools that are not 
   supported in managed services.
 Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
+
+
+Use cases
+====================
+# Use RDS if you need a specific database engine other than MySQL/PostgreSQL, have moderate performance needs, and want a straightforward managed database solution.
+# Use Aurora if you need high performance, automatic scaling, or are dealing with large datasets and read-heavy workloads, especially if you’re using MySQL or PostgreSQL.
+# What to choose if I have to take daily dump of structured data from some source. Data should be added incrementally?
+For a workflow where you’re incrementally adding daily structured data from a source, Amazon RDS or Amazon Aurora could work depending on performance needs, but Amazon Redshift or Amazon S3 with AWS Glue may be better suited for handling daily, incremental data ingestion:
+How It Works: Amazon Redshift is optimized for handling large, structured datasets and is ideal for analytics. You could load daily data dumps to Redshift in an incremental manner by creating an ETL process that detects new records.
+Pros: Scalable for large datasets, supports complex queries, and optimized for analytical use cases.
+Cons: More complex setup if real-time processing or frequent data changes are needed.
