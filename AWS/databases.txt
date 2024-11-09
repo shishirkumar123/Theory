@@ -35,16 +35,6 @@ Customization: Configure performance settings, enable custom extensions, or use 
 Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
 
 ==================================
-RDS vs Aurora
-
-Aurora is typically more expensive than RDS due to these advanced features. However, if you need high 
-availability and scalability, Aurora’s architecture may offset these costs by reducing downtime and 
-handling high-load scenarios more efficiently.
-Choose RDS for PostgreSQL if you need traditional, cost-effective PostgreSQL capabilities with minimal 
-custom requirements and moderate performance and scalability.
-For a serverless architecture on AWS, Amazon Aurora is generally the better choice over RDS. 
-
-==================================
 # Amazon Quantum Ledger Database (QLDB)  
 Immutable, Cryptographically Verifiable Ledger: QLDB keeps a history of all changes made to your data, ensuring a transparent audit trail. Data in QLDB is not editable, making it ideal for scenarios where data integrity and a permanent record are essential.
 
@@ -57,9 +47,19 @@ While relational databases are mutable and suitable for typical transactional wo
 Use cases
 ====================
 # Use RDS if you need a specific database engine other than MySQL/PostgreSQL, have moderate performance needs, and want a straightforward managed database solution.
+
 # Use Aurora if you need high performance, automatic scaling, or are dealing with large datasets and read-heavy workloads, especially if you’re using MySQL or PostgreSQL.
+
 # What to choose if I have to take daily dump of structured data from some source. Data should be added incrementally?
 For a workflow where you’re incrementally adding daily structured data from a source, Amazon RDS or Amazon Aurora could work depending on performance needs, but Amazon Redshift or Amazon S3 with AWS Glue may be better suited for handling daily, incremental data ingestion:
 How It Works: Amazon Redshift is optimized for handling large, structured datasets and is ideal for analytics. You could load daily data dumps to Redshift in an incremental manner by creating an ETL process that detects new records.
 Pros: Scalable for large datasets, supports complex queries, and optimized for analytical use cases.
 Cons: More complex setup if real-time processing or frequent data changes are needed.
+
+# Aurora is typically more expensive than RDS due to these advanced features. However, if you need high 
+availability and scalability, Aurora’s architecture may offset these costs by reducing downtime and 
+handling high-load scenarios more efficiently.
+
+# Choose RDS for PostgreSQL if you need traditional, cost-effective PostgreSQL capabilities with minimal 
+custom requirements and moderate performance and scalability.
+For a serverless architecture on AWS, Amazon Aurora is generally the better choice over RDS. 
