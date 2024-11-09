@@ -63,3 +63,10 @@ handling high-load scenarios more efficiently.
 # Choose RDS for PostgreSQL if you need traditional, cost-effective PostgreSQL capabilities with minimal 
 custom requirements and moderate performance and scalability.
 For a serverless architecture on AWS, Amazon Aurora is generally the better choice over RDS. 
+
+# Replication
+Aurora: Uses distributed, shared storage across multiple Availability Zones (AZs), resulting in faster replication with minimal lag.
+Aurora: Supports up to 15 read replicas per cluster , RDS supports 5.
+Read replicas in Aurora are fully capable of automatic failover. In RDS it is manual.
+
+================================
