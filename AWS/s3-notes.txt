@@ -61,3 +61,4 @@ Question
 ====================
 Assignment
 Create bucket and add objects(files). Restrict few objects access to a IAM user.
+Add policy to S3 bucket or folder or object for auto deletion after 30 days.
