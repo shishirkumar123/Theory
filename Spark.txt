@@ -1,0 +1,12 @@
+RDD, DataSet, DataFrame
+========================
+RDD: Resilient Distribute ...
+    Immutable
+    Fault tolerent, typesafe.
+    Developer needs to take caer of optimization
+    Not at good as DataSet in performance
+    Not memory efficient
+    Joining is not easy
+    Connection with Hive isn't easy
+
+Dataframe
