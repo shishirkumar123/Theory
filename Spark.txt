@@ -21,12 +21,20 @@ DataSet
     Type Safe, Autooptimized, Better performance.
     More Memory efficient.
     Encoders - New way of serialize/deserialize.
-======================
+=======================
+Partition vs Bucketing
+    Done during write operation for optimization during read. Done by separating the data on some basis then process parallely.
+    Use Case: Huge dataset has three columns - name, age, location.
+    Solution: Do partitioning by location, then for each partition, do the bucketing by age.
+    So total number of files = Number of partition * number of buckets.
+    inside the bucket, keep the file format as parquet/OCR to further optimize the read operation.
 
-Repartition and Coalesce
+=======================
+Repartition vs Coalesce
     When partition size is uneven, some tasks will finish sooner than the otherSo overall time taken will be high
     Repartition and Coalesce rearrage the partition size.
     Repartition do it across machines (too much shuffling), coalesce do it within machine. So coalesce is faster.
+
 =======================
 
 Choice of language
