@@ -10,3 +10,27 @@ RDD: Resilient Distribute ...
     Connection with Hive isn't easy
 
 Dataframe
+    Table abstraction at the top of RDD.
+    Inbuild Hive connection
+    Auto optimization using Catalist Optimizer
+    Performance is better because an execution plan is created before running.
+    Not as good as DataSet
+    Not type Safe(to achieve optimization)
+
+DataSet
+    Type Safe, Autooptimized, Better performance.
+    More Memory efficient.
+    Encoders - New way of serialize/deserialize.
+======================
+
+Repartition and Coalesce
+    When partition size is uneven, some tasks will finish sooner than the otherSo overall time taken will be high
+    Repartition and Coalesce rearrage the partition size.
+    Repartition do it across machines (too much shuffling), coalesce do it within machine. So coalesce is faster.
+=======================
+
+Choice of language
+    Scala: Better enterprise acceptance because of familiarity with Java, Type safe, UDFs are better in performance.
+    Python: Easier, better ML library(Pandas, Tensorflow, Scifi), visualization library is better. Ecosystem has more contributer.
+
+    
