@@ -39,7 +39,7 @@ Caculating number of buckets
 In HDFS, default size of block is 128 MB. 
 So no. of buckets = Size of data in mb/128
 
-
+Prefer bucketing over partitioning specially to avoid so many small files.
 =======================
 Repartition vs Coalesce
     When partition size is uneven, some tasks will finish sooner than the otherSo overall time taken will be high
