@@ -29,9 +29,16 @@ Partition vs Bucketing
     So total number of files = Number of partition * number of buckets.
     inside the bucket, keep the file format as parquet/OCR to further optimize the read operation.
 
-Bicket in Spark vs Hive:
+Bucket in Spark vs Hive:
+-------------------------
 Hive will shuffle the data during Reduce phase. (Number of reducers = number of buckets.
 Spark doesn't use reduce phase. Everything is done in map. No shuffling.
+
+Caculating number of buckets
+------------------------------
+In HDFS, default size of block is 128 MB. 
+So no. of buckets = Size of data in mb/128
+
 
 =======================
 Repartition vs Coalesce
