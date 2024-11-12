@@ -1,7 +1,15 @@
-Once AWS account is created, the account id has root access. By default mutilple regions are assigned to the account. All active by default. 
+Account
+----------
+Once AWS account is created, the account id has root access. By default mutilple regions are assigned 
+to the account. All active by default. 
 	Its Better to deactivate the regions that you wont be using. 
 	Its better to create a user with limited access and use this new user most of the time.
 	Enabling a region is free, but your users might create or use resources that result in AWS fees.
+
+Organizational units
+---------------------
+Organizational units (OUs) enable you to group several accounts together and administer them as a single 
+unit instead of one at a time.
 
 Users
 ---------
@@ -59,7 +67,10 @@ There are good number of pre-existing policies. I created a new one and given it
 		    ]
 		}
 Policies can be attached to group, role or directly to the user.
-
+--------------
+Permission boundaries
+A permission boundary is an advanced IAM feature that acts as an upper limit, or boundary, for the permissions of a user or role.
+Example: Even if a user has an IAM policy allowing full access to S3, a permission boundary restricting them to "read-only" for S3 will limit them to that boundary.
 --------------
 Identity Provider configuration.
 Can configure two type
@@ -75,5 +86,5 @@ Guidelines:
 Questions.
 1. How to change policies associated with group. Didn't find this option.
 A. In the list of group, click on the group name
-2. Can an account owner delete an EC2 instance which is created by one of the user? 
+2. Can an account owner terminate an EC2 instance which is created by one of the user? 
 A. Yes.
