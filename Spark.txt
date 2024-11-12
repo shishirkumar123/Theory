@@ -29,6 +29,10 @@ Partition vs Bucketing
     So total number of files = Number of partition * number of buckets.
     inside the bucket, keep the file format as parquet/OCR to further optimize the read operation.
 
+Bicket in Spark vs Hive:
+Hive will shuffle the data during Reduce phase. (Number of reducers = number of buckets.
+Spark doesn't use reduce phase. Everything is done in map. No shuffling.
+
 =======================
 Repartition vs Coalesce
     When partition size is uneven, some tasks will finish sooner than the otherSo overall time taken will be high
