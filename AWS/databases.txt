@@ -34,6 +34,18 @@ Customization: Configure performance settings, enable custom extensions, or use 
   supported in managed services.
 Flexibility: Adjust the storage, memory, and compute capacity without limitations from a managed platform.
 
+# DynamoDB
+=============
+Serverless, multiAZ, DAX cluster for read cache, export/import S3.
+Fetch data: Query vs Scan  
+----------------
+Query - Search by primary key, faster
+Scan - Search by index, slower(goes through the entire table) 
+
+Export Data: Full export vs Incremental export
+Full export: Export the table data in it's current state, or from any specific point up to 35 days ago.
+Incremental export: Export any table data that's changed within a specific time period
+
 ==================================
 # Amazon Quantum Ledger Database (QLDB)  
 Immutable, Cryptographically Verifiable Ledger: QLDB keeps a history of all changes made to your data, ensuring a transparent audit trail. Data in QLDB is not editable, making it ideal for scenarios where data integrity and a permanent record are essential.
