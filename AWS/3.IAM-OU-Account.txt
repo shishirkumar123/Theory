@@ -38,9 +38,12 @@ Attributes for identity center user
 
 Roles
 ---------
-When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are associated with predefined policies. Are these roles getting associated with my default root users too?
+When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are
+associated with predefined policies. Are these roles getting associated with my default root users too?
 
 Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which need access to S3 bucket. This way it is easier and right approach. Otherwise I may have to store access key for S3 in EC2 instance. Not a good practice.
+
+When a user assumes a role in AWS IAM, what is the maximum session duration they can request? 12 hours
 
 Groups
 --------
@@ -70,10 +73,20 @@ There are good number of pre-existing policies. I created a new one and given it
 		    ]
 		}
 Policies can be attached to group, role or directly to the user.
+IAM Session Policies: They allow for setting temporary, additional restrictions on session permissions.
+
 --------------
 Permission boundaries
 A permission boundary is an advanced IAM feature that acts as an upper limit, or boundary, for the permissions of a user or role.
 Example: Even if a user has an IAM policy allowing full access to S3, a permission boundary restricting them to "read-only" for S3 will limit them to that boundary.
+
+Q. Which IAM entity is not allowed to have a permission boundary attached?
+
+A. IAM User
+B. IAM Group
+C. IAM Role
+D. All of the above can have permission boundaries attached.
+Answer: B. IAM Group
 --------------
 Identity Provider configuration.
 Can configure two type
@@ -91,3 +104,5 @@ Questions.
 A. In the list of group, click on the group name
 2. Can an account owner terminate an EC2 instance which is created by one of the user? 
 A. Yes.
+
+Service Control Policy : 
