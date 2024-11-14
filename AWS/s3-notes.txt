@@ -9,7 +9,16 @@ Glacier - long term
 [Note - If you provision a 100-GB EBS volume for a month, but only store 1 GB of data on that volume, you are still billed for 100 GB/m of EBS storage.]
 
 Create Bucket, then put objects in it. Object can be image, pdf anything.
-Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is infrequently used by using storage like S3 infrequent, glacier, zone IA. else use standard frequent, standard reduced redundancy - like pdf books in library  
+Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is
+infrequently used by using storage like 
+	S3 infrequent, 
+	glacier, 
+	zone IA. 
+else use 
+	standard frequent, 
+	standard reduced redundancy - like pdf books in library 
+
+
 
 Accessing S3 data
 ---------------
@@ -66,8 +75,17 @@ B. Resource-based policy
 C. Organization policy
 D. SCP (Service Control Policy)
 
-
 Answer: A. Identity-based policy
+
+# Default data consistency model for Amazon S3: mazon S3 offers strong read-after-write consistency for new objects. This means that immediately after a write request for a new object, you can retrieve it with a consistent read.
+# Enable 'Object Lock' to prevent accidental deletion of objects
+# Amazon S3 supports SSE-S3, SSE-KMS, and client-side encryption for encrypting data in transit and at rest
+#  maximum individual object size that can be stored in Amazon S3: 5TB
+# Amazon S3 achieves high availability by automatically replicating data across multiple availability zones within a region.
+
+
+
+
 ====================
 Assignment
 Create bucket and add objects(files). Restrict few objects access to a IAM user.
