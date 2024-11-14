@@ -58,7 +58,16 @@ EFS: $0.3/Month
 
 ===========================
 Question
-1. Why is zonal replication of S3 bucketnot made possible.
+1. Why is zonal replication of S3 bucket not made possible.
+2. Which type of IAM policy would you use to grant access to a specific service action, like S3 bucket read access?
+
+A. Identity-based policy
+B. Resource-based policy
+C. Organization policy
+D. SCP (Service Control Policy)
+
+
+Answer: A. Identity-based policy
 ====================
 Assignment
 Create bucket and add objects(files). Restrict few objects access to a IAM user.
