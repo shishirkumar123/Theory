@@ -32,7 +32,7 @@ Data encryption at rest and transmission
 	Client side for rest
 	Server side for in motion
 
-Versioning - Unintentional edits can be rolled back
+Versioning - Unintentional edits can be rolled back. Need to explicitly enable it.
 
 Cross-Region Replication
 	Pre-requisite
@@ -44,7 +44,8 @@ Transfer Acceleration
 	e.g, 5 terrabyte to be moved from mumbai to oregon use cloud front
 	
 Q. How is S3 associated in VPC? Doesn't it need compute like EC2 to sit on?
-A. S3 is a global service that is accessed over the internet, and it doesn't reside inside a VPC.
+A. S3 is a global service that is accessed over the internet, and it doesn't reside inside a VPC. By default,S3 buckets are region-specific. But you can do cross-region replication.
+
 S3 is a fully managed object storage service offered by AWS. It doesn't require compute resources like EC2 instances to operate. AWS manages the infrastructure that S3 runs on.
 --------
 1 GB to store in US-East-1: (Updated at 2016.dec.20)
