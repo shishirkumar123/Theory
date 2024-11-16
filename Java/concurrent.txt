@@ -1,0 +1,40 @@
+Locks
+=========
+Locks (Lock lock = new java.util.concurrent.locks.ReentrantLock();)
+
+The Java Lock interface represents a concurrent lock which can make sure only one
+thread at a time can lock the lock, perform its critical logic atomically, and unlock
+the lock again. A Java Lock is similar to a Java Synchronized block, but is more
+flexible and has more features.
+ 
+A Java Lock can be reentrant, meaning the same thread can lock the Lock more than one
+time. The Lock must then be unlocked the same number of times before it is fully unlocked
+for other threads.
+ 
+A Java Lock can guarantee fairness among threads waiting to lock the Lock, meaning the
+threads will be guaranteed to be allowed to lock the Lock in the same sequence the threads
+called the Lock.lock() method. This prevents the situation of starvation, where a waiting
+thread is never allowed to lock the Lock because other threads keep "passing" it in the
+waiting queue.
+
+Locks offer finer control over the locking mechanism. For instance, Lock allows you to acquire 
+the lock with methods like tryLock(), which lets you attempt to acquire the lock and act based
+on its availability (e.g., proceed without waiting or handle the case if the lock isn’t immediately
+available). With synchronized, if a lock is unavailable, the thread will simply wait until it can 
+acquire it.
+
+======================
+  volatile
+  In Java, the volatile keyword is used to ensure that a variable's value is always read from main 
+memory and not from a thread’s local cache. 
+
+=====================
+Atomic
+Java provides atomic classes as part of the java.util.concurrent.atomic package, which offer a way 
+to achieve better synchronization in multi-threaded environments. These classes use compare-and-swap 
+(CAS) operations to manage atomic updates efficiently without locking, making them faster and less
+resource-intensive than traditional synchronization mechanisms like synchronized blocks or Lock objects.
+
+  AtomicInteger counter = new AtomicInteger(0);
+counter.incrementAndGet(); // Atomically increments and returns the updated value
+counter.addAndGet(5);  
