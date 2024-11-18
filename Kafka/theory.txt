@@ -34,7 +34,7 @@ Q3. How does consumer decide from which replication to read? Leader's copy?
 ======================
 Theory
 --------
-Kafka Server = Kafka Broker
+Kafka Server = Kafka Broker. Ideally 1 brocker on 1 m/c, but technically possible to have n broker(with different port) on 1 m/c
 Kafka Cluster - Multiple Kafka Servers co-ordinates through Zookeeper.
 Topic can be divided into multiple Partition
 Each Partition can exist on different machine.
@@ -48,8 +48,12 @@ But if I have one brocker and I need 2 partition, both partition will reside on 
 Replication factor is associated with Topic.
 For a given Topic, if replication factor is say 3, then one broker is nominated a leader for each partition. Only leader talks to Producer and Consumer for that Topic and sends acknowledgement to producer. 
 Leader maintains first copy of replication, followers maintain rest.
-Is it possible that I have 3 partitions on 3 brockers... partition 1 leader is broker 2, but partition 2 leader is broker 3?
-
+Q. Is it possible that I have 3 partitions on 3 brockers... partition 1 leader is broker 2, but partition 2 leader is broker 3?
+A. Yes.
+Q. In other words, leader is at partition level or topic level?
+A. partition level.
+Use command kafka-topic describe to see these details. It shows leader of each partition. It also shows replica ids and ISR ids.
+(ISR - In Sync Replicas)
 
 Sending message requires properties - bootstrap.servers, serializer(to convert object into byte stream)
 3 approach for sending - fire and forget, wait till acknowledgement(Future.get), async.
@@ -87,6 +91,7 @@ Common Configurations
 broker.id - Unique identifier of broker.
 port - Port on which broker runs.
 log.dirs - the path where logs of broker will be written.
+
 zookeeper.connect - using this broker knows where is zookeeper running.
 delete.topic.enable
 autocreate.topic.enable
