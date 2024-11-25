@@ -11,7 +11,8 @@ Install docker on ubuntu 16.04
 >docker version
 Warning : docker group grants privileges equivalent to the root - https://docs.docker.com/install/linux/linux-postinstall/. So do the below-
 >sudo groupadd docker ... check rest of the solution on website
->docker run busybox echo hello
+>docker run busybox echo hello   -- when i run this command, then i run >docker ps, I dont see any container.
+				-- Where is the container running if not in my machine?
 >docker run -it ubuntu bash(it for interactive)
 this will take time, once done we will be inside ubuntu container. run below commands to make this ubuntu container more useful-
 >apt-get update
@@ -109,3 +110,4 @@ docker run my-app1.0
 # docker tag <image-name>
 =========================================================================
 ECR - Docker Registry at AWS
+ACR - Azure Cloud Registry
