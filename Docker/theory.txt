@@ -57,26 +57,7 @@ service:
 		volumes:
 			- mongo-data:/data/db  -->path inside the container
 
----
-# Create Dockerfile
-Folder structure
-	app
-		-images <folder>
-		-index.html 
-		-nodes_modules
-		-package.json
-		-package_lock.json
-		-server.js
-	Dockerfile
--------------
-Dockerfile content -
 
-FROM node:13-alpine
-ENV dbuser=admin
-	db password=dfnlkl@1
-RUN mkdir -p /home/app 		----> any unix command can be run like this
-COPY .app /home/app
-CMD ["node", "/home/app/server.js"]
 -----------------
 
 # Commited the App including Dockerfile to git
