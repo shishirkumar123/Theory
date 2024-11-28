@@ -28,7 +28,12 @@ Note that partition is not specified during publishing. Once a producer start pu
 [Observation - For all the message that I published, one message got occupied in one offset] 
 
 Q1. What will happen if you have only one broker, but you are trying to create topic with replication factor 3?
+A1.org.apache.kafka.common.errors.InvalidReplicationFactorException: Replication factor: 3 larger than available brokers: 1.
 Q2. How does Kafka ensure that the message is consumed only once?
+A2. By setting appropriate levels of Delivery Guarantees-
+	At-Least-Once Delivery (default)
+	At-Most-Once Delivery
+	Exactly-Once Semantics (EOS)
 Q3. How does consumer decide from which replication to read? Leader's copy?
 
 ======================
