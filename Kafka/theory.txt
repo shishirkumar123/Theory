@@ -120,6 +120,9 @@ producer.send(record, new Callback() {
 });
 
 
+In the record which is send, there is a key parameter. The key is a powerful feature in Kafka that 
+allows you to control partitioning, ensure message ordering, and enable efficient data grouping
+(e.g., by user, account, or region) for processing.
 
 ===================================================================================
 Serialization - Use default or Custom. When message object changes, need to update custom serializer accordingly. 
