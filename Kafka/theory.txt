@@ -81,10 +81,47 @@ Q. In other words, leader is at partition level or topic level?
 A. partition level.
 Use command kafka-topic describe to see these details. It shows leader of each partition. It also shows replica ids and ISR ids.
 (ISR - In Sync Replicas)
-
 Sending message requires properties - bootstrap.servers, serializer(to convert object into byte stream)
+===================================================================================
 3 approach for sending - fire and forget, wait till acknowledgement(Future.get), async.
+-------
+Fire and forget - Useful when low latency/high throughput is crucial, and the application can tolerate potential data loss.
+ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
+producer.send(record);  // No callback or acknowledgement, Fire and Forget
+--------
+Wait till acknowledgement(Future.get) - producer can wait for the acknowledgment by calling Future.get(), which blocks 
+until the message is successfully written to the partition (either leader or replicated) or a failure occurs.
+ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
+Future<RecordMetadata> future = producer.send(record);
+try {
+    RecordMetadata metadata = future.get();  // Wait for acknowledgement
+    System.out.println("Message sent to partition " + metadata.partition());
+} catch (Exception e) {
+    e.printStackTrace();
+}
+--------
+async - The producer sends a message to the Kafka broker.
+A callback function is invoked once the broker acknowledges the message or if an error occurs.
+This allows the producer to continue sending other messages without waiting for the response, 
+but still handle success/failure asynchronously.
 
+ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
+producer.send(record, new Callback() {
+    @Override
+    public void onCompletion(RecordMetadata metadata, Exception exception) {
+        if (exception != null) {
+            // Handle failure (e.g., log or retry)
+            exception.printStackTrace();
+        } else {
+            // Handle success (e.g., log metadata)
+            System.out.println("Message sent to partition " + metadata.partition());
+        }
+    }
+});
+
+
+
+===================================================================================
 Serialization - Use default or Custom. When message object changes, need to update custom serializer accordingly. 
 	But then old message cant be read with new Serializer. Avro helps in these situations.
 
