@@ -1,3 +1,11 @@
+Kafka Architecture
+=====================
+Kafka Producer, Broker, Consumer are designed to run on different JVMs (though technically they can run of same m/c)
+All of them can be scaled horizontally.
+They communicate using Jafka binary protocol over TCP. This protocol allows for compression of messages (e.g., GZIP, Snappy), further reducing the amount of data transmitted over the network.
+Kafka’s efficiency stems from its event-driven architecture and reliance on well-optimized loops to handle network I/O, log management, and replication
+Kafka uses asynchronous I/O (via Java NIO) for efficient communication between clients and brokers.
+
 Running console based Kafka 
 ===========================
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
@@ -35,6 +43,7 @@ A2. By setting appropriate levels of Delivery Guarantees-
 	At-Most-Once Delivery
 	Exactly-Once Semantics (EOS)
 Q3. How does consumer decide from which replication to read? Leader's copy?
+A3. Yes. Consumers and producers interact with leader only.
 
 ======================
 Theory
@@ -44,9 +53,22 @@ Kafka Cluster - Multiple Kafka Servers co-ordinates through Zookeeper.
 Topic can be divided into multiple Partition
 Each Partition can exist on different machine.
 A partition cant be divided further into multiple machine. -- I dont think. Need verification.
-Each Partition has offsets. How big is one offset? Offset number is not globally unique, but unique in partition.
+Each Partition has offsets. 
+Q. How big is one offset?
+A. Kafka allows individual messages to be up to 1 MB by default. You can change settings-
+	At broker: message.max.bytes=<desired size in bytes>
+	At producer side: max.request.size=<desired size in bytes>
+Compression and batching can effectively increase the amount of data associated with each offset.
+Offset number is not globally unique, but unique in partition.
 So, to locate a meesage i need to know topic, partition number, offset number.
-No of partition = no of consumers in a consumer group. CG can't be more- to avoid duple read. But can be less i guess.
+
+Q. what will happen of producer sent a message whose size is bigger that what 1 offset can take?
+A. org.apache.kafka.common.errors.RecordTooLargeException: The message is larger than the maximum allowed size.
+
+My notes -In this scenario, retry doesnt make sense. This is not n/w issue. So while creating our own retry logic,
+all these scenario needs to be considered. Better use out of the box retry logic.
+
+No of partition = no of consumers in a consumer group. CG can't be more- to avoid duble read. But can be less guess. Yes, in that case one consumer is reading from more than 1 partion. 
 If there are 4 brockers and I need 4 partitions each brocker can have one partiotion.
 But if I have one brocker and I need 2 partition, both partition will reside on same brocker.
 
@@ -62,6 +84,7 @@ Use command kafka-topic describe to see these details. It shows leader of each p
 
 Sending message requires properties - bootstrap.servers, serializer(to convert object into byte stream)
 3 approach for sending - fire and forget, wait till acknowledgement(Future.get), async.
+
 Serialization - Use default or Custom. When message object changes, need to update custom serializer accordingly. 
 	But then old message cant be read with new Serializer. Avro helps in these situations.
 
