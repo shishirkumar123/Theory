@@ -30,7 +30,8 @@ Collection Interface
 		Deque Interface - suffix first/last to all methods
 			BlockingDeque Interface
 				LinkedBlockingDeque class. 
-					I noticed that when LinkedBlockingDeque was empty, the thread didn't wait. It didn't throw exception either.
+					I noticed that when LinkedBlockingDeque was empty, the thread didn't wait. 
+					It didn't throw exception either.
 			ConcurrentLinkedDeque class extends AbstractCollection implements Deque
 				An unbounded concurrent {@linkplain Deque deque} based on linked nodes.
 				Concurrent insertion, removal, and access operations execute safely
@@ -56,7 +57,8 @@ Collection Interface
 	
 Map - doesn't extend Collection
 	HashMap
-	TreeMap - A Red-Black tree based NavigableMap implementation. The map is sorted according to the natural ordering of its keys, or by a Comparator 
+	TreeMap - A Red-Black tree based NavigableMap implementation. 
+		- The map is sorted according to the natural ordering of its keys, or by a Comparator 
 	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
 	SortedMap
 
@@ -70,8 +72,8 @@ Implementation -
 	Link list, Tree need to have a head node to start.
 	Tree traversal - When to terminate? May be count the number of time you visited the head node. 
 		For binary tree it is 2.
-	Both Arrays and HashMaps are key value but HashMap keys are hashed. E
-		ffectiveness on hashing relates to how often collision happens.
+	Both Arrays and HashMaps are key value but HashMap keys are hashed. 
+		Effectiveness on hashing relates to how often collision happens.
 	Graphs - have edges. Tree is specialized graph with one direction.
 	Binary search tree - efficient for search. Left is less than right.
 		Disadvantage - can be unbalanced. Go for red-black tree.
