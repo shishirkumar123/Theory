@@ -56,7 +56,7 @@ Collection Interface
 				LinkedList(implements List, Deque, Cloneable, Serializable)
 	
 Map - doesn't extend Collection
-	HashMap
+	
 	TreeMap - A Red-Black tree based NavigableMap implementation. 
 		- The map is sorted according to the natural ordering of its keys, or by a Comparator 
 	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
@@ -65,10 +65,21 @@ Map - doesn't extend Collection
 Implementation -
 	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
 	Retrival in faster in array based data structure, Addition is faster in linked data strctures.
-
+	HashMap - Key value pair. 
+		  During hashmap creation you can optionnally provide initialCapacity and loadFactor
+		  initialCapacity is bucket size. By default 16.
+		  The load factor determines how full the HashMap can get before it needs to resize (rehash).
+		  It is a fraction between 0 and 1. A load factor of 0.75 means that 
+			when the map is 75% full, it will resize.
+		  How is a new element assigned a bucket. 
+			First its hash is calculated. 
+			Next, hash value is devided by initialCapacity(by default 16)
+		  	Elements of same a bucket are stored in the form of Tree.
+				(Older version had LinkedList)
 	When I implemented, I realized -
 	Stack need one index, queue might need two. 
-	Stacks are important for DFS(Depth first Search)
+	Stacks are used for DFS(Depth first Search), use case - Pathfinding, exploring all nodes
+	Queues are used for BFS(Breadth first search), use case - Shortest path, search in shallow trees
 	Link list, Tree need to have a head node to start.
 	Tree traversal - When to terminate? May be count the number of time you visited the head node. 
 		For binary tree it is 2.
@@ -99,7 +110,13 @@ Hashing
 	Double hasing - If collision happed, use 2nd hashing formula given
 
 --------------------------------
-You can't remove from list if you're browsing it with "for each" loop. You should use Iterator. Else it will throw - ConcurrentModificationException
+# You can't remove from list if you're browsing it with "for each" loop. You should use Iterator. 
+	Else it will throw - ConcurrentModificationException
+# You can't modify a list obtained like this -
+		List.of(11,2,33,44,15)
+	If you try to sort, you will get exception - UnsupportedOperationException
+	Use this instead - 
+		List<Integer> list = new ArrayList<>(List.of(11, 2, 33, 44, 15));
 
 
 
