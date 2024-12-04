@@ -52,7 +52,7 @@ Kafka Server = Kafka Broker. Ideally 1 brocker on 1 m/c, but technically possibl
 Kafka Cluster - Multiple Kafka Servers co-ordinates through Zookeeper.
 Topic can be divided into multiple Partition
 Each Partition can exist on different machine.
-A partition cant be divided further into multiple machine. -- I dont think. Need verification.
+A partition can not not not be divided further into multiple machine. 
 Each Partition has offsets. 
 Q. How big is one offset?
 A. Kafka allows individual messages to be up to 1 MB by default. You can change settings-
@@ -71,6 +71,9 @@ all these scenario needs to be considered. Better use out of the box retry logic
 No of partition = no of consumers in a consumer group. CG can't be more- to avoid duble read. But can be less guess. Yes, in that case one consumer is reading from more than 1 partion. See kafka_overview.png
 If there are 4 brockers and I need 4 partitions each brocker can have one partiotion.
 But if I have one brocker and I need 2 partition, both partition will reside on same brocker.
+If you have a single broker and create a topic with 4 partitions:
+All 4 partitions will reside on the same broker.
+When additional brokers are added, partitions can be rebalanced across the cluster to improve fault tolerance and load distribution.
 
 Replication factor is associated with Topic.
 For a given Topic, if replication factor is say 3, then one broker is nominated a leader for each partition. Only leader talks to Producer and Consumer for that Topic and sends acknowledgement to producer. 
