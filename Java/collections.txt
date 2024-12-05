@@ -56,11 +56,7 @@ Collection Interface
 				LinkedList(implements List, Deque, Cloneable, Serializable)
 	
 Map - doesn't extend Collection
-	
-	TreeMap - A Red-Black tree based NavigableMap implementation. 
-		- The map is sorted according to the natural ordering of its keys, or by a Comparator 
-	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
-	SortedMap
+	SortedMap is an interface implemented by TreeMap.
 
 Implementation -
 	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
@@ -68,14 +64,19 @@ Implementation -
 	HashMap - Key value pair. 
 		  During hashmap creation you can optionnally provide initialCapacity and loadFactor
 		  initialCapacity is bucket size. By default 16.
-		  The load factor determines how full the HashMap can get before it needs to resize (rehash).
+		  The load factor determines how full the HashMap can get before it needs to resize (rehash). Default 0.75.
 		  It is a fraction between 0 and 1. A load factor of 0.75 means that 
 			when the map is 75% full, it will resize.
+		  Stick to the defaults (16 and 0.75) unless you have specific performance requirements.
 		  How is a new element assigned a bucket. 
 			First its hash is calculated. 
 			Next, hash value is devided by initialCapacity(by default 16)
 		  	Elements of same a bucket are stored in the form of Tree.
 				(Older version had LinkedList)
+		  If you an element in map whose key is already present in map, 
+			the old value will get replaced by new value.
+		  Sort a hashMap - TreeMap<String, Integer> sortedMap = new TreeMap<>(hashMap);
+
 	When I implemented, I realized -
 	Stack need one index, queue might need two. 
 	Stacks are used for DFS(Depth first Search), use case - Pathfinding, exploring all nodes
@@ -85,6 +86,9 @@ Implementation -
 		For binary tree it is 2.
 	Both Arrays and HashMaps are key value but HashMap keys are hashed. 
 		Effectiveness on hashing relates to how often collision happens.
+	TreeMap - A Red-Black tree based NavigableMap implementation. 
+		- The map is sorted according to the natural ordering of its keys, or by a Comparator 
+	        - Not synchronized. To synchronize - SortedMap m = Collections.synchronizedSortedMap(new TreeMap(...));
 	Graphs - have edges. Tree is specialized graph with one direction.
 	Binary search tree - efficient for search. Left is less than right.
 		Disadvantage - can be unbalanced. Go for red-black tree.
