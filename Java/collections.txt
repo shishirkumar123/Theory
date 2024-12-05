@@ -49,7 +49,10 @@ Collection Interface
 	AbstractCollection(class)
 		AbstractList
 			ArrayList(List, RandomAccess, Cloneable, Serializable)
-				when called remove(), it seems all element shifts left. But not in case of LinkedBlockingDeque etc.
+				When called remove(), all element shifts left making it contiguous. 
+				But not in case of link based Queue(LinkedBlockingDeque, LinkedList)
+					because shifting is not required, only link needs to be updated.
+				Required in Array-Based Queue (e.g., ArrayDeque, PriorityQueue)
 			Vector(List, RandomAccess, Cloneable, Serializable)
 				Stack
 			AbstractSequentialList
@@ -81,6 +84,8 @@ Implementation -
 	Stack need one index, queue might need two. 
 	Stacks are used for DFS(Depth first Search), use case - Pathfinding, exploring all nodes
 	Queues are used for BFS(Breadth first search), use case - Shortest path, search in shallow trees
+	PriorityQueue implements the Queue. operates based on priority ordering, rather than FIFO.
+		Thread safe version is PriorityBlockingQueue.
 	Link list, Tree need to have a head node to start.
 	Tree traversal - When to terminate? May be count the number of time you visited the head node. 
 		For binary tree it is 2.
