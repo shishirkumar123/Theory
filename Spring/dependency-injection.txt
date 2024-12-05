@@ -16,3 +16,39 @@ How to create your own boot?
 @Autowired is used for injecting dependencies, while @Component is used to define a bean.
 @Component tells Spring to manage the lifecycle of a class, whereas @Autowired tells Spring to resolve and inject a dependency automatically.
 In short, @Component is about bean creation, and @Autowired is about bean injection.
+
+@Autowire injection can be done on field, constructor or setter
+---------------------------------------------------------------------
+1. Field
+@Autowire
+Employee employee
+
+2. Constructor
+@Component
+public class MyService {
+    private final DependencyService dependencyService;
+
+    @Autowired
+    public MyService(DependencyService dependencyService) {
+        this.dependencyService = dependencyService;
+    }
+}
+
+3. Setter
+@Component
+public class MyService {
+    private DependencyService dependencyService;
+
+    @Autowired
+    public void setDependencyService(DependencyService dependencyService) {
+        this.dependencyService = dependencyService;
+    }
+}
+----------------------------
+Best Practice:
+# Constructor Injection is generally preferred for most scenarios due to its immutability 
+      and clear dependency declaration. It is also more compatible with frameworks like Spring Boot.
+# Use Setter Injection for optional dependencies.
+# Avoid Field Injection (@Autowired) for production code, as it reduces testability and makes code harder to maintain. 
+      However, it can be useful in quick prototypes or legacy projects.
+
