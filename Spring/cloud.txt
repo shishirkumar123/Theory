@@ -128,8 +128,9 @@ Access URL again. It should show changed value.
 Eureka
 [For comprehensive coverage, see https://cloud.spring.io/spring-cloud-netflix/reference/html/]
 Better alternative to DNS - DNS is dumb, doesnt know whether the service exist, if exists then is it up? 
-							Have to put time out at client side. Load balancer is just round-robin, cant do availabilityzoneAware,
-							can have state for things like streaming video, cant do client side load balancing.
+Have to put time out at client side. Load balancer is just round-robin, 
+cant do availabilityzoneAware, can have state for things like streaming video, cant do client side load balancing.
+
 Client side load balancing component is Ribbon.
 At server
 1.start.spring.io - Eureka Server
@@ -162,7 +163,7 @@ Q. How multiple instances of organization-unit is created which are collectively
 When we put spring.application.name is property file, isn't the same name used for registration with eureka?
 A. 1.Add below entries in application.properties - 
 	spring.application.name=organization-unit
-	eureka.instnace.instanceId=${spring.application.name}:${random.value}
+	eureka.instance.instanceId=${spring.application.name}:${random.value}
    2. Start the producer twice. First with server.port=8081, then with server.port=8082.
    [intelligJ - Based on IntelligJ version, by default you may not be allowed to un the server twice. Enable it -
    	Run>>Edit Configuration>>Allow run in parallel]
@@ -193,6 +194,7 @@ AND HENCE THE INSTANCES ARE NOT BEING EXPIRED JUST TO BE SAFE."
 Is the load balancer intelligent enough not to forward request to the stopped server?
 
 Q. In case of client side load balancing, every client has got a load balancer. Are they aware of each other? How each load balancer is aware about the load at each instances of server instance?
+A. The load balancers on individual clients are not aware of each other. Instead, they rely on the service registry (like Eureka in Spring Cloud) to obtain information about available instances of a service
 
 ====================
 Edge service
@@ -231,6 +233,26 @@ Extra steps if you need to do transformation too -
 	Note - If you have multiple service calls to make, better to user reactive programming call all APIs
 	asynchronously and zip the results upon completion. Even if it is single API but expecting huge number of records,
 	rx java could be a good fit.
+    or 
+	restTemplate.getForObject("http://billing-service/api/billing", String.class);
+    
+    or use FeignClient
+
+	@FeignClient("billing-service") // Service name in Eureka
+	public interface BillingClient {
+	    @GetMapping("/api/billing")
+	    String getBillingInfo();
+	}
+	-----
+	Use the Feign clients in your service:
+	@Service
+	public class OrderService {
+	
+	    @Autowired
+	    private BillingClient billingClient;
+	
+	    public String createOrder() {
+	        String billingResponse = billingClient.getBillingInfo();
 =====================================
 Hystrix 
 Hystrix is a latency and fault tolerance library. Two important feature is -
@@ -257,8 +279,21 @@ No extra setting is required. Just start calling main method repeatedly and see 
 postman or a client microservice with for loop. 
 
 @HystrixCommand vs @CircuitBreaker
+@HystrixCommand comes from the Hystrix library (legacy, no longer maintained).
+    @HystrixCommand(fallbackMethod = "defaultResponse")
+    public String getData() {
+        // Simulate a long-running or failing operation
+        return restTemplate.getForObject("http://some-external-service", String.class);
+    }
+@CircuitBreaker comes from the Resilience4j library (lightweight, actively maintained, and modular)
+    
+    @CircuitBreaker(name = "backendA", fallbackMethod = "fallback")
+    public String getData() {
+        // Simulate a long-running or failing operation
+        return restTemplate.getForObject("http://some-external-service", String.class);
+    }
 
-Alternative- Resilience4J #SpringBoot3 -https://www.youtube.com/watch?v=3-ChrD3Zosg
+Watch- Resilience4J #SpringBoot3 -https://www.youtube.com/watch?v=3-ChrD3Zosg
 
 =====================================
 Messaging
