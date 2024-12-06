@@ -19,7 +19,7 @@ Dependencies -
 			<scope>runtime</scope> <!-- No dependency at compile time. Needed only at runtime-->
 		</dependency>
 
-
+From start.spring.io choose Web, Rest Repository, JPA, H2
 --------
 @RestController combines @Controller and @ResponseBody, so the methods return JSON or XML directly.
 -------------
