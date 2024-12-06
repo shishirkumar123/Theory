@@ -28,8 +28,9 @@ http://localhost:8888/reservation-service.properties/master -> anything works in
 NativeEnvironmentRepository  : Adding property source: file:/C:/Users/shish/AppData/Local/Temp/config-repo-12952748685696729466/reservation-service.properties
 NativeEnvironmentRepository  : Adding property source: file:/C:/Users/shish/AppData/Local/Temp/config-repo-12952748685696729466/application.properties
 
-So it seems everytime a property value is needed by a config client, it will not hit the git.uri, but it will pick from local cache. Any change in the
+Q. So it seems everytime a property value is needed by a config client, it will not hit the git.uri, but it will pick from local cache. Any change in the
 property at git.uri location will not be reflected in config clients. May be that is where actuator comes into picture.
+A. Yes.
 
 Can use consul/zookeeper as well.
 
