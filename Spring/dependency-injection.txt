@@ -1,7 +1,41 @@
 Explicitly call ApplicationContext.getBean(<class-name>.class)
 if<class-name> is not annotated with @component(or@controller/@service/@repository), getBean will not work.
-@Autowiring also has same requirement as getBean. @Qualifier(confirm this) is used with autowire for name.
-@Autowiring can be used at class member, method or constructor?
+@Autowiring also has same requirement as getBean. 
+
+@Qualifier is used with @Autowire(or @Inject) to specify which implementation needs to be injected when more than one implementation exists. Example -
+
+@Component
+public class Dog implements Animal {
+    @Override
+    public void sound() {
+        System.out.println("Bark");
+    }
+}
+
+@Component
+public class Cat implements Animal {
+    @Override
+    public void sound() {
+        System.out.println("Meow");
+    }
+}
+
+@Component
+public class Zoo {
+    private final Animal animal;
+
+    @Autowired
+    public Zoo(@Qualifier("dog") Animal animal) {
+        this.animal = animal;
+    }
+
+    public void animalSound() {
+        animal.sound(); // Output: Bark
+    }
+}
+
+The name specified in @Qualifier should match the bean's name or the class name in camel case by default.
+===================================
 
 By default singleton scope. Can be prototype. If singleton, object is created during spring container initialization.
 If prototype, object is created when it is needed.
