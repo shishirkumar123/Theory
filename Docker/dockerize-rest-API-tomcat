@@ -5,7 +5,7 @@ Note: 1. Image id shows truncated value. Actual id is quite big
                jar file already has tomcat, dont need to install through Dokerfile
 
 
-FROM openjdk:17-jdk-slim AS build                     # Use an official JDK as a parent image
+FROM openjdk:17-jdk-slim AS build                     # Use an official JDK as a parent image. Here "build" is alias
 WORKDIR /app                                          # Set the working directory
 
 COPY pom.xml ./                                      # Copy the pom.xml and source code into the container
@@ -17,3 +17,11 @@ FROM tomcat:9.0                                      # Use a Tomcat base image f
 COPY --from=build /app/target/myapp.war /usr/local/tomcat/webapps/    # Copy the WAR file from the build stage to the Tomcat webapps directory
 EXPOSE 8080                                              # Expose the default port for Tomcat
 CMD ["catalina.sh", "run"]                              # Start Tomcat
+
+---------------------------
+The first FROM(jdk) marks the begining of 1st stage - build
+The second FROM(tomcat) marks the begining of 2nd stage - deploy
+
+If you need to run only the build stage, use the alias -"build" from line 8 -
+docker build --target build -t myapp-build
+
