@@ -6,7 +6,8 @@ If using Intellij, run below command in terminal
 It will create jar file in target folder. Run and test like below -
 >java -jar target/your-app-name.jar
 --------
-Create Dockerfile with below content
+Create Dockerfile with below content 
+(what are postential improvement areas here? Check at the bottom)
 
 	FROM openjdk
 	MAINTAINER shishir 
