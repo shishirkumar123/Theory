@@ -25,3 +25,11 @@ The second FROM(tomcat) marks the begining of 2nd stage - deploy
 If you need to run only the build stage, use the alias -"build" from line 8 -
 docker build --target build -t myapp-build
 
+Notice that I didn't have to specify operating system like ubuntu explicitly. 
+openjdk:17-jdk-slim and tomcat:9.0 are pre-configured images built on top of
+lightweight Linux distributions like Debian, Alpine, or Ubuntu.
+Advantage of pre-configured images -
+1. Simplicity: You don’t need to manage low-level OS details like installing dependencies or configuring the runtime.
+2. Size Optimization: Pre-built images use minimal OS layers, reducing the image size compared to full Ubuntu-based images.
+
+
