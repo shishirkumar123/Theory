@@ -254,6 +254,15 @@ Extra steps if you need to do transformation too -
 	    public String createOrder() {
 	        String billingResponse = billingClient.getBillingInfo();
 =====================================
+RestTemplate methods comparision
+
+Feature				exchange				getForObject	getForEntity
+Control over HTTP Method	Full control (GET, POST, DELETE, etc.)	GET only	GET only
+Response Content		Full response (ResponseEntity)		Body only	Full response (ResponseEntity)
+Custom Headers			Fully customizable			Not supported	Not supported
+Use Case			Complex, custom scenarios		Simple data retrieval	Data retrieval with metadata
+
+========================
 Hystrix 
 Hystrix is a latency and fault tolerance library. Two important feature is -
  Circuit breaker - isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure 
