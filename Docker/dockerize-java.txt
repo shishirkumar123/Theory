@@ -32,3 +32,16 @@ Note: 1. Image id shows truncated value. Actual id is quite big
 myfolder>docker run hello
 Note: container runs [status - RUNNING] then stops [status - EXITED]
 ----------
+
+Potential improvement in dockerFIle:
+1. Instead of using the latest OpenJDK, specify a version to ensure consistency
+FROM openjdk:17-jdk-slim
+
+2. To avoid using full paths, you can set the working directory inside the container:
+WORKDIR /home
+COPY HelloWorld.jar .
+CMD ["java", "-jar", "HelloWorld.jar"]
+
+3. Replace MAINTAINER with LABEL for better compatibility:
+LABEL maintainer="shishir"
+
