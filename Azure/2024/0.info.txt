@@ -1,0 +1,11 @@
+id: shishirkumar123@gmail.com
+directory id : 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c 'Default Directory'
+
+No     Subscription name      Subscription ID                       Tenant
+-----  ---------------------  ------------------------------------  ------------------------------------
+[1] *  Azure subscription 1   4bb4a02b-e902-4623-a8c1-343c232b400f  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+[2]    Subscription -Dec2024  76e0f595-5da1-47b1-8afb-fc7bf53cbfd9  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+
+The default is marked with an *; the default tenant is '20365eaf-7843-45ba-8671-6b5f3e7f5b9c' and 
+subscription is 'Azure subscription 1' (4bb4a02b-e902-4623-a8c1-343c232b400f).
