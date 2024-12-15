@@ -74,3 +74,48 @@ In Azure, a domain is used to verify ownership of a custom domain name and to cr
 Tenant and Directory has many to many relationship????
 
 All subscriptions within a single management group must trust the same Entra ID tenant.
+
+On 14th Dec 2024
+===============
+install azure cli: downloaded msi for 64 bit(azure-cli-2.67.0-x64.msi) - 12/14/2024
+Go to command prompt.
+>az --version
+Try any command. e.g -
+C:\Users\shish>az cosmosdb list or az aks list
+Please run 'az login' to setup account.
+
+So,
+>az login  --popup appears. Choose microsoft account
+	shishirkumar123/@beatLE123
+	  Old account name: shishirkumar123
+    -  New account name: shishirkumar123@yahoo.co.in - doesn't have subscription
+	
+	Use this:
+	shishirkumar123@gmail.com/@beatLE123
+
+
+Authentication failed against tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c 'Default Directory': (pii). Status: Response_Status.Status_InteractionRequired, Error code: 3399614476, Tag: 557973645
+If you need to access subscriptions in the following tenants, please use `az login --tenant TENANT_ID`.
+20365eaf-7843-45ba-8671-6b5f3e7f5b9c 'Default Directory'
+No subscriptions found for shishirkumar123@gmail.com.
+
+C:\Users\shish>az login --tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+
+
+
+[Tenant and subscription selection]
+
+No     Subscription name      Subscription ID                       Tenant
+-----  ---------------------  ------------------------------------  ------------------------------------
+[1] *  Azure subscription 1   4bb4a02b-e902-4623-a8c1-343c232b400f  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+[2]    Subscription -Dec2024  76e0f595-5da1-47b1-8afb-fc7bf53cbfd9  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+
+The default is marked with an *; the default tenant is '20365eaf-7843-45ba-8671-6b5f3e7f5b9c' and 
+subscription is 'Azure subscription 1' (4bb4a02b-e902-4623-a8c1-343c232b400f).
+
+Is tenant id/default directory/directory id same?
+
+
+	
+
+	
