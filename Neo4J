@@ -164,7 +164,8 @@ create (E2001) -[:WORKS_IN]->(D20)
 create (E3001) -[:WORKS_IN]->(D30)
 create (E3002) -[:WORKS_IN]->(D30)
 ---
-create(1001:Employee{name:"Vishu", age:44}) -- This gives syntax error. Why numbers are nhot allowed? In this case 1001.
+Remember to run them all together. If done one by one, relation will generate new nodes rather than linking existing nodes.
+create(1001:Employee{name:"Vishu", age:44}) -- This gives syntax error. Why numbers are not allowed? In this case 1001.
 
 
 =====================================================================
