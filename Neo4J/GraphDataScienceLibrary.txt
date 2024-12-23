@@ -1,0 +1,61 @@
+Neo4J Graph DataScience Library
+===============================
+Types of graph algorithm
+#Path Finding and search: Find optimal path or evaluates route availability and quality
+#Centrality/Importance: Determines the importance of distinct nodes in the network
+	influencers in n/w
+#Community detection: Detect group clustering or partition options
+	
+#Link Prediction: Estimates the likelyhood of nodes forming a future relationship
+	hidden link between two point
+#Similarity: Evaluates how alike nodes are
+
+Steps to run
+===============
+It is available in Neo4J Desktop. Go to plugin section, find it and click 'Install'.
+Dont forget to restart the database.
+Run this cypher to verify installation - CALL gds.version();
+
+
+# Create a simple projection. It creates the in-memory graph. 
+	CALL gds.graph.project(
+	  'movieGraph',
+	  ['Person', 'Movie'],  // Nodes to include
+	  {
+		ACTED_IN: {
+		  orientation: 'UNDIRECTED'
+		}
+	  }
+	);
+--
+# There are various algorithms available like
+	gds.nodeSimilarity.stream - Find similar nodes based on their relationships
+	gds.pageRank.stream - PageRank measures the importance of nodes in the graph
+	gds.wcc.stream - Identify groups of connected nodes
+	
+	Try nodeSimilarity:
+	CALL gds.nodeSimilarity.stream('movieGraph')
+	YIELD node1, node2, similarity
+	WITH gds.util.asNode(node1) AS n1, gds.util.asNode(node2) AS n2, similarity
+	MERGE (n1)-[r:SIMILAR_TO]->(n2)
+	SET r.similarity = similarity;
+	
+	This will create new relationship SIMILAR_TO
+
+
+# Use new relationship 'SIMILAR_TO' in cyphers
+
+MATCH (n)-[r:SIMILAR_TO]->(m)
+RETURN n, r, m;
+
+MATCH (n)-[r:SIMILAR_TO]->(m)
+WHERE r.similarity > 0.5
+RETURN n, r, m;
+
+# Once you're done, you can drop the in-memory graph to free up resources:
+CALL gds.graph.drop('movieGraph');
+
+
+
+ 
+
