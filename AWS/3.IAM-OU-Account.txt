@@ -12,6 +12,7 @@ Organizational units
 Organizational units (OUs) enable you to group several accounts together and administer them as a single 
 unit instead of one at a time.
 
+
 Users
 ---------
 e.g user created arn:aws:iam::062286665809:user/shishir1/@petAL123
@@ -106,3 +107,7 @@ A. In the list of group, click on the group name
 A. Yes.
 
 Service Control Policy : 
+
+Console
+IAM>>Access Analyzer>>Analyzer settings
+Here I had created 2 analysers that were costing me $0.20 per month.
