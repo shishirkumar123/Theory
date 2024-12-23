@@ -34,8 +34,23 @@ RETURN actor.name AS ActorName
 
 Group By examples
 ---------------------
-Number of movies released every year:
+# Number of movies released every year:
 match(m:Movie) return m.released, count(m) as TotalNoMovies 
+# In employee, department database, Write cypher for min, max, average:
+MATCH (e:Employee)
+RETURN 
+  MIN(e.age) AS MinAge,
+  MAX(e.age) AS MaxAge,
+  AVG(e.age) AS AvgAge,
+  SUM(e.age) AS TotalAge;
+# Departmentwise min, max 
+MATCH (e:Employee)-[:WORKS_IN]->(d:Department)
+RETURN d.name AS Department, 
+       MIN(e.age) AS MinAge, 
+       MAX(e.age) AS MaxAge, 
+       AVG(e.age) AS AvgAge, 
+       SUM(e.age) AS TotalAge;
+
 
 Order By examples
 ------------------
@@ -242,6 +257,8 @@ Exercise
 #. Show movies on which reviews have been given
 #. Show the persons which are not actor
 #. Who directed the movie Cloud Atlas
+#. In employee, department database, Write cypher for min, max, average
+
 
 
 
