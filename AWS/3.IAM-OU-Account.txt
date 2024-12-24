@@ -9,8 +9,12 @@ Maximum number of IAM users allowed per AWS account: 1000
 
 Organizational units
 ---------------------
+OUs are at global level.
 Organizational units (OUs) enable you to group several accounts together and administer them as a single 
 unit instead of one at a time.
+From OU you can invite other accounts to join this OU.
+At an OU level, several services are disable by default. To enable it, you can go to:
+>>AWS Organizations>>Services 
 
 
 Users
