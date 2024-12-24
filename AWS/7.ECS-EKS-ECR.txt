@@ -1,4 +1,56 @@
+ECS - Elastic container Service - something like K8s
+ECS has
+    - Control Plane - For scheduling and orchestration
+    - Managing Services - Managing the lifecycle of a container
+            - EC2 instances having docker(or any container) runtime 
+            -ECS Agent for communication with control plane
 
+
+	Can ECS cluster go beyond a region/vpc?
+	Cluster, Services, Tasks
+
+ECS setup options
+     -ECS with EC2 - Create EC2 and join them to ECS cluster. 
+             In this setup, you have to manage infrastructure yourself. You have to-
+                - Manage operating system
+                - Docker runtime, ECS Agent
+                - check whether enough resources
+                Advantage - more control of infrastructure
+     -ECS with Fargate  - delegate infrastructure management also to AWS. AWS will do
+                - container orchestration
+                - Hosting infrastructure management
+            You provide containers to fargate. Farget will decide hou much RAM, CPU, other resources will be required.
+            So provisioning will be taken care of, on demand. So pay only what you use.
+            Compare this with EC2 where you have to pay for having an EC2 irrespective of using or not.
+            BUT - you loose control.
+-------------------------------
+EKS - Elastic K8s service - Alternative to ECS
+Why EKS
+     Because project was already using k8s and want to move to aws as is
+     k8s is open source 
+     K8s vendor neutral. ECS is Amazon specific
+     K8s has bigger community, plugins - e.g Helmchart
+Setup
+    It is easier on AWS. 
+    Create EKS cluster/service. (Control Pane). 
+    Master node:
+            It will automatically provision master nodes and its related components.
+    	    Master nodes are replicated in different AZs.
+    	    Etcds are replicated in the same way.
+    Worker node:
+        Self managed:
+            EC2 instances joins cluster in the same way as ecs.
+            So need to manage operating systems on EC2 the same way as ECS.
+        Semi managed: EKS with Node Group
+            Create the node group of related worker nodes. This makes it easier for new worker node to join.
+            EC2 instances are managed by nodegroup.
+            But Autoscaling needs to be done manually on AWS
+       Fully managed - EKS with Fargate
+            
+---------------------
+ECR - Elastic container Registry
+     keeps container images
+     Advantage - integrate well with AWS services. When new version of image arrives, notify the K8s cluster.
 
 Amazon Container Service
 
