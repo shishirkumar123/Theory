@@ -118,5 +118,8 @@ ECR - Elastic container Registry
 
 ----------------------------
 Cloudwatch - For monitoring
+------------------------
+AWS Config - Enables you to assess, audit, and evaluate the configuration of your AWS resources. It provides a detailed inventory of resources, records configuration changes over time, and helps ensure compliance with desired settings.
+---------------------------
 
 
