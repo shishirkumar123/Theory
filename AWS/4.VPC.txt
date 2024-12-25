@@ -20,7 +20,11 @@ What is not created by default-
 VPC
 ======================
 ----
-Virtual network - By default instances within the VPCs are connected through Virtual network. We dont explicitly do anything. Try this - connection 2 instances within same subnet, across two subnet of same VPCs. The default route table(main) of a vpc shows a rule for local with the same CIDR which was specified during VPC creation. Is this referring to this virtual network?
+Virtual network - By default instances within the VPCs are connected through Virtual network. 
+We dont explicitly do anything. 
+Try this - connection 2 instances within same subnet, across two subnet of same VPCs. 
+The default route table(main) of a vpc shows a rule for local with the same CIDR which was
+specified during VPC creation. Is this referring to this virtual network?
 
 ----
 VPCs
