@@ -89,6 +89,16 @@ Egress Only Gateway
 	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
 	Note: Terms - Egress-Outbound, Ingress-Inbound.
 ----
+Differences Between IGW and Internet-Only Egress
+Feature			Internet Gateway (IGW)				Internet-Only Egress
+Communication Type	Bidirectional (inbound + outbound)		Outbound-only
+Inbound Traffic		Allowed for resources with public IP		Not allowed
+Outbound Traffic	Allowed						Allowed
+Resources		Public subnets with public IPs			Private subnets with private IPs
+Implementation		Directly through IGW				NAT Gateway (IPv4) / EIGW (IPv6)
+Use Case		Public-facing resources				Private resources needing internet access
+
+
 DHCP Option sets
 	One DHCP option set already exist in the region.
 	All the VPC in the region use same DHCP. While creating VPC, the choice was not even asked. 
