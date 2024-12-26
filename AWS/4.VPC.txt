@@ -45,7 +45,20 @@ Subnet
 For making a subnet public -
 	- Create an internet gateway and associate with subnet
 	- All instances(EC2 etc) should have public or elastic IP.
-	- Configure all NACL and SG rules.
+	- Configure all NACL and SG rules.\
+
+Public Subnets:
+Resources directly use the IGW for outbound internet traffic.
+Private Subnets:
+Resources send outbound traffic to a NAT Gateway or other intermediary before reaching the IGW.
+Isolated Subnets:
+Subnets with no internet route won’t use the IGW at all.
+This allows you to design complex architectures within the same VPC:
+
+Public-facing workloads (e.g., web servers) can use the IGW directly.
+Private workloads (e.g., backend services) can use a NAT Gateway for secure internet access.
+Fully isolated workloads (e.g., databases) can avoid internet access entirely.
+
 ----
 Route table 
 	- Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
@@ -54,8 +67,18 @@ Route table can be linked to internet gateway by 2 way-
 	2. Select Route table>> Edge Association >>Link the IGW.
 What is the difference?
 
+Every VPC automatically comes with a main route table, which all subnets use by default unless explicitly associated with another route table.
+Subnets gain internet access through their association with a route table that includes a route pointing to the IGW.
+
+Subnet-specific associations always override the VPC's default route table.
+
+
+While the IGW is shared at the VPC level, different subnets can have independent outbound routes:
+
+
+
 ----
-Internet Gateway
+Internet Gateway(IGW)
 	Type of NAT(network address translation) device that uses bidirectional communication.
 	Translate from a private IP address to a single Public IP address.
 	Provide access into the VPC and back out to the internet, attached to VPC.
