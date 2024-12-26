@@ -12,13 +12,30 @@ Subnet mask - not an ip address. Indicates LAN range.
 	
 	
 IP address
-		Private
-			Class A - 10.0.0.0 - 10.255.255.255 - 16,777,216 IP addresses
-			Class B - 172.16.0.0 - 172.31.255.255 -  1,048,576 IP addresses
-			Class C - 192.168.0.0 - 192.168.255.255 - 65,536 IP addresses
+	Private
+		Class A - 10.0.0.0 - 10.255.255.255 - 16,777,216 IP addresses
+		Class B - 172.16.0.0 - 172.31.255.255 -  1,048,576 IP addresses
+		Class C - 192.168.0.0 - 192.168.255.255 - 65,536 IP addresses
 			
-			classless with subnetting(CIDR)
-		Public
+		classless with subnetting(CIDR)
+		/32 - No Octet can change
+		/24 - Last Octet can change
+		/26 - Last 2 Octet can change
+		/8 - Last 3 Octet can change
+		/0 - All Octet can change
+
+		--------
+		In more detail
+		192.168.0.0/32 allow for 1 IP - 2 pow 0
+			   /31 allow for 2 IP - 2 pow 1
+			   /30 allow for 4 IP - 2 pow 2
+			   /29 allow for 8 IP - 2 pow 3
+			   /28 allow for 16 IP - 2 pow 4
+			   /27 allow for 32 IP - 2 pow 5
+			   /26 allow for 64 IP - 2 pow 6
+				...
+					
+	Public
 
 
 ===================================================
