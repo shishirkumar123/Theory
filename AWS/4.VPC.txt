@@ -35,7 +35,7 @@ VPC cant be deleted till it has associated instance, associated NAT Gateway, Int
 Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion.
 Enable DNS Hostname: Assigns public DNS hostnames to instances that have a public IP in this VPC.
 Enable DNS Resolution: (Also known as enableDnsSupport). A setting in AWS VPC that determines whether the Amazon-provided DNS server is enabled for a VPC. This setting is critical for allowing resources in your VPC to resolve DNS names.
-
+CIDR - Classless Inter-Domain Routing.
 ----
 Availability zone
 
