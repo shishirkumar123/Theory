@@ -77,6 +77,8 @@ Subnet-specific associations always override the VPC's default route table.
 
 While the IGW is shared at the VPC level, different subnets can have independent outbound routes:
 
+Route table vs NACL - Route table has routing logic for traffic. NACL allows/disallows traffic acting as a firewall.
+
 
 
 ----
