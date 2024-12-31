@@ -36,6 +36,18 @@ Other things like subnet, SG, NACL, routing table gets deleted in cascade fasion
 Enable DNS Hostname: Assigns public DNS hostnames to instances that have a public IP in this VPC.
 Enable DNS Resolution: (Also known as enableDnsSupport). A setting in AWS VPC that determines whether the Amazon-provided DNS server is enabled for a VPC. This setting is critical for allowing resources in your VPC to resolve DNS names.
 CIDR - Classless Inter-Domain Routing.
+
+Valid CIDR combinations of VPC and subnets:
+1. VPC -10.0.0.0/16 -- meaning 16 are fixed. Meaning subnets within this must start with 10.0
+   Subnet1 - 10.0.0.0/24 - meaning 24 are fixed. Meaning EC2 within this must have IP starting with 10.0.0
+   Subnet2 - 10.0.1.0/24 - meaning 24 are fixed. Meaning EC2 within this must have IP starting with 10.0.1
+2. VPC - 10.0.0.0/24
+   Subnet1 - 10.0.0.0/28
+   Subnet2 - 10.0.0.192/28
+
+Invalid combination:
+1. VPC -10.0.0.0/24, Subnet 10.0.1.0 - "CIDR Address is not within CIDR Address from VPC." Because VPC CIDR indicates that subnet within it must start with 10.0.0
+
 ----
 Availability zone
 
