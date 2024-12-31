@@ -68,8 +68,8 @@ A. org.apache.kafka.common.errors.RecordTooLargeException: The message is larger
 My notes -In this scenario, retry doesnt make sense. This is not n/w issue. So while creating our own retry logic,
 all these scenario needs to be considered. Better use out of the box retry logic.
 
-No of partition = no of consumers in a consumer group. CG can't be more- to avoid duble read. But can be less guess. Yes, in that case one consumer is reading from more than 1 partion. See kafka_overview.png
-If there are 4 brockers and I need 4 partitions each brocker can have one partiotion.
+No of partition = no of consumers in a consumer group. Consumer can't be more than number of partition- to avoid double read. But can be less. In that case one consumer is reading from more than 1 partion. See kafka_overview.png
+If there are 4 brockers and I need 4 partitions each brocker can have one partition.
 But if I have one brocker and I need 2 partition, both partition will reside on same brocker.
 If you have a single broker and create a topic with 4 partitions:
 All 4 partitions will reside on the same broker.
@@ -85,6 +85,11 @@ A. partition level.
 Use command kafka-topic describe to see these details. It shows leader of each partition. It also shows replica ids and ISR ids.
 (ISR - In Sync Replicas)
 Sending message requires properties - bootstrap.servers, serializer(to convert object into byte stream)
+Q. When a message is sent to kafka cluster, how is it decided that which partition the message will go?
+A. 	Key Provided: Partition determined using a hash of the key.
+	No Key Provided: Round-robin or default partitioner used.
+	Custom Logic: Custom partitioner can override defaults.
+	Manual Partitioning: Producer specifies a partition explicitly.
 ===================================================================================
 3 approach for sending - fire and forget, wait till acknowledgement(Future.get), async.
 -------
@@ -139,7 +144,7 @@ If order is important then there are two ways to achieve it-
 Consumer - There is a construct consumer group which are set of related consumers working together to achieve high throughput. 
 	A consumer is assigned to a partition. For a given consumer group, only single consumer can be assigned to partition.
 	One of the Kafka broker is made Group co-ordinator. Group co-ordinator maintains list of consumers and initiates a rebalancing when a member enter/exit.
-	First consumer of the group becomes the group leader, performs the rebalancing when a member enters/exits.
+	First consumer of the group becomes the group leader, performs the rebalancing when a member enters/exits with the help of group co-ordinator.
 	One consumer can subscribe to list of topics.
 	Consumer polls the topic in infinite loop. Optionally it can be given a scheduler so that it pools based on scheduler settings.
 	Q. Why Kafka choose consumer polling approach. Why it didn't choose broker notifying consumer approach?
