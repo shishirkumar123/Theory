@@ -123,6 +123,7 @@ DHCP Option sets
 Elastic IP addresses - Static, charge associated. 
 -----
 VPC endpoint - Allows you to securely connect your VPC to another service like S3, DynamoDB.
+Endpoints can help reduce NAT gateway charges and improve security by accessing S3 directly from the VPC. By default, full access policy is used. You can customize this policy at any time.
 ------------
 VPC Endpoint Service 
 	You can use PrivateLink technology to make services in your VPC available to other AWS accounts and services.
