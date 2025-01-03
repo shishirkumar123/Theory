@@ -15,6 +15,7 @@ ECS setup options
                 - Manage operating system
                 - Docker runtime, ECS Agent
                 - check whether enough resources
+		- Specify VPC/subnet - existing or new
                 Advantage - more control of infrastructure
      -ECS with Fargate  - delegate infrastructure management also to AWS. AWS will do
                 - container orchestration
