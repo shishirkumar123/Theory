@@ -9,6 +9,9 @@ ECS has
 Q. Can ECS cluster go beyond a region/vpc?
 A. No. It can span through multiple subnets	
 	Cluster, Services, Tasks
+	Cluster - The group of m/c on which the service/tasks will run.
+	Task Definition - specify container details, memory, cpu requirement, task placement constraints if any, volumes.
+	Tasks - Running instances based on task definition.
 
 ECS setup options
      -ECS with EC2 - Create EC2 and join them to ECS cluster. 
