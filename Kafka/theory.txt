@@ -5,6 +5,11 @@ All of them can be scaled horizontally.
 They communicate using Kafka binary protocol over TCP. This protocol allows for compression of messages (e.g., GZIP, Snappy), further reducing the amount of data transmitted over the network.
 Kafka’s efficiency stems from its event-driven architecture and reliance on well-optimized loops to handle network I/O, log management, and replication
 Kafka uses asynchronous I/O (via Java NIO) for efficient communication between clients and brokers.
+Zookeeper is(was) needed for coordination among the kafka brokers.
+Starting from Kafka 2.8, Kafka introduced KRaft to handle the responsibilities previously managed by ZooKeeper, such as:
+	Metadata management.
+	Leader election.
+	Configuration storage.
 
 Running console based Kafka 
 ===========================
