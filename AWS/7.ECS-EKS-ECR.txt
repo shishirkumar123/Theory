@@ -5,13 +5,17 @@ ECS has
             - EC2 instances having docker(or any container) runtime 
             -ECS Agent for communication with control plane
 
-
 Q. Can ECS cluster go beyond a region/vpc?
 A. No. It can span through multiple subnets	
-	Cluster, Services, Tasks
+
+Cluster, Services, Tasks
+==============================
 	Cluster - The group of m/c on which the service/tasks will run.
 	Task Definition - specify container details, memory, cpu requirement, task placement constraints if any, volumes.
-	Tasks - Running instances based on task definition.
+	Tasks - Running instances based on task definition. More than one tasks will require a load balancer.
+	Once a code change is made, new image needs to be build, tasks need to be updated manually unless you opted for force update.
+	Interestingly, when updates with new versions are deployed, ECS runs them, make them up. 
+	Only after successfull start, stops old version.
 
 ECS setup options
      -ECS with EC2 - Create EC2 and join them to ECS cluster. 
