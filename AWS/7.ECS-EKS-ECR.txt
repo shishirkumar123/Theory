@@ -6,7 +6,8 @@ ECS has
             -ECS Agent for communication with control plane
 
 
-	Can ECS cluster go beyond a region/vpc?
+Q. Can ECS cluster go beyond a region/vpc?
+A. No. It can span through multiple subnets	
 	Cluster, Services, Tasks
 
 ECS setup options
