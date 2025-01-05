@@ -187,3 +187,9 @@ ack - Acknowledgement is required from broker to producer. If set to all, then t
 	the follower broker whether message was successfully received, then only send the acknowledgement message.(slowest)
 retries
 max.in.flight.request.per.connection - how many in flight request is allowed that are still not acknowledged.
+
+-------------------------
+Producer API
+
+kafkaProducer.send(producerRecord(topic name, key(optional), value))
+
