@@ -24,6 +24,10 @@ Ports
 Public IP:
 	EC2 get a public IP assigned. But when you stop and start EC2, public IP changes.
 	If you create and elastic ip, attach to EC2, then stop/start wont change it.
+
+ASG: 
+	Fill details.
+	When Scale up, the new EC2s goes to which AZ/Subnet?
 	
 
 Assignment
