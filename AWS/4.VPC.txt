@@ -100,9 +100,10 @@ Internet Gateway(IGW)
 	Provide access into the VPC and back out to the internet, attached to VPC.
 ----
 Egress Only Gateway
-	Same as IGW but for IPv6
+	Same as NAT Gateway but for IPv6
 	Doesn't allow traffic back-in
 	By default every IPv6 is publicly routable so there is not choice for public and private subnet.
+	Unlike NATG, doesnt need elastic IP.
 	Note: Terms - Egress-Outbound, Ingress-Inbound.
 ----
 Differences Between IGW and Internet-Only Egress
