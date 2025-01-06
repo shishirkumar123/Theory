@@ -170,10 +170,26 @@ log.retention.bytes - Max capacity of size of message a partition will hold. Bey
 
 Producer specific configuration
 --------------------------------
-ack - Acknowledgement is required from broker to producer. If set to all, then the leader broker will confirm from all 
-	the follower broker whether message was successfully received, then only send the acknowledgement message.(slowest)
-retries
-max.in.flight.request.per.connection - how many in flight request is allowed that are still not acknowledged.
+1. ack - Three possible values
+	0 - fire and forget, (lowest latency)
+	1 - Leader receives the message and sends the acknowledgement. 
+		What if leader crashed before replicating to follower? 
+		Producer will get the acknowledgement but message is lost. So next option 'All' is better.
+	All - Acknowledgement is required from broker to producer. If set to all, then the leader broker will confirm 
+		from all the follower broker whether message was successfully received, then only send the
+		acknowledgement message.(slowest)
+
+Q. Scenario: In case of ack=All, Leader received the message, but error occurred while replicating to the followers.
+So acknowledgement is not sent. So the producer resends the message. Leader again receives the same message. 
+Will this cause 2 times consumption of the message by the consumer?
+A: Kafka's idempotent producer ensures that even if the same message is retried multiple times due to lack of acknowledgment, it is written to the topic only once. This is achieved using a producer ID (PID) and sequence numbers. When the leader receives a duplicate message (same PID and sequence number), it discards it as a duplicate.
+
+2. retries - How many times a producer will retry when error occured. Default - 0 (zero)
+[Related configuration-
+	retry.backoff.ms - specifies the amount of time (in milliseconds) a producer or consumer should wait 
+		   before retrying a failed operation. Default - 100
+]
+3. max.in.flight.request.per.connection - how many in flight request is allowed that are still not acknowledged.
 
 -------------------------
 CONSUMER SIDE
