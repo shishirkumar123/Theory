@@ -138,9 +138,14 @@ allows you to control partitioning, ensure message ordering, and enable efficien
 (e.g., by user, account, or region) for processing.
 
 ===================================================================================
-Serialization - Use default or Custom. When message object changes, need to update custom serializer accordingly. 
+Serialization - 
+Kafka provides StringSerializer,IntSerialzer,LongSerializer, DoubleSerializer,StringSerialiser etc.
+If we are sending business objects like Order, Customer, Supplier, we need to create custom serializer.
+
+Use default or Custom. When message object changes, need to update custom serializer accordingly. 
 	But then old message cant be read with new Serializer. Avro helps in these situations.
 
+====================================================================================
 If order is important then there are two ways to achieve it-
 	1. Use Synchronous send
 	2. set max.in.flight.request.per.connection = 1
