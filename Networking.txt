@@ -72,6 +72,8 @@ switch
 	- has CAM table
 
 Router
+	- LAN devices open a socket to the router. 
+	  Router opens the bridge to the WAN to bridge networks.
 	- intelligent.  many collision and broadcast domain.
 	
 2 address - IP layer 3, mac address layer 2.
