@@ -36,8 +36,24 @@ IP address
 				...
 					
 	Public
+		0.0.0.0
+=====
+On windows inconfig returns you info about ip address. Notice below:
+   Connection-specific DNS Suffix  . : lan
+   IPv6 Address. . . . . . . . . . . : 2607:fb91:1abf:c690::458
+   IPv6 Address. . . . . . . . . . . : fd81:6834:9c0f::458
+   Link-local IPv6 Address . . . . . : fe80::805b:d75f:def6:9ec2%3
+   IPv4 Address. . . . . . . . . . . : 192.168.12.202
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0    -- This is not an IP address
+   Default Gateway . . . . . . . . . : 192.168.12.1     -- This is router ip address
 
+Jan/5/2025: Macs absolutely use IPv4 and will continue to support it as long as networks rely on it. 
+They just prioritize IPv6 if both options are available.
 
+Subnet Mask: This is not an IP address. It indicates the part of our own IP address that form our LAN range.
+255 is the significat field. 0 is the wild card.
+255.255.255.0 means Last Octet can change
+255.255.0.0 means Last 2 Octet can change
 ===================================================
 
 hub
