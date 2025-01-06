@@ -116,8 +116,14 @@ Implementation		Directly through IGW				NAT Gateway (IPv4) / EIGW (IPv6)
 Use Case		Public-facing resources				Private resources needing internet access
 
 
-DHCP Option sets
-	One DHCP option set already exist in the region.
+DHCP(Dynamic Host Config Protocol) Option sets
+	-DHCP is part of general n/w concept. 
+	- It automates config of key n/w settings:
+		-IP address
+		-Subnet mask
+		-Gateway
+		-DNS
+	In AWS, One DHCP option set already exist in the region.
 	All the VPC in the region use same DHCP. While creating VPC, the choice was not even asked. 
 	
 ----
