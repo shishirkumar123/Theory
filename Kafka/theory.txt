@@ -190,6 +190,15 @@ A: Kafka's idempotent producer ensures that even if the same message is retried 
 		   before retrying a failed operation. Default - 100
 ]
 3. max.in.flight.request.per.connection - how many in flight request is allowed that are still not acknowledged.
+Setting high value will give high throughput at the expense of high memory consumption.
+
+Look into more configurations which are interesting
+buffer.memory
+compression.type
+batch.size
+linger.ms
+client.id
+max.request.size
 
 -------------------------
 CONSUMER SIDE
@@ -197,8 +206,28 @@ CONSUMER SIDE
 
 Consumer - There is a construct consumer group which are set of related consumers working together to achieve high throughput. 
 	A consumer is assigned to a partition. For a given consumer group, only single consumer can be assigned to partition.
-	One of the Kafka broker is made Group co-ordinator. Group co-ordinator maintains list of consumers and initiates a rebalancing when a member enter/exit.
-	First consumer of the group becomes the group leader, performs the rebalancing when a member enters/exits with the help of group co-ordinator.
+
+Number of partition is upper limit of consumers you can have in a group. Kafka will allow it, but extra consumers will be doing nothing.
+
+Group co-ordinator and Leader.
+----------------------------------------
+Group Coordinator:
+------------------
+This is a Kafka broker, not a consumer.
+The Group Coordinator is responsible for managing the consumer group.
+It keeps track of the group membership, handles heartbeats, and initiates rebalances when necessary.
+
+Consumer Group Leader:
+----------------------
+Within the consumer group, one consumer is elected as the group leader during the group formation or rebalance process.
+The leader consumer communicates with the Group Coordinator on the broker to obtain partition assignments for all members of the group.
+After determining the assignments, the leader informs all other consumers about their respective partitions.
+Rebalancing is initiated by Group coordinator but executed by Leader.
+
+Remember - 
+The Group Coordinator is always a Kafka broker.
+The Group Leader is one of the consumers in the group.
+------------------------------------------------------------------------
 	One consumer can subscribe to list of topics.
 	Consumer polls the topic in infinite loop. Optionally it can be given a scheduler so that it pools based on scheduler settings.
 	Q. Why Kafka choose consumer polling approach. Why it didn't choose broker notifying consumer approach?
