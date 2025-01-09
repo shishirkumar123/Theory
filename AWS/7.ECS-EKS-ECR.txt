@@ -15,7 +15,7 @@ Cluster, Services, Tasks
 	Tasks - Running instances based on task definition. More than one tasks will require a load balancer.
 	Once a code change is made, new image needs to be build, tasks need to be updated manually unless you opted for force update.
 	Interestingly, when updates with new versions are deployed, ECS runs them, make them up. 
-	Only after successfull start, stops old version.
+	Only after successful start, stops old version.
 
 ECS setup options
      -ECS with EC2 - Create EC2 and join them to ECS cluster. 
