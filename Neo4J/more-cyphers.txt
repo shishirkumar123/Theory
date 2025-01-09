@@ -1,1 +1,22 @@
+Why is result of below two query different?
+1. match(m:Movie) return count(m.title), m.released as Year order by Year
+2. match (p:Person) -[]-> (m:Movie) return count(m.title), m.released as Year order by Year
+
+Query 1
+```
+
+**Explanation**:  
+- This query matches all nodes with the label `Movie`.
+- The `COUNT(m.title)` aggregates all movies grouped by their `m.released` property (Year).
+- The result contains a single row for each unique release year (`m.released`), and all movies are included in the count.
+
+---
+
+Query 2  
+
+**Explanation**:  
+- This query matches all `Movie` nodes, but **only those that are connected to a `Person` node** via any relationship (`-[]->`).
+- `COUNT(m.title)` aggregates only the movies that have relationships with at least one `Person` node.
+- Movies without a relationship to a `Person` are **excluded** from the results.
+- The grouping and ordering are still based on the `m.released` property.
 
