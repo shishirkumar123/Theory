@@ -262,6 +262,7 @@ Exercise
 #. Show movies where more than 7 actors acted.
 #. Show types of nodes which has relation. (Filter node types without relation)
 #. Number of movies released every year
+#. Number of Keanu Reeves movies released every year
 #. Show movies on which reviews have been given
 #. Show the persons which are not actor
 #. Who directed the movie Cloud Atlas
