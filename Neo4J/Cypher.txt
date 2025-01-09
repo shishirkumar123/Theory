@@ -31,6 +31,9 @@ MATCH (p:Person)-[]->(m:Movie {title: "The Matrix"}) RETURN p.name, m.title;
 filter on relation example:
 MATCH (actor:Person)-[:ACTED_IN {roles: "Pops"}]->(movie:Movie {title: "Speed Racer"}) 
 RETURN actor.name AS ActorName
+My notes: I guess here >, < wont work. It has to be exact match
+
+
 
 Group By examples
 ---------------------
@@ -69,10 +72,10 @@ match (p:Person) -[]-> (m:Movie) where m.title = "The Da Vinci Code" return p,m
 Relationships example
 -----------------------
 match (p) -[r]-> (m) return r
-MATCH (n) RETURN distinct labels(n)						#Show types of nodes
+MATCH (n) RETURN distinct labels(n)				#Show types of nodes
 match(n) -[r]->(m)  return distinct labels(n)			#Show types of nodes which has relation
-MATCH (p:Person)-[r]->(m:Movie) RETURN distinct type(r) #Show types of relations
-match (p) -[r]-> (m) return distinct type(r)			#same thing
+MATCH (p:Person)-[r]->(m:Movie) RETURN distinct type(r)         #Show all types of relations
+match (n:Database)-[r]->(m:Message) return distinct type(r)	#Show all types of relations between Database and Message
 match (p:Person) -[:DIRECTED]-> (m:Movie) return p,m
 match (p:Person) -[:WROTE]-> (m:Movie) return p,m
 match (p:Person) -[:ACTED_IN]-> (m:Movie) where m.title = "The Da Vinci Code" return p,m
@@ -177,6 +180,10 @@ CREATE CONSTRAINT ON (c:Country) ASSERT c.name IS UNIQUE
 
 Cypher for mutating data
 ======================================================
+Insert
+------
+CREATE (person:Person {name: "Ashok", age: 23})-[:works_for]->(department:Department {name: "Accounts"})
+
 Edit
 -----
 Updating node attribute:
@@ -247,12 +254,13 @@ List of commands
   
 Exercise
 -------------
-#. Show movies written by Jim Cash
-#. Show movies directed by 'Tom Hanks'
-#. Show movies where more than 7 actors acted.
+
 #. Show types of nodes
-#. Show types of nodes which has relation. (Filter node types without relation)
 #. Show types of relations
+#. Show movies written by Jim Cash (Note: Jim only writes, so query will work even without specifying any relation)
+#. Show movies directed by 'Tom Hanks'(Note: Tom can act as well as direct)
+#. Show movies where more than 7 actors acted.
+#. Show types of nodes which has relation. (Filter node types without relation)
 #. Number of movies released every year
 #. Show movies on which reviews have been given
 #. Show the persons which are not actor
