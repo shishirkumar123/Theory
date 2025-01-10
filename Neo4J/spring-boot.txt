@@ -6,4 +6,7 @@ Create database. Browse through url:
 http://localhost:7474/browser/
 Set id/password: neo4j/admin123
 
+
+
 Create the Springboot project with these dependencies - Web, Neo4J
+Add bolt dependency in pom.xml
