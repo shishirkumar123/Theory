@@ -192,6 +192,8 @@ Cypher for mutating data
 ======================================================
 Insert
 ------
+create()		# A node without label
+create(:Person)		# A node with label
 CREATE (person:Person {name: "Ashok", age: 23})-[:works_for]->(department:Department {name: "Accounts"})
 
 Edit
