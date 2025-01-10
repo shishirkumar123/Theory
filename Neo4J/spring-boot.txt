@@ -6,7 +6,87 @@ Create database. Browse through url:
 http://localhost:7474/browser/
 Set id/password: neo4j/admin123
 
-
-
 Create the Springboot project with these dependencies - Web, Neo4J
 Add bolt dependency in pom.xml
+
+Check Code.
+---------------
+Sample HTTP requests
+7. Testing the Application
+Use a tool like Postman or cURL to test the endpoints:
+
+Create a Department:
+
+
+POST /departments
+{
+    "code": "HR",
+    "name": "Human Resources"
+}
+
+Get All Departments:
+
+
+GET /departments
+Get Department by ID:
+
+
+GET /departments/{id}
+Update a Department:
+
+
+PUT /departments/{id}
+{
+    "code": "FIN",
+    "name": "Finance"
+}
+Delete a Department:
+
+
+DELETE /departments/{id}
+===============================
+
+
+
+Got data inserted. But got this message in log:
+The entity com.shishir.SampleNeo4J.model.Department is using a Long value for storing internally generated Neo4j ids. The Neo4j internal Long Ids are deprecated, please consider using an external ID generator.
+Pojo looks like:
+@Node
+public class Department {
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String code;
+    private String name;
+    ...
+
+
+================================================================================
+Relation example - Employee -[works_in]-> Department. 
+The pojos will be like:
+
+@Node
+public class Department {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+    private String code;
+
+    @Relationship(type = "WORKS_IN", direction = Relationship.Direction.INCOMING)
+    private List<Employee> employees;
+    ...
+
+@Node
+public class Employee {
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    private String name;
+    private Integer age;
+
+    @Relationship(type = "WORKS_IN")
+    private Department department;
