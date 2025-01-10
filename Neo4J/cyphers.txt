@@ -73,8 +73,10 @@ Relationships example
 -----------------------
 match (p) -[r]-> (m) return r
 MATCH (n) RETURN distinct labels(n)				#Show types of nodes
+match (n) return count(distinct labels (n))			#Show count of types of nodes	        
 match(n) -[r]->(m)  return distinct labels(n)			#Show types of nodes which has relation
 MATCH (p:Person)-[r]->(m:Movie) RETURN distinct type(r)         #Show all types of relations
+match ()-[r]->() return count(distinct type (r))		#Show count of types of relations
 match (n:Database)-[r]->(m:Message) return distinct type(r)	#Show all types of relations between Database and Message
 match (p:Person) -[:DIRECTED]-> (m:Movie) return p,m
 match (p:Person) -[:WROTE]-> (m:Movie) return p,m
@@ -147,6 +149,14 @@ Find the movie with at least 3 actor:
 	RETURN m, numAct
 	
 	----
+Show the persons which are not actor
+MATCH (p:Person)
+WHERE NOT EXISTS {
+  MATCH (p)-[:ACTED_IN]->(:Movie)
+}
+RETURN p.name AS PersonName
+
+----
 Retrieve the movies and their actors where one of the actors also directed the movie, 
 returning the actors names, the director’s name, and the movie title:
 
@@ -267,6 +277,9 @@ Exercise
 #. Show the persons which are not actor
 #. Who directed the movie Cloud Atlas
 #. In employee, department database, Write cypher for min, max, average
+#. Retrieve the movies and their actors where one of the actors also directed the movie, 
+   returning the actors names, the director’s name, and the movie title
+
 
 
 
