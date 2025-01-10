@@ -83,6 +83,8 @@ match (p:Person) -[:WROTE]-> (m:Movie) return p,m
 match (p:Person) -[:ACTED_IN]-> (m:Movie) where m.title = "The Da Vinci Code" return p,m
 MATCH p=()-[r:REVIEWED]->() RETURN p LIMIT 25
 --
+Q. Does Neo4j allows us to add more than one label to a node.
+A. Yes
 NOTE: Neo4j does not support directly changing the type of a relationship (e.g., from WORKS_FOR to WORKS_IN). 
 Instead, you need to:
 	Create a new relationship of the desired type (WORKS_IN) between the same nodes.
