@@ -1,0 +1,11 @@
+Neo4J vs RDBMS
+--------------------
+At depth two (friends-of-friends), both the relational database and the graph database
+perform well enough for us to consider using them in an online system. Although the
+Neo4j query runs in two-thirds the time of the relational one, an end user would
+barely notice the difference in milliseconds between the two. By the time we reach
+depth three (friend-of-friend-of-friend), however, it’s clear that the relational database
+can no longer deal with the query in a reasonable time frame.
+
+
+
