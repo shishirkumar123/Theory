@@ -22,3 +22,9 @@ e.g
 	This will
 		-create a new folder in project having same name as env-name.
 		-show notice from VS Code to have it as a workspace folder- click Yes
+
+===============================
+Functional programming in Python
+Immutability becomes important in multithreaded environment. Immutable objects cant be
+modifies so there are no synchronization issues.
+
