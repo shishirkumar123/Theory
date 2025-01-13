@@ -19,4 +19,36 @@ Query 2
 - `COUNT(m.title)` aggregates only the movies that have relationships with at least one `Person` node.
 - Movies without a relationship to a `Person` are **excluded** from the results.
 - The grouping and ordering are still based on the `m.released` property.
+=======================================================================
+If i have created data as follows:
+create (p:Person{name:"Mahesh"})-[:friend_of]->(p2:Person {name:"Dinesh"})-[:friend_of]->(p3:Person {name:"Suresh"})-[:friend_of]->(p4:Person {name:"Hitesh"})
+
+Query to find connection between Mahesh and Hitesh:
+-----------------------------------------------------
+MATCH p = (p1:Person {name: "Mahesh"})-[:friend_of*]-(p2:Person {name: "Hitesh"})
+RETURN p LIMIT 1
+
+Query to find whether Mahesh has a muchual friend
+---------------------------------------------------
+MATCH p = (p1:Person {name: "Mahesh"})-[:friend_of*0..2]-(p2:Person {name: "Suresh"})
+RETURN p LIMIT 1
+
+
+=====================================================================================
+
+Checking Query Execution Plan
+To understand how your query is being executed:
+
+1. Use the EXPLAIN Keyword
+The EXPLAIN command generates the query plan without executing it.
+Example:
+EXPLAIN MATCH (p:Person {name: "Mahesh"})-[:friend_of*]->(h:Person {name: "Hitesh"}) RETURN p, h
+Look for steps in the plan, such as Expand(All) or Expand(Into), which show how nodes and relationships are traversed.
+2. Use the PROFILE Keyword
+The PROFILE command executes the query and provides detailed metrics about execution.
+Example:
+PROFILE MATCH (p:Person {name: "Mahesh"})-[:friend_of*]->(h:Person {name: "Hitesh"}) RETURN p, h
+Check the number of rows, DB hits, and the specific steps involved.
+
+
 
