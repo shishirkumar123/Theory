@@ -1,1 +1,21 @@
+1.
+Original:
+---------------
+MATCH (m:Movie) <-[:ACTED_IN]- (p:Person)
+WITH m, COUNT(p) AS actorCount
+WHERE actorCount > 4
+RETURN m.title, actorCount
+Order By actorCount desc
+
+Optimized:
+--------------
+CREATE INDEX FOR (m:Movie) ON (m.title);
+CREATE INDEX FOR (p:Person) ON (p.name);
+
+MATCH (m:Movie)<-[:ACTED_IN]-(p:Person)
+WITH m, COUNT(p) AS actorCount
+WHERE actorCount > $minActorCount
+RETURN m.title, actorCount
+ORDER BY actorCount DESC
+LIMIT 10;
 
