@@ -1,1 +1,21 @@
+Neo4j fully supports ACID transactions (Atomicity, Consistency, Isolation, Durability) to ensure reliable and predictable data operations. Here's how Neo4j achieves each ACID property:
+1. Atomicity
+Either all changes are applied, or none are.
+Neo4J use a write-ahead log (WAL). Before any changes are made to the database,
+-------
+2. Consistency
+ 
+Transaction brings the database from one valid state to another, 
+maintaining all defined rules (constraints, indexes, etc.).
 
+--------------
+3. Isolation
+ Neo4j uses Read Committed isolation, ensuring:
+A transaction only sees changes that were committed before it started.
+Uncommitted changes from other transactions are invisible.
+
+-------------
+4. Durability
+Write-Ahead Log (WAL): Changes are written to the transaction log before being applied to the database.
+Sync to Disk: When a transaction is committed, Neo4j ensures the transaction log is synchronized to disk, guaranteeing persistence.
+Recovery Mechanism: After a crash or power failure, Neo4j uses the transaction log to restore the database to a consistent state.
