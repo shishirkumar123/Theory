@@ -19,3 +19,15 @@ RETURN m.title, actorCount
 ORDER BY actorCount DESC
 LIMIT 10;
 
+=====================================
+2.
+Original:
+PROFILE MATCH (a:Person)-[:FRIEND_OF*]->(b:Person {name: "Bob"})
+RETURN b;
+
+Optimized:
+CREATE INDEX FOR (n:Person) ON (n.name);
+
+MATCH (a:Person {name: "Alice"})-[:FRIEND_OF*1..3]->(b:Person {name: "Bob"})
+RETURN b;
+
