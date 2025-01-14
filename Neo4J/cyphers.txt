@@ -14,7 +14,7 @@ match (m:Movie) return count(m) as TotalNoMovies
 
 WHERE examples
 ---------------------
-match (m:Movie) where m.released = 1999
+match (m:Movie) where m.released = 1999 return m
 match (m:Movie) where m.released = 1999 return count(m)
 match (m:Movie) where m.released > 1999 return count(m)
 match (m:Movie) where m.released < 1999 return count(m)
