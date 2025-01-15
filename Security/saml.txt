@@ -1,0 +1,45 @@
+SAML
+
+1. Subject - User
+2. User Agent - Browser
+3. Service Provider(SP)/Relying party - Applications
+4. Identity provider(IP) - IAM
+	Both SP and IP have unique id associated with them called Entity ID.
+	Replay state/ACS URL - original page requested by user. ACS- Accersion consumer service)
+5. SAML claims -User attributes
+
+
+Setup
+SP, IP needs to build trust. (Exchange public keys. What about SAML metadata?
+
+Two flows
+1. SP Initiated
+	1. User access application
+	2. Application redirects to IP. two method-
+		a. SP sends HTTP 302 to user agent
+		b. SP sends HTTP post with a javascript that connects to IP.
+	3. IP displays login screen. User submits details.
+	4. IP calls directory service for authentication. 
+		(Remember: role of directory service still exists)
+	5. If successful, IP sends user assertions(encrypted) to application.
+	    (IP know the original application url using relay state which was send by SP to IP earlier.)
+		(ACS URL, Assertions contain user data, user groups etc and use this info for authorization.
+	
+2. IP initiated
+	1. User access and logs into IP
+	2. IP authenticates the user
+	3. IP displays User Dashboard having links to various application.
+	4. User clicks on one of the application. Request goes to the IP.
+	5. IP creates assertions(digitally signed and encrypted) and sends to SP
+		(No request was made from SP to IP, so IP didn't get relay state in this flow.
+		There is defaul relay state which is sent from IP to SP.
+Note
+1.For better user experience: Desktop SSO - 
+  User is already logged in to corporate network. 
+  IP can recogonize this and shouldn't ask credentials.
+2. User establis different browser ession with IP and SP.
+
+SAML alternatives - OpenID Connect(OIDC). It works with OAuth2 
+					where OpenID connect does authentication 
+					and OAuth2 does authorization
+					
