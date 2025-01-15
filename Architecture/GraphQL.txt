@@ -1,0 +1,45 @@
+graphql 
+
+alternative to REST
+With rest, sometime we get too much info, sometime we get too less.
+e.g too much - needed 5 fields but got 50 fields
+e.g to less - needed object and nested objects. 
+	in REST we first get one object, then pick value of one field and make another REST call.
+graph ql provides the consumer of API better alternative.
+
+Specification
+Graph QL has
+1. TypeDefs - to define schema of the data
+			- can be as simple as an entity with few fields
+			- can form complex structures stablishing relationships between entity.
+2. Resolver - the source of data. Can have a local simple json file 
+				or can be any endpoint returning data. Has to be json?
+
+
+Consumer can query by
+1. Specifing which specific columns are needed 
+2. Specifing which specific row(s) is/are needed
+
+
+
+
+
+Consumer can mutate the data as well. (Then why it is called GraphQL - it is not just a query language?)
+
+Graph QL specification provided by - 
+Implemented by many like Apollo, Srinivas used some other - check his code
+
+This example is based on Apollo.
+Reference:
+https://www.apollographql.com/docs/apollo-server/getting-started
+https://www.youtube.com/watch?v=joMO4LwRa5Q&list=PL4cUxeGkcC9gUxtblNUahcsg0WLxmrK_y
+
+Queries for Srinivas
+# In LCAP we define aggregate having multiple entities
+In Graph QL, is it assumed that the entry point to the graph is aggregate from where entities can be navigated?
+Or can we start from entities as well and navigate to aggregate?
+
+This will affect the generated code - index.ts.
+
+
+
