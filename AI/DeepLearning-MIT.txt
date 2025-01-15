@@ -66,3 +66,62 @@ Regularization - Technique that constrians optimization problem to discourage co
 				where overfitting starts on test data.
 
 Codes: Lecture 1 - 31.20, 49, 58.19 
+================================================
+
+
+
+
+Lecture 2: Recurrent neural network, Transformers and attention
+https://www.youtube.com/watch?v=dqoEU9Ac3ek&list=PLtBw6njQRU-rwp5__7C0oIVt26ZgjG9NI&index=2
+
+Why sequence is important. 
+	Sequence is all around us. When we speak, read something,
+	DNA, protien sequence, stock market price, ECG etc.
+	We need to build a model which can predict next thing based on previous things happened.
+
+Neurons with recurrence
+	Apply a recurrence relation at every time step to process a sequence.
+	ht 			= fw(xt, ht-1)
+	cell state 	= function with weights w(input, old state)
+		note that old state(context) is also considered while calculating cell state.
+RNN - input vector -> RNN(recurrent cell) -> output vector
+	Total Loss - sum of losses at each step
+	RNNs for sequence modeling (x is input, y is output)
+		x to y			 -	Binary classification
+		x to many y		 - 	Sentiment classification
+		many x to y		 - 	Text generation, image capturing
+		many x to many y -  translation and forcasting, music generation
+
+			[Sentiment classification- 
+			 automated process of identifying and classifying emotions in text as 
+			 positive sentiment, negative sentiment, or neutral sentiment based on 
+			 the opinions expressed within]
+Sequence modeling: Design criteria
+	To model sequence we need to
+		- handle variable length sequence
+		- track long term dependencies (memory)
+		- maintain information about order (order matters in sequence)
+		- share params across sequence
+	RNN meets all criteria. It is very good at some, okay at other.
+
+Encoding language for neural network
+	Neural network can't interpret words. They require numerical inputs.
+	This is done through embedding.
+	Embedding - Transforming index into a fixed size vector (remember NLP)
+		One hot embedding - fix size
+		Learned Embedding - words plottel in x, y axis. Similar words closer to each other.
+		
+Backpropagation through time(BPTT)
+		
+	
+		
+Codes: 14.16, 20.40
+	
+------------
+antromorphism
+linear algebra, chain rule of derivatives, probability distribution
+--------------	
+
+stable diffution
+allen turing
+imitation game
