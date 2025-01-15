@@ -1,5 +1,17 @@
 
-When you view the output of `PROFILE` in Neo4j, you can use the insights to optimize your query. Here’s a systematic approach to interpret the results and derive optimization ideas.
+When you view the output of `PROFILE` in Neo4j, you can use the insights to optimize your query. 
+Output shows:
+      NodeCountFromCountStore - count()?
+      NodeByLabelScan
+      	Add index. NodeByLabelScan changes to NodeIndexSeek
+      Filter
+      Expand(All) - filter on relationship type?
+      Projection
+      EagerAggregation - group by?
+      sort - order by?
+      OrderedAggregation - group by, order by?
+      ProduceResults
+Here’s a systematic approach to interpret the results and derive optimization ideas.
 
 ---
 
