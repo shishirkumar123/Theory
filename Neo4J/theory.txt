@@ -7,5 +7,8 @@ barely notice the difference in milliseconds between the two. By the time we rea
 depth three (friend-of-friend-of-friend), however, it’s clear that the relational database
 can no longer deal with the query in a reasonable time frame.
 
+Labels: A labeled property graph is made up of nodes, relationships, properties, and labels.
+Nodes have labels, relationships have type
+
 
 
