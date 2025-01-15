@@ -1,0 +1,63 @@
+SOLID
+Single Responsibility principle
+	Classes should be highly cohesive.
+	Advantage:  Easier maintenance.
+Open Close principle
+	Classes should be open for extension, close for modification
+	
+Liskov substitution principle
+----------------------------------------------------------------
+Interface Segregation Principle (ISP)
+A class should not be forced to implement interfaces it does not use.
+I
+Violation :
+interface Animal {
+    void fly();
+    void run();
+}
+
+class Dog implements Animal {
+    void run() { /* Implementation */ }
+    void fly() { throw new UnsupportedOperationException(); } // Not applicable
+}
+
+Fix: Break the interface-
+interface Runnable {
+    void run();
+}
+
+interface Flyable {
+    void fly();
+}
+
+
+----------------------------------------------------------------
+D Dependency Inversion Principle (DIP)
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+Abstractions should not depend on details; details should depend on abstractions.
+
+A class that is going to use another class can get the dependecy injected.
+The dependency should be an interface. So that implementation class can be replaced
+easily when needed.
+
+e.g
+
+interface NotificationService {
+    void sendNotification(String message);
+}
+
+class EmailService implements NotificationService {
+    void sendNotification(String message) { /* Email logic */ }
+}
+
+class UserController {
+    private NotificationService notificationService;
+
+    UserController(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
+
+    void notifyUser() {
+        notificationService.sendNotification("Hello User!");
+    }
+}
