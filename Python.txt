@@ -27,4 +27,8 @@ e.g
 Functional programming in Python
 Immutability becomes important in multithreaded environment. Immutable objects cant be
 modifies so there are no synchronization issues.
+=============================
+Python 3.13 introduces experimental features like free threading and JIT (JIT) compilation 
+that can significantly enhance performance in computationally intensive workloads, 
+which are common in ML training and
 
