@@ -1,0 +1,81 @@
+GitOps principles 
+=================
+	- Infra as code done, not creating infra manually, makes infra easier to reproduce
+	ALSO
+		- Network as code
+		- Policy as code
+		- configuration as code
+		- security as code
+		long story short - X as code
+	- Traditionally not very good practices followed for IaC
+			- no pull requests/reviews
+			- simple commits in main branch
+			- no colab
+			- no automated tests. Cant detect
+				- invalid yaml files
+				- typos
+				- code change is breaking infra
+			- everyone has access to infra
+			- hard to trace who executed what
+	GitOps
+		- Separate git repo for IaC, devops pipeline for it
+		- pull/merge request for better reviews
+		- CI pipeline for IaC, just like normal code in Java, python
+		- tested IaC before getting applied
+		- Once tested, deployment is PULL(not traditional PUSH) 
+			Agents sits in K8s cluster, compare IaC in git vs actual cluster. 
+			If mismatch, keep the cluster in sync. So Git repo is single source of truth
+			e.g flux, argo.
+		- Rollback is easy to any previous state.
+		
+	Summary
+		GitOps is IaC + Version Cotrol + Pull/Merge Request + CI/CD pipeline
+			
+
+Argo CD  -implements Git Ops principles for CD specifically for K8s
+==========
+Jenkins disadvantage
+	- needs to be aware of AWS credential, k8s credential - security issue
+	- when kubectl apply takes place, jenkins is not aware of the status
+	
+Argo CD specifically focus on CD for K8s making this part more efficient.
+
+AgroCD is part of K8s cluster. Contrast with others like jenkin which is outside cluster.
+
+Have separate git repo for source code and app configuration like configmap, secret, deployment.yaml
+Adv - If you change build pipeline logic, you dont need to build source code.
+
+Argo CD supports different ways to specify k8s cluster.
+	- k8s yaml files
+	- Helm charts
+	- kustomize
+	- template files that generate k8s files
+	
+Gitops Repository - repository that is tracked and synced by Argo CD
+
+CI CD is split.
+
+CI(Jenkins) - devloper/devops - Test, build image, push image to docker hub, update k8s manifest conf
+CD(ArgoCD)  - operations/devops
+
+Cluster disaster recovery - becomes easy. because Infra as code.
+
+
+AgroCD advantage
+	Infra as code.
+	Rather than devops doing help install and keeping the k8s conf file in their laptops and run
+		kubectl apply, whole k8s conf defined as code in Git repo.
+	Git as single source of truth.
+	
+	Now if someone manually updates the cluster, agro cd will watch that too (apart from
+	change in k8s configuration file.
+	
+	Compares desired state defined in git repo vs actual cluster state and takes care of mismatch
+	If needed can configure, not to sync automatically but manually.
+	
+	kubectl apply audit trail wasn't possible
+	now changes in cluster can be tracked.
+
+
+
+
