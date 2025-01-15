@@ -1,0 +1,187 @@
+
+
+
+==========================================---------------
+Data Pipeline
+Collect -> Ingest -> Compute -> Store -> Consume
+Or
+Collect -> Ingest -> Store -> Compute -> Consume
+
+
+Collect
+	Collect from various data source
+	1. Streaming - AWS Kinesis, Apache Kafka Stream, IoT devices
+	2. Batch Process - MySQL, DynamoDB, SQL Server, Oracle
+	3. CDC from Database - MySQL, DynamoDB, SQL Server, Oracle
+	Collected data go to landing using either of the two
+	1. Simple data load 
+	2. Even Queue - Apache Kafka
+	
+Ingest
+	Keep raw data in landing area
+
+Compute
+	Two Types
+	1. Batch Processing - Apache Spark, Hadoop/Hive
+	2. Stream processing - Apache Flink, Google cloud Dataflow, Apache Storm, Apache Samza
+
+	Steps - 
+	ETL/ELT - Apache Airflow/ AWS Glue
+	Extract-Transform-Load or -Extract-Load-Transform 
+		Data aggregation
+		Data cleaning
+		Data normalization
+		Data enrichment
+		- ETL Tools 
+			- Apache nifi
+				Open-source, flow-based platform.
+				Real-time data integration.
+				Ideal for IoT and streaming data pipelines.
+			- Informatica
+				Enterprise-grade, commercial tool.
+				Robust data governance and MDM (Master Data Management).
+				Strong automation and scalability for large enterprises.
+			- Talend 
+				Open-source and commercial options.
+				User-friendly, especially for ETL developers.
+				Strong support for cloud and big data platforms.
+		
+		Data is processed and stored in parque/avro/odc format 
+	
+Store
+	Data Warehouse(Conformed): Snowflake, Amazon Redshift, Google BigQuery, Teradata, Greenplum
+	Data mart 				 : subset of DWH like billing DM, sales DM. Data is duplicated.
+	Data Lake(Curated)		 : S3, HDFS (format - parque, avro). Horizontal Scaling.
+	Data Lakehouse	
+
+	DWH are vertically scaled, data lake is horizontally scaled.
+	DWH is costlier than Data lake.
+	[Snowflake  - Often referred to as a "data platform" that bridges the gap 
+				  between data lakes and warehouses.]
+	
+Use/Consume
+	Data Science			
+		Tools - NumPi, Tensorflow, PiTorch, Panda.   
+		Use case - For prediction(e.g customer churn)
+	Business Intelligence	
+		Tools - Tableau, Power BI					 
+		Use Case - Visualization( Interactive dashboards, reports)
+	Self service
+		Tools - looker, looker ML
+	Machine learning services
+		e.g Fraud detection
+		
+--------------------------
+Notes from Manish Kumar Lectures
+
+DWH layers
+
+Extract (Ingestion)
+	- Staging layer  - Scoop, Ingestion
+		Types:
+		Persistent - after it is sent to next layer(user access layer), data is kept
+			If DWH got corrupted, need to go back to source system
+			Require less storage.
+		Non persistent - after it is sent to next layer(user access layer), data is deleted
+			More storage is required. Need to take care of data governance.
+			But data backup is there.
+	-User access layer
+		
+		
+Transform data
+	Uniformity - same type data
+	Restructuring - Same structure(columns)
+	Common transformation
+		Data value unification - US, U.S.A., United States -> USA
+		Data type and unification - char, varchar(25), varchar(35) -> varchar(35)
+		Deduplication - remove duplicate records resulted due to same data coming from different sources
+		Drop columns - audit columns etc not needed by DWH
+		Drop record - Hard delete the stale data
+		Common Known Error - e.g replace null with avg value.
+		
+Load. 2 types
+	Initial load
+		Done only once (before going live)
+	Incremental load
+		Reason-
+			New data (new customer, product)
+			Modified data( product price change, employee promoted)
+			Delete data (employee resigned (inactive))
+		Types- 
+			Append - add at the end 
+			In place update - replace. history gone?
+			complete replacement - rarely done
+			rolling append - Lets say we decided to keep last two years data only.
+							And we do update once a month.
+							So every month new data will arrive, 
+							and oldest one month data will be moved out.
+--------------------------
+
+Design engineering
+	Dimentional modeling
+		Fact Table - measurement - keep data (kind of transaction data)
+		Dimention Table - context - provide context about the data to understand the meaning
+		Fact table can join with dimention table to make it more meaningful and create new fact table.
+	
+	Steps (all these steps looks like database design to me)
+		Understand the business - familiarize with data and get the end goal for analysis
+		Declare the grain - grain means level of detail available in a record
+				so that analysis can be done. Grain level needs to increate if
+				more granularity is needed. It will lead to more space requirement.
+		Identify the dimentions needed to join.
+		Identify number of fact tables to be created.
+		Derived fact - from SP and CP, derived profit. can keep this in additional column in fact table
+		[Data modeler prefer View over derived columns to save storage space]
+	Types of facts in fact table
+		Additivity
+			Additive facts - can add fact along any dimention
+			Semi additive facts - can add for along with some dimention only
+				e.g
+				1. Qty(prod 1)+ Qty(prod 2) on a given day for store S003 can be added 
+					to find total sales	for that store but, Quantity on hand for say 3 
+					days can't be added. It doent have any meaning.
+			Non additive facts - cant add for any. 
+				e.g 
+				1. normal price and discounted price can't be added to find unit price?
+				2. temperature cant be added in time dimention. Yest was 30, today is 45. But cant add.
+				3. % profit
+				
+	Type of fact tables
+		Transaction fact table(insert): 
+			e.g.POS data. 
+			can have billions of records 
+		Periodic snapshot fact table(insert/append).
+			Qty on hand of a product every day is a periodic snapshot
+			If I have to find a perticuar product movement, better to find 
+			here in periodic table.
+			Issue - If say 1000 product and 10000 store so every day 10,0000000 records
+			So we keep the limit on no. of days we keep the data for. Like last 2 days.
+		Accumulating  snapshot fact table.(update)
+			Number of records remain same, their values keep updating.
+			Number of records increase only for new entity, like new product transaction
+		Factless fact table?? (Only dimention)
+			e.g 
+			1. table 'promotion_coverage_fact_tbl' 
+				fields date_id, product_id, store_id, promotion_id
+				This can answer the question - Which product didnt sell even after promo.
+			2. table 'student_attendence_fact_tbl'
+				fields date_id, student_id, course_id, instructor_id.
+				This can answer the question - 75% attendence in a course?
+	
+	Dimention table - TODO
+	https://www.youtube.com/watch?v=ArWFTgXpYjw&list=PLTsNSGeIpGnGP8A74Ie1PgqHhewsqD3fv&index=14
+	
+	Star Schema vs Snowflake Schema
+	Star schemas are easier and better for performance, 
+	while snowflake schemas focus on storage optimization and flexibility in complex databases.
+			
+			
+		
+			
+		
+	
+
+
+	
+	
+	
