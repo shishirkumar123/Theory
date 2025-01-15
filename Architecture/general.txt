@@ -1,0 +1,99 @@
+caching
+	-browser caching - set max age. [but user can disable cache.]
+		X-Cache header specifies how many times data was found in cache 
+	-server caching - can be kept at server or separate cache server(e.g redis)
+		- Write around cache- data not found in cache. fetch from db and update cache.
+		- Write through cache- data store simultaneously in db and cache. slower
+		- Write-back cache- data first save in cache, then db. Faster writes but 
+								data gone if server crashes.
+		[Cache eviction policy
+			LRU
+			FIFO
+			LFU]
+	-database caching - cache the query result in db itself or redis/memcache
+	-CDN - content delivery network. 
+		   usually serves static content like js, html, css, video/audio, img
+		   central server has main content, other server gets updated from there
+		-pull based - request reached from user to nearest server.
+					If server has it, then return, if not then pull from main then return
+					Good for content frequently changing
+		-push based - good for large file that are infrequently update
+		On browser set max age of cache using Cache-Control header.
+how to handle distributed synchronization like 
+	- unique random number generator across the cluster
+	- only single object for a singleton
+	- transaction management
+
+
+
+websockets vs Server sent
+
+Availability - SLO/SLA
+Graceful degradation achived through
+	Reliability - ensuring sys works correctly and consistently
+	Fault tolerance - how does system handles unexpected failures
+	Redundancy - having backups. if min fails then back up server replaces it
+Speed
+	throughput
+		request throughput - Request per second - this will tell how many concurrent clients 
+						     can be handled in a given timeframe
+		database throughput - Queries per second 
+	latency
+		-how long it takes to process single request.
+Security
+	Check for vulnerabilities
+
+Advantage of GraphQL over REST - avaoid overfetching and underfetching
+RPC(e.g - gRPC:google Remote Procedure Call) - faster, but needs special tool for debug. 
+
+
+Proxy Server- provide cache, load balancing, anonimizing request. 
+	Types
+		Forward proxy - hides client identity
+		Reverse Proxy - hides server identity, load balancing, web accelaration, security
+		Open proxy - anonimizing web browsing
+		Transparent proxy - 
+		Anonymous proxy - anonimizing browsing
+		Distorting proxy
+		High Anonimilty proxy
+
+Load Balancing
+	Strategy - Round Robin, Least response time, IP Hash, 
+			   Weighted algo, geographic, consistence hashing
+	Harware LB - F5, Citrix
+	Software LB - HA Proxy, NGNIX, AWS ELB, MS Azure LB, Google cloud LB
+	Strategy to avoid Load balancer failure
+		Redundant lb
+		Continuous health check and monitoring
+		Autoscaling and self healing
+		
+Database
+  Scaling
+	Vertcal scaling - Scale up
+			increase cpu power
+			add RAM
+			add disk
+			upgrade n/w
+	Horizontal scaling - scale out
+			Database Sharding
+			
+				Range based
+				Directory based sharding - lookup service picks up right database 
+				Geographic sharding
+			Replication
+				Master-Slave - Master read/write, slave only read
+				Master-Master - all read write
+  Performance
+		Caching
+		Indexing
+		Query optimization - minimizing joins
+	CAP - Consistency, Availaibiity, partition tolerance. Choose only two.
+	
+----------------
+scenario
+	Uploading large media file to the server. Afer 70%, internet disconnected. Reconnected.
+	How to avaoid starting from the begining?
+	Where to store the metadata and where to store content?
+	
+Question
+	How is youtube video played without getting downloaded?
