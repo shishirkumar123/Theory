@@ -1,0 +1,30 @@
+APIM
+====
+Create API service -> Needs Application insights -> Needs Log Analytics workspace
+Onboard API using OpenAPI(swagger)/Azure function etc.
+Create Product
+	There is a subscription attached to a product. 
+	API consumer need to get subscription key to use product
+Create Group - mapped to ??
+Create User - mapped to group
+Attach policy - 
+	at global,product, API, operation level (Note: Operations are present inside an API)
+	to specify rate-limit, quota call, allow CORS, cache response, transformation etc.
+	
+
+
+Generate subscription key
+	-Admin can do it
+	-Consumer of the API can also do it through dev portal
+	
+
+Consumer of the API will see list of APIs that have been mapped for this user using group/product
+Consumer of the API can generate subscription key and send request along with this key.
+	We can enable 'Approval required' for subscription key generation process.
+
+Versioning - Create new version of an API. Option available when you browse the API.
+Authentication policies
+	Options - Basic, client certificate, managed identity
+	
+OAuth2 - API doesnt directly provide OAuth2 implementation but integrates with Identity provider(IP)
+		IP should be OAuth2/OpenId complient(e.g., Azure Active Directory (AAD), Auth0,
