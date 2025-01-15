@@ -1,0 +1,260 @@
+Initial steps
+=============
+Spark
+===============
+Initial steps:
+Spark runs on Java 8/11/17, Scala 2.12/2.13, Python 3.8+, and R 3.5+. 
+
+#In intellij, installed scala plugin. Restarted IntelliJ.
+Selected Java 21.0.2
+		 Scala 2.13.15
+		 SBT 1.10.4 --Build tool for scala
+
+#Add Spark. Add below in the sbt file
+libraryDependencies ++= Seq(
+  "org.apache.spark" %% "spark-core" % "3.5.3",
+  "org.apache.spark" %% "spark-sql" % "3.5.3"
+)
+# Download Example Data(Kaggle): 
+	Google kaggle's stock market dataset, 
+	download stock price history for apple
+	https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset?resource=download
+# Write and run the program
+	Got the exception due to Java module restrictions in Java 21, 
+	specifically blocking access to sun.nio.ch.DirectBuffer from 
+	Apache Spark. This class was accessible in previous Java versions
+	
+	Fix: Add JVM option in IntelliJ
+		--add-opens java.base/sun.nio.ch=ALL-UNNAMED
+# See the data displayed on console.
+
+
+-----
+Reading data
+	Core structure
+		dataFrameReader.format(..)		//csv,json,table..(if not specified, default is parquet)
+						.option(..)		//key-values.. e.g inferschema, mode, header
+										//	mode-> failfast/dropmalformed/permissive(null replace)
+										//  inferschema->true/false(infer datatype. If spark cant,
+										// then I have to manually create schema with StructType/StructField)
+										//  header -> true/false header exists in input file?
+						.schema(..)		//build schemaobject and pass
+						.load(..)		//path of data
+						
+Q. How do we print bad records? Where do we store corrupted records?
+			val emp_schema = StructType(Array(
+			  StructField("name", StringType, nullable = true),
+			  StructField("age", IntegerType, nullable = false),
+			  StructField("salary", DoubleType, nullable = true),
+			  StructField("corrupt_record", StringType, nullable)
+			))
+			df.spark.read
+				.format("csv")
+				.schema(emp_schema)
+				.option("badRecordPath", "c:\sakjd\sad")
+				.load(..)
+			df.show(truncate = false)
+			
+			badDataDf.show()
+
+To view stored files
+%db
+	When you do this, you will find a new file for badRecords
+					
+Schema
+	two ways to create
+	1. StructType, StructField
+			val schema = StructType(Array(
+			  StructField("name", StringType, nullable = true),
+			  StructField("age", IntegerType, nullable = false),
+			  StructField("salary", DoubleType, nullable = true)
+			))
+	2. DDL
+						
+JSON read
+	Two JSON format:
+		Line delimited - By default sparks assumes this. this format is faster to read.
+						Because one line read at a time
+		Multiline - slow, whole file needs to be read and create object.
+					By default, spark will read only one record.
+	Read
+		df.spark.read
+				.format("json")
+				.option("", "")
+				.load(..).show()
+		Extra json fields are taken care by filling nulls'
+		For nested json, use the option -
+			.load().printSchema()
+
+Parquet: Hybrid of OLTP(Row based) and OLAP(column based)
+		[OLTP good more more writes,	OLAP good for more reads]
+		Parquet is fixed file formate, binary, columnar based
+		(You can read directly if you have to. you need a tool)
+		File structure
+		----------
+		File
+				Magic number(4 bytes) - "PAR1"
+				Row Group 0				--Row Group is chunk of data. Default - 128MB
+					Column a
+						Page 0
+							Page Header
+								Values(max, min etc)
+								Repeatation Level
+								Deninition Level
+						Page 1
+						...
+					Column b
+						Page 0
+						Page 1
+						...
+					...
+				Row Group 1
+				...
+				Footer
+						Column a metadata(statistics - min, max, null_count, distinct_count ...)
+						Column b metadata
+					Row Group 0 metadata
+				   File metadata
+					num_columns
+					num_rows
+					num_row_groups
+				Where is encoding type present?(e.g	Run length encoding)
+					
+				
+		----------------
+		
+		
+		df.spark.read.parquet("rtw/ada/a_gz.parquet")
+				.load()
+				
+		
+		Run length encoding - AAAABBBBBBBCCCAAA became A4B7C3A3
+			Cant we compress it further by first sorting 
+			then encoding so that above e.g become A7B7C3
+			
+		Bit packing - Check data and use as less number of bits as possible to store data
+						(same logic as data type)
+		Compression technique - GZIP, snappy, LZO
+		Predicate pushdown - ability to skip some row group using metadata resulting in optimization
+		Projection Pruning - Discard(Dont scan) the column not needed since the begining
+		What assumption does parquet make?
+			User will be interested in viewing first few records only?
+			Not all columns are needed to fetch most of the time?
+		Between csv and parquet, the later can run 100 times faster or more.
+		
+---------
+Writing data
+	Decisions during write - should we create partitions and buckets?
+		Partition is done on some basis lile
+			males in one partition, females in other, 
+			india, in one australia in other. What if so many data in india?
+		Bucketing is just picking few items and putting in bucket based on some range.
+		I feel that partitioning is based on some category, but bucketing is based on range?
+		If bucket has around same number of elements then only it is useful.
+		Partition needs one param - on which column.
+		Bucket needs two param - how many buckets, on which column.
+		If two table needs to be joined, 
+			they sud be bucketed on same column, 
+			otherwise to much shuffling.
+		Pruning. Bucket search is faster. Based on data to be search we can 
+			identify which bucket it sud be in and look into that bucket only
+			
+	When tried writing, got this -
+	java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.
+	
+	Downloaded winutils and updated environment variable for path.
+	Update path to add -C:\dev\hadoop\bin\winutils-master\hadoop-3.0.0\bin
+		
+		
+
+Architecture
+=============
+Spark Jobs - The work, that needs to be done. Jobs can be submitted in two modes:
+    Yarn client mode
+    Cluster mode
+Tasks: Jobs are devided into tasks?
+Driver: Driver submits the jobs to the cluster Manager. 
+Executor- Running Java process
+Executor Core- Running Java threads.Executor runs parallel executor core.
+
+Compare to Hadoop: Spark is faster for many reasons
+    Iteration Algo(Iteration iteration input is previous iteration output): 
+        Spark use lineage in RAM, Hadoop do disk i/o after each iteration.
+    Executor of Spark is reused. So no JVM start/stop
+    Spark has caching capabilities
+
+
+
+RDD, DataSet, DataFrame
+========================
+RDD: Resilient Distribute ...
+    Immutable
+    Fault tolerent, typesafe.
+    Developer needs to take care of optimization
+    Not at good as DataSet in performance
+    Not memory efficient
+    Joining is not easy
+    Connection with Hive isn't easy
+
+Dataframe
+    Table abstraction at the top of RDD.
+    Inbuild Hive connection
+    Auto optimization using Catalist Optimizer
+    Performance is better because an execution plan is created before running.
+    Not as good as DataSet
+    Not type Safe(to achieve optimization)
+
+DataSet
+    Type Safe, Autooptimized, Better performance.
+    More Memory efficient.
+    Encoders - New way of serialize/deserialize.
+=======================
+Partition vs Bucketing
+    Done during write operation for optimization during read. Done by separating the data on some basis then process parallely.
+    Use Case: Huge dataset has three columns - name, age, location.
+    Solution: Do partitioning by location, then for each partition, do the bucketing by age.
+    So total number of files = Number of partition * number of buckets.
+    inside the bucket, keep the file format as parquet/OCR to further optimize the read operation.
+    Note: Buckets can be created without partitions as well.
+
+My notes: In the above example, after partition two situations-
+1. Search based on partition column:
+   e.g Need to find maz(age), min(age), avg(age) in Florida. -This will be faster because need to search in Florida partition only.
+2. Search based on column other tha partition column:
+    e.g Need to find person with name 'John'. Need to search every partition, but still faster because of parallelism.
+
+Bucket in Spark vs Hive:
+-------------------------
+Hive will shuffle the data during Reduce phase. (Number of reducers = number of buckets.
+Spark doesn't use reduce phase. Everything is done in map. No shuffling.
+
+Caculating number of buckets
+------------------------------
+In HDFS, default size of block is 128 MB. 
+So no. of buckets = Size of data in mb/128
+
+Prefer bucketing over partitioning specially to avoid so many small files.
+=======================
+Repartition vs Coalesce
+    When partition size is uneven, some tasks will finish sooner than the otherSo overall time taken will be high
+    Repartition and Coalesce rearrage the partition size.
+    Repartition do it across machines (too much shuffling), coalesce do it within machine. So coalesce is faster.
+
+=======================
+
+Choice of language
+    Scala: Better enterprise acceptance because of familiarity with Java, Type safe, UDFs are better in performance.
+    Python: Easier, better ML library(Pandas, Tensorflow, Scifi), visualization library is better. Ecosystem has more contributer.
+
+Choice of file format
+=========================
+Avro: Row based format. Needed when you need complete row fetch(all/most of the columns.
+Parque: Column based format. Needed when you are interested in only few columns. Write optimized
+    Parque format
+        RowData
+            TODO
+            TODO
+
+
+
+    
