@@ -1,0 +1,94 @@
+CosmosDB
+=========
+It is a fully managed, proprietary, globally distributed, and multi-model database 
+service developed by Microsoft.
+
+Multi-Model Database: 
+Cosmos DB natively supports multiple data models 
+(e.g., document, graph, key-value, column-family, and table APIs).
+It achieves this through its own underlying ARDB (Atom-Record-Sequence) storage engine,
+which abstracts and supports these different data models.
+
+APIs offered:
+SQL API (for document databases).
+Gremlin API (for graph databases).
+Cassandra API (for wide-column stores).
+Table API (for key-value stores).
+MongoDB API (for document databases).
+
+Azure Cosmos DB can be considered a form of polyglot persistence implementation because 
+it supports multiple data models and APIs. But it differens from traditional polyglot 
+solutions -
+While Cosmos DB provides APIs for MongoDB and Cassandra, it is not running those 
+databases under the hood. Instead, it implements compatibility layers so applications 
+written for those databases can work seamlessly with Cosmos DB.
+
+
+
+1. Multiple Data Models
+Cosmos DB supports various data models natively:
+
+Document Model: JSON-based storage and querying (SQL API, MongoDB API).
+Key-Value Model: Using the Table API for simple key-value storage.
+Column-Family Model: Compatible with Cassandra's wide-column data structure.
+Graph Model: Using the Gremlin API for graph-based queries.
+
+
+2. Multiple APIs for Diverse Ecosystems
+Cosmos DB allows you to interact with the same underlying data through different 
+APIs tailored for popular ecosystems:
+
+	SQL API: For querying JSON documents with SQL-like syntax.
+	MongoDB API: Mimics MongoDB’s document-based query capabilities.
+	Cassandra API: Mimics Cassandra’s CQL (Cassandra Query Language).
+	Table API: For Azure Table Storage-like interactions.
+	Gremlin API: For graph-based queries.
+
+3. Unified Backend
+Unlike traditional polyglot persistence, where multiple database technologies are 
+used side by side (e.g., MongoDB for documents, Neo4j for graphs), Cosmos DB uses 
+a single backend (its ARDB engine) to store and manage data.
+------------------------------
+Free Tier
+Provisioned Throughput: 400 Request Units per second (RUs/sec) for free.
+Storage: 5 GB of storage 
+Eligibility: Free tier applies to one Cosmos DB account per Azure subscription.
+Regional Availability: available in all regions where Cosmos DB is offered.
+-----------------------
+
+Create database steps
+1. Create azure csmodb account. Provide subscription, Resource Group, 
+	Account Name, API, Location, isGeoRedundancy, isMultiRegionWriters.
+2. Add contaner. Provide database(existing or create), throughput needed,
+	container id, partition key. Can I change partition key later on?
+Once database is created you will see data(nothing initially), settings,
+procedures, functions and triggers. 
+
+Try
+	- insert data, retrieve data and see how they are charged. Retrieve charges more.
+	- replicate data globally through console. (menu available in left nav.)
+	- choose the right balance between consistency and availability.
+	- Setup firewall rules
+	- Specify CQRS
+	- Check the db url, credentials
+	- use the search features
+	= Add azure function
+
+----------
+Connecting from service layer.
+	Very easy to connect from .NET.
+
+--------------------
+Architecture
+	Database Account
+		Database	
+			Container (Type: Collection, Table, Graph)
+				Item  (Type: Documents, Rows, Nodes, Edges)
+==============================================================================
+Create Azure function
+Provide function name, subscription, Resource Group, location, 
+programming language(Can use Java, .NET and many more), operating system, 
+storage(For storing any state for function, also storing the function itself)
+	
+
+	
