@@ -1,0 +1,32 @@
+DynamoDB
+=====================
+Introduction
+-------------
+Managed NoSQL database optimized for performance at scale
+High Availability & Durability
+Very Important: Ideal for application for know access pattern.
+	(Trade off - fix your access pattern and get high performance)
+Access through APIs/ORMs and authorize through IAM
+Integrate very well with other AWS services.
+Cost effective usage based payment model.
+
+
+Core Concepts
+--------------
+Tables, Items, Attributes and Indexes.
+Tables are collection of items.
+	Create table 
+		- Specify partition key(=Hash Key), sort key(=range key). Can't change lateron(Remember trade off)
+		- Which partition the data will go? It is determined by hash of partition key.
+		- If you have a key that can be unique, make that partition key. 
+			Then you dont need sort key.
+		
+Items are collection of attributes or key vaue pair.
+
+Exercise
+-------------
+1. Try exporting to S3.
+Got message - Turn on point-in-time recovery (PITR)
+To export data to Amazon S3, you must turn on PITR for this table. 
+Additional charges apply.
+
