@@ -1,3 +1,30 @@
 cloud - aws, amazon, gcp, ibm cloud, terremark
+==================
 build tool - npm, yarn
     Facebook developed Yarn was to address NPM's security issues in a better way.
+===================
+Netty
+Based on Java NIO, Netty enables asynchronous I/O operations, 
+which are crucial for building scalable, event-driven systems.
+
+Netty requires an in-depth understanding of networking and 
+asynchronous programming, which can be challenging for teams 
+without such expertise.
+
+Spring WebFlux:
+This framework leverages Netty (by default) to provide a reactive, 
+non-blocking web application development model. It's a higher-level 
+abstraction compared to using Netty directly, making it easier 
+to build robust web applications.
+
+Backpressure - Consumer slower than producer. Consumer can communicate
+to producer to slow down. 
+Previously we have seen that for situation like this we had introduced
+broker like SQS for this. How does the two approach compare?
+
+If in my microservice I make call to db.... employee.finadAll(), 
+reactive programming says, we will do it non blocking and start
+getting streams of employee objects. How do you contrast this without
+pagination?
+
+
