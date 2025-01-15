@@ -19,6 +19,10 @@ What is not created by default-
 =====================	
 VPC
 ======================
+VPC Logically isolated portion of AWS cloud.' 
+	cant go across regions. It will be within a region.
+	Analogous to having my own data center inside AWS
+	Go across all AZs withing the Region
 ----
 Virtual network - By default instances within the VPCs are connected through Virtual network. 
 We dont explicitly do anything. 
