@@ -57,6 +57,16 @@ Availability zone
 
 Interestig article:https://aws.plainenglish.io/you-have-misunderstood-aws-availability-zones-47cdea0a168a
 
+VPC can have multiple AZ. AZ belongs to a region.
+	Provides low latency, High availability, fault tolerance
+	e.g. us-east-1a, us-east-1b	
+Local Zones - Closer to specific cities or industries. 
+		Provides very low latency(regional proximity) for city specific apps.
+		e.g. Los Angeles, Boston	
+Wavelength Zones - Integrated with 5G mobile networks.
+		Provides ultra low latency(5G optimized) for 5G apps.
+		e.g. Verizon 5G in Boston, Tokyo
+
 ----
 Subnet
 
