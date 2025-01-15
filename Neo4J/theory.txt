@@ -10,5 +10,19 @@ can no longer deal with the query in a reasonable time frame.
 Labels: A labeled property graph is made up of nodes, relationships, properties, and labels.
 Nodes have labels, relationships have type
 
+Graph db internals
+--------------------
+Graph DB internals:
+index-free adjacency: 
+Index-Free Adjacency is a key design principle in graph databases like Neo4j. 
+-It means that each node directly contains references (or pointers) to its adjacent
+ nodes and relationships. This allows traversals to jump directly from one node 
+ to another without requiring an index lookup at every step.
+-crucial for fast, efficient graph traversals.
+-(much more efficient than graphs based on heavy indexing)
+-Index-Free Adjacency Leads to Low-Cost “Joins”
+
+
+
 
 
