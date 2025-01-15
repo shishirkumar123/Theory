@@ -1,0 +1,33 @@
+Helm chart - 
+https://www.youtube.com/watch?v=-ykwb1d0DXU
+
+Helm chart is Package manager for K8s
+Packages yaml files and 
+	Distribute them 
+		in public(available for everyone)
+		in private(internal to company) 
+		using helm repository
+	You can create your own, and resuse somebody's. 
+Search using command -
+>helm search <keyword> or go to helmhub
+Scenarios
+# Helm is a templating engine
+	use case - multiple microservice needs to be created which share same kind of conf
+				with only few values different e.g name, image, port
+				You can create a helm template with placeholders for dynamic values.
+				Values are defined by yaml file or --set flag
+# Same application across multiple environment e.g dev, stage, prod
+
+install
+>helm install <chart name> 
+>helm install --value=my-values.yaml
+>helm install --ser version=2.0.0
+
+# Helm for release management
+
+	Helm versions
+		V2 - Helm client(cli) + Helm server(Tiller)
+		Helm requests are logged. Rollback is supported
+		(Seems like implementation of Gitops principle similar to Argo) 
+		Tiller has to much power to CRUD K8s. So security issue.
+		V3 - No Tiller. - Fixed security concern but makes helm difficult to use.
