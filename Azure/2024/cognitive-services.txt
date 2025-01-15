@@ -1,0 +1,38 @@
+
+Azure Cognitive Services
+	Text
+		Entity Recognition
+		Sentiment Analysis
+		Language Understanding(LUIS)
+	Vision
+		Computer Vision
+		Custom Vision
+		Text Extraction
+		Face API
+	Speech
+		Text to Speech
+		Speech to Text
+		Speaker Recognition
+		Speech Translation
+	Decision-Making
+		Anomaly Detection
+		Content Moderation
+		Personalizer
+================================
+Azure Language Services
+	Named Entity Recognition (NER)
+	Personally Identifiable Information (PII) detection
+	Key phrase extraction
+	Entity linking
+	Text Analytics for health
+	Sentiment analysis and opinion mining
+	Language detection
+=================================
+Quick start
+	1. Create a storage account to upload your dataset that will be used to build your model.
+	2. Within the storage account, create a container.
+	3. Within the container, you have option to upload your data file(txt, json etc) for training.
+	4. Create an Azure AI Language resource, get the credentials
+	5. Create a project 
+	6. Connect the project with storage and start training a model.
+	
