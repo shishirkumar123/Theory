@@ -221,6 +221,21 @@ NACLs - You might setup network ACLs with rules similar to your security groups 
 Amazon recommends SG for whitelisting and NACL for blacklisting. Additionally use WAF for vulnarabilities.
 Note that allow/deny option against rules is available is NACL only. Not available in SG. Because SG rules are whitelisting.
 =========================================
+Key Differences Between NACLs and Security Groups"
+Feature				Network ACL (NACL)				Security Group
+Scope		Subnet level (applies to all instances in the subnet).	Instance level (applies to specific instances).
+------------------------------------------------------------------------------------------------------------------------
+State				Stateless 				   Stateful 
+	(requires explicit rules for both inbound and outbound traffic)    (return traffic is automatically allowed).
+------------------------------------------------------------------------------------------------------------------------
+		Rule Processing	Rules are processed in order, 		   All rules are evaluated together; 
+		starting from the lowest numbered rule.			   the most permissive rule applies.
+------------------------------------------------------------------------------------------------------------------------
+Default Behavior	Default NACL allows all traffic 		   Default Security Group denies all inbound 
+		(custom NACL denies all traffic by default).		   and allows all outbound traffic.
+
+=========================================
+
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
 =========================================
 Customer Gateway - 
