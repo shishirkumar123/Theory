@@ -306,3 +306,6 @@ CloudFront
  17. When does it makes sense to create our own DHCP? 
  18. If I create more DHCP option set, how to change DHCP option set of a VPC?
  19. Verify two EC2 instances in 2 different subnet of same VPC are able to communicate.
+ 20. Why would I need more than one ENI for my EC2?
+ A. 1. You can configure multiple ENIs on different subnets. If one fails, other will work.
+    2. You can separate different types of traffic -public(Web), private(DB)
