@@ -205,6 +205,8 @@ Act as a firewall that controlls the traffic for one or more instances by adding
 It is recommended to create different SGs for different layers.
 Default inbound rule - none (Nothing allowed)
 Default ourbound rule -all (Everything allowed)
+SG and EC2 has many to many relation
+Security groups are stateful. If you allow inbound traffic on a specific port (e.g., SSH on port 22), the corresponding outbound traffic for that connection is automatically allowed, and vice versa.
 
 When a VPC is created, a default SG is created which is associated with VPC. Till this time there is no subnet. That means there is no compute. So SG rules are not applied to anything. But when subnets are added and then EC2, Fargate etc are added on the subnet, and no other SG is added, does the VPC level rules apply to all the instances of all the subnets?
 =========================================	
