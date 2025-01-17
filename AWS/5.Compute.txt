@@ -1,6 +1,7 @@
 Interesting article: https://awstip.com/secret-aws-features-that-senior-developers-keep-to-themselves-e955feff19c5
 "1. AWS Systems Manager Session Manager — The SSH Killer
-Remember the days of managing SSH keys and dealing with bastion hosts? Those days are over. Session Manager provides secure shell access to your EC2 instances without opening inbound ports or managing SSH keys."
+Remember the days of managing SSH keys and dealing with bastion hosts? Those days are over. 
+Session Manager provides secure shell access to your EC2 instances without opening inbound ports or managing SSH keys."
 
 ====================================================================================
 EC2
