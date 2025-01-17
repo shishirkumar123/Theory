@@ -17,8 +17,8 @@ What is not created by default-
 	Virtual private Gateways
 	Customer Gateways
 =====================	
-VPC
-======================
+Virtual Private Cloud: VPC
+=====================================================================================================================
 VPC Logically isolated portion of AWS cloud.' 
 	cant go across regions. It will be within a region.
 	Analogous to having my own data center inside AWS
@@ -55,7 +55,10 @@ Valid CIDR combinations of VPC and subnets:
 Invalid combination:
 1. VPC -10.0.0.0/24, Subnet 10.0.1.0 - "CIDR Address is not within CIDR Address from VPC." Because VPC CIDR indicates that subnet within it must start with 10.0.0
 
-=========================================
+VCP limits - 200 subnets, 200 route tables, 500 SG, 50 inbound+outbound rules - per VPC.
+5 VPC per region
+
+-------------------------------------------------------------------------------------------
 Availability zone
 
 
@@ -70,7 +73,7 @@ Wavelength Zones - Integrated with 5G mobile networks.
 		e.g. Verizon 5G in Boston, Tokyo
 Interestig article:https://aws.plainenglish.io/you-have-misunderstood-aws-availability-zones-47cdea0a168a
 
-=========================================
+-------------------------------------------------------------------------------------------
 
 Subnet -  segment of VPC's IP. helps high resiliency and availability.
 	Subnet is assigned to one AZ. Subnet cant go accross AZs.
@@ -92,7 +95,7 @@ Public-facing workloads (e.g., web servers) can use the IGW directly.
 Private workloads (e.g., backend services) can use a NAT Gateway for secure internet access.
 Fully isolated workloads (e.g., databases) can avoid internet access entirely.
 
-=========================================
+-------------------------------------------------------------------------------------------
 
 Route table 
 	- Set of rules called routes to determine network traffic direction. (Internet traffic allowed or just local etc.). The default route table that is created when VPC is created is called 'main'. Route table and subnet relation is one to many. 
@@ -120,8 +123,7 @@ Route table vs NACL - Route table has routing logic for traffic. NACL allows/dis
 
 
 
-
-=========================================
+-------------------------------------------------------------------------------------------
 Internet Gateway(IGW)
 	Type of NAT(network address translation) device that uses bidirectional communication.
 	Translate from a private IP address to a single Public IP address.
@@ -133,7 +135,7 @@ CIDR rule - Each VPC has a CIDR rule. (CIDR is classless)
 	Subnet has a block of IP address from the CIDR block.
 	(Contrast CIDR with class A, class B, class C)
 
-=========================================
+-------------------------------------------------------------------------------------------
 Egress Only Gateway
 	Same as NAT Gateway but for IPv6
 	Doesn't allow traffic back-in
@@ -151,7 +153,7 @@ Resources		Public subnets with public IPs			Private subnets with private IPs
 Implementation		Directly through IGW				NAT Gateway (IPv4) / EIGW (IPv6)
 Use Case		Public-facing resources				Private resources needing internet access
 
-=========================================
+-------------------------------------------------------------------------------------------
 DHCP(Dynamic Host Config Protocol) Option sets
 	DHCP is a network management protocol used to 
 	automatically assign IP addresses and other network configuration settings
@@ -164,22 +166,14 @@ DHCP(Dynamic Host Config Protocol) Option sets
 	In AWS, One DHCP option set already exist in the region.
 	All the VPC in the region use same DHCP. While creating VPC, the choice was not even asked. 
 	
-=========================================
+-------------------------------------------------------------------------------------------
 Elastic IP addresses - Static, charge associated. 
-=========================================
+
 Network interface - An elastic network interface is a logical networking component in a VPC 
 that represents a virtual network card. Associated with a subnet.
 You can create a network interface, attach it to an instance, detach it from an instance, and attach it to another instance. The attributes of a network interface follow it as it's attached or detached from an instance and reattached to another instance.
-===================================
-VPC endpoint - Allows you to securely connect your VPC to another service like S3, DynamoDB.
-Endpoints can help reduce NAT gateway charges and improve security by accessing S3 directly from the VPC. By default, full access policy is used. You can customize this policy at any time.
-=========================================
-VPC Endpoint Service 
-	You can use PrivateLink technology to make services in your VPC available to other AWS accounts and services.
-	PrivateLink is a highly available, scalable technology that enables private access to services.
-	Other accounts and services can create an interface endpoint to access your endpoint service
-=========================================
-NAT device - Used by instances of private subnet to access internet. Outside world still cant access these instances.
+-------------------------------------------------------------------------------------------
+NAT gateway - Used by instances of private subnet to access internet. Outside world still cant access these instances.
 	Only have one IP address.
 	2 types - NAT Gateway(recommended, managed) and NAT instance. NAT gateway hours are charged based on usage and amount of data processed.
 	Once NAT gateway is created, one network interface is also created. This can be viewed from EC2 >> Network and Security >> Network Interface. 
@@ -192,16 +186,27 @@ NAT device - Used by instances of private subnet to access internet. Outside wor
 	Charges - April 2020
 	$0.045 per GB Data Processed by NAT Gateways
 	$0.045 per NAT Gateway Hour(Roughly $1 a day)
-=========================================
+-------------------------------------------------------------------------------------------
 Peering connections - VPC connecting to another VPC.
 	Can be done withing the same account and different account. 
 	Can be done in same region or different region.
 	
 	VPC Peering (Point to Point) is not transitive.
+
 =========================================
-AWS Transit Gateway (hub-and-spoke )- Added later, better alternative to VPC Peering. It connects all VPCs.
-	You can attach up to 5000 VPCs to each gateway and each attachment can handle up to 50 Gbits/second of bursty traffic-2018
-=========================================	
+Security
+=========================================================
+NACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default NACL is created, when a subnet is created. NACL to subnet relation is one to many. Unlike SG, ACL is stateless.
+	NACL applies at subnet level, SG applies at instance level.
+	When traffic enters your network, it is filtered by NACLs before it is filtered by security groups.
+e.g
+Inbound rule:
+Rule No. Protocol/Port/IP  Allow/Deny
+100 	 All/All/0.0.0.0	Allow
+*	Same			Deny
+	- Lower rule number executed first.
+        - * means all other conditions which are not covered in previous rule
+--------------------------------------------------------------------------------
 Security group - Instance level(EC2) firewall. Associated with a VPC.
 Act as a firewall that controlls the traffic for one or more instances by adding rules to SG. Examples -
 	SG for web server typically allows only port 80(HTTP), 443(HTTPS) traffic. May be add SSH at 22 to manage it.
@@ -213,21 +218,11 @@ SG and EC2 has many to many relation
 Security groups are stateful. If you allow inbound traffic on a specific port (e.g., SSH on port 22), the corresponding outbound traffic for that connection is automatically allowed, and vice versa.
 
 When a VPC is created, a default SG is created which is associated with VPC. Till this time there is no subnet. That means there is no compute. So SG rules are not applied to anything. But when subnets are added and then EC2, Fargate etc are added on the subnet, and no other SG is added, does the VPC level rules apply to all the instances of all the subnets?
-=========================================	
-NACLs - You might setup network ACLs with rules similar to your security groups in order to add additional layer of security to your VPCs. For every subnet, an ACL is a must. A default NACL is created, when a subnet is created. NACL to subnet relation is one to many. Unlike SG, ACL is stateless.
-	NACL applies at subnet level, SG applies at instance level.
-	When traffic enters your network, it is filtered by NACLs before it is filtered by security groups.
-e.g
-Inbound rule:
-Rule No. Protocol/Port/IP  Allow/Deny
-100 	 All/All/0.0.0.0	Allow
-*	Same			Deny
-	- Lower rule number executed first.
-        - * means all other conditions which are not covered in previous rule
-----
+
+---------------------------------------------------------------------------------------	
 Amazon recommends SG for whitelisting and NACL for blacklisting. Additionally use WAF for vulnarabilities.
 Note that allow/deny option against rules is available is NACL only. Not available in SG. Because SG rules are whitelisting.
-=========================================
+---------------------------------------------------------------------------------------	
 Key Differences Between NACLs and Security Groups"
 Feature				Network ACL (NACL)				Security Group
 Scope		Subnet level (applies to all instances in the subnet).	Instance level (applies to specific instances).
@@ -242,21 +237,44 @@ Default Behavior	Default NACL allows all traffic 		   Default Security Group den
 		(custom NACL denies all traffic by default).		   and allows all outbound traffic.
 
 =========================================
+PrivateLink and Lattice
+=========================================
+
+-------------------------------------------------------------------------------------------
+VPC endpoint - Allows you to securely connect your VPC to another service like S3, DynamoDB, SES(Simple Email service).
+Endpoints can help reduce NAT gateway charges and improve security by accessing S3 directly from the VPC. By default, full access policy is used. You can customize this policy at any time.
+-------------------------------------------------------------------------------------------
+VPC Endpoint Service 
+	You can use PrivateLink technology to make services in your VPC available to other AWS accounts and services.
+	PrivateLink is a highly available, scalable technology that enables private access to services.
+	Other accounts and services can create an interface endpoint to access your endpoint service
+-------------------------------------------------------------------------------------------
+Target Group
+-------------------------------------------------------------------------------------------
 
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
-=========================================
-Customer Gateway - 
 
 =========================================
+DNS Firewall  
 
-VCP limits - 200 subnets, 200 route tables, 500 SG, 50 inbound+outbound rules - per VPC.
-5 VPC per region.
+=========================================
+=========================================
+Network firewall 
+
+=========================================
+=========================================
+Virtual Private network (VPN)
+
+=========================================
+Customer Gateway
 
 
-==============              
-CloudFront
-===============
-	- CDN service. Speeds up content delivery If you have content in S3 bucket
+
+=========================================
+Transit Gateways
+=========================================
+(hub-and-spoke )- Added later, better alternative to VPC Peering. It connects all VPCs.
+You can attach up to 5000 VPCs to each gateway and each attachment can handle up to 50 Gbits/second of bursty traffic-2018
  
  Question
  1. While creating VPC, we specify IPv4 CIDR block. If we put 10.0.0.1/24, it will generate 256 IP addresses. What if I just want 50 IP address.
