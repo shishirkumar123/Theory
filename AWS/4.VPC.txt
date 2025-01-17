@@ -259,9 +259,23 @@ DNS Firewall
 
 =========================================
 =========================================
-Network firewall 
-
+Network firewall
 =========================================
+While Security Groups and Network Access Control Lists (NACLs) are effective for basic network security in AWS, AWS Network Firewall provides a more advanced layer of security for more complex and evolving security needs. Here's why AWS Network Firewall is useful even when Security Groups and NACLs are in place:
+
+
+Feature		Security Groups			|NACLs				|AWS Network Firewall
+Scope	Instance-level (operates on ENI).	|Subnet-level (stateless rules)	|VPC-level (integrates with route tables).
+Statefulness	Stateful.			|Stateless.			|Stateful and stateless rules supported.
+Rule Complexity	Simple, allows/denies traffic.	|Simple, allows/denies traffic.	|Complex rules for intrusion detection 
+											and prevention.
+Protocol Support	TCP, UDP, ICMP.		|TCP, UDP, ICMP.		|Deep packet inspection for 
+											Layer 3–7 traffic.
+Advanced Features	Basic.			|Basic.				|Includes IPS/IDS, traffic filtering, 
+										 and domain blocking.
+
+
+
 =========================================
 Virtual Private network (VPN)
 
