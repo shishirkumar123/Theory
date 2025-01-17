@@ -236,6 +236,17 @@ State				Stateless 				   Stateful
 Default Behavior	Default NACL allows all traffic 		   Default Security Group denies all inbound 
 		(custom NACL denies all traffic by default).		   and allows all outbound traffic.
 
+Q. If NACL specifies HTTP denied, Security group specifies HTTP allowed, then?
+A. The NACL rule takes precedence and the traffic will be denied. This is because NACLs operate at the subnet level, and traffic must pass through the NACL rules before it reaches the Security Group.
+Flow of Traffic Evaluation
+Inbound Traffic:
+
+When traffic enters a subnet, the NACL's inbound rules are evaluated first.
+If the NACL denies the traffic (e.g., HTTP), it will not reach the EC2 instance, regardless of the Security Group rules.
+Outbound Traffic:
+
+When traffic exits an instance, the Security Group's outbound rules are evaluated first.
+If allowed by the Security Group, the NACL's outbound rules are then evaluated. If the NACL denies the traffic, it will not leave the subnet.
 =========================================
 PrivateLink and Lattice
 =========================================
