@@ -1,0 +1,4 @@
+==============              
+CloudFront
+===============
+	- CDN service. Speeds up content delivery If you have content in S3 bucket
