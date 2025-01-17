@@ -1,0 +1,18 @@
+===================
+Route 53 
+===================
+	- DNS service. If you have content in S3 bucket, Route 53 will provide DNS service for it.
+           Provides resiliency by scaling as per the need.
+           Failover is transparent to the user.
+
+        - Routing types
+                      Simple - e.g Route a a simple website.
+                      Failover - e.g If connection fails to s3 bicket as a website then route to a complex tree of records.
+                      Geolocation - e.g Based on country(I18n). In US it can be done based on states also. 
+                                           Will using this eliminate the need of cloudfront?
+                      Geoproximity - Based on location of resource.
+                      Latency Based - Serves from Region which provides lowest latency.
+                      Multivalue Answer .
+                      Waited.
+Price (April 13th 2020) $0.50 per Hosted Zone for the first 25 Hosted Zones.  I notice that $0.50 is per month charge.                                   
+Can be integrated with IAM.
