@@ -219,6 +219,10 @@ Security groups are stateful. If you allow inbound traffic on a specific port (e
 
 When a VPC is created, a default SG is created which is associated with VPC. Till this time there is no subnet. That means there is no compute. So SG rules are not applied to anything. But when subnets are added and then EC2, Fargate etc are added on the subnet, and no other SG is added, does the VPC level rules apply to all the instances of all the subnets?
 
+Q. when security group is stateful, why i have to specify both inbound and outbound rule?
+A. The stateful nature applies only to return traffic for an already allowed request.
+You need to define rules for initiating traffic in both directions to cover all use cases.
+
 ---------------------------------------------------------------------------------------	
 Amazon recommends SG for whitelisting and NACL for blacklisting. Additionally use WAF for vulnarabilities.
 Note that allow/deny option against rules is available is NACL only. Not available in SG. Because SG rules are whitelisting.
