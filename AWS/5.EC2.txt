@@ -6,16 +6,29 @@ Session Manager provides secure shell access to your EC2 instances without openi
 ====================================================================================
 EC2
 =============
-Select EC2 based on need. Below are options -
-	-compute optimized - good processor for batch process etc, 
+Instances
+-----------
+Creates instance by specifying
+	- AMI
+	- Instance type
+	- key pair
+	- Networking
+	- storage
+	- Advance settings
+    While creating EC2:
+	- Allow SSH to access, Allow HTTP is you are planning to run a web server
+	- Attach EBS if needed. Also select whether or not you want to delete EBS if EC2 is deleted.
+
+Instance types:  (t-, c-, g-, m-, r- x- )
+----------------
+    Select EC2 based on need. Below are options -
+	- compute optimized - good processor for batch process etc, 
 	- memory optimized - lots of RAM for Cache, RDBMS, Business Intelligence, 
 	- GPU enabled  
 	- general purpose e.g T2 micro - good for web server, code repository
 	- Storage - High frequency OLTP 
 	- Your own manually configured.
-While creating EC2
-	- Allow SSH to access, Allow HTTP is you are planning to run a web server
-	- Attach EBS if needed. Also select whether or not you want to delete EBS if EC2 is deleted.
+
 After creating EC2
 	- You can stop server when not using, to incure less bill.
 Security Group are firewall for EC2 instances.
@@ -33,7 +46,9 @@ Public IP:
 
 ASG: 
 	Fill details.
-	When Scale up, the new EC2s goes to which AZ/Subnet?
+	Q. When Scale up, the new EC2s goes to which AZ/Subnet?
+	A. While creating ASG, you specify VPC. Then you have an option to select from
+	   all the subnets inside that VPC. (multiselect subnet)
 	
 
 Assignment
