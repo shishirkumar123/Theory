@@ -265,6 +265,16 @@ VPC Endpoint Service
 	Other accounts and services can create an interface endpoint to access your endpoint service
 -------------------------------------------------------------------------------------------
 Target Group
+- Target groups is a logical grouping of targets (such as EC2 instances, IP addresses, or AWS Lambda functions) within a 
+Virtual Private Cloud (VPC) that are used by load balancers to route incoming requests. 
+- They are associated with Elastic Load Balancers (ELBs), including Application Load Balancers (ALBs), Network Load Balancers (NLBs), and Gateway Load Balancers (GLBs).
+- They manage:
+	- Routing traffic intelligently across multiple resources
+	  (e.g., distributing traffic to multiple EC2 instances or containers).
+	- Performing health checks to ensure only healthy resources receive traffic. (like eureka?)
+	- Deciding which resource to route traffic to based on rules (e.g., path-based or header-based routing).
+
+Note: While Target Groups and AWS Load Balancers are sufficient for basic use cases, Istio provides advanced service mesh capabilities ideal for Kubernetes-based, microservices-heavy architectures. 
 -------------------------------------------------------------------------------------------
 
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
