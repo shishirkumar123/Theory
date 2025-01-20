@@ -74,6 +74,7 @@ My notes -In this scenario, retry doesnt make sense. This is not n/w issue. So w
 all these scenario needs to be considered. Better use out of the box retry logic.
 
 No of partition = no of consumers in a consumer group. Consumer can't be more than number of partition- to avoid double read. But can be less. In that case one consumer is reading from more than 1 partion. See kafka_overview.png
+If no of consumer >  no of partition, some consumer will have to sit idle.
 If there are 4 brockers and I need 4 partitions each brocker can have one partition.
 But if I have one brocker and I need 2 partition, both partition will reside on same brocker.
 If you have a single broker and create a topic with 4 partitions:
@@ -109,7 +110,7 @@ until the message is successfully written to the partition (either leader or rep
 ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
 Future<RecordMetadata> future = producer.send(record);
 try {
-    RecordMetadata metadata = future.get();  // Wait for acknowledgement
+    RecordMetadata<BusinessEntity> metadata = future.get();  // Wait for acknowledgement
     System.out.println("Message sent to partition " + metadata.partition());
 } catch (Exception e) {
     e.printStackTrace();
@@ -123,7 +124,7 @@ but still handle success/failure asynchronously.
 ProducerRecord<String, String> record = new ProducerRecord<>(topic, key, value);
 producer.send(record, new Callback() {
     @Override
-    public void onCompletion(RecordMetadata metadata, Exception exception) {
+    public void onCompletion(RecordMetadata<BusinessEntity> metadata, Exception exception) {
         if (exception != null) {
             // Handle failure (e.g., log or retry)
             exception.printStackTrace();
@@ -227,19 +228,82 @@ Rebalancing is initiated by Group coordinator but executed by Leader.
 Remember - 
 The Group Coordinator is always a Kafka broker.
 The Group Leader is one of the consumers in the group.
+-----------------------------------------------------------------------
+What does this code do: kafkaConsumer.poll(100)
+		- connect to group coordinator
+		- join the group
+		- receives the partition assignment
+		- sends heartbeat
+		- fetch your message
+		- many more things...
+		But the API (pll) is very simple and clean.
+	If a consumer hasn't poll for a while, group co-ordinator may assume, it is dead and trigger a partition rebalance.
+
 ------------------------------------------------------------------------
 	One consumer can subscribe to list of topics.
 	Consumer polls the topic in infinite loop. Optionally it can be given a scheduler so that it pools based on scheduler settings.
+	
+
 	Q. Why Kafka choose consumer polling approach. Why it didn't choose broker notifying consumer approach?
 	
 Offset
 	Current Offset - Maintains current position of consumer read.
 	Committed offset - Consumer has confirmed about processing.
 	These offsets play a role in rebalancing
+-------------------------------------------------------------------
+Note: Make sure all the prop configurations are in separate file, not mixed with code.
+--------------------------------------------------------------------------------------
+Offset
+	One message goes to one offset. Message can't be splitted to multiple offset.
+  Two offsets for each consumer
+	Current: (Sent records). After each call to consumer.poll, current offset jumps to new position depending on how many message read is configured. 
+		Used to avoid resending same message to same consumer.
+	Commited: (Processed records). The offset position that is processed by consumer. (Obviously this offset will be behind current offset.)
+		Used in the event of rebalance to resending same message to the new consumer which is already processed by previous consumer.
+
+Coomitted offset plays a criticle role during rebalancing. New member will need to know where to start. The answer is committed offset.
+
+How to commit. Two ways:
+	Auto commit
+	Manual commit
+		Two ways of mannual commit:
+		-Commit Sync - reliable, strightfoward but blocking. Retry for recoverable errors.
+		-Commit Async - no retry. Why it is designed like that?
+			e.g consumer needs to processed 75 records. it failed. Consumer will try after 5 seconds.
+			Because it is async, without knowing previous 75 records failure, new 100 records are commited.
+			This situation can have undesired result. Thats why commit async has been designed to have no retry.
+	Controlled through below properties:
+		enable.auto.commit - default is true
+		auto.commit.interval.ms - default is 5 seconds
+	Q. Are the above property ( 5 seconds in the example) same for all consumer? Or can be set differently for different consumer?
+	My notes: Why can simply autocommit after each message is processed?  Why to wait for a time interval. 
+		  Sometime it may be become less than required or sometime it can become more than required.
+
+
+Q. On kafka.poll call, how many messages are read?
+A. When calling kafka.poll, the number of messages read is controlled by the consumer configuration setting "max.poll.records", which specifies the maximum number of 
+records a single poll operation will return; by default, this value is set to 500 messages. So after each call, current offset jumps by that many number 
+(500 in this case)
+Higher the number, more performant it can be but memory requirement will increase.
+
+---------------------------------------------------------------------------------------
 
 RebalanceListener
 
-Partition assignment can be done by Kafka or us.
+Partition assignment can be done by Kafka or us. If we need to do it, implement ConsumerRebalanceListener. Methods
+	onPartitionRevoked - we can commit the current offset just before partition is revoked from a consumer.
+	onPartitionAssigned - called just after rebalancing is complete, consumer starts consuming.
+
+--------------------------------------------------------------------------------
+Custom partition assignment  + automatic partition assignment = problem.
+(Remember: custom partition happing at producer side. Auto partition assignment happening at consumer side.)
+
+Problem 1: Imbalance in Consumer Workload lead to performance bottlenecks.
+If the producer uses custom partitioning to send data unevenly to partitions (e.g., 90% of messages to Partition 1 
+and only 10% to Partition 2), the consumers in the group may not have balanced workloads.
+
+
+----------------------------------------------------------------------------------
 
 Kerberos security
 Serializer problem
