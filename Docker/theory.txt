@@ -92,3 +92,61 @@ docker run my-app1.0
 =========================================================================
 ECR - Docker Registry at AWS
 ACR - Azure Cloud Registry
+
+========================================================
+Q. Lets say I don't have a software say postgres database on my laptop. I use docker image to run it. Does it get installed in my machine? when I stop the docker can i still access postgres database?
+A. When you use a **Docker image** to run software like PostgreSQL, it does **not get installed on your machine** in the traditional sense. Here's how it works:
+
+1. **Does it get installed on your machine?**
+- No, PostgreSQL is not installed directly on your host system. Instead:
+  - Docker pulls a pre-built **PostgreSQL image** from a registry (e.g., Docker Hub).
+  - Docker creates a **container** from this image, which is an isolated environment where PostgreSQL runs.
+  - The software and dependencies reside inside the container, separate from your laptop’s operating system.
+
+---
+
+2. **Can you access PostgreSQL after stopping the Docker container?**
+- **No**, once you stop the Docker container, the PostgreSQL server inside the container stops, and you can't access the database unless:
+  - **Data Persistence**: If you set up a **Docker volume** or bind mount, the database data will persist on your host system even after the container stops. You can start the container again to access the data.
+  - **Without Data Persistence**: If no volume is configured, any changes or data stored inside the container will be lost when the container is removed.
+
+---
+
+3. **How to Ensure Data Persistence?**
+If you want the PostgreSQL database to be accessible after stopping the container:
+- Use a **Docker volume** or **bind mount** to store the database data on your host system:
+  ```bash
+  docker run -d \
+      -e POSTGRES_USER=myuser \
+      -e POSTGRES_PASSWORD=mypassword \
+      -e POSTGRES_DB=mydatabase \
+      -v postgres_data:/var/lib/postgresql/data \
+      --name my_postgres \
+      postgres
+  ```
+  In this example:
+  - `-v postgres_data:/var/lib/postgresql/data` creates a persistent volume named `postgres_data`.
+  - The volume ensures that your database data is stored on the host, outside the container.
+
+- If the container stops or is deleted, the volume persists, so you can create a new container and reuse the existing data.
+
+---
+
+4. **What Happens When You Stop the Container?**
+- **Stopping the container**: The PostgreSQL server stops, and you lose access to it until the container is started again:
+  ```bash
+  docker stop my_postgres
+  docker start my_postgres
+  ```
+- **Deleting the container**: If you delete the container without a volume, all data inside it is lost.
+
+---
+
+5. **Summary**
+- PostgreSQL is not installed on your host machine; it runs in an isolated Docker container.
+- If you stop the container:
+  - Without a volume: You lose access to PostgreSQL and its data.
+  - With a volume: The data persists, and you can access it by restarting or creating a new container.
+
+Let me know if you'd like detailed help setting up a persistent PostgreSQL container!
+
