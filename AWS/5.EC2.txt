@@ -18,6 +18,8 @@ Creates instance by specifying
     While creating EC2:
 	- Allow SSH to access, Allow HTTP is you are planning to run a web server
 	- Attach EBS if needed. Also select whether or not you want to delete EBS if EC2 is deleted.
+    After creating EC2
+	- You can stop server when not using, to incure less bill.
 
 Instance types:  (t-, c-, g-, m-, r- x- )
 ----------------
@@ -29,8 +31,45 @@ Instance types:  (t-, c-, g-, m-, r- x- )
 	- Storage - High frequency OLTP 
 	- Your own manually configured.
 
-After creating EC2
-	- You can stop server when not using, to incure less bill.
+Launch Template
+----------------
+	-Created using similar options that you get for EC2-
+		- AMI
+		- Instance type
+		- key pair
+		- Networking
+		- storage
+		- Advance settings
+	-Can be used to launch
+		- EC2 instance
+		- ASG 
+		- Spot fleet
+
+Spot Requests
+--------------------
+Create using launch template or manual configuration
+
+Savings Plans
+------------------
+	Low prices on EC2, Fargate and Lambda usage, in exchange for a commitment to a consistent amount of usage (measured in $/hour) for a 1 or 3 year term
+
+Reserved Instances
+------------------
+	Like buying a computer. Specify o/s, instance type etc.
+	You are billed for the reservation regardless of whether you fully use the capacity.
+	Steady-state workloads (e.g., web servers, databases).
+	Hardware is virtualized. It is not dedicated.
+	Not suitable for BYOL
+
+Dedicated Host
+----------------
+	Dedicated Hosts allow you to provision EC2 instances on physical servers fully dedicated for your use.
+	(dedicated physical hardware)
+	Suitable for BYOL (Bring your own liscence)
+	
+
+
+
 Security Group are firewall for EC2 instances.
 	I may allow my laptop to do SSH on my AWS a/c EC2, but no one else.
 	One SG can be a firewall to more than one EC2.
