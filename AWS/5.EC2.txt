@@ -67,27 +67,63 @@ Dedicated Host
 	(dedicated physical hardware)
 	Suitable for BYOL (Bring your own liscence)
 	
+Capacity Reservations
+----------------------
 
+Images
+=====================================================
 
+Elastic block storage
+=====================================================
+Volume
+-----------
+Snapshot
+-----------
+Lifecycle Manager: Automate the creation, retention, copy and deletion of snapshots and AMIs
+-------------------------------------------------------------------------------------------------------------------
 
+Network & Security
+=====================================================
+Security Group
+------------------
 Security Group are firewall for EC2 instances.
 	I may allow my laptop to do SSH on my AWS a/c EC2, but no one else.
-	One SG can be a firewall to more than one EC2.
+	One SG can be a firewall to more than one EC2 and vice versa( many to many)
 	All incoming to EC2 blocked by default.
 	All outgoing from EC2 are authorized by defalt.
 	Does the EC2s of same SG allow each other by default?
 Ports
 	22 SSH, 21 FTP, 22 SFTP using SSH, 80 HTTP, 442 HTTPS, 3389 RDP 
 
-Public IP:
+Elastic IP:
+----------------
 	EC2 get a public IP assigned. But when you stop and start EC2, public IP changes.
-	If you create and elastic ip, attach to EC2, then stop/start wont change it.
+	If you create elastic ip and attach to EC2, then stop/start wont change it.
 
-ASG: 
+Placement Groups
+-----------------
+	3 types
+	- cluster
+	- spread
+	- partition
+Key Pairs
+-----------
+
+Network interface
+-------------------
+An elastic network interface is a logical networking component in a VPC that represents a virtual network card.
+
+Load Balancing
+========================
+
+Auto Scaling
+=======================
+Auto Scaling Group(ASG): 
 	Fill details.
 	Q. When Scale up, the new EC2s goes to which AZ/Subnet?
 	A. While creating ASG, you specify VPC. Then you have an option to select from
 	   all the subnets inside that VPC. (multiselect subnet)
+
 	
 
 Assignment
@@ -176,5 +212,10 @@ AWS Outpost
 Question
 When autoscaling EC2, does it create more instances, or it adds more memory/HD etc?
 How S3 connects to EC2?
+
+
+Assignment
+----------------
+1. Create an ASK whose EC2s have different configurations in terms of cpu and memory.
 
 
