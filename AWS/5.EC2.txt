@@ -115,6 +115,17 @@ An elastic network interface is a logical networking component in a VPC that rep
 
 Load Balancing
 ========================
+Load Balancers - 4 types
+-------------------
+1. Application Load Balancer
+-----------------
+ALB is typically associated with private subnet.
+AWS allows to to associate a public subnet with an application load balancer but show warning:
+"The selected subnet is not a private subnet. This means that your internal load balancer can receive internet traffic.
+You can proceed with this selection; however, to prevent internet traffic from reaching your load balancer, 
+you must choose a private subnet or update this subnet’s route table in the VPC console"
+
+2. 
 
 Auto Scaling
 =======================
