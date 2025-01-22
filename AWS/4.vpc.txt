@@ -275,6 +275,8 @@ Virtual Private Cloud (VPC) that are used by load balancers to route incoming re
 	- Deciding which resource to route traffic to based on rules (e.g., path-based or header-based routing).
 
 Note: While Target Groups and AWS Load Balancers are sufficient for basic use cases, Istio provides advanced service mesh capabilities ideal for Kubernetes-based, microservices-heavy architectures. 
+Note: Target groups are available in EC2 dashboard also. The form to create looks similar. But TGs create in VPC dashboard
+are not visible in EC2 dashboard and vice versa.(This is my observation)
 -------------------------------------------------------------------------------------------
 
 Virtual Private Gateway - used for making VPN connection. VPN connections costs money depending on usage and amount of data transfer.
