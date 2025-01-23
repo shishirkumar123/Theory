@@ -27,4 +27,8 @@ reactive programming says, we will do it non blocking and start
 getting streams of employee objects. How do you contrast this without
 pagination?
 
+=====================
+Distributed Cache: 
+Popular distributed caching systems include Redis, Memcached, Hazelcast, and Amazon ElastiCache.
+
 
