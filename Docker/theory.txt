@@ -148,5 +148,4 @@ If you want the PostgreSQL database to be accessible after stopping the containe
   - Without a volume: You lose access to PostgreSQL and its data.
   - With a volume: The data persists, and you can access it by restarting or creating a new container.
 
-Let me know if you'd like detailed help setting up a persistent PostgreSQL container!
 
