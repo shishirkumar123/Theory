@@ -5,10 +5,106 @@ Cache - To avoid network calls, do avoid repeated computation
 	Thrashing - very frequent updates in cache(input/evict)
 	Consistency - Have a mechanism to updates cache in case of updates.
 		Achieve through 2 approaches
-		1.Write through - 
-		2.Write back - 
+		1.Write through - Update Cache first, then update persistent data store immediately
+		2.Write back - Update cache first, later (or periodically) update persistent data store.
 		3.Hybrid - 
-		Writeback cache refers to writing to cache first and then the update gets propagated to db asynchronously from cache. Wrong  - What you're describing as writeback is actually write-through, since in write through, order of writing (to db or cache first) doesn't matter.
-	
+
+
+### **Distributed Caching**
+
+**Distributed caching** is a caching approach in which the cache is shared across multiple nodes (servers) in a network or a cloud environment. The goal of distributed caching is to allow multiple application instances, services, or servers to access and manage the cache in a synchronized manner, ensuring data consistency and performance optimization.
+
+In a distributed cache setup:
+- Cache data is not stored locally in one instance or server. Instead, it is distributed across a set of cache nodes (which can be physical or virtual machines).
+- The cache is often centralized and can be accessed by multiple applications or microservices, improving the speed of data retrieval and reducing the load on databases or other backend services.
+- Popular distributed caching systems include **Redis**, **Memcached**, **Hazelcast**, and **Amazon ElastiCache**.
+
+### **Key Characteristics of Distributed Caching**:
+1. **Shared Cache**: Data is stored in a centralized cache that can be accessed by multiple application instances.
+2. **Scalability**: The cache can scale horizontally by adding more nodes as demand increases.
+3. **Fault Tolerance and High Availability**: Distributed caches can replicate data across multiple nodes to prevent data loss and ensure high availability in case of node failure.
+4. **Consistency**: Cache consistency must be maintained across all nodes to ensure that all instances accessing the cache have access to the same data.
+5. **Eviction Policies**: Distributed caches typically support eviction policies (e.g., **LRU** or **LFU**) to handle situations when the cache exceeds its memory limits.
+
+### **Advantages of Distributed Caching**:
+- **Improved Performance**: By storing frequently accessed data in memory across distributed nodes, cache hit rates are improved, and response times for application requests are reduced.
+- **Scalability**: It can easily scale to accommodate larger datasets or increased traffic by adding more nodes to the cache cluster.
+- **Reduced Load on Backend Systems**: By offloading frequently accessed data to the cache, the load on the backend (such as a database) is reduced, which improves overall system performance.
+
+---
+
+### **Write-Through Cache and Write-Back Cache**
+
+Both **write-through** and **write-back** are caching strategies that deal with how data is written to the cache and the backend (persistent data store like a database).
+
+#### **1. Write-Through Cache**
+
+In a **write-through cache** strategy, **whenever data is written to the cache**, it is simultaneously written to the **underlying data store** (such as a database or persistent storage). This ensures that the cache and the data store are always in sync, and the data is available both in the cache and the backend at the same time.
+
+- **How it works**:
+  1. When the application writes data (for example, adding a record or updating a value), the data is written to the cache first.
+  2. After the data is written to the cache, it is also immediately written to the persistent data store (e.g., a relational database or NoSQL database).
+  
+- **Advantages**:
+  - **Data Consistency**: Since data is written to both the cache and the backend simultaneously, there is no risk of data inconsistency between the two.
+  - **Simplicity**: It’s a simple approach to ensure that the cache and the persistent storage are always in sync.
+  - **Reduced Risk of Data Loss**: In case the cache gets evicted or goes down, the data is safely stored in the backend.
+
+- **Disadvantages**:
+  - **Performance Overhead**: Writing to both the cache and the database can introduce additional latency and performance overhead, especially in high-traffic scenarios.
+  - **Increased Load on Backend**: Since every write operation also requires a write to the backend database, it can create additional load on the backend, particularly with high volumes of data.
+
+- **Use Case**:
+  - This strategy is useful when **data consistency** is a priority and when it is important to keep the cache and database in sync at all times, such as in transactional systems.
+
+#### **2. Write-Back Cache (also called Lazy-Write)**
+
+In a **write-back cache** strategy, **data is first written to the cache**, and only later (or periodically) is it written to the underlying data store. This means that data is not immediately persisted to the backend, which can result in **data loss** if the cache fails before the data is written to the persistent store.
+
+- **How it works**:
+  1. When an application writes data, it is written only to the cache.
+  2. The cache is responsible for asynchronously flushing (writing) the data to the persistent data store after a certain amount of time, or after a specific threshold of data updates.
+  3. The application can continue to operate without waiting for the backend write, resulting in **faster performance**.
+
+- **Advantages**:
+  - **Improved Performance**: Since the data is written to the cache first and the write to the backend happens asynchronously, it reduces the time the application has to wait for database operations, leading to lower latency and higher throughput.
+  - **Reduced Load on Backend**: The backend is not burdened with every write operation. It only gets the data when the cache flushes it, reducing the load on the backend.
+
+- **Disadvantages**:
+  - **Risk of Data Loss**: If the cache fails before it can write the data to the database, you risk losing the data. This is a critical downside in systems that require high durability.
+  - **Cache Inconsistency**: There may be a delay between when the data is written to the cache and when it is written to the persistent data store, which could lead to inconsistencies between the cache and the database for a short time.
+
+- **Use Case**:
+  - This strategy is ideal when **performance** is a priority and **data consistency** between the cache and database can be relaxed. It works well for systems where it's acceptable to have a small window of inconsistency and when you can handle occasional data loss (e.g., logging systems, analytics).
+
+---
+
+### **Comparison of Write-Through and Write-Back**:
+
+| Feature                     | **Write-Through Cache**                     | **Write-Back Cache**                      |
+|-----------------------------|---------------------------------------------|------------------------------------------|
+| **Write Latency**            | Higher latency (writes to both cache and DB) | Lower latency (writes only to cache)     |
+| **Data Consistency**         | High (cache and DB are always in sync)      | Lower (data is not written to DB until later) |
+| **Backend Load**             | Higher (every write involves DB)           | Lower (writes to DB happen asynchronously) |
+| **Risk of Data Loss**        | Low (data is written to both cache and DB)  | High (data may not be written to DB if cache fails) |
+| **Use Case**                 | Systems where consistency is critical       | Performance-critical systems with relaxed consistency |
+
+---
+
+### **Which One to Choose?**
+
+- **Use Write-Through** if:
+  - **Data consistency** is critical.
+  - You can tolerate higher write latency.
+  - The risk of data loss must be minimized.
+
+- **Use Write-Back** if:
+  - **Performance** is a top priority.
+  - Slight **inconsistencies** between the cache and database are acceptable.
+  - You can handle the possibility of **data loss** in case of cache failure.
+
+---
+
+In conclusion, both write-through and write-back caches have their own trade-offs in terms of **performance**, **data consistency**, and **fault tolerance**. The choice between the two depends on your system's specific requirements, such as the need for high performance versus strong consistency.
 	Where should the cache be - If put in servers of your application cluster, then all server cache needs to be in sync. You may use a common cache separate from
 		your server. Example Redis.
