@@ -28,3 +28,10 @@ Authentication policies
 	
 OAuth2 - API doesnt directly provide OAuth2 implementation but integrates with Identity provider(IP)
 		IP should be OAuth2/OpenId complient(e.g., Azure Active Directory (AAD), Auth0,
+
+
+===================
+
+Different SLAs are offered and priced accordingly.
+I tried the cheapest one which is developer tier with no sla. This cost $50/month(1/24/2025) 
+do I didn't proceed. Sob :(
