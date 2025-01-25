@@ -1,1 +1,215 @@
 
+Azure cli, AKS, Helm, Istio installation
+
+================================================================================
+Summary:
+=================================================================================
+
+
+>az --version
+>az login --tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c (shishirkumar123@gmail.com/@piNK123)
+>az aks install-cli
+>kubectl version --client
+
+>choco
+>choco install kubernetes-helm -y
+>helm version
+
+Download and extract istio
+>istioctl version 
+
+================================================================================
+Details:
+=================================================================================
+install azure cli: downloaded msi for 64 bit(azure-cli-2.67.0-x64.msi) - 12/14/2024
+Go to command prompt.
+>az --version
+Try any command. e.g -
+C:\Users\shish>az cosmosdb list or az aks list
+Please run 'az login' to setup account.
+
+So,
+>az login  --popup appears. Choose microsoft account
+	shishirkumar123/@beatLE123
+	  Old account name: shishirkumar123
+    -  New account name: shishirkumar123@yahoo.co.in - doesn't have subscription
+	
+	Use this:
+	shishirkumar123@gmail.com/@beatLE123
+
+
+Authentication failed against tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c 'Default Directory': (pii). 
+Status: Response_Status.Status_InteractionRequired, Error code: 3399614476, Tag: 557973645
+If you need to access subscriptions in the following tenants, please use `az login --tenant TENANT_ID`.
+20365eaf-7843-45ba-8671-6b5f3e7f5b9c 'Default Directory'
+No subscriptions found for shishirkumar123@gmail.com.
+
+C:\Users\shish>az login --tenant 20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+
+
+
+[Tenant and subscription selection]
+
+No     Subscription name      Subscription ID                       Tenant
+-----  ---------------------  ------------------------------------  ------------------------------------
+[1] *  Azure subscription 1   4bb4a02b-e902-4623-a8c1-343c232b400f  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+[2]    Subscription -Dec2024  76e0f595-5da1-47b1-8afb-fc7bf53cbfd9  20365eaf-7843-45ba-8671-6b5f3e7f5b9c
+
+The default is marked with an *; the default tenant is '20365eaf-7843-45ba-8671-6b5f3e7f5b9c' and 
+subscription is 'Azure subscription 1' (4bb4a02b-e902-4623-a8c1-343c232b400f).
+
+Is tenant id/default directory/directory id same?
+
+==============================================================================
+install k8s cli
+
+>az aks install-cli
+The detected architecture of current device is "amd64", and the binary for "amd64" will be downloaded. 
+If the detection is wrong, please download and install the binary corresponding to the appropriate architecture.
+No version specified, will get the latest version of kubectl from "https://dl.k8s.io/release/stable.txt"
+Downloading client to "C:\Users\shish\.azure-kubectl\kubectl.exe" from "https://dl.k8s.io/release/v1.32.0/bin/windows/amd64/kubectl.exe"
+
+>kubectl version --client
+Client Version: v1.29.2
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+
+=============================================================================
+install helm
+
+1. Open PowerShell as Administrator.
+2. Install Chocolatey if not already installed:
+PS C:\WINDOWS\system32> Set-ExecutionPolicy Bypass -Scope Process -Force; `
+>> [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+>> iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+>>
+WARNING: 'choco' was found at 'C:\ProgramData\chocolatey\bin\choco.exe'.
+WARNING: An existing Chocolatey installation was detected. Installation will not continue. This script will not
+overwrite existing installations.
+If there is no Chocolatey installation at 'C:\ProgramData\chocolatey', delete the folder and attempt the installation
+again.
+
+Please use choco upgrade chocolatey to handle upgrades of Chocolatey itself.
+If the existing installation is not functional or a prior installation did not complete, follow these steps:
+ - Backup the files at the path listed above so you can restore your previous installation if needed.
+ - Remove the existing installation manually.
+ - Rerun this installation script.
+ - Reinstall any packages previously installed, if needed (refer to the lib folder in the backup).
+
+Once installation is completed, the backup folder is no longer needed and can be deleted.
+
+(Seems like chocolatey already exists. Lets verify -
+
+>choco
+Chocolatey v2.2.2
+Please run 'choco -?' or 'choco <command> -?' for help menu.
+
+3. Install Helm using Chocolatey
+>choco install kubernetes-helm -y
+
+S C:\WINDOWS\system32> choco install kubernetes-helm -y
+>>
+Chocolatey v2.2.2
+Installing the following packages:
+kubernetes-helm
+By installing, you accept licenses for the packages.
+Progress: Downloading kubernetes-helm 3.16.2... 100%
+
+kubernetes-helm v3.16.2 [Approved]
+kubernetes-helm package files install completed. Performing other installation steps.
+Downloading kubernetes-helm 64 bit
+  from 'https://get.helm.sh/helm-v3.16.2-windows-amd64.zip'
+Progress: 100% - Completed download of C:\Users\shish\AppData\Local\Temp\chocolatey\kubernetes-helm\3.16.2\helm-v3.16.2-windows-amd64.zip (16.94 MB).
+Download of helm-v3.16.2-windows-amd64.zip (16.94 MB) completed.
+Hashes match.
+Extracting C:\Users\shish\AppData\Local\Temp\chocolatey\kubernetes-helm\3.16.2\helm-v3.16.2-windows-amd64.zip to C:\ProgramData\chocolatey\lib\kubernetes-helm\tools...
+C:\ProgramData\chocolatey\lib\kubernetes-helm\tools
+ ShimGen has successfully created a shim for helm.exe
+ The install of kubernetes-helm was successful.
+  Software installed to 'C:\ProgramData\chocolatey\lib\kubernetes-helm\tools'
+
+Chocolatey installed 1/1 packages.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+ 
+>PS C:\WINDOWS\system32> helm version
+version.BuildInfo{Version:"v3.16.2", GitCommit:"13654a52f7c70a143b1dd51416d633e1071faffb", GitTreeState:"clean", GoVersion:"go1.22.7"}
+	
+=========================
+Install Istio CLI:
+
+1. Download the Istio Binary for Windows
+2. Extract the zip 
+3. Add the bin folder in the PATH variable	
+
+=========================
+Service meshes like Istio can handle cross-cutting concerns 
+(e.g., service-to-service communication, traffic routing, retries, and observability)
+=========================================
+
+For Non spring cloud solution, below are the component from K8s+Istio-
+
+Centralized configuration - 
+	ConfigMap, 
+	Secret(Cluster-scoped, limited to Kubernetes workloads.) - K8S specific
+	Azure Key Vault- Multi-cloud and cross-service secrets management. From Azure
+	
+Microservice registry and discovery - 
+	Option 1: For basic service communication in a Kubernetes cluster without advanced traffic rules.
+			Istio Uses Kubernetes DNS and Envoy sidecars for 
+			service discovery and communication.
+			No explicit registry needed. Leverages Kubernetes' built-in DNS 
+			and service objects.
+			Decentralized; services rely on Envoy proxies and Kubernetes DNS.
+	Option 2: Advance Traffic Control using Istio Virtual Services
+			apiVersion: networking.istio.io/v1beta1
+			kind: VirtualService
+			metadata:
+			  name: microservice-b
+			spec:
+			  hosts:
+				- microservice-b
+			  http:
+				- route:
+					- destination:
+						host: microservice-b
+						port:
+						  number: 8080
+						  
+Secure Communication between microservices by enabling mTLS 
+	resulting in encrypted communication.
+		apiVersion: security.istio.io/v1beta1
+		kind: PeerAuthentication
+		metadata:
+		  name: default
+		  namespace: <your-namespace>
+		spec:
+		  mtls:
+			mode: STRICT
+			
+Set authorization rules using AuthorizationPolicy:
+		apiVersion: security.istio.io/v1beta1
+		kind: AuthorizationPolicy
+		metadata:
+		  name: allow-caller
+		  namespace: default
+		spec:
+		  selector:
+			matchLabels:
+			  app: microservice-a
+		  rules:
+		  - from:
+			- source:
+				principals:
+				- "spiffe://cluster.local/ns/default/sa/caller-service-account"
+
+			
+Visualize traffic between microservice - Istio Kiali
+		Install - istioctl dashboard kiali
+
+Distributed Tracing - Jaeger
+		Capability to inject trace headers into requests 
+		to track requests from A to B.
+		
+ Monitor your containerized workloads - Managed Prometheus
+ Visualize your managed Prometheus data stored in your Azure Monitor workspace - Managed Grafana
+		
+
