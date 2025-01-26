@@ -33,6 +33,7 @@ Ok to proceed? (y)
   npm test  -> Starts the test runner.
   npm run eject  ->  Removes this tool and copies build dependencies, configuration files
     and scripts into the app directory. If you do this, you can’t go back!
+  npm install <lib-name> -> imports a library. e.g npm install axios
 ]
 ----------
 Code snippet
@@ -56,11 +57,66 @@ Styling react component
 
 ----------
 Why do we need portal(ReactDOM.createPortal)
-One of the use case: having to deal with Parent component css when the chikd component is a modal, a popup
+ Till now we always had the root element as -<div id="root">
+     * But this component is not inside root, but at the same level. 
+     * Inspect element and verify. See the advantage in below video:
+     * https://www.youtube.com/watch?v=HpHLa-5Wdys&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=31
+
+Another use case: having to deal with Parent component css when the child component is a modal, a popup
 or a tool tip.
 https://www.youtube.com/watch?v=HpHLa-5Wdys&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=31
+-------------------
+Two ways to manage data within components - props, state
+props:Props are used to pass data from a parent component to a child component.
+state:  State is a local data storage mechanism within a component that can be modified over time
+
+Key Differences:
+Feature			Props				State
+Mutability		Immutable (read-only)		Mutable (can change with setState or useState)
+Scope			Passed from parent to child	Local to the component
+Responsibility		Managed by parent component	Managed by the component itself
+Purpose			Share data between components	Handle dynamic, local changes
+
 
 --------------
+Lifecycle methods - related to mounting/unmounting and update
+Mounting: This phase happens when a component is created and inserted into the DOM for the first time.
+Update: Happens on re rendering
+
+
+Aspect				Mounting		Updating					Unmounting
+When it Happens	component is created,added to the DOM.	props/state change		component is removed from the DOM.
+Purpose			Initializes the component 	Updates the DOM.				Cleans up resources.
+Lifecycle Methods	constructor, componentDidMount	componentDidUpdate, shouldComponentUpdate	componentWillUnmount
+
+------------------
+<React.Fragment> 
+	-to avoid addition <div>
+	- to use child who is inside <table><tr> of parent
+-------------------
+PureComponent
+PureComponent is an optimized version of Component that automatically implements
+shouldComponentUpdate() with a shallow comparison of props and state. If the props
+and state haven’t changed (i.e., they’re shallowly equal), the component won’t re-render.
+---------------
+Memo
+React.memo is a higher-order component (HOC) that can be used to optimize functional 
+components by memoizing the result and preventing unnecessary re-renders. It works 
+similarly to PureComponent but is used in functional components.
+	export default React.memo(My29)
+React.memo helps optimize performance by preventing a re-render of a functional component if its props haven't changed. It performs a shallow comparison of the component’s props, and if the props remain the same between renders, React will skip the re-render and reuse the last rendered result. This can be beneficial for components that receive the same props frequently.
+
+---------------
+Refs
+refs are used to directly interact with DOM elements or class components.
+Ways to create refs.
+1. inputRef (using createRef())(New):
+this.inputRef = React.createRef();
+2. cbRef(Old):
+-----------------
+
+------------------
+
 Progressive Web App(PWA)
 
 ---------------
@@ -81,27 +137,41 @@ They implements either one or both of te lifecycle methods
 2. componentDidCatch - log the error info.
 becomes an error boundry
 
+HTTP calls
+-------------------
+# install the dependency
+>npm install axios
+verify package.json. It should include axios in dependency section
 
+-----------------
+package.json vs package-lock.json
+------------------
+package.json:
+	Defines what you want (e.g., "I want version 4.x.x of Express").
+	Allows version ranges (e.g., ^1.2.3, ~1.2.3).
+	Meant to be manually edited by developers.
+	Only lists direct dependencies.
+package-lock.json:
+	Defines what you get (e.g., "Express v4.18.2 and all its sub-dependencies").
+	Guarantees identical installs across machines.
+	Specifies the exact version installed (e.g., 1.2.4).
+	Automatically generated and managed by npm.
+	Includes full dependency tree with sub-dependencies.
+
+-------------------------------------------
 export default explanation -
-
-
-
+----------------------------------------------
 Simplest Understanding for default export is
 
 Export is ES6's feature which is used to Export a module(file) and use it in some other module(file).
-
 Default Export:
-
 default export is the convention if you want to export only one object(variable, function, class) from the file(module).
 There could be only one default export per file, but not restricted to only one export(Named export).
 When importing default exported object we can rename it as well.
 Export or Named Export:
 
 It is used to export the object(variable, function, class) with the same name.
-
 It is used to export multiple objects from one file.
-
 It cannot be renamed when importing in another file, it must have the same name that was used to export it, but we can create its alias by using as operator.
 
 In React, Vue and many other frameworks the Export is mostly used to export reusable components to make modular based applications.
-
