@@ -65,7 +65,7 @@ Implementation -
 	ArrayLists, Queues, Stacks are generally backed by an array inside. Linked lists are not. 
 	Retrival in faster in array based data structure, Addition is faster in linked data strctures.
 	HashMap - Key value pair. 
-		  During hashmap creation you can optionnally provide initialCapacity and loadFactor
+		  During hashmap creation you can optionally provide initialCapacity and loadFactor
 		  initialCapacity is bucket size. By default 16.
 		  The load factor determines how full the HashMap can get before it needs to resize (rehash). Default 0.75.
 		  It is a fraction between 0 and 1. A load factor of 0.75 means that 
@@ -76,7 +76,7 @@ Implementation -
 			Next, hash value is devided by initialCapacity(by default 16)
 		  	Elements of same a bucket are stored in the form of Tree.
 				(Older version had LinkedList)
-		  If you an element in map whose key is already present in map, 
+		  If you add an element in map whose key is already present in map, 
 			the old value will get replaced by new value.
 		  Sort a hashMap - TreeMap<String, Integer> sortedMap = new TreeMap<>(hashMap);
 
