@@ -7,6 +7,21 @@ Executors and ExecutionService
                                     // It simply means executor service will not take any more request.
 //Calling executorService.submit after shutdown will result in RejectedExecutionException
 
+Types of ExecutorService:
+Executors.newSingleThreadExecutor(): Sequential task execution, single-threaded, no concurrency.
+       If this single thread terminates due to a failure during execution prior to
+       shutdown, a new one will take its place if needed to execute subsequent tasks
+      Use case: For background tasks where only one thread is sufficient, e.g., writing logs or database updates.
+Executors.newFixedThreadPool(5): execute multiple tasks concurrently but limit the number of threads.
+      If any thread terminates due to a failure during execution prior to shutdown, a new one will 
+      take its place if needed to execute subsequent tasks.
+      Use case: For workloads requiring predictable, bounded thread usage to avoid system overload.
+Executors newCachedThreadPool()
+       Creates a thread pool that creates new threads as needed, but will reuse previously constructed 
+       threads when they are available.  These pools will typically improve the performance
+       of programs that execute many short-lived asynchronous tasks. Calls to will reuse previously constructed
+       threads if available.
+   
 --------------
 Runnable vs Callable
 class MyRunnable implements Runnable{
@@ -97,6 +112,17 @@ public static void main(String[] args) throws Exception {
     System.out.println(f2.get()); // Waits until the "calculation" is done, then prints 2
 }
 
+Approach 1. Avoid Blocking Methods
+Blocking methods:
+       .get() waits for the result and blocks the calling thread until the computation is complete.
+       .join() does the same as .get() but throws unchecked exceptions.
+       .getNow(value) immediately returns the value if available or returns the provided value.
+Approach 2: Prefer Non-Blocking Methods -Use Asynchronous and Callback Methods:
+       .supplyAsync(): Starts an asynchronous task.
+       .thenApply(): Transforms the result of a CompletableFuture when it is available.
+       .thenAccept(): Processes the result but returns no value.
+       .thenCompose(): Chains dependent CompletableFutures together.
+
 
 ----------
 Reactive programming
@@ -138,6 +164,17 @@ While a Flux can emit only one element, using Mono for single-value results prov
 
 Use Mono when you expect only one result or no result at all. e.g. findEmployeeById(3242)
 Use Flux when you expect multiple items, even if sometimes it only produces one. e.g getAllEmployee()
+
+------------
+Feature	                 CompletableFuture             	                  Flux/Mono
+Definition	     Java's Future-like API for handling asynchronous tasks.	|  Reactive Streams implementation 
+                                                                        |  (part of Project Reactor) for asynchronous
+                                                                        |  and reactive programming.
+Data Model        	Designed for single values or eventual results       |  Designed for streams of data (Flux) 
+                   (one-time computation).                              |  or single value/no value (Mono).
+Paradigm	           Asynchronous (Promise-style) programming.	          |  Reactive (Publisher-Subscriber pattern).
+Threading Model	Uses thread pools or executors for asynchronous tasks.	 | Fully non-blocking, designed for backpressure 
+                                                                        |  and high scalability.
 
 ------------
 CyclicBarrier vs CountdownLatch 
