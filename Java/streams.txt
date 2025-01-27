@@ -103,7 +103,16 @@ e.g
                 .toList();
         System.out.println(myEvenSqrList);
 	
-	////////////////
+	////////////////Use of reduce
+ 	List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Reduce to calculate the sum
+        int sum = numbers.stream()
+                .reduce(0, (a, b) -> a + b);
+
+        System.out.println("Sum of numbers: " + sum);
+////////////////////////////////////////////
+
 	
 Collector: A Collector is specified by four functions that work together to accumulate entries 
 into a mutable result container, and optionally perform a final transform on the result. They are:
