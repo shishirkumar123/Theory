@@ -1,0 +1,73 @@
+=========================
+Service meshes like Istio can handle cross-cutting concerns 
+(e.g., service-to-service communication, traffic routing, retries, and observability)
+=========================================
+
+For Non spring cloud solution, below are the component from K8s+Istio-
+
+Centralized configuration - 
+	ConfigMap, 
+	Secret(Cluster-scoped, limited to Kubernetes workloads.) - K8S specific
+	Azure Key Vault- Multi-cloud and cross-service secrets management. From Azure
+	
+Microservice registry and discovery - 
+	Option 1: For basic service communication in a Kubernetes cluster without advanced traffic rules.
+			Istio Uses Kubernetes DNS and Envoy sidecars for 
+			service discovery and communication.
+			No explicit registry needed. Leverages Kubernetes' built-in DNS 
+			and service objects.
+			Decentralized; services rely on Envoy proxies and Kubernetes DNS.
+	Option 2: Advance Traffic Control using Istio Virtual Services
+			apiVersion: networking.istio.io/v1beta1
+			kind: VirtualService
+			metadata:
+			  name: microservice-b
+			spec:
+			  hosts:
+				- microservice-b
+			  http:
+				- route:
+					- destination:
+						host: microservice-b
+						port:
+						  number: 8080
+						  
+Secure Communication between microservices by enabling mTLS 
+	resulting in encrypted communication.
+		apiVersion: security.istio.io/v1beta1
+		kind: PeerAuthentication
+		metadata:
+		  name: default
+		  namespace: <your-namespace>
+		spec:
+		  mtls:
+			mode: STRICT
+			
+Set authorization rules using AuthorizationPolicy:
+		apiVersion: security.istio.io/v1beta1
+		kind: AuthorizationPolicy
+		metadata:
+		  name: allow-caller
+		  namespace: default
+		spec:
+		  selector:
+			matchLabels:
+			  app: microservice-a
+		  rules:
+		  - from:
+			- source:
+				principals:
+				- "spiffe://cluster.local/ns/default/sa/caller-service-account"
+
+			
+Visualize traffic between microservice - Istio Kiali
+		Install - istioctl dashboard kiali
+
+Distributed Tracing - Jaeger
+		Capability to inject trace headers into requests 
+		to track requests from A to B.
+		
+ Monitor your containerized workloads - Managed Prometheus
+ Visualize your managed Prometheus data stored in your Azure Monitor workspace - Managed Grafana
+		
+
