@@ -9,7 +9,19 @@ This makes them useful to pass as an argument of 'for each' construct. What will
 Collection Interface
 	Operations
 		stream(); - returns sequential stream
+			Nature: Sequential processing.
+			Execution: Each element is processed one at a time in a single thread
+					(the thread running the stream pipeline).
+			Core Usage: Utilizes only one CPU core, even on multi-core systems.
+			Use Case: Preferred when processing operations are lightweight, order-sensitive, 
+				  or when the overhead of parallelism outweighs the benefits.
 		parallelStream(); - returns parallel stream
+			Nature: Parallel processing.
+			Execution: Splits the data into multiple sub-tasks
+				(using the Fork/Join framework) and processes them in parallel threads.
+			Core Usage: Leverages all available CPU cores (e.g., 4 threads on a quad-core processor).
+			Use Case: Useful for CPU-intensive operations or when the dataset is large 
+				  and tasks are independent
 	Queue Interface(1.5) - 
 		Operations
 			add - Inserts the specified element into this queue if possible, else throw exception.
@@ -27,7 +39,7 @@ Collection Interface
  				 	the queue to become non-empty when retrieving an element, and wait
  				 	for space to become available in the queue when storing an element.
 			BlockingDeque
-		Deque Interface - suffix first/last to all methods
+		Deque(Double ended) Interface - suffix first/last to all methods
 			BlockingDeque Interface
 				LinkedBlockingDeque class. 
 					I noticed that when LinkedBlockingDeque was empty, the thread didn't wait. 
