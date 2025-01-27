@@ -125,6 +125,19 @@ Approach 2: Prefer Non-Blocking Methods -Use Asynchronous and Callback Methods:
 
 
 ----------
+Aspect	                              CountDownLatch	                                   CyclicBarrier
+Use Case	                      Wait for a number of tasks to              	Wait for a group of threads to reach 
+                              complete before proceeding.                  a common point before proceeding.
+--------------------------------------------------------------------------------------------------------------------
+Reset/Reusability	          Not reusable after count reaches zero.    	Reusable after all threads have reached the barrier.
+--------------------------------------------------------------------------------------------------------------------
+Trigger Mechanism	          Triggered by calling countDown().	            Triggered when all threads call await().
+---------------------------------------------------------------------------------------------------------------------
+Thread Coordination	     Other threads wait for tasks to complete.	           Threads wait for each other.
+----------------------------------------------------------------------------------------------------------------------
+Optional Action           	No action when the latch is released.            	Can specify an action to execute when
+                                                                              the barrier is tripped.
+===========================================================
 Reactive programming
 
 Much powerful, but hard to understand and debug. Not for simple, small projects. Benefit only shows 
