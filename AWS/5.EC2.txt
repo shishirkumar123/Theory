@@ -229,4 +229,7 @@ Assignment
 ----------------
 1. Create an ASK whose EC2s have different configurations in terms of cpu and memory.
 
-
+Q. When we say fargate is cheaper because it auto provisions based on needs and dont run when  not needed hence incur less charges. But with EC2 ASG group, aren't we achieving same thing?
+A. With EC2 ASG, you often need a minimum number of instances running.
+Even if ASG scales down, a baseline number of instances remain, leading to idle costs.
+Fargate removes this idle cost completely.
