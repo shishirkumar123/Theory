@@ -1,0 +1,50 @@
+Role Overview:
+We are seeking an experienced Infrastructure Consultant to assess and optimize the current IT infrastructure of the company, which predominantly operates in an Azure cloud environment with AWS as backup. The consultant will evaluate existing infrastructure, provide actionable insights on performance and security, and collaborate with internal teams to recommend improvements and future-proof strategies. The role will also involve working closely with in-house infrastructure teams to evaluate skill sets, bridge talent gaps, and ensure alignment with best practices.
+ 
+Key Responsibilities:
+Infrastructure Assessment & Optimization:
+Conduct comprehensive assessments of the current infrastructure (primarily in Azure and AWS) across our portfolio companies. Create an inventory report on current network and infrastructure.
+Analyze network architecture, cloud configurations, and data center management practices to identify areas for improvement.
+Provide recommendations for enhancing performance, security, scalability, and cost efficiency.
+Develop strategies for optimizing cloud resource utilization and reducing operational overhead.
+Cloud Strategy & Planning:
+Collaborate with key stakeholders to design and refine cloud strategies tailored to the diverse needs of real estate, healthcare, and financial services.
+Provide expertise in hybrid and multi-cloud environments, ensuring that solutions are adaptable and future-proof.
+Guide decision-making on cloud adoption, migration, and integration strategies.
+Network Architecture & Engineering:
+Assess existing network architectures and recommend improvements in terms of performance, reliability, and security.
+Design and implement robust, scalable, and secure network solutions that align with business requirements across the portfolio.
+Collaborate with network engineers to troubleshoot and resolve any infrastructure-related issues.
+Cost-benefit analysis for proposed improvements and ROI projections.
+Cost and resource analysis for centralizing infrastructure.
+Stakeholder Communication:
+Communicate findings, recommendations, and solutions to both technical and non-technical stakeholders.
+Change management plan to address resistance and ensure alignment across companies.
+Comprehensive training programs for staff on the new infrastructure.
+Develop and present high-level reports, executive summaries, and strategic roadmaps for improving IT infrastructure across portfolio companies.
+Assist in project management by outlining actionable steps, timelines, and resource needs for infrastructure improvement initiatives.
+Continuous Improvement & Best Practices:
+Stay up to date with the latest trends and technologies in cloud computing, network architecture, and infrastructure management.
+Recommend and implement industry best practices to enhance infrastructure resilience, security, and efficiency.
+Lead initiatives to continuously improve and innovate the infrastructure to align with evolving business goals.
+Required Qualifications:
+Education & Experience:
+Bachelor’s degree in computer science, Information Technology, Engineering, or a related field (or equivalent work experience).
+Proven experience (15+ years) in infrastructure consulting, cloud architecture, or network engineering, ideally in hybrid/multi-cloud environments (Azure and AWS).
+Extensive experience with network architecture, cloud platforms (Azure, AWS), and IT infrastructure management.
+Expertise in cloud migration, security frameworks, and high-availability systems.
+Skills & Expertise:
+In-depth knowledge of cloud technologies (Azure, AWS) and hybrid/multi-cloud architectures.
+Experience in designing, implementing, and optimizing complex network systems (LAN/WAN, VPNs, SD-WAN, etc.).
+Strong understanding of security best practices, disaster recovery, and business continuity planning.
+An ability to assess and evaluate talent within in-house infrastructure teams and suggest improvements.
+Excellent communication skills, with the ability to present complex technical solutions to non-technical stakeholders.
+Experience in the real estate, healthcare, or financial services sectors is a plus.
+Preferred Qualifications:
+Certifications in cloud platforms (e.g., Azure Solutions Architect, AWS Certified Solutions Architect, or equivalent).
+Experience with ITIL or other IT service management frameworks.
+Familiarity with industry regulations (e.g., HIPAA for healthcare, PCI DSS for financial services) and how they impact infrastructure design.
+Personal Attributes:
+Strong problem-solving skills with the ability to think strategically and analytically.
+Collaborative mindset with a proactive approach to stakeholder engagement.
+Ability to work independently and manage multiple projects simultaneously.
