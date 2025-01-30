@@ -32,7 +32,7 @@ ECS setup options
             So provisioning will be taken care of, on demand. So pay only what you use.
             Compare this with EC2 where you have to pay for having an EC2 irrespective of using or not.
             BUT - you loose control.
--------------------------------
+=====================================================================================================================
 EKS - Elastic K8s service - Alternative to ECS
 Why EKS
      Because project was already using k8s and want to move to aws as is
@@ -55,6 +55,12 @@ Setup
             EC2 instances are managed by nodegroup.
             But Autoscaling needs to be done manually on AWS
        Fully managed - EKS with Fargate
+
+Observability in AWS EKS
+==================================
+For Logging: Enable EKS Cluster Logging → Store logs in CloudWatch Logs.
+For Metrics: Use Amazon Managed Prometheus (AMP) + Amazon Managed Grafana.
+For Tracing: Use AWS X-Ray for distributed tracing.
 
 Steps
 ================
