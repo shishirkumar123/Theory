@@ -55,6 +55,43 @@ Setup
             EC2 instances are managed by nodegroup.
             But Autoscaling needs to be done manually on AWS
        Fully managed - EKS with Fargate
+
+Steps
+================
+install awscli - msi for windows kept in C:\dev\installers\aws, installed at C:\Program Files\Amazon\AWSCLIV2\
+>aws --version
+From AWS console, create access key, secrete key for aws user which will access EKS cluster.
+>aws configure (supply access key, secret key when prompted. Also - default region, default output format(json))
+
+install eksctl
+>eksctl create cluster
+	- n <cluster-name>
+	- r <region-name>
+		--zones <strings> - At least two zone for high availability
+		by default use node group, to change use --fargate option
+		-- node type(= instance type, t2, t3 nono micro etc)
+		-- nodes (= number of nodes, default 2)
+Basic:
+>eksctl create cluster --name my-cluster --region us-west-2
+----
+With customer node group:
+>eksctl create cluster --name <cluster-name> \
+  --region us-east-1 \
+  --version 1.28 \
+  --nodegroup-name my-nodegroup \
+  --node-type t3.medium \
+  --nodes 2 \
+  --managed
+
+----
+Verify
+>eksctl get cluster --name my-cluster
+>kubectl get nodes
+----
+When done, delete the cluster
+>eksctl delete cluster -n <cluster-name>
+
+		
             
 ---------------------
 ECR - Elastic container Registry
