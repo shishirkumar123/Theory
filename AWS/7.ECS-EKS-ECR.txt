@@ -34,6 +34,8 @@ ECS setup options
             BUT - you loose control.
 =====================================================================================================================
 EKS - Elastic K8s service - Alternative to ECS
+Amazon Elastic Kubernetes Service (EKS) is a fully managed service that makes it easy to run and scale Kubernetes applications on AWS. EKS allows you to deploy, manage, and scale containerized applications using Kubernetes
+
 Why EKS
      Because project was already using k8s and want to move to aws as is
      k8s is open source 
@@ -66,10 +68,13 @@ Steps
 ================
 install awscli - msi for windows kept in C:\dev\installers\aws, installed at C:\Program Files\Amazon\AWSCLIV2\
 >aws --version
+-----
 From AWS console, create access key, secrete key for aws user which will access EKS cluster.
 >aws configure (supply access key, secret key when prompted. Also - default region, default output format(json))
-
+-----
 install eksctl
+-----
+create cluster
 >eksctl create cluster
 	- n <cluster-name>
 	- r <region-name>
@@ -79,7 +84,7 @@ install eksctl
 		-- nodes (= number of nodes, default 2)
 Basic:
 >eksctl create cluster --name my-cluster --region us-west-2
-----
+
 With customer node group:
 >eksctl create cluster --name <cluster-name> \
   --region us-east-1 \
@@ -92,7 +97,7 @@ With customer node group:
 ----
 Verify
 >eksctl get cluster --name my-cluster
->kubectl get nodes
+>kubectl get nodes (kubectl got installed or have to install explicitly?)
 ----
 When done, delete the cluster
 >eksctl delete cluster -n <cluster-name>
@@ -104,12 +109,10 @@ ECR - Elastic container Registry
      keeps container images
      Advantage - integrate well with AWS services. When new version of image arrives, notify the K8s cluster.
 
-Amazon Container Service
+(Compare with Amazon Container Service)
 
 ECS
 	Can ECS cluster go beyond a region/vpc?
 	Cluster, Services, Tasks
 
 EKS
-
-Amazon Elastic Kubernetes Service (EKS) is a fully managed service that makes it easy to run and scale Kubernetes applications on AWS. EKS allows you to deploy, manage, and scale containerized applications using Kubernetes
