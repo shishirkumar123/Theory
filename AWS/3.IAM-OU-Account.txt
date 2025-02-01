@@ -20,14 +20,17 @@ At an OU level, several services are disable by default. To enable it, you can g
 Users
 ---------
 e.g user created arn:aws:iam::062286665809:user/shishir1/@petAL123
-What is the default user? What roles are associated with it?
-The default user is account owner. He/She can create more users and send invitations to those users. Account owner signs in using email/password. Other users(IAM users) need to provide account number of account owner, username provided by account owner and password.
-User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
+Q. What is the default user? What roles are associated with it?
+A. The default user is account owner. He/She can create more users and send invitations to those users. 
+   Account owner signs in using email/password. Other users(IAM users) need to provide account number 
+   of account owner, username provided by account owner and password.
+   User has policies independent of Group. User with Programatic access will have keys. User with just console wont.
 
+   In AWS console, Root User Doesn't Appear in IAM Users, because Root User is Not Managed by IAM.
+   Unlike IAM users, the root user has all permissions by default and cannot be restricted.
 
-
-User may or may not belong to a group.
-User can belong to multiple groups.
+   User may or may not belong to a group.
+   User can belong to multiple groups.
 
 User type - 
 	Identity center user(access to console only). Identity center is at a region level.
