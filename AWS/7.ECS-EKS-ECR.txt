@@ -71,7 +71,13 @@ install awscli - msi for windows kept in C:\dev\installers\aws, installed at C:\
 -----
 From AWS console, create access key, secrete key for aws user which will access EKS cluster.
 >aws configure (supply access key, secret key when prompted. Also - default region, default output format(json))
+verify
+>aws iam list-users
+
+I was getting acces denied. The reason was that a permission boundary was set. I dont remember when I did that.
+But once that was removed, i was able to fire aws iam list-users
 -----
+
 install eksctl
 -----
 create cluster
