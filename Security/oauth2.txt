@@ -1,3 +1,11 @@
+Oauth2 vs subscription key
+====================================
+When to Use OAuth2 Instead of (or Alongside) Subscription Keys
+  - If you need user authentication and role-based authorization.
+  - If you want short-lived access tokens instead of long-lived keys.
+  - If your API consumers are external, and you can’t fully control key distribution.
+ 
+------------------------
 Notes
 1. Oauth tokens can be opeque or JWT based. If all microservices has to inspect the token to validate whether caller have authorization for this microservice,
 opeque token will not work. It has to be JWT based open token.
