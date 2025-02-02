@@ -2,6 +2,9 @@ Oauth2 vs subscription key
 ====================================
 When to Use OAuth2 Instead of (or Alongside) Subscription Keys
   - If you need user authentication and role-based authorization.
+    (My notes: I guess roles adds the convinience. When I have created a role and mapped it to certain APIs
+     I can have mutiple users having same role. That way I dont have to map each of them individually.
+     At the same time, all the users will have there own key, they dont have to share the keys.)
   - If you want short-lived access tokens instead of long-lived keys.
   - If your API consumers are external, and you can’t fully control key distribution.
  
