@@ -29,6 +29,79 @@ Authentication policies
 OAuth2 - API doesnt directly provide OAuth2 implementation but integrates with Identity provider(IP)
 		IP should be OAuth2/OpenId complient(e.g., Azure Active Directory (AAD), Auth0,
 
+=====================
+Policies can be attached to different levels-
+	Global API level
+	product level
+	Operation level within an API
+Revision
+	One one revision is valid at a time
+Version
+	Multiple versions can coexits.
+	Caller specify version number in query string/path param
+
+Throttle
+	Based on size
+	Based on number of calls
+Cache
+	Internal
+		Policies
+			Remove value from Cache
+	External(Prefer internal, external will add to bills)
+		Redis
+CORS
+	allow other domains to access APIs
+	
+Transformation policies
+	Inbount Processing/Outbound Processing
+	Helps making sure we are not exposing
+		-Backend URLs
+		-Backend Technologies, versions
+		
+Advance policies
+	condition logic -
+	<inbound>
+		<choose>
+			<when>
+				<set>...
+	<backend>
+	<outbound>
+	-----
+	Retry - 
+	<retry condition="" count = "">
+	----
+	Add trace for debugging
+	
+Infrastructure for APIM
+	https://www.youtube.com/watch?v=K0HN8ODhHjQ&list=PLDUPL1iASgCwBa00t1fTqZrclVWip4THZ&index=15
+	Vnet
+		public - get only one url/private
+		subnet1 -put APIM. remember to do subnet delegation 
+				so that VM in different subnet but same Vnet can access APIM
+		subnet 2 - Virtual m/c - connect using Bastion. Try to access APIM in subnet 1.
+		
+API Gateway
+	Scenario - You have both internal and external consumers for API.
+	Solution - Go for two APIM -Costly
+	Better solution - API Gateway
+	API gateway will be on public subnet, APIM will be on private subnet.
+	Steps
+		Create keyvoult. Generate a certificate there.
+		Create API gateway,
+			-attach keyvoult, certificate there. 
+			-create new subnet
+			-assign a public ip to API gateway
+			-attach backend (ip of APIM)
+			-add routing rules
+			-create healthprobe in gatetway
+
+APIM Authentication policies
+	Basic					<authentication-basic username="username" password="password" />
+	Client Certificate		<authentication-certificate thumbprint="thumbprint" certificate-id="resource name" body="certificate byte array" password="optional password"/>
+	Managed identity		<authentication-managed-identity resource="resource" client-id="clientid of user-assigned identity" output-token-variable-name="token-variable" ignore-error="true|false"/>
+	
+
+
 
 ===================
 
