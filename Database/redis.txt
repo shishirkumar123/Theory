@@ -1,0 +1,94 @@
+Redis
+=============
+
+To run
+==========
+Run the docker desktop, then run redis image to create a container.
+Run this Docker command to start the open-source Redis image:
+>docker run -d --name redis -p 6379:6379 redis
+
+Then on cmd, run -
+>docker ps. Find the "name" of docker container. I my case i got festive_gagarin. Then run -
+>docker exec -it festive_gagarin redis-cli
+
+
+Basic commands
+==================
+>set name "Amit"
+>get name
+>exists name
+>del name
+>SETEX tempKey 10 "This will disappear in 10 seconds"
+
+List or stack?
+--------
+>LPUSH mylist "value1"
+>LPUSH mylist "value2"
+>LRANGE mylist 0 -1
+
+Hashes
+----------
+> HSET address name "Khikhi"
+> HSET address stree "120 Nowhere street"
+> HSET address City "Houston"
+> HSET address State "TX"
+> HSET address zip "63017"
+> HGET address zip
+> HGETALL address
+
+Sets
+----------
+>SADD colours "Black" "Red" "Orange" "Red" "Black" "Pink" "Golden" "Red" "Pink" "Golden"
+>SMEMBERS colours 	--Notice that there are no duplicates
+
+Sorted Sets
+-------------
+> ZADD zcolours 1 "Black" 2 "Red" 3 "Orange" m
+> ZRANGE zcolours 0 -1 --Observation: It was not sorted
+> ZRANGE zcolours 0 -1 WITHSCORES
+
+Utility
+---------
+> INFO
+> INFO memory
+> Key *			--return all keys created 
+> FLUSHALL
+
+Advance
+================
+Publish/Subscribe (Pub/Sub)
+---------------------------
+>SUBSCRIBE mychannel
+On different terminal-
+>PUBLISH mychannel "Hello, Redis!"
+
+Atomic Counter
+-----------------
+SET pageviews 0
+INCR pageviews
+INCRBY pageviews 10
+GET pageviews
+
+Cache with expiry
+---------------
+SETEX user:123 30 "John Doe"
+GET user:123
+
+Storing json data
+----------------------
+SET user:1 '{"name": "John", "age": 30, "city": "New York"}'
+GET user:1
+
+Transactions with MULTI/EXEC
+-----------------------------
+MULTI
+SET account1 100
+DECRBY account1 30
+INCRBY account2 30
+EXEC
+
+
+
+
+
+
