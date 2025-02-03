@@ -1,0 +1,90 @@
+NGNIX - Web server since old days
+	- load balancer
+	- caching
+	- consolidated, centralized sucurity. 
+	- compression of response of high quality streaming data for faster delivery
+		to millions of concurrent users (e.g Netflix)
+		do the chunking of response rather than sending full file
+	- these configuration is specified in nginx.conf file
+	
+	Below is a sample Nginx configuration file to set it up as a web server. This configuration serves a static website and includes some basic configurations for security and performance:
+
+```nginx
+			# Main Nginx Configuration
+			user www-data;
+			worker_processes auto;
+			pid /run/nginx.pid;
+			include /etc/nginx/modules-enabled/*.conf;
+
+			events {
+				worker_connections 1024;
+			}
+
+			http {
+				# Log format for requests
+				log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+								  '$status $body_bytes_sent "$http_referer" '
+								  '"$http_user_agent" "$http_x_forwarded_for"';
+
+				access_log /var/log/nginx/access.log main;
+				error_log /var/log/nginx/error.log warn;
+
+				# File limits and timeouts
+				sendfile on;
+				tcp_nopush on;
+				tcp_nodelay on;
+				keepalive_timeout 65;
+				types_hash_max_size 2048;
+
+				include /etc/nginx/mime.types;
+				default_type application/octet-stream;
+
+				# Gzip Settings for performance
+				gzip on;
+				gzip_disable "msie6";
+				gzip_vary on;
+				gzip_min_length 10240;
+				gzip_proxied any;
+				gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+				# Server block for your website
+				server {
+					listen 80; # Listen on port 80 for HTTP requests
+					server_name example.com www.example.com; # Replace with your domain
+
+					root /var/www/example.com/html; # Path to your site's root directory
+					index index.html index.htm index.nginx-debian.html;
+
+					# Security Headers
+					add_header X-Frame-Options SAMEORIGIN;
+					add_header X-Content-Type-Options nosniff;
+					add_header X-XSS-Protection "1; mode=block";
+
+					# Log files
+					access_log /var/log/nginx/example.com_access.log;
+					error_log /var/log/nginx/example.com_error.log warn;
+
+					# Location for static files
+					location / {
+						try_files $uri $uri/ =404;
+					}
+
+					# Optional: Deny access to sensitive files
+					location ~ /\.ht {
+						deny all;
+					}
+				}
+
+				# Include other site configurations if necessary
+				include /etc/nginx/conf.d/*.conf;
+				include /etc/nginx/sites-enabled/*;
+			}
+			```
+
+			### Key Features:
+			- **Server Block**: Defines the root directory for the website and sets up basic security headers.
+			- **Gzip**: Enabled for performance to compress text-based resources.
+			- **Access Control**: `.htaccess` and other sensitive files are protected.
+			- **Log Format**: Configures how Nginx logs incoming requests.
+
+			Make sure to replace `example.com` with your actual domain, and adjust paths as necessary for your environment.
