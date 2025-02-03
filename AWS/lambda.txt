@@ -1,0 +1,37 @@
+Lambda
+	-autoscale
+	-pay only when used
+	- can be triggered by
+		- object uploaded in S3
+		- AWS SNS if lambda is subscribed to it.
+	- can poll SQS queue
+Where does labda functions runs? EC2? Or platform itself is lambda?
+
+
+AWS Lambda
+	 -It is a serverless compute service that lets you run code without
+	  provisioning or managing servers.
+	 -AWS manages the server maintenance, scaling, provisioning, logging
+	 -Under the hood, lambda maintains server pool(EC2s). When you need to
+	  run something, lambda will take a EC2 from pool, do the job and 
+	  release the EC2.
+	 -Use case
+		-File processing
+		-Stream processing
+		-Web application
+		-Mobile/Web backends
+	-Can be written in node, python, java, javascript
+	-Specify trigger to invoke lambda. eg.
+		-File dropped in S3
+		- Data arrived in dynamodb
+		-request to API gateway
+	-lambda gets the object in the form of event on which operation needs to be done
+	-Benefits
+		Autoscale
+		Manages servers inside
+		Pay for what you use. Resources are released when not in use.
+	-Blueprint: lambda comes with template codes for common usecases.
+	-Layers: Dependencies are bundled here
+	-Steps - Code, deploy, test
+	
+=============================

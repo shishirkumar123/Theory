@@ -1,9 +1,0 @@
-Lambda
-	-autoscale
-	-pay only when used
-	- can be triggered by
-		- object uploaded in S3
-		- AWS SNS if lambda is subscribed to it.
-	- can poll SQS queue
-Where does labda functions runs? EC2? Or platform itself is lambda?
-=============================
