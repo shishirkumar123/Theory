@@ -1,0 +1,48 @@
+Architecture types:
+
+Microservice
+==================================
+Datapipeline
+==================================
+Integration
+==================================
+
+
+Job Title: IICS CAI Integration Architect
+
+Work Location: Houston, TX (Onsite, 5 Days Work from Office)
+
+ 
+
+ Job Description:
+
+ 
+
+IICS CAI & IICS CDI (Integration Architecture)
+Experience in IICS Application Integration components like Processes, Service Connectors, and Process Objects.
+Ability to integrate diverse cloud applications seamlessly and efficiently, ensuring high-volume, mission-critical cloud-native applications.
+Strong understanding of Cloud and Infrastructure components (server, storage, network, data, and applications) to deliver end-to-end Cloud Infrastructure architectures and designs 
+Build Service Connectors for real-time integration with third-party applications.
+Experience integrating Informatica Cloud with applications like SAP, Workday, and ServiceNow.
+Experience in installing Add-on Connectors and Drivers for IICS.
+ 
+
+Expertise in data extraction, transformation, and loading using transformations like:
+
+Expression
+Router
+Filter
+Lookup
+Update Strategy
+Union
+Aggregator
+ 
+
+Strong technical experience in building data integration processes, including:
+
+Mappings
+Tasks
+Taskflows
+Schedules
+Parameter Files
+ 
