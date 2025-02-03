@@ -1,0 +1,54 @@
+
+Dockerize Springboot REST
+
+hrms/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   └── resources/
+├── target/
+│   └── your-app.jar
+├── pom.xml
+└── Dockerfile
+
+>docker build -t hrms .
+>docker image ls
+>docker run -p 8080:8080 hrms
+
+Issue:
+When I used this command - docker run -p 8080:8080 your-app-name  from IntelliJ, 
+it worked fine and I could invoke apis. When I run it through docker desktop on 
+windows, the log on docker shown proper message of tomcat started on 8080. But I 
+am not able to invoke apis. Getting connection error.
+
+Solution:
+Seems like running from docker desktop is not exposing 8080 port properly
+Run -
+>docker ps
+Output should show:
+CONTAINER ID   IMAGE          COMMAND      ...   PORTS
+abc123456789   your-app-name  ...          0.0.0.0:8080->8080/tcp
+
+But found:
+
+C:\dev\Code\hrms>docker ps
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                    NAMES
+f6640f7795e8   hrms:latest   "java -jar app.jar"      14 minutes ago   Up 42 seconds   8080/tcp                 gallant_grothendieck
+
+If the PORTS column does not show 0.0.0.0:8080->8080, it means the container is not 
+exposing the port to your host. Ensure your docker run command includes -p 8080:8080
+
+Done that from cmaand line and it worked fine
+(This is a form of port forwarding (also known as port mapping) in Docker.
+The -p option in Docker stands for port mapping or port forwarding.)
+
+If you don’t use the -p option, the container's ports won't be accessible from 
+outside the container. The container's application will only be available internally 
+within Docker.
+ -p is essential for making a container's services accessible to the host and 
+ external systems.
+-------------------------------------------------------------------
+
+
+
+
