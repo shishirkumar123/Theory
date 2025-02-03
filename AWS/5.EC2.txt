@@ -16,7 +16,7 @@ Creates instance by specifying
 	- storage
 	- Advance settings
     While creating EC2:
-	- Allow SSH to access, Allow HTTP is you are planning to run a web server
+	- Allow SSH to access, Allow HTTP if you are planning to run a web server
 	- Attach EBS if needed. Also select whether or not you want to delete EBS if EC2 is deleted.
     After creating EC2
 	- You can stop server when not using, to incure less bill.
