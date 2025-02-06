@@ -8,6 +8,10 @@ Percepron - Equivalend of neuron.
 	Non linearity is achieved using non linear function.
 	Non linear function - e.g. - sigmoid, hyperbolic tangent, rlt rectified linear
 	Percepron can have single or multiple output.
+	--------------
+	Weight vs bias
+	-------------
+	
 	
 Trained neural network -> neural network with weights
 Loss functions -
