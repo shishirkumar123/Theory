@@ -1,11 +1,3 @@
-Account Id: 0622 8666 5809
-User: my gmail id
-Pwd: @m**A**** 
----
-Other users
-1. User Name: Shishir-GCP
-Account Id: 0622 8666 5809(same)
-Pwd: @m*******
 
 
 Once AWS account is created, the account id has root access. By default mutilple regions are assigned to the account. All active by default. 
