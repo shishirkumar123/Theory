@@ -11,7 +11,14 @@ Percepron - Equivalend of neuron.
 	--------------
 	Weight vs bias
 	-------------
-	
+	Mathematical Representation
+	For a single neuron:
+		Output = f(w1X1 + w2x2 + w3x3 ...wnxn + b)
+	where x is input, w is weight, b is bias, f is activation function.
+	Weights control the impact of inputs (scaling factor).
+	Bias allows shifting the function (adjustment factor).
+	Both work together to help the neural network learn complex patterns effectively
+	-----------------
 	
 Trained neural network -> neural network with weights
 Loss functions -
