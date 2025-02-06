@@ -401,3 +401,15 @@ It will show end to end journey of a request.
 ===========================
 Resilience4J: https://www.youtube.com/watch?v=3-ChrD3Zosg&t=781s
 For implementing rate limitors, retry logic, circuit brakers, bulk heads
+
+=============================
+
+
+How to create multiple instance of a microservice. Run it. In property file, change the port and run it again. But this requires manual intervention. How a platform
+create multiple instances?
+
+What is the benefit of client side load balancer like ribbon as opposed to F5. for client side load balancing, how can client be aware about load on 
+various service instances since it is not aware about other client consumers?
+
+How to secure microservices from each other. Not any microservice should be able to call another microservice without being aware about it. In fact, not even UI.
+How can I view who is calling my microservices?
