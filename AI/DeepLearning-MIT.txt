@@ -47,7 +47,7 @@ Learning Rate -  is a hyperparameter in neural networks that controls
 	Keep the LR optimum
 	LR is multiplied to the formula of actual/predicted
 	How to find out LR
-		-Random - keep applieng and see what gives better result
+		-Random - keep applying and see what gives better result
 		-Design an adaptive learning rate.
 	Algorithms
 		SGD
