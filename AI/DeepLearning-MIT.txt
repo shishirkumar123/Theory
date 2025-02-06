@@ -12,7 +12,7 @@ Percepron - Equivalend of neuron.
 Trained neural network -> neural network with weights
 Loss functions -
 	Loss - 	cost incurred from incorrect prediction. e.g what are my chances of passing the test
-	Empirical loss - total loss over intire dataset. e.g what are the chances of all our batchmates passing the test
+	Empirical loss - total loss over entire dataset. e.g what are the chances of all our batchmates passing the test
 	Cross entropy loss - used for models that predicts values between 0..1
 	Binary cross entropy loss - used for models that predicts values like Yes/No
 	Mean squared error loss - used with regression model that outputs continuous real numbers
