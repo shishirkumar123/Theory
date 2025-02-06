@@ -9,6 +9,20 @@ for Azure OpenAI service. Approval takes 24 hours.
 Azure OpenAI API vs OpenAI API(Google search OpenAI API)
 Azure Open AI studio vs Azure API studio
 
+
+Azure Open AI: To use pretrained models
+--------------------
+Steps:
+Create an Azure OpenAI Service in the Azure Portal.
+Deploy the model (e.g., GPT-4, Codex, or DALL·E).
+Use REST API or SDK (Python, .NET, etc.) to call the model.
+
+ Azure ML Workspace
+-------------------------
+For training custom ML models or fine-tuning models.
+Creating ML pipelines, experiments, or AutoML.
+Working with custom datasets and need managed ML training.
+
 ============================
 
 Cognitive Services
@@ -49,3 +63,39 @@ Quick start
 	4. Create an Azure AI Language resource, get the credentials
 	5. Create a project 
 	6. Connect the project with storage and start training a model.
+
+
+==================================
+Job requirements:
+We are seeking a highly skilled Sr. Architect with 11 to 14 years of experience in AI and ML technologies. The ideal candidate will have expertise in MLFlow Jenkins Airflow Generative AI Azure Databricks Azure Data Factory Vertex Domino Azure ML Studio ML Ops Docker AI and ML Concepts Machine Learning Artificial Intelligence Kubernetes Terraform Azure Machine Learning and GIT. This role requires proficiency in English and is based in our office with a day shift schedule.
+
+Responsibilities
+
+Lead the design and implementation of AI and ML solutions using cutting-edge technologies.
+Oversee the development and deployment of machine learning models on Azure Databricks and Azure ML Studio.
+Provide technical guidance on the use of MLFlow Jenkins and Airflow for continuous integration and delivery.
+Implement and manage ML Ops practices to ensure efficient model lifecycle management.
+Develop and maintain data pipelines using Azure Data Factory and Vertex.
+Utilize Docker and Kubernetes for containerization and orchestration of AI and ML applications.
+Apply Terraform for infrastructure as code to manage cloud resources.
+Collaborate with cross-functional teams to integrate AI and ML solutions into existing systems.
+Conduct research and development on generative AI techniques to enhance product offerings.
+Ensure the scalability and reliability of AI and ML systems through rigorous testing and validation.
+Mentor junior team members and provide training on AI and ML best practices.
+Stay updated with the latest advancements in AI and ML technologies and incorporate them into projects.
+Communicate effectively with stakeholders to understand requirements and deliver solutions that meet business needs.
+Qualifications
+
+Possess a strong background in AI and ML concepts with hands-on experience in machine learning and artificial intelligence.
+Demonstrate proficiency in using MLFlow Jenkins and Airflow for CI/CD processes.
+Have extensive experience with Azure Databricks Azure Data Factory and Azure ML Studio.
+Show expertise in ML Ops practices and tools for managing the ML lifecycle.
+Be skilled in containerization using Docker and orchestration with Kubernetes.
+Have experience with infrastructure as code using Terraform.
+Exhibit strong problem-solving skills and the ability to work collaboratively in a team environment.
+Possess excellent communication skills in English both written and spoken.
+Be able to mentor and guide junior team members effectively.
+Stay current with industry trends and advancements in AI and ML technologies.
+Have a proven track record of delivering high-quality AI and ML solutions.
+Demonstrate the ability to work independently and manage multiple projects simultaneously.
+Show a commitment to continuous learning and professional development.
