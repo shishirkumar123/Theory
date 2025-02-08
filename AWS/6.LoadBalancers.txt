@@ -6,9 +6,18 @@ Advantage -
   Regular health checks.
   High availability across zones.
 
+Types:
+Gateway
+NLB
+ALB
+Classic
+
 Architectures:
-1. Pblic ALB received all request. Public ALB sends request to private ALB. Private ALB distributes request to EC2. 
+1. Public ALB received all request. Public ALB sends request to private ALB. Private ALB distributes request to EC2. 
   What is the advantage of having public/private ALB?
+2. Public NLB receives all request. 
+If your ALB is private (inside a VPC and not internet-facing), an NLB can  expose it externally.
+By using the Target Group (target type ALB), the NLB can forward external requests to the private ALB, which then routes them to the correct backend services.
 
 
 Assignment
