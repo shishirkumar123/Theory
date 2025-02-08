@@ -25,6 +25,8 @@ Or:
 	FROM httpd:alpine
 	COPY . /var/www/html/
 	EXPOSE 80
+Or just:
+	FROM httpd:latest 		#after build and run access webpage localhost/ from browser
 	
 >docker build -t my-image-01 . 
 [root@ip-172-31-90-207 my-web-app-01]# docker images
