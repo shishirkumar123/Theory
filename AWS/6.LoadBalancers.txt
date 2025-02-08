@@ -36,12 +36,22 @@ Exposing a Private ALB to the Internet → NLB can be public, while ALB remains 
 Handling Massive Traffic → NLB can efficiently distribute TCP traffic to multiple ALBs, which then apply advanced routing.
 Avoiding ALB Public IPs → If you want ALB to handle HTTP but don’t want it exposed directly, NLB can act as a bridge.
 
-More..
+More Scenarios..
 
-Internet → Route 53 (Optional) → ALB → Web/App Servers (DMZ)
-Internet → Route 53 → NLB (Preserve Client IP) → ALB → Web/App Servers  
-Internet → NLB → VPN or Secure Proxy (DMZ)
-Internet → GWLB → Firewall/Intrusion Detection → Private Resources
+# Internet → Route 53 (Optional) → ALB → Web/App Servers (DMZ)
+# Internet → Route 53 → NLB (TCP/UDP) → ALB (HTTP/HTTPS) → Web/App Servers  -For serving TCP/UDP request
+# Internet → Route 53 → NLB (Preserve Client IP) → ALB → Web/App Servers    -For Preserve Client IP
+# Internet → Route 53 → NLB (Multi-AZ) → ALB-1 (AZ1)                        -For supporting failover via multi AZ.
+                                       → ALB-2 (AZ2)  
+# Internet → NLB → VPN or Secure Proxy (DMZ)
+# Internet → GWLB → Firewall/Intrusion Detection → Private Resources
+# Web/App Server → NLB (TCP) → RDS (Database)  
+# Remote User → NLB (TCP 22/1194) → Bastion Host/VPN Server  
+
+Guidelines:
+When clients are mainly web-based (React/Angular) or REST APIs, ALB is perfect.
+However, if your app includes WebSockets, databases, VPN/SSH access, or custom TCP protocols, then NLB might be needed.
+
 -----------------
 
 
