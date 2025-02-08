@@ -19,6 +19,15 @@ Architectures:
 If your ALB is private (inside a VPC and not internet-facing), an NLB can  expose it externally.
 By using the Target Group (target type ALB), the NLB can forward external requests to the private ALB, which then routes them to the correct backend services.
 
+  NLB----TG1-- ALB1--TG2-Lambda
+   |
+   |
+   |________ALB2--TG3--EC2 Instances running web app
+
+Role of TG1- communication between TCP based NLB and application layer ALB
+
+
+
 
 Assignment
 1. Running ReactJS on multi EC2. Put a load balancer in front.
