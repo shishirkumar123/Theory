@@ -15,17 +15,42 @@ Classic
 Architectures:
 1. Public ALB received all request. Public ALB sends request to private ALB. Private ALB distributes request to EC2. 
   What is the advantage of having public/private ALB?
+-------------
 2. Public NLB receives all request. 
 If your ALB is private (inside a VPC and not internet-facing), an NLB can  expose it externally.
-By using the Target Group (target type ALB), the NLB can forward external requests to the private ALB, which then routes them to the correct backend services.
+By using the Target Group (target type ALB), the NLB can forward external requests to the private ALB, 
+which then routes them to the correct backend services.
+This is useful in multi-tier architectures, where an NLB balances between multiple ALBs,
+which then route traffic to specific backend services.
 
   NLB----TG1-- ALB1--TG2-Lambda
    |
    |
-   |________ALB2--TG3--EC2 Instances running web app
+   |-----TG2--ALB2--TG3--EC2 Instances running web app
 
 Role of TG1- communication between TCP based NLB and application layer ALB
+Why Use NLB in Front of ALB?
+This setup is useful in several cases:
 
+Exposing a Private ALB to the Internet → NLB can be public, while ALB remains private.
+Handling Massive Traffic → NLB can efficiently distribute TCP traffic to multiple ALBs, which then apply advanced routing.
+Avoiding ALB Public IPs → If you want ALB to handle HTTP but don’t want it exposed directly, NLB can act as a bridge.
+-----------------
+
+
+NLB vs ALB
+---------
+Feature	                              NLB (Layer 4)	                             ALB (Layer 7)
+------------------------------------------------------------------------------------------------------------------------
+Speed	                               ⚡Very fast (low latency)	                🐢 Slower (higher latency)
+Protocol Support	                    TCP, UDP, TLS	                            HTTP, HTTPS, WebSocket
+Traffic Processing	                  Direct packet forwarding	                Inspects headers, applies rules
+Best For	                            High-performance, low-latency apps       	Web applications with routing needs
+                                      (e.g., gaming, VoIP, MQTT)
+SSL Termination	                      ❌ No (must be done at backend)	          ✅ Yes
+Sticky Sessions	                      ✅ Yes (by default)	                      ⚠️ Yes (via cookies)
+
+So, if raw speed and high-performance networking are needed, go with NLB. But if you need intelligent HTTP routing, ALB is the right choice.
 
 
 
