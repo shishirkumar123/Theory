@@ -38,30 +38,7 @@ multiple ways to create new image
 >docker commit, docker build, docker import
 ===========================================================
 # Create App
-# Docker image sample -
----
-<mongo.yaml>
-version: '3'
-service:
-	my-app:
-		image:435354235.dkr.dsf.sdf.amozonaws.com/my-app:1.0   --> prefix needed if not from dockerhub 
-		ports:
-			- 3000:3000
-	mongodb:
-		image: mongo --> no prefix needed if from dockerhub
-		ports:
-			- 27017:27017
-		environment
-			- mongo-root-uname:dfsff
-			- mongo-root-pwd: sdf#123
-		volumes:
-			- mongo-data:/data/db  -->path inside the container
-
-
------------------
-
 # Commited the App including Dockerfile to git
-
 # Build image
 Option 1: Build image yourself
 	> docker build -t my-app:1.0
