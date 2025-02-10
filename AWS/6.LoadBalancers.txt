@@ -7,7 +7,7 @@ Advantage -
   High availability across zones.
 
 Types:
-Gateway
+Gateway:  firewalls, deep packet inspection(for security, optimization, compliance), or network monitoring
 NLB
 ALB
 Classic
@@ -39,9 +39,9 @@ Avoiding ALB Public IPs → If you want ALB to handle HTTP but don’t want it e
 More Scenarios..
 
 # Internet → Route 53 (Optional) → ALB → Web/App Servers (DMZ)
-# Internet → Route 53 → NLB (TCP/UDP) → ALB (HTTP/HTTPS) → Web/App Servers  -For serving TCP/UDP request
-# Internet → Route 53 → NLB (Preserve Client IP) → ALB → Web/App Servers    -For Preserve Client IP
-# Internet → Route 53 → NLB (Multi-AZ) → ALB-1 (AZ1)                        -For supporting failover via multi AZ.
+# Internet → Route 53 → NLB (TCP/UDP) → ALB (HTTP/HTTPS) → Web/App Servers  -NLB for serving TCP/UDP request
+# Internet → Route 53 → NLB (Preserve Client IP) → ALB → Web/App Servers    -NLB for Preserve Client IP
+# Internet → Route 53 → NLB (Multi-AZ) → ALB-1 (AZ1)                        -NLB for supporting failover via multi AZ.
                                        → ALB-2 (AZ2)  
 # Internet → NLB → VPN or Secure Proxy (DMZ)
 # Internet → GWLB → Firewall/Intrusion Detection → Private Resources
