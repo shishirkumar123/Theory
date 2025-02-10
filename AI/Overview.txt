@@ -30,6 +30,15 @@ Deep Learning - Sunset of ML. Mimics human brain. Multilayered Nueral n/w
 	GAN - Generative advertial network
 		neural network to generate data.
 
+Neural Networks vs Deep learning
+------------------------
+Feature	                        Neural Networks	                         Deep Learning
+Definition	                Computational model with neurons	 Subset of ML that uses deep neural networks
+Layers	                        Can be shallow (few layers)	         Always deep (many layers)
+Feature Extraction 	        Manual (human engineers decide features) Automatic (learns features itself)
+Computational Power	        Low to moderate	                         Requires high GPU/TPU power
+Data Requirement	        Can work with small datasets	         Needs large datasets
+
 GAI two types
 	GIM
 		image to image generation
