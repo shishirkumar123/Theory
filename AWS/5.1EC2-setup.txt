@@ -21,7 +21,7 @@ C:\dev\Code\AWS\key-pair>ssh -i my-key-pair-for-ssh-01.pem ec2-user@<ip>
 	EXPOSE 80
 	
 Even simpler:
-	FROM httpd:latest 		#The official httpd:latest Docker image runs on Debian by default.
+	FROM httpd:latest 		#The official httpd:latest Docker image runs on Debian by default.(Feb 9 2025)
 	COPY . /var/www/html/
 	EXPOSE 80
 Or:
@@ -38,6 +38,7 @@ Access from web browser: http://18.234.221.189/
 Other useful command:
 >docker history my-image-01
 >docker run -it --rm my-image-01 /bin/bash (This drops you into a shell inside the container.)
+[instead of /bin/bash you can do /bin/sh. I guess this will support vim editor inside container]
 >docker exec -it my-container-01 /bin/bash(This starts an interactive session inside the container)
 >root@fdbb2e4cfa01:/usr/local/apache2# ls
 bin  build  cgi-bin  conf  error  htdocs  icons  include  logs  modules
