@@ -22,11 +22,11 @@ C:\dev\Code\AWS\key-pair>ssh -i my-key-pair-for-ssh-01.pem ec2-user@<ip>
 	
 Even simpler:
 	FROM httpd:latest 		#The official httpd:latest Docker image runs on Debian by default.(Feb 9 2025)
-	COPY . /var/www/html/
+	COPY . /usr/local/apache2/htdocs
 	EXPOSE 80
 Or:
 	FROM httpd:alpine
-	COPY . /var/www/html/
+	COPY . /usr/local/apache2/htdocs
 	EXPOSE 80
 	
 >docker build -t my-image-01 . 
