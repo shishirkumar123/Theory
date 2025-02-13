@@ -261,6 +261,10 @@ Something like -
                     -valueFrom: 
 			secretKeyRef
                         ...
+
+useful commands:
+>kubectl get configmap -n kube-system
+
 ==================================================================
 Services 
 
