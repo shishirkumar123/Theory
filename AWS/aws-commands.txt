@@ -1,7 +1,17 @@
 Try running commands on cloudshell. You can run unix commands also like pwd, ls, vi.
 List of commands:
 
-aws configure list -- shows which profile and region are currently active, helping ensure you're pointing to the right account.
-aws iam list-users -- returns array of users with their details. Returns empty array if 
+>aws configure list -- shows which profile and region are currently active, helping ensure you're pointing to the right account.
+>aws configure
+>aws configure set aws_access_key_id YOUR_ACCESS_KEY
+>aws configure set aws_secret_access_key YOUR_SECRET_KEY
+>aws configure set region us-east-1
+----
+
+>aws iam list-users -- returns array of users with their details. Returns empty array if 
                 1. no permission to call this 
                 2. no iam users. (Note that root user is not iam user.
+----
+>aws sts assume-role --role-arn arn:aws:iam::ACCOUNT-ID:role/ROLE-NAME --role-session-name mysession
+>aws sts get-caller-identity
+
