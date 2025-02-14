@@ -37,6 +37,9 @@ e.g
         employeeList.add(employee3);
         employeeList.add(employee4);
         employeeList.add(employee5);
+	//Simpler option
+	List<Employee> employeeList = List.of(employee1, employee2, employee3, employee4, employee5);
+
         //////////////////
 	
 	///////////////////Show employee names whose name starts with A
