@@ -174,6 +174,36 @@ Design engineering
 	Star Schema vs Snowflake Schema
 	Star schemas are easier and better for performance, 
 	while snowflake schemas focus on storage optimization and flexibility in complex databases.
+===================================================================
+Data architecture requirement:
+
+Job Summary:
+We are seeking a Data Governance Platform Developer to join our team for the Voyager implementation project. This role involves designing, developing, and implementing technical integration and automation solutions to extract metadata from source systems and enable the data governance operating model. The developer will work closely with the data governance team, including sub teams focused on data framework and stewardship, and data governance platform services. This position will report to the Data Governance Manager but will also collaborate with technical teams and external vendors like Deloitte.
+
+Key Responsibilities:
+• Technical Solutions Implementation: Implement technical solutions in Collibra, including data catalog and application integrations.
+• Requirements Gathering: Gather requirements, perform scoping and discovery, and translate business requirements into technical requirements.
+• API Development: Develop integrations using REST APIs to extract metadata from Oracle and other source systems.
+• Collaboration: Work closely with Deloitte partners and internal teams to understand data extraction methods and ensure alignment with existing implementations.
+• Vendor Coordination: Coordinate with vendors on issues and feature requests, staying up to date on new Collibra features and products, including Java and REST APIs.
+
+Required Skills:
+• Programming Experience: 8+ years of programming experience.
+• Enterprise Software Development: 8+ years of experience in enterprise software application development.
+• Technical Skills: Experience with Groovy programming, REST API development, and Python programming.
+• Data Governance Software: Preferred experience with Collibra development or similar data governance software.
+• Flowable Experience: Experience with Flowable or similar workflow automation tools.
+• Data Quality and Reference Data Management: Experience in data quality and reference data management.
+• Version Control: Experience with GitHub or similar version control systems.
+• Agile Methodologies: Familiarity with Agile methodologies.
+
+Qualifications:
+• Bachelor’s Degree: Preferably in Computer Science, Information Technology, Mathematics, or other related major, or equivalent work experience.
+• Data Governance Experience: Experience working in data governance preferred.
+• Healthcare Environment Experience: Experience working in a healthcare environment preferred.
+• ERP Data Management Knowledge: General knowledge of healthcare operations, ERP data management, the interrelationship of systems, and how technology enables business processes preferred.
+• Database Configuration Knowledge: Intermediate to advanced knowledge of backend database configuration and processes.
+• Google Suite Skills: Proficient in advanced Google Suite skills (Docs, Sheets, Slides).
 			
 			
 		
