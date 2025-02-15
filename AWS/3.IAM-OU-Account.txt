@@ -67,19 +67,72 @@ Policies
 Policies are set of permissions. 
 Certain policies are created by AWS which we cant edit. Other policies can be created by us with full control.
 There are good number of pre-existing policies. I created a new one and given it a random name. Below is JSON -
+	{
+	    "Version": "2012-10-17",
+	    "Id":"" 
+	    "Statement": [
 		{
-		    "Version": "2012-10-17",
-		    "Id":"" 
-		    "Statement": [
-			{
-			    "Sid": "VisualEditor0",
-			    "Effect": "Allow",
-			    "Action": "apigateway:GET",
-			    "Resource": "*"   -- This can be more restrictive.
-					      -- e.g, in case of S3, Resource can be a certain bucket.
-			}
-		    ]
+		    "Sid": "VisualEditor0", --Sid (Statement ID) is an optional field, helps organize and reference 
+						specific statements
+		    "Effect": "Allow",
+		    "Action": "apigateway:GET",
+		    "Resource": "*"   -- This can be more restrictive.
+				      -- e.g, in case of S3, Resource can be a certain bucket.
 		}
+	    ]
+	}
+
+More examples:
+Example: Deny Deletion of an S3 Bucket
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "s3:DeleteBucket",
+            "Resource": "arn:aws:s3:::my-critical-bucket"
+        }
+    ]
+}
+----
+Example: Deny Console Login from Any IP Except a Trusted One
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "aws:login",
+            "Resource": "*",
+            "Condition": {
+                "NotIpAddress": {
+                    "aws:SourceIp": "203.0.113.25/32"
+                }
+            }
+        }
+    ]
+}
+
+----
+Example: Block Usage of AWS in ap-southeast-1 (Singapore)
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": "*",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestedRegion": "ap-southeast-1"
+                }
+            }
+        }
+    ]
+}
+
+
+
+
 Policies can be attached to group, role or directly to the user.
 IAM Session Policies: They allow for setting temporary, additional restrictions on session permissions.
 
