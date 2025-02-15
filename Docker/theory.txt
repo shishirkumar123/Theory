@@ -1,3 +1,10 @@
+Generative AI tool for Docker:
+docker init is a new experimental feature introduced by Docker to automatically generate a Dockerfile 
+and related config files for a project.
+To use it, in the cmd prompt, got to the project that needs to dockerize and enter docker init. 
+Tool will guide you from here.
+==================================================
+
 Docker architecture
 	- client - server architecture
 	- Daemon(server) receives the commands from Docker client through CLI or rest API'server
@@ -59,6 +66,7 @@ But first make sure containers of that image is deleted
 >/ # ls
 >/ # exit
 [~]
+Q. Can I open a vi editor inside cotainer when /bin/bash or /bin/sh?
 
 # Run container
 docker run my-app1.0
