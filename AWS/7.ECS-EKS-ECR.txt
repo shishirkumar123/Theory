@@ -117,8 +117,48 @@ ECR - Elastic container Registry
 
 (Compare with Amazon Container Service)
 
-ECS
-	Can ECS cluster go beyond a region/vpc?
-	Cluster, Services, Tasks
+>aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 062286665809.dkr.ecr.us-east-1.amazonaws.com
+	- username is AWS for everyone for ecr, password is account id.
+	- this command obtains ecr login/pwd
+	- pipes it to docker login
+	Note:
+	- AWS ECR does not support permanent credentials
+	- This password is valid for 12 hours
+You will get the message: Login Succeeded
+	
+>aws ecr create-repository --repository-name ns1/my-ecr-01  # (If repo doesn't exist)
+>docker build -t my-image-01 .(do it locally (-possibly in your laptop) if not yet)
+>docker tag my-image-01:latest 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+	my-image-01 is the image name, 'latest' is the tag (default if none is specified) in laptop.
+	my-ecr-01 is the ecr name in aws, 'v1' is the tag (default if none is specified) in ecr.
+	verify using >docker images
 
-EKS
+>docker push 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+
+
+Verify:
+>aws ecr list-images --repository-name ns1/my-ecr-01 
+
+Verify the size:
+>docker image inspect 062286665809.dkr.ecr.us-east-1.amazonaws.com/ns1/my-ecr-01:v1
+
+I notice that size of image in my latop was 148MB, but in ECR it is 60MB.
+
+==============================
+Cleanup
+
+In your laptop
+>docker stop 0b7b5556376a #stop the container
+>docker rm 0b7b5556376a   #remove the container
+>docker images --no-trunc | grep f194fb1cac90 on unix # get the list of all tags associated
+>docker rmi my-repo/my-image:latest #e.g1 - remove them one by one. Or use -f for forceful removal.
+>docker rmi 062286665809.dkr.ecr.us-east-1.amazonaws.com/ns1/my-ecr-01:v1# e.g2
+
+
+
+
+------------------------
+Understanding ECR Structure
+ECR Registry → One per AWS account per region
+ECR Repositories → Multiple repositories inside the registry
+Docker Images → Multiple images with different tags in each repository
