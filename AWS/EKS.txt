@@ -1,0 +1,8 @@
+
+EKS Control Plane vs K8s Master Node
+
+The EKS control plane is a managed service provided by AWS 
+to handle Kubernetes control plane components.
+It manages Kubernetes API server, etcd (key-value store), 
+scheduler, and controller manager. In K8s Master Node,
+we set up these components ourself.
