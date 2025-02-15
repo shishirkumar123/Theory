@@ -6,3 +6,48 @@ to handle Kubernetes control plane components.
 It manages Kubernetes API server, etcd (key-value store), 
 scheduler, and controller manager. In K8s Master Node,
 we set up these components ourself.
+
+
+EKS - Elastic K8s service - Alternative to ECS
+Amazon Elastic Kubernetes Service (EKS) is a fully managed service that makes it easy to run and scale Kubernetes applications on AWS. EKS allows you to deploy, manage, and scale containerized applications using Kubernetes
+
+Why EKS
+     Because project was already using k8s and want to move to aws as is
+     k8s is open source 
+     K8s vendor neutral. ECS is Amazon specific
+     K8s has bigger community, plugins - e.g Helmchart
+Setup
+    It is easier on AWS. 
+    Create EKS cluster/service. (Control Pane). 
+    Master node:
+            It will automatically provision master nodes and its related components.
+    	    Master nodes are replicated in different AZs.
+    	    Etcds are replicated in the same way.
+    Worker node:
+        Self managed:
+            EC2 instances joins cluster in the same way as ecs.
+            So need to manage operating systems on EC2 the same way as ECS.
+        Semi managed: EKS with Node Group
+            Create the node group of related worker nodes. This makes it easier for new worker node to join.
+            EC2 instances are managed by nodegroup.
+            But Autoscaling needs to be done manually on AWS
+       Fully managed - EKS with Fargate
+
+Observability in AWS EKS
+==================================
+For Logging: Enable EKS Cluster Logging → Store logs in CloudWatch Logs.
+For Metrics: Use Amazon Managed Prometheus (AMP) + Amazon Managed Grafana.
+For Tracing: Use AWS X-Ray for distributed tracing.
+
+Steps
+================
+install awscli - msi for windows kept in C:\dev\installers\aws, installed at C:\Program Files\Amazon\AWSCLIV2\
+>aws --version
+-----
+From AWS console, create access key, secrete key for aws user which will access EKS cluster.
+>aws configure (supply access key, secret key when prompted. Also - default region, default output format(json))
+verify
+>aws iam list-users
+
+I was getting acces denied. The reason was that a permission boundary was set. I dont remember when I did that.
+But once that was removed, i was able to fire aws iam list-users
