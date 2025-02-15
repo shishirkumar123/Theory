@@ -7,11 +7,35 @@ List of commands:
 >aws configure set aws_secret_access_key YOUR_SECRET_KEY
 >aws configure set region us-east-1
 ----
+>aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 062286665809.dkr.ecr.us-east-1.amazonaws.com
+>aws ecr create-repository --repository-name ns1/my-ecr-01  # (If repo doesn't exist)
+>docker build -t my-image-01 .(do it locally (-possibly in your laptop) if not yet)
+>docker tag my-image-01:latest 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+>docker push 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+>aws ecr list-images --repository-name ns1/my-ecr-01 
+>docker image inspect 062286665809.dkr.ecr.us-east-1.amazonaws.com/ns1/my-ecr-01:v1
+>aws ecr list-images --repository-name ns1/my-ecr-01
+----
 
 >aws iam list-users -- returns array of users with their details. Returns empty array if 
                 1. no permission to call this 
                 2. no iam users. (Note that root user is not iam user.
+>aws iam create-policy --policy-name CustomEKSAccess --policy-document file://eks-policy.json
+>aws iam attach-user-policy --user-name Shishir-GCP --policy-arn arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+>aws iam detach-user-policy --user-name Shishir-GCP --policy-arn arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+>aws iam list-attached-user-policies --user-name Shishir-GCP
+
+
 ----
 >aws sts assume-role --role-arn arn:aws:iam::ACCOUNT-ID:role/ROLE-NAME --role-session-name mysession
 >aws sts get-caller-identity
+---------
+aws eks update-kubeconfig --name my-eks-01 --region us-east-1
+
+
+--------
+kubectl cluster-info
+kubectl config view --minify
+
+
 
