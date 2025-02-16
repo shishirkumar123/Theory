@@ -1,0 +1,35 @@
+
+ECR - Elastic container Registry
+     keeps container images
+     Advantage - integrate well with AWS services. When new version of image arrives, notify the K8s cluster.
+
+(Compare with Amazon Container Service)
+
+>aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 062286665809.dkr.ecr.us-east-1.amazonaws.com
+	- username is AWS for everyone for ecr, password is account id.
+	- this command obtains ecr login/pwd
+	- pipes it to docker login
+	Note:
+	- AWS ECR does not support permanent credentials
+	- This password is valid for 12 hours
+You will get the message: Login Succeeded
+	
+>aws ecr create-repository --repository-name ns1/my-ecr-01  # (If repo doesn't exist)
+>docker build -t my-image-01 .(do it locally (-possibly in your laptop) if not yet)
+>docker tag my-image-01:latest 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+	my-image-01 is the image name, 'latest' is the tag (default if none is specified) in laptop.
+	my-ecr-01 is the ecr name in aws, 'v1' is the tag (default if none is specified) in ecr.
+	verify using >docker images
+
+>docker push 062286665809.dkr.ecr.us-east-1.amazonaws.com/my-ns-01/my-ecr-01:v1
+
+
+Verify:
+>aws ecr list-images --repository-name ns1/my-ecr-01 
+
+Verify the size:
+>docker image inspect 062286665809.dkr.ecr.us-east-1.amazonaws.com/ns1/my-ecr-01:v1
+
+I notice that size of image in my latop was 148MB, but in ECR it is 60MB.
+
+==============================
