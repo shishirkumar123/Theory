@@ -129,6 +129,20 @@ Example: Block Usage of AWS in ap-southeast-1 (Singapore)
         }
     ]
 }
+----
+Example : Assuming role
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "eks.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
 
 
 
