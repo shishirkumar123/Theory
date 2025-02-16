@@ -1,4 +1,5 @@
-
+Theory
+=========================
 EKS Control Plane vs K8s Master Node
 
 The EKS control plane is a managed service provided by AWS 
