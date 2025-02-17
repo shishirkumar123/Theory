@@ -44,6 +44,13 @@ Launch Template
 		- EC2 instance
 		- ASG 
 		- Spot fleet
+Note: When you create launch template, you optionally specify a subnet.
+When you create an Auto Scaling Group (ASG) using a Launch Template, the ASG can scale across multiple subnets and
+Availability Zones (AZs), even though the Launch Template itself is associated with only one subnet. This happens
+because the subnet selection is controlled at the ASG level, not the Launch Template level.
+(the subnet in the Launch Template is ignored when used with an Auto Scaling Group.)
+If an Application Load Balancer (ALB) or Network Load Balancer (NLB) is attached, the ASG ensures instances 
+are launched in the subnets associated with the load balancer.
 
 Spot Requests
 --------------------
