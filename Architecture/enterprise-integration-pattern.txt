@@ -1,13 +1,35 @@
-Message Filter:  used to remove unwanted messages from a message stream, ensuring that only 
-                 relevant messages reach the intended system.
-Use case:  Fraud detection systems (filtering suspicious transactions)
-           IoT data processing (filtering sensor noise)
-           Stock trading platforms (filtering high-value trades)
+Message Filter:  
+    used to remove unwanted messages from a message stream, ensuring that only 
+    relevant messages reach the intended system.
+Use case:  
+    Fraud detection systems (filtering suspicious transactions)
+    IoT data processing (filtering sensor noise)
+    Stock trading platforms (filtering high-value trades)
 ---------------------
+Splitter:  
+    A Splitter is used to break a single large message into multiple smaller messages for 
+    parallel or separate processing. This is useful when dealing with batch data or composite messages.
+Use case:  
+    E-commerce → Process each order item separately
+    Financial transactions → Split batch payments into individual transactions
+    Log processing → Break large log files into smaller messages
 
-Splitter:  A Splitter is used to break a single large message into multiple smaller messages for 
-          parallel or separate processing. This is useful when dealing with batch data or composite messages.
+---------------------
+Content-Based Router: 
+    routes messages to different destinations based on their content. This helps in dynamic 
+    message routing based on specific conditions.
+Use case:
+    Customer service → Route requests to different teams (e.g., billing vs. technical support)
 
-Use case:  E-commerce → Process each order item separately
-           Financial transactions → Split batch payments into individual transactions
-          Log processing → Break large log files into smaller messages
+---------------------
+Recipient List:
+    Dynamically sends a message to multiple recipients based on conditions or metadata. 
+    Unlike a publish-subscribe pattern (which broadcasts to all subscribers), the Recipient List 
+    selectively chooses recipients at runtime.
+Use case:
+    An e-commerce platform processes an order and needs to send notifications:
+
+Customer → Order confirmation
+    Warehouse → Shipping details
+    Accounting → Billing
+    A Recipient List determines which recipients should receive the notification based on order details.
