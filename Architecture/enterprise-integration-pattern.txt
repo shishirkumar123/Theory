@@ -1,0 +1,6 @@
+Message Filter:  used to remove unwanted messages from a message stream, ensuring that only 
+                 relevant messages reach the intended system.
+Use case:  Fraud detection systems (filtering suspicious transactions)
+           IoT data processing (filtering sensor noise)
+           Stock trading platforms (filtering high-value trades)
+---------------------
