@@ -4,3 +4,10 @@ Use case:  Fraud detection systems (filtering suspicious transactions)
            IoT data processing (filtering sensor noise)
            Stock trading platforms (filtering high-value trades)
 ---------------------
+
+Splitter:  A Splitter is used to break a single large message into multiple smaller messages for 
+          parallel or separate processing. This is useful when dealing with batch data or composite messages.
+
+Use case:  E-commerce → Process each order item separately
+           Financial transactions → Split batch payments into individual transactions
+          Log processing → Break large log files into smaller messages
