@@ -28,8 +28,7 @@ Recipient List:
     selectively chooses recipients at runtime.
 Use case:
     An e-commerce platform processes an order and needs to send notifications:
-
-Customer → Order confirmation
+    Customer → Order confirmation
     Warehouse → Shipping details
     Accounting → Billing
     A Recipient List determines which recipients should receive the notification based on order details.
