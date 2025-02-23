@@ -223,6 +223,10 @@ Q. when security group is stateful, why i have to specify both inbound and outbo
 A. The stateful nature applies only to return traffic for an already allowed request.
 You need to define rules for initiating traffic in both directions to cover all use cases.
 
+Note:	Security Groups Are Attached to ENIs, Not Directly to EC2. Security Groups are actually applied to 
+Elastic Network Interfaces (ENIs), which are attached to EC2 instances. If you detach an ENI and attach it 
+to another instance, the same Security Group rules apply.
+
 ---------------------------------------------------------------------------------------	
 Amazon recommends SG for whitelisting and NACL for blacklisting. Additionally use WAF for vulnarabilities.
 Note that allow/deny option against rules is available is NACL only. Not available in SG. Because SG rules are whitelisting.
