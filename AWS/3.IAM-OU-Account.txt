@@ -49,9 +49,18 @@ Roles
 When we create various resources like EC2 instances, ECS clusters with tasks, new roles are created. All roles are
 associated with predefined policies. Are these roles getting associated with my default root users too?
 
-Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which need access to S3 bucket. This way it is easier and right approach. Otherwise I may have to store access key for S3 in EC2 instance. Not a good practice.
+Users are created for people. But roles are created for applications. e.g Role can be assigned to an EC2 instance which 
+need access to S3 bucket. This way it is easier and right approach. Otherwise I may have to store access key for S3 in 
+EC2 instance. Not a good practice.
 
-When a user assumes a role in AWS IAM, what is the maximum session duration they can request? 12 hours
+Roles are typically mapped with:
+	AWS Services
+	AWS Account
+	Web identity
+	SAML 2.0 federation
+	custome trust policy
+
+User can assume a role. When a user assumes a role in AWS IAM, what is the maximum session duration they can request? 12 hours
 
 Groups
 --------
@@ -151,6 +160,16 @@ Policies can be attached to group, role or directly to the user.
 IAM Session Policies: They allow for setting temporary, additional restrictions on session permissions.
 
 --------------
+Role vs Group
+Feature		|			IAM Role				| IAM Group
+----------------------------------------------------------------------------------------------------------
+Who uses it?	|	AWS services, applications, users (temporarily)		| IAM users (permanently)
+Credential Type	|	Temporary (assumed)					| Permanent (IAM user credentials)
+Use Case	|	Cross-account access, service access (e.g., EC2 to S3)	| Grouping users for permission management
+Assigned To?	|	AWS services, external users, federated identities	| Only IAM users
+
+-----------------------
+
 Permission boundaries
 A permission boundary is an advanced IAM feature that acts as an upper limit, or boundary, for the permissions of a user or role.
 Example: Even if a user has an IAM policy allowing full access to S3, a permission boundary restricting them to "read-only" for S3 will limit them to that boundary.
