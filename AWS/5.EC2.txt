@@ -70,8 +70,14 @@ Reserved Instances
 
 Dedicated Host
 ----------------
+	AWS Dedicated Hosts are a physical server capacity option, not a virtualized resource like an EC2 instance.
+	When you order a Dedicated Host, you're essentially reserving an entire physical server; therefore, you don't 
+	specify a VPC or subnet at the time of ordering the host. Instead, the Dedicated Host provides the physical 
+	capacity on which you can launch instances later.
+	
 	Dedicated Hosts allow you to provision EC2 instances on physical servers fully dedicated for your use.
 	(dedicated physical hardware)
+	
 	Suitable for BYOL (Bring your own liscence)
 	
 Capacity Reservations
