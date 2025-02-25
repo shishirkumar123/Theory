@@ -33,3 +33,9 @@ Images are available in docker hub - hub.docker.com
           #pwd
           #env
           #exit
+
+===================
+Use intelliJ for Dockerfile editing. 
+Inside IntelliJ, go to settin file>>settings>>plugin and install Docker plugin
+Start your local Docker desktop.
+Inside IntelliJ in services tab you will see Docker. Double click. IntelliJ will connect to your local Docker service. 
