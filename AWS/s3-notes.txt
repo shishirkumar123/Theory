@@ -8,7 +8,29 @@ EBS(Elastic block store - Device like C:, D: only accessible through its EC2),
 Glacier - long term
 [Note - If you provision a 100-GB EBS volume for a month, but only store 1 GB of data on that volume, you are still billed for 100 GB/m of EBS storage.]
 
+---
+
 Create Bucket, then put objects in it. Object can be image, pdf anything.
+Bucket types:
+       General purpose - commonly used for website hosting, backups, logs, and media storage.
+       Directory - Optimized for workloads requiring hierarchical directory-like storage (e.g., data lakes, file-system-like structures).
+                   For optimization, resides in single AZ.
+Why Do They Appear the Same? (Directory vs General purpose)
+Both buckets store objects (your JPG files).
+You can upload, download, and view files in both buckets via the S3 console.
+The basic object operations (GET, PUT, DELETE) work the same way.
+Key Differences That Matter Over Time
+To notice the real differences, try these actions:
+
+1. Check Folder Structure & Listing Speed
+In a General Purpose Bucket, S3 does not actually store directories—it only simulates them using object prefixes.
+In a Directory Bucket, S3 maintains a true hierarchical structure (like a file system), meaning directory-based queries (like listing files in a folder) are much faster.
+2. Query with AWS Athena or AWS Glue
+If you run Athena queries on a Directory Bucket, it will perform better and understand the hierarchy natively.
+For a General Purpose Bucket, you would need to structure the prefixes carefully to optimize queries.
+
+
+---
 Decide what type of S3 you need based on how frequently you need data, how quick. Make it cost effective if data is
 infrequently used by using storage like 
 	S3 infrequent, 
