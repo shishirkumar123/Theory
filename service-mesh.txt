@@ -13,7 +13,7 @@ Use AWS Systems Manager or Azure App Configuration for a centralized,
 Use AWS Secrets Manager or Azure Key Vault for secure and sensitive configuration values.
 For cloud-agnostic setups, consider deploying Spring Cloud Config Server 
 	on the cloud or using third-party tools like Consul.
-K8S
+K8S - ConfigMap and Secret
 	
 -------------------
 Popular Sidecar Examples
