@@ -1,0 +1,15 @@
+Synchronous Mode
+  REST
+  gRPC
+  GraphQL
+  SOAP
+  RPC
+  JDBC
+
+Asynchronous Mode
+ For event-driven architectures → Kafka, Pub/Sub, RabbitMQ.
+ For real-time communication → WebSockets, WebRTC.
+        Unlike a synchronous HTTP request (where the client waits for a response), a WebSocket keeps 
+        the connection open, allowing both sides to communicate freely and asynchronously.
+ For background job processing → Message Queues i.e point to point (SQS, RabbitMQ, Celery).
+ For API responses without blocking → Async/Await, Callbacks, gRPC Streaming.
