@@ -8,7 +8,7 @@ Advantage -
 
 Types:
 Gateway:  firewalls, deep packet inspection(for security, optimization, compliance), or network monitoring
-NLB
+NLB: Uses ALP as a TG.
 ALB
 Classic
 
