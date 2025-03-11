@@ -14,7 +14,10 @@ To undo -
 git config --global --unset https.proxy
 git config --global --unset http.proxy
 
-Usually I have created repository in github.com and then cloned it on my machine. 
+Usually I have created repository in github.com and then cloned it on my machine:
+>>git remote add origin https://github.com/shishirkumar123/design.git
+>>git branch -M main
+>>git push -u origin main
 Alternatively I can do below steps -
 >>git init
 >>git add README.md
