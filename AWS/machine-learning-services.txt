@@ -1,0 +1,42 @@
+AWS ML Services
+==============================
+
+(classification vs regression
+rfm model statistics)
+
+1. Rekognition - image						- Tranformer, Deep learning, neural network
+2. Transcribe - speech to text				- Tranformer, LSTM (type of RNN)
+3. Polly - text to speech					- Tranformer, LSTM (type of RNN)
+4. Translate - text to text(eng to hindi)  - Tranformer, LSTM (type of RNN)
+5. Lex - Alexa, Chatbots					- Tranformer, LSTM ()
+6. Comprehend - Read and analyze text
+7. Sage Maker - fully managed machine learning (ML) service that helps developers 
+			 and data scientists build, train, and deploy ML models at scale.
+8. Forecast - fully managed service that uses machine learning (ML) to generate 
+			accurate time-series forecasts for business metrics such as demand, 
+			revenue, inventory levels, and resource planning
+			
+			DEPRECATED
+			Use - SageMaker, Bedrock, Glue+QuickSight
+			
+9. Kendra - search on ppt free flow unstructured data using ML.
+		Contrast this with Elasticsearch/Lucene which primarily match 
+		keywords and provide ranked results.
+10. Personalize - recomend
+11. Textract - extract text
+---------------
+Use SageMaker if you need to train and deploy custom ML models with 
+full control over infrastructure and data.
+Use Bedrock if you want to quickly integrate generative AI models 
+(like GPT-4, Claude, etc.) into applications without managing ML infrastructure.
+
+---------------
+Q. What to  to classify documents like phone bills, W2 forms, receipts, etc.
+A.  For structured documents (invoices, receipts, W2s) → Use Amazon Textract
+	For text-based classification (emails, legal docs, reports) → Use Amazon Comprehend
+	For advanced, AI-driven classification → Use Amazon Bedrock + Textract/Comprehend
+	
+	In the given use case, use Amazon Textract and Amazon Comprehend to classify 
+	documents like phone bills, W2 forms, receipts
+
+
