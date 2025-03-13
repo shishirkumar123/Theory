@@ -1,3 +1,5 @@
+                                   1
+==================================================================================================
 Role Overview:
 We are seeking an experienced Infrastructure Consultant to assess and optimize the current IT infrastructure of the company, which predominantly operates in an Azure cloud environment with AWS as backup. The consultant will evaluate existing infrastructure, provide actionable insights on performance and security, and collaborate with internal teams to recommend improvements and future-proof strategies. The role will also involve working closely with in-house infrastructure teams to evaluate skill sets, bridge talent gaps, and ensure alignment with best practices.
  
@@ -48,3 +50,43 @@ Personal Attributes:
 Strong problem-solving skills with the ability to think strategically and analytically.
 Collaborative mindset with a proactive approach to stakeholder engagement.
 Ability to work independently and manage multiple projects simultaneously.
+==========================================================================
+                                        2
+============================================================================
+Role Overview:
+We are seeking a skilled AWS Architect to design, implement, and manage cloud-based solutions across multiple regions. The ideal candidate will have deep expertise in AWS services, disaster recovery (DR) planning, automation, and container orchestration. This role involves handling large-scale data replication, managing backups, and deploying and maintaining infrastructure using modern cloud-native technologies.
+ 
+Key Responsibilities:
+ 
+Multi-Region Data Management:
+Design and implement data replication strategies across multiple AWS regions.
+Ensure secure and efficient data transfer while maintaining data integrity and compliance.
+Disaster Recovery (DR) & Backup:
+Develop and maintain disaster recovery plans and automated backup processes.
+Ensure business continuity by designing highly available and fault-tolerant architectures.
+Infrastructure Management & Automation:
+Spin up and manage new clusters using AWS services like EKS and EC2.
+Design and deploy infrastructure using AWS CloudFormation and Infrastructure-as-Code (IaC) practices.
+Container Orchestration & Management:
+Deploy, manage, and optimize Kubernetes (EKS) and Docker-based environments.
+Ensure seamless scaling, performance, and security of containerized applications.
+Automation & Scripting:
+Develop automation scripts using Python to streamline deployments, monitoring, and maintenance.
+Implement CI/CD pipelines for automated testing and delivery.
+Monitoring & Optimization:
+Monitor system performance, identify bottlenecks, and implement optimizations.
+Ensure cloud resources are cost-optimized while maintaining performance and availability.
+Required Skills & Qualifications:
+Proven experience as an AWS Architect with a focus on multi-region deployments.
+Expertise in AWS services including EC2, EKS, S3, RDS, and CloudFormation.
+Strong knowledge of Kubernetes and Docker for containerized workloads.
+Hands-on experience with Python for automation and scripting.
+Experience designing and implementing disaster recovery strategies and backups.
+Familiarity with Infrastructure-as-Code (IaC) practices and tools (e.g., CloudFormation, Terraform).
+Understanding of networking concepts, security best practices, and monitoring solutions.
+Excellent problem-solving skills and ability to work in a fast-paced environment.
+Preferred Qualifications:
+AWS Certified Solutions Architect (Associate/Professional) or equivalent certification.
+Experience with CI/CD tools (e.g., AWS CodePipeline, Jenkins).
+Knowledge of logging and monitoring tools (e.g., CloudWatch, Prometheus).
+
