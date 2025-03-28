@@ -49,6 +49,12 @@ Can I create repository in my machine and push it to github? Something like belo
 more just for learning..
 >> git init
 >>git checkout
+    For switching branch. e.g:
+        git checkout feature-branch  # Switch to 'feature-branch'
+    For restoring. e.g:
+        git checkout -- file.txt     # Restore 'file.txt' from the last commit
+    For creating a new branch 
+        git checkout -b new-branch
 >>git push --set-upstream <repository-name> master
 >>git remote add origin https://github.com/shishirkumar123/user-auth.git
 >>git remote remove origin - no url needed.
