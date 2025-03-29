@@ -61,7 +61,7 @@ more just for learning..
 >> git fetch
 >> git merge
 >> git checkout
->> git branch
+>> git branch - list of branches
 >> git rebase
 >> git branch -d branch_name
 >> git branch -D branch_name (force)
