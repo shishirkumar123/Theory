@@ -60,6 +60,14 @@ Important features:
 --------
 1. Pluggable Authentication method doesn't require application code change.
 	e.g. username/password, Kerberos, LDAP, certificates
+	Kerberos Vs LDAP:
+	Feature			LDAP					Kerberos
+	Authentication Type	Username/Password			Ticket-based (SSO)
+	Security		Less secure 				More secure (no passwords sent)
+				(passwords sent unless using LDAPS)
+	Authorization Support	Yes (retrieves user roles)		No (requires external role management)
+	Use Case		Web apps, corporate intranet		Secure distributed applications, microservices
+	Setup Complexity	Easier (LDAP server required)		Harder (KDC, keytabs, tickets required)
 2. Authorization can be based on user roles and permissions.
 	Integrates with Java Security Manager for fine-grained access control.
 3. Supports Single Sign-On (SSO) with Kerberos.
