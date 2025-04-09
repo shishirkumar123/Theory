@@ -11,7 +11,8 @@ TrustStore is used to store others credential (Certificates from CA)
 Handshake
 =========
 A handshake is a process that establishes a secure connection between two parties, 
-such as a client and server
+such as a client and server.
+For an example, look into Git/theory.txt
 
 Chain of trust - qs. If everyone trust CA and through CA each other, then where is chain of trust?
 There is no chain but a central authority. Correct?
