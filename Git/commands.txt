@@ -83,3 +83,53 @@ Gitflow
 - develop and feature branch will continue as usual.
 - QA and Bug fix will be done in release and moved to develop as well.
 - Once QA approved, move release to main. delete release.
+
+-------------------------
+ Choosing between SSH and HTTPS for Git access :
+It depends on your needs, but here’s a quick breakdown of **which is better for what**:
+
+---
+
+### 🔐 **SSH (Secure Shell)**
+**Pros:**
+- No need to type your username/password every time (once set up).
+- More secure for long-term use (uses public/private key encryption).
+- Works well for automation (e.g., CI/CD pipelines, scripts).
+- No need to deal with 2FA or personal access tokens.
+
+**Cons:**
+- Initial setup is a bit more involved (generate keys, add public key to Git server).
+    [  In Windows, In Coppell, TX office I did running ssh-keygen tool from cmd (very easy)
+        Then I copied the content of the generated key into gitlab
+    ]
+- Might be blocked by some firewalls (uses port 22).
+
+---
+
+### 🌐 **HTTPS**
+**Pros:**
+- Easy to get started — just use your username and password or a personal access token (PAT).
+- Works through most proxies/firewalls (uses port 443).
+- Simple for read-only access (like cloning public repos).
+
+**Cons:**
+- If you're using 2FA (like on GitHub), you’ll need a PAT.
+- Typing credentials repeatedly (unless you cache them or use credential managers).
+- Not ideal for automation without extra setup (e.g., storing tokens securely).
+
+---
+
+### 👑 So, **which is better?**
+
+| Use Case                      | Recommendation |
+|------------------------------|----------------|
+| Regular development work     | ✅ **SSH**      |
+| Quick clone / no setup       | ✅ **HTTPS**    |
+| CI/CD pipelines              | ✅ **SSH**      |
+| Behind strict corporate proxy| ✅ **HTTPS**    |
+| Security-sensitive workflows | ✅ **SSH**      |
+
+---
+
+### 🔧 Personal tip:
+If you're working regularly with GitHub, GitLab, or Bitbucket, **SSH is the way to go**. Once you set it up, it's seamless and secure.
