@@ -1,0 +1,80 @@
+You need SSH or HTTP to interact with git server.
+
+
+===============================================================---
+
+### 🔑 What Happens After SSH Keys Are Generated?
+
+After you generate a key pair (`private` and `public`), the SSH communication works like this:
+
+---
+
+### 🧠 Core Concept: **Asymmetric Cryptography**
+
+- You have:
+  - A **private key**: Kept **secret** and secure on your machine.
+  - A **public key**: Shared and stored on the **server** (e.g., GitHub, a Linux server, etc.)
+
+These keys are mathematically linked, but you **cannot derive the private key from the public key**.
+
+---
+
+### 🛰️ SSH Communication Process (Simplified)
+
+1. **Connection Initiation**:
+   - You run:  
+     ```bash
+     ssh user@host
+     ```
+     or  
+     ```bash
+     git clone git@github.com:user/repo.git
+     ```
+
+2. **Server Sends a Challenge**:
+   - The server checks if it has your **public key**.
+   - If yes, it sends a **random challenge** (like a cryptographic puzzle), encrypted using **your public key**.
+
+3. **Client Decrypts Challenge**:
+   - Your machine uses the **private key** to decrypt this challenge.
+   - Only the correct private key can do this.
+
+4. **Client Responds**:
+   - It sends back a **proof of decryption** (like a signature).
+
+5. **Server Verifies**:
+   - The server uses your **public key** to verify that the response is correct.
+   - If it checks out — it knows:
+     - The client holds the correct private key.
+     - The connection is legit.
+
+6. **Secure Session Established**:
+   - Now both sides use symmetric encryption (faster) for the rest of the session.
+   - The identity was verified **without ever transmitting the private key or password**.
+
+---
+
+### 🔐 Key Takeaway
+
+> The server challenges you, and only your private key can solve it. The private key **never leaves your machine**. That’s what makes SSH key-based auth **secure and passwordless**.
+
+---
+
+### 🧪 Bonus: In Git usage
+
+When you do:
+```bash
+git push origin main
+```
+
+And you’re using SSH:
+- Git connects to GitHub using SSH.
+- GitHub checks your public key.
+- The same handshake above happens.
+- If verified, GitHub allows your push.
+
+No password or token is involved if your key is trusted.
+
+---
+
+Want to go even deeper (e.g., into how the challenge is signed or how encryption works under the hood)? I can nerd out with you on that too 😄
