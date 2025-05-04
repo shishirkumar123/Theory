@@ -55,7 +55,8 @@ But once that was removed, i was able to fire aws iam list-users
 
 Ways to create EKS cluster
 =============================
-1. eksctl
+Option 1. eksctl
+------------------------------------------------
 
 install eksctl
 -----
@@ -86,4 +87,92 @@ Verify
 ----
 When done, delete the cluster
 >eksctl delete cluster -n <cluster-name>
-----------------------------------------------------------
+----
+Option 2: Using aws cli:
+------------------------------
+aws eks create-cluster --name my-eks-01 --region us-east-1 --role-arn arn:aws:iam::062286665809:role/AmazonEKSAutoClusterRole --resources-vpc-config subnetIds="subnet-0b4e62c3fde1bce3e,subnet-079d8058cb99eba0f" --kubernetes-version 1.31
+
+-------------------------------------------------------------------------------
+Install kubectl locally if not yet.
+Configure kubectl to use for aws(can be used for azure also)
+>aws eks update-kubeconfig --region us-east-1 --name my-eks-01 #Adds/Updates context																#Updates or creates the ~/.kube/config file.
+>kubectl config view
+Cluster status is CREATING
+For verification:
+>aws eks list-clusters --region us-east-1
+>aws eks describe-cluster --region us-east-1 --name my-eks-01 --query "cluster.status"
+CREATING # Repeat this till it shows "ACTIVE"
+>kubectl config get-contexts #shows only headers. If no records then run update-kubeconfig
+CURRENT   NAME   CLUSTER   AUTHINFO   NAMESPACE 
+>kubectl config use-context arn:aws:eks:us-east-1:062286665809:cluster/my-eks-01
+Verify
+>kubectl get no
+No resources found		#this mean command working properly
+Else below error:
+E0212 17:51:35.159486   41096 memcache.go:265] couldn't get current server API group list: 
+the server has asked for the client to provide credentials
+
+Kubectl config file path locally	C:\Users\shish\.kube	
+
+========================================================
+Troubleshooting
+Not able to connect to eks cluster from laptop. Permission related error.
+
+[cloudshell-user@ip-10-140-100-137 ~]$ kubectl get configmap -n kube-system
+NAME                                                   DATA   AGE
+extension-apiserver-authentication                     6      7h17m
+kube-apiserver-legacy-service-account-token-tracking   1      7h17m
+kube-root-ca.crt                                       1      7h17m
+----
+applied awsauth. then-
+[cloudshell-user@ip-10-140-100-137 ~]$ kubectl get configmap -n kube-system
+NAME                                                   DATA   AGE
+aws-auth                                               1      70s
+extension-apiserver-authentication                     6      7h24m
+kube-apiserver-legacy-service-account-token-tracking   1      7h24m
+kube-root-ca.crt                                       1      7h24m
+
+-------------	
+
+Useful commands:
+>aws sts get-caller-identity	#sts = AWS Security Token Service.
+>aws iam list-attached-role-policies --role-name AmazonEKSAutoClusterRole
+>aws iam list-attached-user-policies --user-name Shishir-GCP
+
+======================================================
+install eksctl
+>C:\dev\Code\Practice>eksctl version
+0.204.0
+=======================================================
+Create node-group
+>eksctl create nodegroup --cluster my-eks-01 --region us-east-1 --name my-node-group --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 2
+
+Error
+C:\dev\Code\Practice>eksctl create nodegroup --cluster my-eks-01 --region us-east-1 --name my-node-group --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 2
+2025-02-20 16:48:27 [ℹ]  will use version 1.31 for new nodegroup(s) based on control plane version
+2025-02-20 16:48:28 [!]  no eksctl-managed CloudFormation stacks found for "my-eks-01", will attempt to create nodegroup(s) on non eksctl-managed cluster
+Error: loading VPC spec for cluster "my-eks-01": VPC configuration required for creating nodegroups on clusters not owned by eksctl: vpc.subnets, vpc.id, vpc.securityGroup
+
+Resolution: Get the network details
+>aws eks describe-cluster --name my-eks-01 --region us-east-1 --query "cluster.resourcesVpcConfig" --output json  
+{
+    "subnetIds": [
+        "subnet-0caed5214d5703dbd",
+        "subnet-0d82538a20c8ae87e"
+    ],
+    "securityGroupIds": [],
+    "clusterSecurityGroupId": "sg-0e39fbf34ef73ab36",
+    "vpcId": "vpc-0f3ad03bc16b0dd85",
+    "endpointPublicAccess": true,
+    "endpointPrivateAccess": true,
+    "publicAccessCidrs": [
+        "0.0.0.0/0"
+    ]
+}
+	
+>eksctl create nodegroup --cluster my-eks-01 --region us-east-1 --name my-node-group --node-type t3.medium --nodes 2 --nodes-min 1 --nodes-max 2 --vpc-id vpc-0f3ad03bc16b0dd85 --subnet-ids subnet-0caed5214d5703dbd,subnet-0d82538a20c8ae87e --security-group sg-0e39fbf34ef73ab36
+	
+Add these details in the command-				
+				
+--vpc-id vpc-0f3ad03bc16b0dd85 --subnet-ids subnet-0caed5214d5703dbd,subnet-0d82538a20c8ae87e --security-group sg-0e39fbf34ef73ab36
+  
