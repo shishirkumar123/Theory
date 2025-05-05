@@ -62,6 +62,9 @@ more just for learning..
 >> git merge
 >> git checkout
 >> git branch - list of branches
+>> git branch --show-current
+>> git branch --set-upstream-to=origin/<branch> SSPP-10538 
+	->Here SSPP-10538 is branch name. After this git pull/push will be done from specified branch. No need to specify branch name in git pull/push
 >> git rebase
 >> git branch -d branch_name
 >> git branch -D branch_name (force)
