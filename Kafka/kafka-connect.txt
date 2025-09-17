@@ -1,0 +1,70 @@
+Kafka Connect
+=================
+Architecture
+=================
+Possible flows:
+1. DB1 ->KafKa Source Connector->Kafka Topic->Kafka Sink ->DB2
+2. DB1 ->KafKa Source Connector->Kafka Topic1->KafkaConsumerProducer->Kafka Topic 2->Kafka Sink ->DB2
+	Often used in real-world production pipelines when some form of custom transformation, 
+	enrichment, or filtering is needed by KafkaConsumerProducer.
+3. DB1 ->KafKa Source Connector->Kafka Topic->Kafka Consumer ->DB2
+4. DB1 ->KafKa Producer->Kafka Topic->Kafka SinkConnector ->DB2
+Remember:
+In Kafka Connect, one side is always Kafka, and the other side is an external system 
+	(like a database, file system, or API).
+
+You cannot use Kafka Connect to connect:
+	From one database directly to another (e.g., Oracle → Postgres)
+	From file → file or DB → REST API
+	(unless one side is Kafka)
+
+Configurations:
+=================
+"connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector"
+	JDBC Source Connector (connector class) internally uses a JDBC driver (like Oracle's ojdbc8.jar) to talk to the database.
+	Notice in the package name that JdbcSourceConnector is provided by confluent.
+---
+"tasks.max": "2" -controlls parallelism
+	For a JDBC Source Connector, it means:
+If you're pulling from multiple tables, Kafka Connect can assign different tables to different tasks.
+
+If you're pulling from one large table, it may be harder to parallelize — JDBC connector doesn’t automatically split a single table across tasks unless you're using table partitioning logic.
+---
+"key.converter": "org.apache.kafka.connect.json.JsonConverter",
+"value.converter": "org.apache.kafka.connect.json.JsonConverter"
+
+It means - The data read from the database is serialized into JSON format (for both keys and values) before being published to the Kafka topic.
+
+---
+Either provide "table.whitelist": "CUSTOMERS,ORDERS"
+Or provide "query" : "SELECT id, name, updated_at FROM CUSTOMERS WHERE status = 'ACTIVE'"
+table.whitelist empty means	Ingests all tables accessible to Oracle user
+---
+"transforms": "addTable",
+"transforms.addTable.type": "org.apache.kafka.connect.transforms.InsertField$Value",
+"transforms.addTable.static.field": "source_table",
+"transforms.addTable.static.value": "CUSTOMERS"
+
+Transformers modify key, value, or headers of each message before it's written to a Kafka topic (in source connectors), 
+or before it's written to the target system (in sink connectors).
+
+Why Use Transformers?
+	Add, rename, or remove fields
+	Mask sensitive data
+	Add metadata (e.g., source table name, timestamp)
+	Change topic dynamically based on record content
+	Cast field types (e.g., string → int)
+	Flatten nested structures
+
+more example:
+
+----
+
+Recommendations:
+# Avoid misses. Do the following
+          1. Use Mode: timestamp + increment, and
+          2. Use reconcilation
+# Avoid duplicates 
+            Idenpotency at sink. Use business key like UUID (mod customer Id + last 4 + expiry)
+# Timezone UTC everywhere from database to services, connectors, schema registries.
+
